@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotella Pizzaria – Cardápio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom font for a more inviting look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Pacifico&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Background with the provided image, adjusted for "less zoom" and better quality */
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), /* Dark overlay for better text contrast */
+                url('https://i.ibb.co/s9k1T8P0/pizza-de-pepperoni-italiana-classica-e-prato-vazio-vista-superior-foto-vertical-foto-de-alta-qualida.jpg');
+            background-size: auto 100vh; /* Scales image to fill viewport height, preserving aspect ratio */
+            background-position: center; /* Centers the background image */
+            background-attachment: fixed; /* Keeps background fixed during scroll */
+            background-repeat: no-repeat; /* Prevents image repetition */
+            background-color: #333; /* Dark fallback color to fill gaps if image doesn't cover full width */
+        }
+        .menu-card {
+            background-color: rgba(255, 255, 255, 0.90); /* Slightly more transparent white for background to show through */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); /* Stronger shadow for professionalism */
+            border-radius: 1.5rem; /* Slightly less rounded corners */
+            border: 2px solid #CD853F; /* Reduced border thickness */
+            padding: 2rem; /* Reduced padding for more vertical feel */
+            max-width: 32rem; /* Max width to make it more vertical on larger screens */
+            transition: transform 0.3s ease; /* Smooth transition on hover */
+        }
+        .menu-card:hover {
+            transform: translateY(-5px); /* Slight lift on hover */
+        }
+        .section-title {
+            font-family: 'Pacifico', cursive; /* Playful font for titles */
+            color: #CC5500; /* Darker, richer orange for titles */
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.15); /* More pronounced shadow */
+        }
+        .item-name {
+            color: #333; /* Darker text for item names */
+            font-weight: 600; /* Slightly bolder for clarity */
+            letter-spacing: 0.025em; /* A bit of letter spacing for elegance */
+            text-align: center; /* Ensure name is centered */
+        }
+        .item-ingredients {
+            font-size: 0.85rem; /* Smaller font for ingredients */
+            color: #555; /* Slightly muted color for ingredients */
+            text-align: center; /* Center ingredients text */
+            margin-top: 0.25rem; /* Small space between name and ingredients */
+            line-height: 1.2; /* Adjust line height for better readability */
+            padding: 0 0.5rem; /* Small padding left/right */
+        }
+        .item-price {
+            color: #E44D26; /* Brighter red-orange for prices */
+            font-weight: 700;
+        }
+        .footer-phone-container {
+            background-color: #E44D26; /* Brighter, more inviting red-orange for phone number */
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px; /* Fully rounded pill shape */
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: inline-block; /* Allows padding and rounding to work */
+            transition: background-color 0.3s ease; /* Smooth transition on hover */
+        }
+        .footer-phone-container:hover {
+            background-color: #FF6347; /* Tomato red on hover */
+        }
+        .footer-phone-link {
+            color: #fff; /* White text for phone number */
+            text-decoration: none; /* Remove underline from link */
+            font-size: 1.1rem; /* Reduced font size for better fit */
+            line-height: 1.5rem; /* Adjusted line height */
+        }
+        @media (min-width: 640px) { /* sm breakpoint */
+            .footer-phone-link {
+                font-size: 1.25rem; /* text-xl for small screens */
+                line-height: 1.75rem; /* leading-7 */
+            }
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            .footer-phone-link {
+                font-size: 1.5rem; /* text-2xl for medium screens */
+                line-height: 2rem; /* leading-8 */
+            }
+        }
+
+        /* Style for clickable items */
+        .pizza-link {
+            display: flex;
+            flex-direction: column; /* Stack name and ingredients vertically */
+            align-items: center;
+            justify-content: center; /* Center content within the link */
+            flex-grow: 1; /* Make the link fill the list item */
+            text-decoration: none; /* Remove underline by default */
+            color: inherit; /* Inherit text color */
+            padding: 0.75rem; /* Match padding of the li */
+            border-radius: 0.5rem; /* Match border-radius of the li */
+            transition: background-color 0.2s ease-in-out, transform 0.2s ease; /* Smooth transition on hover */
+            text-align: center; /* Ensure text inside is centered */
+        }
+        .pizza-link:hover {
+            background-color: #F5DEB3; /* Wheat color on hover */
+            transform: scale(1.02); /* Slight scale up on hover */
+        }
+        .combo-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Space between name and price */
+            flex-grow: 1;
+            text-decoration: none;
+            color: inherit;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s ease-in-out, transform 0.2s ease;
+            width: 100%; /* Ensure the link takes full width of the li */
+        }
+        .combo-link:hover {
+            background-color: #E8D7F1; /* Lighter purple on hover */
+            transform: scale(1.02);
+        }
+        .observation {
+            font-size: 0.9rem; /* Smaller font for observations */
+            color: #666; /* Slightly lighter text for observations */
+            text-align: center;
+            margin-top: 1rem; /* Space above the observation */
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen p-3 sm:p-5 md:p-7">
+
+    <div class="menu-card w-full mx-auto p-6 my-8">
+        <!-- Título do Cardápio -->
+        <h1 class="text-4xl sm:text-5xl md:text-6xl text-center mb-8 section-title">
+            Rotella Pizzaria – Cardápio
+        </h1>
+
+        <!-- Seção de Combos Promocionais -->
+        <div class="mb-8">
+            <h2 class="text-3xl sm:text-4xl section-title mb-4 flex items-center justify-center">
+                <i class="fas fa-tags mr-3 text-purple-600"></i> Combos Promocionais
+            </h2>
+            <ul class="grid grid-cols-1 gap-3 text-lg sm:text-xl text-gray-800">
+                <li class="bg-purple-50 p-3 rounded-lg shadow-sm flex items-center justify-between">
+                    <a href="https://wa.me/559286161640?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Combo%3A%201%20Pizza%20grande%20%2B%201%20Coca-Cola%201L." target="_blank" class="combo-link">
+                        <span class="item-name">1 Pizza grande + 1 Coca-Cola 1L</span>
+                        <span class="item-price">R$ 39,90</span>
+                    </a>
+                </li>
+                <li class="bg-purple-50 p-3 rounded-lg shadow-sm flex items-center justify-between">
+                    <a href="https://wa.me/559286161640?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Combo%3A%202%20Pizzas%20grandes%20%2B%201%20Coca-Cola%202L." target="_blank" class="combo-link">
+                        <span class="item-name">2 Pizzas grandes + 1 Coca-Cola 2L</span>
+                        <span class="item-price">R$ 75,99</span>
+                    </a>
+                </li>
+            </ul>
+            <p class="observation">
+                *Pizzas dos combos são válidas apenas para sabores tradicionais.
+            </p>
+        </div>
+
+        <!-- Seção de Pizzas Grandes -->
+        <div class="mb-8">
+            <h2 class="text-3xl sm:text-4xl section-title mb-4 flex items-center justify-center">
+                <i class="fas fa-pizza-slice mr-3 text-red-600"></i> Pizzas Grandes
+            </h2>
+
+            <!-- Subseção de Sabores Tradicionais -->
+            <h3 class="text-2xl sm:text-3xl section-title mb-4 flex items-center justify-center">
+                Sabores Tradicionais
+            </h3>
+            <p class="text-center text-xl sm:text-2xl font-semibold text-gray-700 mb-6">
+                Preço: <span class="item-price">R$ 34,99 cada</span>
+            </p>
+            <ul class="grid grid-cols-1 gap-3 text-lg sm:text-xl text-gray-800 mb-6">
+                <li class="bg-red-50 rounded-lg shadow-sm">
+                    <a href="https://wa.me/559286161640?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20uma%20pizza%20grande%20tradicional%20de%20Calabresa." target="_blank" class="pizza-link">
+                        <span class="item-name">Calabresa</span>
+                        <span class="item-ingredients">delicioso molho de tomate caseiro, bastante mussarela, muita calabresa, cebola e orégano.</span>
+                    </a>
+                </li>
+                <li class="bg-red-50 rounded-lg shadow-sm">
+                    <a href="https://wa.me/559286161640?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20uma%20pizza%20grande%20tradicional%20de%20Mussarela." target="_blank" class="pizza-link">
+                        <span class="item-name">Mussarela</span>
+                        <span class="item-ingredients">delicioso molho de tomate caseiro, muita mussarela, tomate e orégano.</span>
+                    </a>
+                </li>
+                <li class="bg-red-50 rounded-lg shadow-sm">
+                    <a href="https://wa.me/559286161640?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20uma%20pizza%20grande%20tradicional%20de%20Portuguesa." target="_blank" class="pizza-link">
+                        <span class="item-name">Portuguesa</span>
+                        <span class="item-ingredients">delicioso molho de tomate caseiro, mussarela à vontade, presunto de peru, cebola, pimentão, tomate, ovos cozidos, ervilha, azeitona e orégano.</span>
+                    </a>
+                </li>
+                <li class="bg-red-50 rounded-lg shadow-sm">
+                    <a href="https://wa.me/559286161640?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20uma%20pizza%20grande%20tradicional%20de%20Marguerita." target="_blank" class="pizza-link">
+                        <span class="item-name">Marguerita</span>
+                        <span class="item-ingredients">delicioso molho de tomate caseiro, bastante mussarela, manjericão fresco e orégano.</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Subseção de Sabores Especiais -->
+            <h3 class="text-2xl sm:text-3xl section-title mb-4 flex items-center justify-center">
+                Sabores Especiais
+            </h3>
+            <p class="text-center text-xl sm:text-2xl font-semibold text-gray-700 mb-6">
+                Preço: <span class="item-price">R$ 44,99 cada</span>
+            </p>
+            <ul class="grid grid-cols-1 gap-3 text-lg sm:text-xl text-gray-800">
+                <li class="bg-red-50 rounded-lg shadow-sm">
+                    <a href="https://wa.me/559286161640?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20uma%20pizza%20grande%20especial%20de%20Frango%20com%20Catupiry." target="_blank" class="pizza-link">
+                        <span class="item-name">Frango com Catupiry</span>
+                        <span class="item-ingredients">delicioso molho de tomate caseiro, frango desfiado temperado, catupiry e orégano.</span>
+                    </a>
+                </li>
+                <li class="bg-red-50 rounded-lg shadow-sm">
+                    <a href="https://wa.me/559286161640?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20uma%20pizza%20grande%20especial%20de%20Calabresa%20Supreme." target="_blank" class="pizza-link">
+                        <span class="item-name">Calabresa Supreme</span>
+                        <span class="item-ingredients">delicioso molho de tomate caseiro, muita calabresa, cebola, catupiry e orégano.</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Seção de Pizzas Médias -->
+        <div class="mb-8">
+            <h2 class="text-3xl sm:text-4xl section-title mb-4 flex items-center justify-center">
+                <i class="fas fa-pizza-slice mr-3 text-red-600"></i> Pizzas Médias
+            </h2>
+            <p class="text-center text-xl sm:text-2xl font-semibold text-gray-700 mb-6">
+                Preço: <span class="item-price">R$ 29,99 cada</span>
+            </p>
+            <ul class="grid grid-cols-1 gap-3 text-lg sm:text-xl text-gray-800">
+                <li class="bg-red-50 rounded-lg shadow-sm">
+                    <a href="https://wa.me/559286161640?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20uma%20pizza%20m%C3%A9dia%20de%20Chocolate." target="_blank" class="pizza-link">
+                        <span class="item-name">Chocolate</span>
+                        <span class="item-ingredients">delicioso chocolate ao leite, creme de avelã e granulado.</span>
+                    </a>
+                </li>
+                <li class="bg-red-50 rounded-lg shadow-sm">
+                    <a href="https://wa.me/559286161640?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20uma%20pizza%20m%C3%A9dia%20de%20Romeu%20e%20Julieta." target="_blank" class="pizza-link">
+                        <span class="item-name">Romeu e Julieta</span>
+                        <span class="item-ingredients">creme de queijo, goiabada e toque de canela.</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Seção de Refrigerantes -->
+        <div class="mb-8">
+            <h2 class="text-3xl sm:text-4xl section-title mb-4 flex items-center justify-center">
+                <i class="fas fa-wine-bottle mr-3 text-green-600"></i> Refrigerantes
+            </h2>
+            <ul class="grid grid-cols-1 gap-3 text-lg sm:text-xl text-gray-800">
+                <li class="bg-green-50 p-3 rounded-lg shadow-sm flex items-center justify-between">
+                    <span class="item-name">Coca-Cola 1L</span>
+                    <span class="item-price">R$ 8,99</span>
+                </li>
+                <li class="bg-green-50 p-3 rounded-lg shadow-sm flex items-center justify-between">
+                    <span class="item-name">Coca-Cola 2L</span>
+                    <span class="item-price">R$ 12,99</span>
+                </li>
+                <li class="bg-green-50 p-3 rounded-lg shadow-sm flex items-center justify-between">
+                    <span class="item-name">Fanta Laranja 2L</span>
+                    <span class="item-price">R$ 12,99</span>
+                </li>
+                <li class="bg-green-50 p-3 rounded-lg shadow-sm flex items-center justify-between">
+                    <span class="item-name">Guaraná Antárctica 2L</span>
+                    <span class="item-price">R$ 10,99</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Rodapé com Telefone para Pedidos -->
+        <div class="text-center mt-10">
+            <div class="footer-phone-container">
+                <a href="https://wa.me/559286161640?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!" target="_blank" class="footer-phone-link">
+                    Pedidos: (92) 9986161640
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
