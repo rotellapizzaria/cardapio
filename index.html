@@ -315,6 +315,22 @@
             resize: vertical; /* Allow vertical resizing */
             min-height: 4rem; /* Minimum height for textarea */
         }
+        .store-status {
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+        }
+        .store-status.open {
+            background-color: #d4edda; /* Light green */
+            color: #155724; /* Dark green */
+        }
+        .store-status.closed {
+            background-color: #f8d7da; /* Light red */
+            color: #721c24; /* Dark red */
+        }
     </style>
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen p-3 sm:p-5 md:p-7">
@@ -512,6 +528,11 @@
             <textarea id="delivery-address" placeholder="Rua, número, bairro, complemento (se houver)" rows="3"></textarea>
         </div>
 
+        <!-- Status da Loja -->
+        <div id="store-status" class="store-status">
+            <!-- Store status will be rendered here by JavaScript -->
+        </div>
+
         <div class="cart-total">
             Total: <span id="cart-total-price">R$ 0,00</span>
         </div>
@@ -540,14 +561,15 @@
         const cartTotalPriceSpan = document.getElementById('cart-total-price');
         const finalizeOrderBtn = document.getElementById('finalize-order-btn');
         const backToMenuBtn = document.getElementById('back-to-menu-btn');
-        const deliveryAddressInput = document.getElementById('delivery-address'); // Novo elemento de endereço
+        const deliveryAddressInput = document.getElementById('delivery-address');
+        const storeStatusDiv = document.getElementById('store-status');
 
         // Adiciona event listeners aos itens do menu para adicionar ao carrinho
         document.querySelectorAll('ul li[data-name]').forEach(item => {
             item.addEventListener('click', (event) => {
                 const name = item.dataset.name;
                 const price = parseFloat(item.dataset.price);
-                const ingredients = item.dataset.ingredients || ''; // Pode ser vazio para refrigerantes/combos
+                const ingredients = item.dataset.ingredients || '';
                 addToCart(name, price, ingredients);
             });
         });
@@ -574,7 +596,6 @@
                 cart.push({ name, price, ingredients, quantity: 1 });
             }
             updateCartDisplay();
-            // Optional: Provide visual feedback like a small animation or message
             showTemporaryMessage(`"${name}" adicionado ao carrinho!`);
         }
 
@@ -589,11 +610,11 @@
                 if (cart[existingItemIndex].quantity > 1) {
                     cart[existingItemIndex].quantity--;
                 } else {
-                    cart.splice(existingItemIndex, 1); // Remove item se a quantidade for 1
+                    cart.splice(existingItemIndex, 1);
                 }
             }
             updateCartDisplay();
-            renderCartItems(); // Re-render cart view after removal
+            renderCartItems();
         }
 
         /**
@@ -603,11 +624,49 @@
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             if (totalItems > 0) {
                 cartCountSpan.textContent = totalItems;
-                cartCountSpan.style.display = 'flex'; // Show the badge
+                cartCountSpan.style.display = 'flex';
             } else {
-                cartCountSpan.style.display = 'none'; // Hide the badge
+                cartCountSpan.style.display = 'none';
             }
         }
+
+        /**
+         * Verifica se a loja está aberta com base nos dias e horários de delivery.
+         * Sexta-feira: 18h00 às 00h00
+         * Sábado e Domingo: 18h00 às 23h30
+         * @returns {object} - { isOpen: boolean, statusText: string }
+         */
+        function checkStoreStatus() {
+            const now = new Date();
+            const day = now.getDay(); // 0 = Domingo, 1 = Segunda, ..., 5 = Sexta, 6 = Sábado
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+
+            let isOpen = false;
+            let statusText = "Loja Fechada";
+            let statusClass = "closed";
+
+            // Sexta-feira: 18:00h até 00:00h (do dia seguinte)
+            if (day === 5 && (hours >= 18 || (hours === 0 && minutes === 0))) { // Friday
+                isOpen = true;
+            }
+            // Sábado: 18:00h até 23:30h
+            else if (day === 6 && hours >= 18 && (hours < 23 || (hours === 23 && minutes <= 30))) { // Saturday
+                isOpen = true;
+            }
+            // Domingo: 18:00h até 23:30h
+            else if (day === 0 && hours >= 18 && (hours < 23 || (hours === 23 && minutes <= 30))) { // Sunday
+                isOpen = true;
+            }
+
+            if (isOpen) {
+                statusText = "Loja Aberta";
+                statusClass = "open";
+            }
+
+            return { isOpen, statusText, statusClass };
+        }
+
 
         /**
          * Mostra a tela do carrinho e esconde o menu.
@@ -617,7 +676,35 @@
             cartView.style.display = 'block';
             cartIconContainer.style.display = 'none'; // Hide cart icon when cart view is open
             renderCartItems();
+            updateStoreStatusDisplay(); // Atualiza o status da loja ao abrir o carrinho
+            updateFinalizeButtonText(); // Atualiza o texto do botão finalizar pedido
         }
+
+        /**
+         * Atualiza a exibição do status da loja.
+         */
+        function updateStoreStatusDisplay() {
+            const { statusText, statusClass } = checkStoreStatus();
+            storeStatusDiv.textContent = statusText;
+            storeStatusDiv.className = `store-status ${statusClass}`;
+        }
+
+        /**
+         * Atualiza o texto do botão de finalizar pedido com base no status da loja.
+         */
+        function updateFinalizeButtonText() {
+            const { isOpen } = checkStoreStatus();
+            if (isOpen) {
+                finalizeOrderBtn.textContent = 'Finalizar Pedido via WhatsApp';
+                finalizeOrderBtn.classList.add('btn-primary');
+                finalizeOrderBtn.classList.remove('btn-secondary'); // Ensure correct styling
+            } else {
+                finalizeOrderBtn.textContent = 'Agendar Pedido via WhatsApp';
+                finalizeOrderBtn.classList.remove('btn-primary'); // Remove green styling
+                finalizeOrderBtn.classList.add('btn-secondary'); // Add red styling for closed state
+            }
+        }
+
 
         /**
          * Esconde a tela do carrinho e mostra o menu.
@@ -626,21 +713,21 @@
             cartView.style.display = 'none';
             menuView.style.display = 'block';
             cartIconContainer.style.display = 'flex'; // Show cart icon again
-            updateCartDisplay(); // Ensure count is correct when returning to menu
+            updateCartDisplay();
         }
 
         /**
          * Renderiza os itens dentro da tela do carrinho.
          */
         function renderCartItems() {
-            cartItemsContainer.innerHTML = ''; // Limpa os itens existentes
+            cartItemsContainer.innerHTML = '';
             let totalPrice = 0;
 
             if (cart.length === 0) {
                 cartItemsContainer.innerHTML = '<p class="empty-cart-message">Seu carrinho está vazio.</p>';
-                finalizeOrderBtn.disabled = true; // Disable finalize button if cart is empty
+                finalizeOrderBtn.disabled = true;
             } else {
-                finalizeOrderBtn.disabled = false; // Enable finalize button
+                finalizeOrderBtn.disabled = false;
                 cart.forEach(item => {
                     const itemTotal = item.price * item.quantity;
                     totalPrice += itemTotal;
@@ -665,13 +752,11 @@
 
             cartTotalPriceSpan.textContent = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
 
-            // Add event listeners for quantity buttons
             document.querySelectorAll('.cart-quantity-btn').forEach(button => {
                 button.addEventListener('click', (event) => {
                     const action = event.target.dataset.action;
                     const name = event.target.dataset.name;
                     if (action === 'increase') {
-                        // Pass existing item's price and ingredients to ensure correct re-addition
                         const itemToUpdate = cart.find(i => i.name === name);
                         addToCart(name, itemToUpdate.price, itemToUpdate.ingredients);
                     } else if (action === 'decrease') {
@@ -697,14 +782,21 @@
                 return;
             }
 
+            const { isOpen } = checkStoreStatus();
             let message = "Olá Rotella Pizzaria! Gostaria de fazer o seguinte pedido:\n\n";
+
+            // Add a special message if the store is closed and it's an "Agendar Pedido"
+            if (!isOpen) {
+                message += "*(Este é um agendamento. A loja está atualmente fechada.)*\n\n";
+            }
+
             let total = 0;
 
             cart.forEach(item => {
                 const itemTotal = item.price * item.quantity;
                 message += `${item.quantity}x ${item.name}`;
                 if (item.ingredients) {
-                    message += ` (${item.ingredients.replace(/\.$/, '')})`; // Remove dot if exists
+                    message += ` (${item.ingredients.replace(/\.$/, '')})`;
                 }
                 message += ` - R$ ${itemTotal.toFixed(2).replace('.', ',')}\n`;
                 total += itemTotal;
@@ -712,16 +804,15 @@
 
             message += `\nTotal: R$ ${total.toFixed(2).replace('.', ',')}`;
             message += `\n\nEndereço para entrega: ${deliveryAddress}`;
-            message += "\nForma de pagamento: [FORMA DE PAGAMENTO]"; // Placeholder for user to fill
+            message += "\nForma de pagamento: [FORMA DE PAGAMENTO]";
 
             const whatsappUrl = `https://wa.me/559286161640?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
 
-            // Optional: Clear cart after finalizing order
             cart = [];
-            deliveryAddressInput.value = ''; // Clear address field
+            deliveryAddressInput.value = '';
             updateCartDisplay();
-            hideCart(); // Go back to menu
+            hideCart();
             showTemporaryMessage('Pedido enviado! Aguarde a confirmação da Rotella Pizzaria.');
         }
 
@@ -737,7 +828,7 @@
                 messageBox.id = 'custom-message-box';
                 messageBox.style.cssText = `
                     position: fixed;
-                    bottom: 7rem; /* Above the cart icon */
+                    bottom: 7rem;
                     left: 50%;
                     transform: translateX(-50%);
                     background-color: #333;
@@ -749,7 +840,7 @@
                     transition: opacity 0.3s ease-in-out;
                     font-size: 0.9rem;
                     text-align: center;
-                    pointer-events: none; /* Allows clicks to pass through */
+                    pointer-events: none;
                 `;
                 document.body.appendChild(messageBox);
             }
@@ -762,7 +853,12 @@
         }
 
         // Inicializa a exibição do carrinho ao carregar a página
-        document.addEventListener('DOMContentLoaded', updateCartDisplay);
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartDisplay();
+            // Call updateFinalizeButtonText initially as well to set the correct text if cart is opened without items
+            // This will be called again by showCart anyway, but good for consistency.
+            updateFinalizeButtonText();
+        });
     </script>
 </body>
 </html>
