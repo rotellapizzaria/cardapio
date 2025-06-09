@@ -143,11 +143,164 @@
             margin-top: 2rem; /* More space above this final observation */
             font-weight: 500;
         }
+        .pizza-dough-observation {
+            font-size: 0.95rem;
+            color: #333;
+            text-align: center;
+            margin-top: 1.5rem; /* Space after the pizza sections */
+            font-weight: 500;
+            padding: 0 1rem; /* Some padding for smaller screens */
+        }
+
+        /* Cart Icon Styling */
+        #cart-icon-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: #E44D26; /* Match main accent color */
+            color: white;
+            border-radius: 50%;
+            width: 3.5rem;
+            height: 3.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+        }
+        #cart-icon-container:hover {
+            transform: scale(1.1);
+            background-color: #FF6347;
+        }
+        #cart-count {
+            position: absolute;
+            top: -0.5rem;
+            right: -0.5rem;
+            background-color: #FFD700; /* Gold/Yellow for visibility */
+            color: #333;
+            border-radius: 50%;
+            padding: 0.2rem 0.5rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: none; /* Hidden by default */
+        }
+
+        /* Cart View Specific Styling */
+        #cart-view {
+            display: none; /* Hidden by default */
+            padding: 2rem;
+            max-width: 32rem;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 1.5rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            min-height: 50vh; /* Ensure some height for the cart view */
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px dashed #eee;
+        }
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        .cart-item-info {
+            flex-grow: 1;
+            margin-right: 1rem;
+        }
+        .cart-item-name {
+            font-weight: 600;
+            color: #333;
+        }
+        .cart-item-details {
+            font-size: 0.85rem;
+            color: #666;
+        }
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .cart-quantity-btn {
+            background-color: #ddd;
+            color: #333;
+            border: none;
+            border-radius: 0.25rem;
+            width: 1.8rem;
+            height: 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .cart-quantity-btn:hover {
+            background-color: #ccc;
+        }
+        .cart-item-price {
+            font-weight: 700;
+            color: #E44D26;
+            text-align: right;
+            min-width: 4rem; /* Ensure price column aligns */
+        }
+        .cart-total {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #CC5500;
+            text-align: right;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 2px solid #CD853F;
+        }
+        .cart-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .btn-primary {
+            background-color: #4CAF50; /* Green for success/action */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: #45a049;
+        }
+        .btn-secondary {
+            background-color: #f44336; /* Red for destructive/cancel */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+        .btn-secondary:hover {
+            background-color: #da190b;
+        }
+        .empty-cart-message {
+            text-align: center;
+            color: #777;
+            margin-top: 3rem;
+            font-size: 1.1rem;
+        }
     </style>
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen p-3 sm:p-5 md:p-7">
 
-    <div class="menu-card w-full mx-auto p-6 my-8">
+    <!-- Menu View -->
+    <div id="menu-view" class="menu-card w-full mx-auto p-6 my-8">
         <!-- Título/Logo do Cardápio -->
         <img src="https://i.ibb.co/9kTCsqsh/Whats-App-Image-2025-06-06-at-14-24-25-removebg-preview.png" alt="Rotella Pizzaria Logo" class="pizzaria-logo">
 
@@ -157,17 +310,15 @@
                 <i class="fas fa-tags mr-3 text-purple-600"></i> Combos Promocionais
             </h2>
             <ul class="grid grid-cols-1 gap-3 text-lg sm:text-xl text-gray-800">
-                <li class="bg-purple-50 p-3 rounded-lg shadow-sm flex items-center justify-between">
-                    <a href="https://wa.me/559286161640?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Combo%3A%201%20Pizza%20grande%20%2B%201%20Coca-Cola%201L." target="_blank" class="combo-link">
-                        <span class="item-name">1 Pizza grande + 1 Coca-Cola 1L</span>
-                        <span class="item-price">R$ 39,90</span>
-                    </a>
+                <li class="bg-purple-50 p-3 rounded-lg shadow-sm flex items-center justify-between cursor-pointer"
+                    data-name="Combo: 1 Pizza grande + 1 Coca-Cola 1L" data-price="39.90">
+                    <span class="item-name">1 Pizza grande + 1 Coca-Cola 1L</span>
+                    <span class="item-price">R$ 39,90</span>
                 </li>
-                <li class="bg-purple-50 p-3 rounded-lg shadow-sm flex items-center justify-between">
-                    <a href="https://wa.me/559286161640?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Combo%3A%202%20Pizzas%20grandes%20%2B%201%20Coca-Cola%202L." target="_blank" class="combo-link">
-                        <span class="item-name">2 Pizzas grandes + 1 Coca-Cola 2L</span>
-                        <span class="item-price">R$ 75,99</span>
-                    </a>
+                <li class="bg-purple-50 p-3 rounded-lg shadow-sm flex items-center justify-between cursor-pointer"
+                    data-name="Combo: 2 Pizzas grandes + 1 Coca-Cola 2L" data-price="75.99">
+                    <span class="item-name">2 Pizzas grandes + 1 Coca-Cola 2L</span>
+                    <span class="item-price">R$ 75,99</span>
                 </li>
             </ul>
             <p class="observation">
@@ -189,29 +340,37 @@
                 Preço: <span class="item-price">R$ 34,99 cada</span>
             </p>
             <ul class="grid grid-cols-1 gap-3 text-lg sm:text-xl text-gray-800 mb-6">
-                <li class="bg-red-50 rounded-lg shadow-sm">
-                    <a href="https://wa.me/559286161640?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20uma%20pizza%20grande%20tradicional%20de%20Calabresa." target="_blank" class="pizza-link">
+                <li class="bg-red-50 rounded-lg shadow-sm cursor-pointer"
+                    data-name="Pizza Grande de Calabresa" data-price="34.99"
+                    data-ingredients="delicioso molho de tomate caseiro, bastante mussarela, muita calabresa, cebola e orégano.">
+                    <div class="pizza-link">
                         <span class="item-name">Calabresa</span>
                         <span class="item-ingredients">delicioso molho de tomate caseiro, bastante mussarela, muita calabresa, cebola e orégano.</span>
-                    </a>
+                    </div>
                 </li>
-                <li class="bg-red-50 rounded-lg shadow-sm">
-                    <a href="https://wa.me/559286161640?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20uma%20pizza%20grande%20tradicional%20de%20Mussarela." target="_blank" class="pizza-link">
+                <li class="bg-red-50 rounded-lg shadow-sm cursor-pointer"
+                    data-name="Pizza Grande de Mussarela" data-price="34.99"
+                    data-ingredients="delicioso molho de tomate caseiro, muita mussarela, tomate e orégano.">
+                    <div class="pizza-link">
                         <span class="item-name">Mussarela</span>
                         <span class="item-ingredients">delicioso molho de tomate caseiro, muita mussarela, tomate e orégano.</span>
-                    </a>
+                    </div>
                 </li>
-                <li class="bg-red-50 rounded-lg shadow-sm">
-                    <a href="https://wa.me/559286161640?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20uma%20pizza%20grande%20tradicional%20de%20Portuguesa." target="_blank" class="pizza-link">
+                <li class="bg-red-50 rounded-lg shadow-sm cursor-pointer"
+                    data-name="Pizza Grande de Portuguesa" data-price="34.99"
+                    data-ingredients="delicioso molho de tomate caseiro, mussarela à vontade, presunto de peru, cebola, pimentão, tomate, ovos cozidos, ervilha, azeitona e orégano.">
+                    <div class="pizza-link">
                         <span class="item-name">Portuguesa</span>
                         <span class="item-ingredients">delicioso molho de tomate caseiro, mussarela à vontade, presunto de peru, cebola, pimentão, tomate, ovos cozidos, ervilha, azeitona e orégano.</span>
-                    </a>
+                    </div>
                 </li>
-                <li class="bg-red-50 rounded-lg shadow-sm">
-                    <a href="https://wa.me/559286161640?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20uma%20pizza%20grande%20tradicional%20de%20Marguerita." target="_blank" class="pizza-link">
+                <li class="bg-red-50 rounded-lg shadow-sm cursor-pointer"
+                    data-name="Pizza Grande de Marguerita" data-price="34.99"
+                    data-ingredients="delicioso molho de tomate caseiro, bastante mussarela, manjericão fresco e orégano.">
+                    <div class="pizza-link">
                         <span class="item-name">Marguerita</span>
                         <span class="item-ingredients">delicioso molho de tomate caseiro, bastante mussarela, manjericão fresco e orégano.</span>
-                    </a>
+                    </div>
                 </li>
             </ul>
 
@@ -223,17 +382,21 @@
                 Preço: <span class="item-price">R$ 44,99 cada</span>
             </p>
             <ul class="grid grid-cols-1 gap-3 text-lg sm:text-xl text-gray-800">
-                <li class="bg-red-50 rounded-lg shadow-sm">
-                    <a href="https://wa.me/559286161640?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20uma%20pizza%20grande%20especial%20de%20Frango%20com%20Catupiry." target="_blank" class="pizza-link">
+                <li class="bg-red-50 rounded-lg shadow-sm cursor-pointer"
+                    data-name="Pizza Grande Especial de Frango com Catupiry" data-price="44.99"
+                    data-ingredients="delicioso molho de tomate caseiro, frango desfiado temperado, catupiry e orégano.">
+                    <div class="pizza-link">
                         <span class="item-name">Frango com Catupiry</span>
                         <span class="item-ingredients">delicioso molho de tomate caseiro, frango desfiado temperado, catupiry e orégano.</span>
-                    </a>
+                    </div>
                 </li>
-                <li class="bg-red-50 rounded-lg shadow-sm">
-                    <a href="https://wa.me/559286161640?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20uma%20pizza%20grande%20especial%20de%20Calabresa%20Supreme." target="_blank" class="pizza-link">
+                <li class="bg-red-50 rounded-lg shadow-sm cursor-pointer"
+                    data-name="Pizza Grande Especial de Calabresa Supreme" data-price="44.99"
+                    data-ingredients="delicioso molho de tomate caseiro, muita calabresa, cebola, catupiry e orégano.">
+                    <div class="pizza-link">
                         <span class="item-name">Calabresa Supreme</span>
                         <span class="item-ingredients">delicioso molho de tomate caseiro, muita calabresa, cebola, catupiry e orégano.</span>
-                    </a>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -247,20 +410,29 @@
                 Preço: <span class="item-price">R$ 29,99 cada</span>
             </p>
             <ul class="grid grid-cols-1 gap-3 text-lg sm:text-xl text-gray-800">
-                <li class="bg-red-50 rounded-lg shadow-sm">
-                    <a href="https://wa.me/559286161640?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20uma%20pizza%20m%C3%A9dia%20de%20Chocolate." target="_blank" class="pizza-link">
+                <li class="bg-red-50 rounded-lg shadow-sm cursor-pointer"
+                    data-name="Pizza Média de Chocolate" data-price="29.99"
+                    data-ingredients="delicioso chocolate ao leite, creme de avelã e granulado.">
+                    <div class="pizza-link">
                         <span class="item-name">Chocolate</span>
                         <span class="item-ingredients">delicioso chocolate ao leite, creme de avelã e granulado.</span>
-                    </a>
+                    </div>
                 </li>
-                <li class="bg-red-50 rounded-lg shadow-sm">
-                    <a href="https://wa.me/559286161640?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20uma%20pizza%20m%C3%A9dia%20de%20Romeu%20e%20Julieta." target="_blank" class="pizza-link">
+                <li class="bg-red-50 rounded-lg shadow-sm cursor-pointer"
+                    data-name="Pizza Média de Romeu e Julieta" data-price="29.99"
+                    data-ingredients="creme de queijo, goiabada e toque de canela.">
+                    <div class="pizza-link">
                         <span class="item-name">Romeu e Julieta</span>
                         <span class="item-ingredients">creme de queijo, goiabada e toque de canela.</span>
-                    </a>
+                    </div>
                 </li>
             </ul>
         </div>
+
+        <!-- Observação sobre Massa Artesanal -->
+        <p class="pizza-dough-observation">
+            *Todas as nossas pizzas são feitas com massa artesanal.
+        </p>
 
         <!-- Seção de Refrigerantes -->
         <div class="mb-8">
@@ -268,19 +440,23 @@
                 <i class="fas fa-wine-bottle mr-3 text-green-600"></i> Refrigerantes
             </h2>
             <ul class="grid grid-cols-1 gap-3 text-lg sm:text-xl text-gray-800">
-                <li class="bg-green-50 p-3 rounded-lg shadow-sm flex items-center justify-between">
+                <li class="bg-green-50 p-3 rounded-lg shadow-sm flex items-center justify-between cursor-pointer"
+                    data-name="Coca-Cola 1L" data-price="8.99">
                     <span class="item-name">Coca-Cola 1L</span>
                     <span class="item-price">R$ 8,99</span>
                 </li>
-                <li class="bg-green-50 p-3 rounded-lg shadow-sm flex items-center justify-between">
+                <li class="bg-green-50 p-3 rounded-lg shadow-sm flex items-center justify-between cursor-pointer"
+                    data-name="Coca-Cola 2L" data-price="12.99">
                     <span class="item-name">Coca-Cola 2L</span>
                     <span class="item-price">R$ 12,99</span>
                 </li>
-                <li class="bg-green-50 p-3 rounded-lg shadow-sm flex items-center justify-between">
+                <li class="bg-green-50 p-3 rounded-lg shadow-sm flex items-center justify-between cursor-pointer"
+                    data-name="Fanta Laranja 2L" data-price="12.99">
                     <span class="item-name">Fanta Laranja 2L</span>
                     <span class="item-price">R$ 12,99</span>
                 </li>
-                <li class="bg-green-50 p-3 rounded-lg shadow-sm flex items-center justify-between">
+                <li class="bg-green-50 p-3 rounded-lg shadow-sm flex items-center justify-between cursor-pointer"
+                    data-name="Guaraná Antárctica 2L" data-price="10.99">
                     <span class="item-name">Guaraná Antárctica 2L</span>
                     <span class="item-price">R$ 10,99</span>
                 </li>
@@ -301,5 +477,253 @@
         </div>
     </div>
 
+    <!-- Cart View -->
+    <div id="cart-view" class="menu-card w-full mx-auto p-6 my-8">
+        <h2 class="text-3xl sm:text-4xl section-title mb-6 flex items-center justify-center">
+            <i class="fas fa-shopping-cart mr-3 text-red-600"></i> Seu Pedido
+        </h2>
+        <div id="cart-items-container">
+            <!-- Cart items will be rendered here by JavaScript -->
+        </div>
+        <div class="cart-total">
+            Total: <span id="cart-total-price">R$ 0,00</span>
+        </div>
+        <div class="cart-actions">
+            <button id="finalize-order-btn" class="btn-primary">Finalizar Pedido via WhatsApp</button>
+            <button id="back-to-menu-btn" class="btn-secondary">Voltar ao Cardápio</button>
+        </div>
+    </div>
+
+    <!-- Floating Cart Icon -->
+    <div id="cart-icon-container">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="cart-count">0</span>
+    </div>
+
+    <script>
+        // Array para armazenar os itens do carrinho
+        let cart = [];
+
+        // Elementos do DOM
+        const menuView = document.getElementById('menu-view');
+        const cartView = document.getElementById('cart-view');
+        const cartIconContainer = document.getElementById('cart-icon-container');
+        const cartCountSpan = document.getElementById('cart-count');
+        const cartItemsContainer = document.getElementById('cart-items-container');
+        const cartTotalPriceSpan = document.getElementById('cart-total-price');
+        const finalizeOrderBtn = document.getElementById('finalize-order-btn');
+        const backToMenuBtn = document.getElementById('back-to-menu-btn');
+
+        // Adiciona event listeners aos itens do menu para adicionar ao carrinho
+        document.querySelectorAll('ul li[data-name]').forEach(item => {
+            item.addEventListener('click', (event) => {
+                const name = item.dataset.name;
+                const price = parseFloat(item.dataset.price);
+                const ingredients = item.dataset.ingredients || ''; // Pode ser vazio para refrigerantes/combos
+                addToCart(name, price, ingredients);
+            });
+        });
+
+        // Event listener para o ícone do carrinho
+        cartIconContainer.addEventListener('click', showCart);
+
+        // Event listeners para os botões da tela do carrinho
+        backToMenuBtn.addEventListener('click', hideCart);
+        finalizeOrderBtn.addEventListener('click', finalizeOrder);
+
+        /**
+         * Adiciona um item ao carrinho ou atualiza sua quantidade.
+         * @param {string} name - Nome do item.
+         * @param {number} price - Preço individual do item.
+         * @param {string} ingredients - Ingredientes do item (opcional).
+         */
+        function addToCart(name, price, ingredients = '') {
+            const existingItemIndex = cart.findIndex(item => item.name === name);
+
+            if (existingItemIndex > -1) {
+                cart[existingItemIndex].quantity++;
+            } else {
+                cart.push({ name, price, ingredients, quantity: 1 });
+            }
+            updateCartDisplay();
+            // Optional: Provide visual feedback like a small animation or message
+            showTemporaryMessage(`"${name}" adicionado ao carrinho!`);
+        }
+
+        /**
+         * Remove um item do carrinho ou diminui sua quantidade.
+         * @param {string} name - Nome do item a ser removido.
+         */
+        function removeFromCart(name) {
+            const existingItemIndex = cart.findIndex(item => item.name === name);
+
+            if (existingItemIndex > -1) {
+                if (cart[existingItemIndex].quantity > 1) {
+                    cart[existingItemIndex].quantity--;
+                } else {
+                    cart.splice(existingItemIndex, 1); // Remove item se a quantidade for 1
+                }
+            }
+            updateCartDisplay();
+            renderCartItems(); // Re-render cart view after removal
+        }
+
+        /**
+         * Atualiza o contador no ícone do carrinho.
+         */
+        function updateCartDisplay() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            if (totalItems > 0) {
+                cartCountSpan.textContent = totalItems;
+                cartCountSpan.style.display = 'flex'; // Show the badge
+            } else {
+                cartCountSpan.style.display = 'none'; // Hide the badge
+            }
+        }
+
+        /**
+         * Mostra a tela do carrinho e esconde o menu.
+         */
+        function showCart() {
+            menuView.style.display = 'none';
+            cartView.style.display = 'block';
+            cartIconContainer.style.display = 'none'; // Hide cart icon when cart view is open
+            renderCartItems();
+        }
+
+        /**
+         * Esconde a tela do carrinho e mostra o menu.
+         */
+        function hideCart() {
+            cartView.style.display = 'none';
+            menuView.style.display = 'block';
+            cartIconContainer.style.display = 'flex'; // Show cart icon again
+            updateCartDisplay(); // Ensure count is correct when returning to menu
+        }
+
+        /**
+         * Renderiza os itens dentro da tela do carrinho.
+         */
+        function renderCartItems() {
+            cartItemsContainer.innerHTML = ''; // Limpa os itens existentes
+            let totalPrice = 0;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="empty-cart-message">Seu carrinho está vazio.</p>';
+                finalizeOrderBtn.disabled = true; // Disable finalize button if cart is empty
+            } else {
+                finalizeOrderBtn.disabled = false; // Enable finalize button
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    totalPrice += itemTotal;
+
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'cart-item';
+                    itemElement.innerHTML = `
+                        <div class="cart-item-info">
+                            <span class="cart-item-name">${item.name} (${item.quantity}x)</span>
+                            ${item.ingredients ? `<span class="cart-item-details">${item.ingredients}</span>` : ''}
+                        </div>
+                        <div class="cart-item-quantity">
+                            <button class="cart-quantity-btn" data-action="decrease" data-name="${item.name}">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="cart-quantity-btn" data-action="increase" data-name="${item.name}">+</button>
+                        </div>
+                        <span class="cart-item-price">R$ ${itemTotal.toFixed(2).replace('.', ',')}</span>
+                    `;
+                    cartItemsContainer.appendChild(itemElement);
+                });
+            }
+
+            cartTotalPriceSpan.textContent = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
+
+            // Add event listeners for quantity buttons
+            document.querySelectorAll('.cart-quantity-btn').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const action = event.target.dataset.action;
+                    const name = event.target.dataset.name;
+                    if (action === 'increase') {
+                        addToCart(name, cart.find(i => i.name === name).price, cart.find(i => i.name === name).ingredients);
+                    } else if (action === 'decrease') {
+                        removeFromCart(name);
+                    }
+                });
+            });
+        }
+
+        /**
+         * Gera a mensagem do WhatsApp com os itens do carrinho e o total.
+         */
+        function finalizeOrder() {
+            if (cart.length === 0) {
+                alert('Seu carrinho está vazio! Adicione itens antes de finalizar o pedido.'); // Using alert for now, can be a custom modal
+                return;
+            }
+
+            let message = "Olá Rotella Pizzaria! Gostaria de fazer o seguinte pedido:\n\n";
+            let total = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                message += `${item.quantity}x ${item.name}`;
+                if (item.ingredients) {
+                    message += ` (${item.ingredients.replace(/\.$/, '')})`; // Remove dot if exists
+                }
+                message += ` - R$ ${itemTotal.toFixed(2).replace('.', ',')}\n`;
+                total += itemTotal;
+            });
+
+            message += `\nTotal: R$ ${total.toFixed(2).replace('.', ',')}`;
+            message += "\n\nEndereço para entrega e forma de pagamento: [SEU ENDEREÇO E FORMA DE PAGAMENTO]"; // Placeholder for user to fill
+
+            const whatsappUrl = `https://wa.me/559286161640?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+
+            // Optional: Clear cart after finalizing order
+            cart = [];
+            updateCartDisplay();
+            hideCart(); // Go back to menu
+            showTemporaryMessage('Pedido enviado! Aguarde a confirmação da Rotella Pizzaria.');
+        }
+
+        /**
+         * Exibe uma mensagem temporária ao usuário (substitui alert/confirm).
+         * @param {string} msg - A mensagem a ser exibida.
+         * @param {number} duration - Duração em milissegundos (padrão: 3000).
+         */
+        function showTemporaryMessage(msg, duration = 3000) {
+            let messageBox = document.getElementById('custom-message-box');
+            if (!messageBox) {
+                messageBox = document.createElement('div');
+                messageBox.id = 'custom-message-box';
+                messageBox.style.cssText = `
+                    position: fixed;
+                    bottom: 7rem; /* Above the cart icon */
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background-color: #333;
+                    color: white;
+                    padding: 0.75rem 1.5rem;
+                    border-radius: 0.5rem;
+                    z-index: 1001;
+                    opacity: 0;
+                    transition: opacity 0.3s ease-in-out;
+                    font-size: 0.9rem;
+                    text-align: center;
+                    pointer-events: none; /* Allows clicks to pass through */
+                `;
+                document.body.appendChild(messageBox);
+            }
+            messageBox.textContent = msg;
+            messageBox.style.opacity = '1';
+
+            setTimeout(() => {
+                messageBox.style.opacity = '0';
+            }, duration);
+        }
+
+        // Inicializa a exibição do carrinho ao carregar a página
+        document.addEventListener('DOMContentLoaded', updateCartDisplay);
+    </script>
 </body>
 </html>
