@@ -130,15 +130,19 @@
             text-align: center;
             margin-top: 1rem; /* Space above the observation */
         }
+        .pizzaria-logo {
+            max-width: 80%; /* Ensure logo is responsive */
+            height: auto;
+            margin: 0 auto 2rem auto; /* Center logo and add some bottom margin */
+            display: block; /* Make it a block element to center with margin auto */
+        }
     </style>
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen p-3 sm:p-5 md:p-7">
 
     <div class="menu-card w-full mx-auto p-6 my-8">
-        <!-- Título do Cardápio -->
-        <h1 class="text-4xl sm:text-5xl md:text-6xl text-center mb-8 section-title">
-            Rotella Pizzaria – Cardápio
-        </h1>
+        <!-- Título/Logo do Cardápio -->
+        <img src="https://i.ibb.co/9kTCsqsh/Whats-App-Image-2025-06-06-at-14-24-25-removebg-preview.png" alt="Rotella Pizzaria Logo" class="pizzaria-logo">
 
         <!-- Seção de Combos Promocionais -->
         <div class="mb-8">
