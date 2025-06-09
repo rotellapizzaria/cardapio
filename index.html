@@ -295,6 +295,26 @@
             margin-top: 3rem;
             font-size: 1.1rem;
         }
+        .address-input-group {
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .address-input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+        .address-input-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 0.5rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            resize: vertical; /* Allow vertical resizing */
+            min-height: 4rem; /* Minimum height for textarea */
+        }
     </style>
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen p-3 sm:p-5 md:p-7">
@@ -485,6 +505,13 @@
         <div id="cart-items-container">
             <!-- Cart items will be rendered here by JavaScript -->
         </div>
+
+        <!-- Campo para Endereço de Entrega -->
+        <div class="address-input-group">
+            <label for="delivery-address">Endereço para Entrega:</label>
+            <textarea id="delivery-address" placeholder="Rua, número, bairro, complemento (se houver)" rows="3"></textarea>
+        </div>
+
         <div class="cart-total">
             Total: <span id="cart-total-price">R$ 0,00</span>
         </div>
@@ -513,6 +540,7 @@
         const cartTotalPriceSpan = document.getElementById('cart-total-price');
         const finalizeOrderBtn = document.getElementById('finalize-order-btn');
         const backToMenuBtn = document.getElementById('back-to-menu-btn');
+        const deliveryAddressInput = document.getElementById('delivery-address'); // Novo elemento de endereço
 
         // Adiciona event listeners aos itens do menu para adicionar ao carrinho
         document.querySelectorAll('ul li[data-name]').forEach(item => {
@@ -643,7 +671,9 @@
                     const action = event.target.dataset.action;
                     const name = event.target.dataset.name;
                     if (action === 'increase') {
-                        addToCart(name, cart.find(i => i.name === name).price, cart.find(i => i.name === name).ingredients);
+                        // Pass existing item's price and ingredients to ensure correct re-addition
+                        const itemToUpdate = cart.find(i => i.name === name);
+                        addToCart(name, itemToUpdate.price, itemToUpdate.ingredients);
                     } else if (action === 'decrease') {
                         removeFromCart(name);
                     }
@@ -656,7 +686,14 @@
          */
         function finalizeOrder() {
             if (cart.length === 0) {
-                alert('Seu carrinho está vazio! Adicione itens antes de finalizar o pedido.'); // Using alert for now, can be a custom modal
+                showTemporaryMessage('Seu carrinho está vazio! Adicione itens antes de finalizar o pedido.');
+                return;
+            }
+
+            const deliveryAddress = deliveryAddressInput.value.trim();
+            if (!deliveryAddress) {
+                showTemporaryMessage('Por favor, preencha o endereço para entrega.');
+                deliveryAddressInput.focus();
                 return;
             }
 
@@ -674,13 +711,15 @@
             });
 
             message += `\nTotal: R$ ${total.toFixed(2).replace('.', ',')}`;
-            message += "\n\nEndereço para entrega e forma de pagamento: [SEU ENDEREÇO E FORMA DE PAGAMENTO]"; // Placeholder for user to fill
+            message += `\n\nEndereço para entrega: ${deliveryAddress}`;
+            message += "\nForma de pagamento: [FORMA DE PAGAMENTO]"; // Placeholder for user to fill
 
             const whatsappUrl = `https://wa.me/559286161640?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
 
             // Optional: Clear cart after finalizing order
             cart = [];
+            deliveryAddressInput.value = ''; // Clear address field
             updateCartDisplay();
             hideCart(); // Go back to menu
             showTemporaryMessage('Pedido enviado! Aguarde a confirmação da Rotella Pizzaria.');
