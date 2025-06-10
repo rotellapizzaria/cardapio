@@ -295,11 +295,13 @@
             margin-top: 3rem;
             font-size: 1.1rem;
         }
-        .address-input-group {
+        .address-input-group,
+        .payment-input-group {
             margin-top: 1.5rem;
             margin-bottom: 1.5rem;
         }
-        .address-input-group label {
+        .address-input-group label,
+        .payment-input-group label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 600;
@@ -314,6 +316,27 @@
             font-size: 1rem;
             resize: vertical; /* Allow vertical resizing */
             min-height: 4rem; /* Minimum height for textarea */
+        }
+        .payment-options {
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        .payment-option {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .payment-option input[type="radio"] {
+            margin-right: 0.5rem;
+            cursor: pointer;
+        }
+        .payment-option label {
+            font-weight: normal; /* Override bold from general label */
+            color: #555;
+            cursor: pointer;
+            margin-bottom: 0; /* Remove default margin */
         }
         .store-status {
             text-align: center;
@@ -330,6 +353,15 @@
         .store-status.closed {
             background-color: #f8d7da; /* Light red */
             color: #721c24; /* Dark red */
+        }
+
+        /* Image for pizza item */
+        .pizza-item-image {
+            width: 180px; /* Increased width */
+            height: 180px; /* Increased height */
+            object-fit: cover; /* Cover the area, crop if necessary */
+            border-radius: 0.5rem; /* Rounded corners for the image */
+            margin-bottom: 0.5rem; /* Space between image and text */
         }
     </style>
 </head>
@@ -379,34 +411,38 @@
                 <li class="bg-red-50 rounded-lg shadow-sm cursor-pointer"
                     data-name="Pizza Grande de Calabresa" data-price="34.99"
                     data-ingredients="delicioso molho de tomate caseiro, bastante mussarela, muita calabresa, cebola e orégano.">
-                    <div class="pizza-link">
+                    <a href="#" class="pizza-link">
+                        <img src="https://i.ibb.co/VY77Qdyx/10074724-1-removebg-preview.png" alt="Pizza de Calabresa" class="pizza-item-image">
                         <span class="item-name">Calabresa</span>
                         <span class="item-ingredients">delicioso molho de tomate caseiro, bastante mussarela, muita calabresa, cebola e orégano.</span>
-                    </div>
+                    </a>
                 </li>
                 <li class="bg-red-50 rounded-lg shadow-sm cursor-pointer"
                     data-name="Pizza Grande de Mussarela" data-price="34.99"
                     data-ingredients="delicioso molho de tomate caseiro, muita mussarela, tomate e orégano.">
-                    <div class="pizza-link">
+                    <a href="#" class="pizza-link">
+                        <img src="https://i.ibb.co/93NrzVJ8/11857650-removebg-preview.png" alt="Pizza de Mussarela" class="pizza-item-image">
                         <span class="item-name">Mussarela</span>
                         <span class="item-ingredients">delicioso molho de tomate caseiro, muita mussarela, tomate e orégano.</span>
-                    </div>
+                    </a>
                 </li>
                 <li class="bg-red-50 rounded-lg shadow-sm cursor-pointer"
                     data-name="Pizza Grande de Portuguesa" data-price="34.99"
                     data-ingredients="delicioso molho de tomate caseiro, mussarela à vontade, presunto de peru, cebola, pimentão, tomate, ovos cozidos, ervilha, azeitona e orégano.">
-                    <div class="pizza-link">
+                    <a href="#" class="pizza-link">
+                        <img src="https://i.ibb.co/tT7SJ5Cy/portuguesa-removebg-preview.png" alt="Pizza Portuguesa" class="pizza-item-image">
                         <span class="item-name">Portuguesa</span>
                         <span class="item-ingredients">delicioso molho de tomate caseiro, mussarela à vontade, presunto de peru, cebola, pimentão, tomate, ovos cozidos, ervilha, azeitona e orégano.</span>
-                    </div>
+                    </a>
                 </li>
                 <li class="bg-red-50 rounded-lg shadow-sm cursor-pointer"
                     data-name="Pizza Grande de Marguerita" data-price="34.99"
                     data-ingredients="delicioso molho de tomate caseiro, bastante mussarela, manjericão fresco e orégano.">
-                    <div class="pizza-link">
+                    <a href="#" class="pizza-link">
+                        <img src="https://i.ibb.co/7t4RbzW2/marguerita-removebg-preview.png" alt="Pizza de Marguerita" class="pizza-item-image">
                         <span class="item-name">Marguerita</span>
                         <span class="item-ingredients">delicioso molho de tomate caseiro, bastante mussarela, manjericão fresco e orégano.</span>
-                    </div>
+                    </a>
                 </li>
             </ul>
 
@@ -421,18 +457,18 @@
                 <li class="bg-red-50 rounded-lg shadow-sm cursor-pointer"
                     data-name="Pizza Grande Especial de Frango com Catupiry" data-price="44.99"
                     data-ingredients="delicioso molho de tomate caseiro, frango desfiado temperado, catupiry e orégano.">
-                    <div class="pizza-link">
+                    <a href="#" class="pizza-link">
                         <span class="item-name">Frango com Catupiry</span>
                         <span class="item-ingredients">delicioso molho de tomate caseiro, frango desfiado temperado, catupiry e orégano.</span>
-                    </div>
+                    </a>
                 </li>
                 <li class="bg-red-50 rounded-lg shadow-sm cursor-pointer"
                     data-name="Pizza Grande Especial de Calabresa Supreme" data-price="44.99"
                     data-ingredients="delicioso molho de tomate caseiro, muita calabresa, cebola, catupiry e orégano.">
-                    <div class="pizza-link">
+                    <a href="#" class="pizza-link">
                         <span class="item-name">Calabresa Supreme</span>
                         <span class="item-ingredients">delicioso molho de tomate caseiro, muita calabresa, cebola, catupiry e orégano.</span>
-                    </div>
+                    </a>
                 </li>
             </ul>
         </div>
@@ -449,18 +485,18 @@
                 <li class="bg-red-50 rounded-lg shadow-sm cursor-pointer"
                     data-name="Pizza Média de Chocolate" data-price="29.99"
                     data-ingredients="delicioso chocolate ao leite, creme de avelã e granulado.">
-                    <div class="pizza-link">
+                    <a href="#" class="pizza-link">
                         <span class="item-name">Chocolate</span>
                         <span class="item-ingredients">delicioso chocolate ao leite, creme de avelã e granulado.</span>
-                    </div>
+                    </a>
                 </li>
                 <li class="bg-red-50 rounded-lg shadow-sm cursor-pointer"
                     data-name="Pizza Média de Romeu e Julieta" data-price="29.99"
                     data-ingredients="creme de queijo, goiabada e toque de canela.">
-                    <div class="pizza-link">
+                    <a href="#" class="pizza-link">
                         <span class="item-name">Romeu e Julieta</span>
                         <span class="item-ingredients">creme de queijo, goiabada e toque de canela.</span>
-                    </div>
+                    </a>
                 </li>
             </ul>
         </div>
@@ -503,7 +539,7 @@
         <div class="text-center mt-10">
             <div class="footer-phone-container">
                 <a href="https://wa.me/559286161640?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!" target="_blank" class="footer-phone-link">
-                    Pedidos: (92) 9986161640
+                    WhatsApp: (92) 9986161640
                 </a>
             </div>
             <p class="footer-observation">
@@ -526,6 +562,25 @@
         <div class="address-input-group">
             <label for="delivery-address">Endereço para Entrega:</label>
             <textarea id="delivery-address" placeholder="Rua, número, bairro, complemento (se houver)" rows="3"></textarea>
+        </div>
+
+        <!-- Campo para Forma de Pagamento -->
+        <div class="payment-input-group">
+            <label>Forma de Pagamento:</label>
+            <div class="payment-options">
+                <div class="payment-option">
+                    <input type="radio" id="payment-pix" name="payment-method" value="Pix">
+                    <label for="payment-pix">Pix</label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" id="payment-credit" name="payment-method" value="Crédito">
+                    <label for="payment-credit">Crédito</label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" id="payment-debit" name="payment-method" value="Débito">
+                    <label for="payment-debit">Débito</label>
+                </div>
+            </div>
         </div>
 
         <!-- Status da Loja -->
@@ -563,10 +618,16 @@
         const backToMenuBtn = document.getElementById('back-to-menu-btn');
         const deliveryAddressInput = document.getElementById('delivery-address');
         const storeStatusDiv = document.getElementById('store-status');
+        const paymentMethodRadios = document.querySelectorAll('input[name="payment-method"]');
 
         // Adiciona event listeners aos itens do menu para adicionar ao carrinho
+        // Modificado para que o clique não ative o link padrão, apenas o JS
         document.querySelectorAll('ul li[data-name]').forEach(item => {
             item.addEventListener('click', (event) => {
+                // Previne o comportamento padrão do link, se houver
+                if (event.target.tagName === 'A' || event.target.closest('a')) {
+                    event.preventDefault();
+                }
                 const name = item.dataset.name;
                 const price = parseFloat(item.dataset.price);
                 const ingredients = item.dataset.ingredients || '';
@@ -632,8 +693,8 @@
 
         /**
          * Verifica se a loja está aberta com base nos dias e horários de delivery.
-         * Sexta-feira: 18h00 às 00h00
-         * Sábado e Domingo: 18h00 às 23h30
+         * Sexta-feira: 18h00 às 00:00h
+         * Sábado e Domingo: 18h00 às 23:30h
          * @returns {object} - { isOpen: boolean, statusText: string }
          */
         function checkStoreStatus() {
@@ -646,16 +707,16 @@
             let statusText = "Loja Fechada";
             let statusClass = "closed";
 
-            // Sexta-feira: 18:00h até 00:00h (do dia seguinte)
-            if (day === 5 && (hours >= 18 || (hours === 0 && minutes === 0))) { // Friday
+            // Sexta-feira: 18:00h até 00:00h (tecnicamente 23:59:59 da sexta)
+            if (day === 5 && hours >= 18) { // Friday after 6 PM
                 isOpen = true;
             }
             // Sábado: 18:00h até 23:30h
-            else if (day === 6 && hours >= 18 && (hours < 23 || (hours === 23 && minutes <= 30))) { // Saturday
+            else if (day === 6 && hours >= 18 && (hours < 23 || (hours === 23 && minutes <= 30))) { // Saturday 6 PM to 11:30 PM
                 isOpen = true;
             }
             // Domingo: 18:00h até 23:30h
-            else if (day === 0 && hours >= 18 && (hours < 23 || (hours === 23 && minutes <= 30))) { // Sunday
+            else if (day === 0 && hours >= 18 && (hours < 23 || (hours === 23 && minutes <= 30))) { // Sunday 6 PM to 11:30 PM
                 isOpen = true;
             }
 
@@ -674,10 +735,10 @@
         function showCart() {
             menuView.style.display = 'none';
             cartView.style.display = 'block';
-            cartIconContainer.style.display = 'none'; // Hide cart icon when cart view is open
+            cartIconContainer.style.display = 'none'; /* Hide cart icon when cart view is open */
             renderCartItems();
-            updateStoreStatusDisplay(); // Atualiza o status da loja ao abrir o carrinho
-            updateFinalizeButtonText(); // Atualiza o texto do botão finalizar pedido
+            updateStoreStatusDisplay(); /* Atualiza o status da loja ao abrir o carrinho */
+            updateFinalizeButtonText(); /* Atualiza o texto do botão finalizar pedido */
         }
 
         /**
@@ -697,11 +758,11 @@
             if (isOpen) {
                 finalizeOrderBtn.textContent = 'Finalizar Pedido via WhatsApp';
                 finalizeOrderBtn.classList.add('btn-primary');
-                finalizeOrderBtn.classList.remove('btn-secondary'); // Ensure correct styling
+                finalizeOrderBtn.classList.remove('btn-secondary');
             } else {
                 finalizeOrderBtn.textContent = 'Agendar Pedido via WhatsApp';
-                finalizeOrderBtn.classList.remove('btn-primary'); // Remove green styling
-                finalizeOrderBtn.classList.add('btn-secondary'); // Add red styling for closed state
+                finalizeOrderBtn.classList.remove('btn-primary');
+                finalizeOrderBtn.classList.add('btn-secondary');
             }
         }
 
@@ -712,8 +773,11 @@
         function hideCart() {
             cartView.style.display = 'none';
             menuView.style.display = 'block';
-            cartIconContainer.style.display = 'flex'; // Show cart icon again
+            cartIconContainer.style.display = 'flex';
             updateCartDisplay();
+            // Clear payment method selection when returning to menu
+            paymentMethodRadios.forEach(radio => radio.checked = false);
+            deliveryAddressInput.value = ''; // Clear address field
         }
 
         /**
@@ -782,10 +846,23 @@
                 return;
             }
 
+            // Get selected payment method
+            let selectedPaymentMethod = '';
+            for (const radio of paymentMethodRadios) {
+                if (radio.checked) {
+                    selectedPaymentMethod = radio.value;
+                    break;
+                }
+            }
+
+            if (!selectedPaymentMethod) {
+                showTemporaryMessage('Por favor, selecione uma forma de pagamento.');
+                return;
+            }
+
             const { isOpen } = checkStoreStatus();
             let message = "Olá Rotella Pizzaria! Gostaria de fazer o seguinte pedido:\n\n";
 
-            // Add a special message if the store is closed and it's an "Agendar Pedido"
             if (!isOpen) {
                 message += "*(Este é um agendamento. A loja está atualmente fechada.)*\n\n";
             }
@@ -804,13 +881,14 @@
 
             message += `\nTotal: R$ ${total.toFixed(2).replace('.', ',')}`;
             message += `\n\nEndereço para entrega: ${deliveryAddress}`;
-            message += "\nForma de pagamento: [FORMA DE PAGAMENTO]";
+            message += `\nForma de pagamento: ${selectedPaymentMethod}`;
 
             const whatsappUrl = `https://wa.me/559286161640?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
 
             cart = [];
             deliveryAddressInput.value = '';
+            paymentMethodRadios.forEach(radio => radio.checked = false); // Limpa seleção
             updateCartDisplay();
             hideCart();
             showTemporaryMessage('Pedido enviado! Aguarde a confirmação da Rotella Pizzaria.');
@@ -855,8 +933,6 @@
         // Inicializa a exibição do carrinho ao carregar a página
         document.addEventListener('DOMContentLoaded', () => {
             updateCartDisplay();
-            // Call updateFinalizeButtonText initially as well to set the correct text if cart is opened without items
-            // This will be called again by showCart anyway, but good for consistency.
             updateFinalizeButtonText();
         });
     </script>
