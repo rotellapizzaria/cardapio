@@ -15,6 +15,11 @@
             background-color: #f8f8f8; /* Cor de fundo suave */
             color: #333;
             line-height: 1.6;
+            /* Adiciona a imagem de fundo */
+            background-image: url('https://i.ibb.co/tT199JXf/54361195-delicioso-caseiro-pizza-com-fresco-tomates-e-manjericao-gratis-foto.jpg');
+            background-size: cover; /* Faz a imagem cobrir toda a área */
+            background-position: center; /* Centraliza a imagem */
+            background-attachment: fixed; /* Mantém a imagem fixa ao rolar */
         }
         /* Definição da fonte Inter */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
@@ -33,6 +38,10 @@
             opacity: 0.5;
             cursor: not-allowed;
         }
+        /* Adiciona uma opacidade ao contêiner principal para o texto ficar legível sobre a imagem de fundo */
+        .container {
+            background-color: rgba(255, 255, 255, 0.9); /* Branco semi-transparente */
+        }
     </style>
 </head>
 <body class="p-4 sm:p-6 lg:p-8 flex items-center justify-center min-h-screen">
@@ -43,8 +52,14 @@
             <span id="cart-count" class="ml-2 text-lg font-bold">0</span>
         </div>
 
-        <!-- Título da Pizzaria (visível em todas as "páginas") -->
-        <h1 class="text-4xl sm:text-5xl font-extrabold text-red-700 text-center mb-6 mt-4">Rotella Pizzaria</h1>
+        <!-- Logo da Pizzaria -->
+        <div class="text-center mb-6 mt-4">
+            <img src="https://i.ibb.co/YFhQZvBG/Whats-App-Image-2025-06-06-at-14-24-25.jpg" alt="Logo Rotella Pizzaria" class="mx-auto w-48 sm:w-64 h-auto rounded-lg shadow-md">
+            <!-- Link do Instagram -->
+            <a href="https://www.instagram.com/rotellapizzaria" target="_blank" class="mt-4 inline-block text-red-600 hover:text-red-800 font-semibold text-lg">
+                Nos siga no Instagram: @rotellapizzaria
+            </a>
+        </div>
 
         <!-- Seção do Cardápio Principal -->
         <div id="main-menu" class="page-section">
@@ -117,6 +132,13 @@
                     </div>
                     <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 39,90</p>
                 </div>
+            </div>
+            
+            <!-- Botão Falar com um Atendente -->
+            <div class="text-center mt-10 mb-6">
+                <button onclick="window.open('https://wa.me/92986161640?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!', '_blank')" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
+                    <i class="fab fa-whatsapp mr-2"></i> Falar com um atendente
+                </button>
             </div>
             
         </div>
@@ -227,7 +249,7 @@
                 <p id="empty-cart-message" class="text-center text-gray-600 italic hidden">Seu carrinho está vazio.</p>
             </div>
 
-            <!-- Seção de CEP e Cálculo de Entrega (removida) -->
+            <!-- Campo de CEP e Cálculo de Entrega (removida) -->
             <!-- <div class="mb-6 p-4 border rounded-lg bg-white shadow-sm">
                 <h3 class="text-xl font-bold text-gray-800 mb-3">Calculo de Entrega</h3>
                 <p class="text-sm text-gray-600 mb-2">CEP de Origem: 69095510</p>
@@ -266,7 +288,7 @@
             <!-- Opções de Pagamento -->
             <div class="mb-6 p-4 border rounded-lg bg-white shadow-sm">
                 <h3 class="text-xl font-bold text-gray-800 mb-3">Forma de pagamento</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-4 gap-4"> <!-- Ajustado para 4 colunas para incluir Dinheiro -->
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
                     <label class="flex items-center p-3 border rounded-lg shadow-sm cursor-pointer bg-white">
                         <input type="radio" name="payment-method" value="Pix" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500" checked>
                         <span class="ml-3 text-lg text-gray-800 font-medium">Pix</span>
@@ -536,9 +558,10 @@
         const cartTotalPriceElement = document.getElementById('cart-total-price');
         const placeOrderBtn = document.getElementById('place-order-btn');
         const emptyCartMessage = document.getElementById('empty-cart-message');
-        // const deliveryZipCodeInput = document.getElementById('delivery-zip-code'); // Comentado
-        // const calculateDeliveryBtn = document.getElementById('calculate-delivery-btn'); // Comentado
-        // const deliveryInfoElement = document.getElementById('delivery-info'); // Comentado
+        // As constantes para cálculo de entrega foram removidas
+        // const deliveryZipCodeInput = document.getElementById('delivery-zip-code');
+        // const calculateDeliveryBtn = document.getElementById('calculate-delivery-btn');
+        // const deliveryInfoElement = document.getElementById('delivery-info');
 
         // Referências aos campos de endereço
         const addressStreetInput = document.getElementById('address-street');
@@ -578,14 +601,12 @@
                         let flavorsText = '';
                         if (item.flavors && item.flavors.length > 0) {
                             if (item.flavors.length === 1) {
-                                flavorsText = `${item.flavors[0]} (inteira)`;
-                            } else if (item.flavors.length === 2 && (item.id === 'combo1' || item.id === 'pizza-tradicional-grande' || item.id === 'pizza-especial-grande' || item.id === 'pizza-media' || item.id === 'pizza-especial-media')) {
-                                flavorsText = `${item.flavors[0]} e ${item.flavors[1]}`;
-                            } else if (item.flavors.length >= 2 && item.id === 'combo2') { 
-                                flavorsText = item.flavors.slice(0, -1).join(', ') + ' e ' + item.flavors[item.flavors.length - 1];
+                                flavorsText = ` (${item.flavors[0]} inteira)`;
+                            } else if (item.flavors.length === 2) {
+                                flavorsText = ` (${item.flavors[0]} e ${item.flavors[1]})`;
+                            } else { // Para 3 ou 4 sabores no combo 2
+                                flavorsText = ` (${item.flavors.join(', ')})`;
                             }
-                        } else {
-                            flavorsText = 'N/A';
                         }
                         itemDescription = `Sabores: ${flavorsText}`;
                     }
@@ -626,7 +647,7 @@
         /*
         function calculateDeliveryFee(distance) { ... }
         const ORIGIN_ZIP_CODE = '69095510';
-        const GOOGLE_MAPS_API_KEY = 'YOUR_GOOGLE_MAPS_API_KEY';
+        const GOOGLE_MAPS_API_KEY = 'AIzaSyBd6-d4xDeEdHCILpv_c5xqGTBAR8o8xm4';
         async function getDistanceViaGoogleMapsAPI(originZip, destinationZip) { ... }
         function getSimulatedDistance(destinationZip) { ... }
         */
@@ -679,15 +700,7 @@
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             message += `\n*Total do Pedido:* R$ ${subtotal.toFixed(2).replace('.', ',')}\n\n`; // Apenas o subtotal
             
-            // Taxa de entrega removida da mensagem
-            // if (deliveryFee > 0) {
-            //     message += `*Taxa de Entrega:* R$ ${deliveryFee.toFixed(2).replace('.', ',')}\n`;
-            // }
-            // message += `*Total a Pagar:* R$ ${(subtotal + deliveryFee).toFixed(2).replace('.', ',')}\n\n`; // Já consolidado acima
-
             message += `*Endereço de Entrega:*\n`;
-            // CEP de entrega agora é opcional na mensagem, pois não há campo para ele
-            // message += `CEP: ${deliveryZipCodeInput.value || 'Não informado'}\n\n`;
             message += `Rua: ${addressStreetInput.value || 'Não informado'}\n`;
             message += `Número: ${addressNumberInput.value || 'Não informado'}\n`;
             message += `Bairro: ${addressNeighborhoodInput.value || 'Não informado'}\n`;
