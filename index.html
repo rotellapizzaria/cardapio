@@ -266,7 +266,8 @@
         let deliveryFee = 0; // Armazena a taxa de entrega calculada
 
         const ORIGIN_ZIP_CODE = '69095510'; // CEP de origem fixo
-        const GOOGLE_MAPS_API_KEY = 'AIzaSyDYedK-RMid_7gWq3_fmNrHrei6F2OiBAc'; // Sua chave de API - AGORA USADA!
+        // Chave de API atualizada conforme sua solicitação
+        const GOOGLE_MAPS_API_KEY = 'AIzaSyBd6-d4xDeEdHCILpv_c5xqGTBAR8o8xm4'; 
 
         // Função para mostrar a página correta e esconder as outras
         function showPage(pageId) {
@@ -574,17 +575,24 @@
             
             try {
                 const response = await fetch(url);
+                // Check for HTTP errors before parsing JSON
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error(`Erro da API Google Maps: ${response.status} - ${response.statusText}`, errorText);
+                    return null; 
+                }
                 const data = await response.json();
 
                 if (data.status === 'OK' && data.rows.length > 0 && data.rows[0].elements.length > 0 && data.rows[0].elements[0].status === 'OK') {
                     const distanceInMeters = data.rows[0].elements[0].distance.value;
                     return distanceInMeters / 1000; // Converte metros para quilômetros
                 } else {
-                    console.error('Erro ao obter distância da API:', data.status, data);
+                    console.error('Erro ao obter distância da API Google Maps (status não OK ou dados ausentes):', data.status, data);
                     return null; // Retorna null se não conseguir obter a distância
                 }
             } catch (error) {
-                console.error('Erro na requisição da API de distância: Error: Failed to fetch (possível problema de CORS ou rede)', error);
+                // Este bloco catch lida com erros de rede (como "Failed to fetch" devido a CORS ou problemas de rede reais)
+                console.error('Erro na requisição da API de distância (pode ser problema de CORS, chave inválida ou rede):', error);
                 return null; 
             }
         }
@@ -623,11 +631,13 @@
             deliveryInfoElement.textContent = 'Calculando...';
 
             if (destinationZip.length === 8) {
-                let distance = await getDistanceViaGoogleMapsAPI(ORIGIN_ZIP_CODE, destinationZip);
+                let distance = null;
+                // Tenta obter a distância da API real
+                distance = await getDistanceViaGoogleMapsAPI(ORIGIN_ZIP_CODE, destinationZip);
                 
                 if (distance !== null) { // Se a API real funcionar
                     deliveryFee = calculateDeliveryFee(distance);
-                    deliveryInfoElement.textContent = `Distância (API): ${distance.toFixed(1).replace('.', ',')} km. Taxa de entrega: R$ ${deliveryFee.toFixed(2).replace('.', ',')}.`;
+                    deliveryInfoElement.textContent = `Distância (API Real): ${distance.toFixed(1).replace('.', ',')} km. Taxa de entrega: R$ ${deliveryFee.toFixed(2).replace('.', ',')}.`;
                 } else {
                     // Se a API falhar, usa a simulação
                     distance = getSimulatedDistance(destinationZip);
