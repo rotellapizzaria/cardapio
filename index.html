@@ -171,12 +171,12 @@
                 </div>
                 <!-- Item Esfirra Doce (Clicável) -->
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
-                     data-item-type="esfirra-doce" data-item-id="esfirra-doce" data-item-name="Esfirra Doce" data-item-price="8.90">
+                     data-item-type="esfirra-doce" data-item-id="esfirra-doce" data-item-name="Esfirra Doce" data-item-price="7.90"> <!-- Preço alterado para R$ 7,90 -->
                     <div class="flex-grow">
                         <p class="text-lg font-bold text-gray-900">Esfirra Doce</p>
                         <p class="text-sm text-gray-600 mt-1">Brigadeiro e Romeu e Julieta</p>
                     </div>
-                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 8,90</p>
+                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 7,90</p>
                 </div>
             </div>
             
@@ -215,7 +215,7 @@
                 </p>
 
                 <div id="flavor-options" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                    <!-- Sabores tradicionais (permanecem, mas serão desabilitados se não forem relevantes) -->
+                    <!-- Sabores tradicionais (permanecem, mas serão desabilitados/escondidos se não forem relevantes) -->
                     <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
                         <input type="checkbox" name="flavor" value="Portuguesa" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
                         <span class="ml-3 text-lg text-gray-800 font-medium">Portuguesa</span>
@@ -241,7 +241,7 @@
                         <input type="checkbox" name="flavor" value="Calabresa com Catupiry" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
                         <span class="ml-3 text-lg text-gray-800 font-medium">Calabresa com Catupiry</span>
                     </label>
-                    <!-- Sabores doces (AGORA APENAS PARA ESFIRRA DOCE) -->
+                    <!-- Sabores doces -->
                     <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
                         <input type="checkbox" name="flavor" value="Brigadeiro" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
                         <span class="ml-3 text-lg text-gray-800 font-medium">Brigadeiro</span>
@@ -451,14 +451,13 @@
 
         const traditionalFlavors = ['Portuguesa', 'Calabresa', 'Mussarela', 'Marguerita'];
         const sweetFlavors = ['Brigadeiro', 'Romeu e Julieta']; // Sabores doces específicos
-        // Sabores salgados que não são tradicionais (Frango c/ Catupiry, Calabresa c/ Catupiry)
-        const otherSaltyFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry'];
 
 
         // Função para atualizar as instruções de seleção de sabor e habilitar/desabilitar checkboxes
         function updateFlavorSelectionInstructions() {
             // Re-habilita todos os checkboxes inicialmente antes de aplicar novas restrições
             flavorCheckboxes.forEach(cb => {
+                cb.checked = false; // Garante que nenhum sabor esteja pré-selecionado
                 cb.disabled = false;
                 cb.closest('label').classList.remove('disabled-option');
                 cb.closest('label').style.display = 'flex'; // Garante que estejam visíveis antes de filtrar
@@ -485,7 +484,13 @@
                 });
             }
             else if (selectedItem.id === 'combo1' || selectedItem.id === 'pizza-tradicional-grande' || selectedItem.id === 'pizza-media' || selectedItem.id === 'esfirra-tradicional') { 
-                flavorInstructionText.textContent = `Escolha 1 sabor para sua ${selectedItem.name.includes('Esfirra') ? 'esfirra' : 'pizza'}. Se selecionar apenas 1, a ${selectedItem.name.includes('Esfirra') ? 'esfirra' : 'pizza'} será inteira desse sabor.`;
+                // AQUI: Ajuste para pizza grande tradicional para 2 sabores
+                if (selectedItem.id === 'pizza-tradicional-grande' || selectedItem.id === 'combo1' || selectedItem.id === 'pizza-media') {
+                    flavorInstructionText.textContent = `Escolha até 2 sabores para sua ${selectedItem.name.includes('Esfirra') ? 'esfirra' : 'pizza'}. Se selecionar apenas 1, a ${selectedItem.name.includes('Esfirra') ? 'esfirra' : 'pizza'} será inteira desse sabor.`;
+                } else { // Para esfirra tradicional
+                    flavorInstructionText.textContent = `Escolha 1 sabor para sua esfirra tradicional.`;
+                }
+                
                 // Para Combo 1, Pizzas Tradicionais e Esfirra Tradicional, apenas sabores tradicionais são permitidos
                 flavorCheckboxes.forEach(cb => {
                     if (!traditionalFlavors.includes(cb.value)) {
@@ -495,8 +500,14 @@
                     }
                 });
             } else if (selectedItem.id === 'pizza-especial-grande' || selectedItem.id === 'pizza-especial-media' || selectedItem.id === 'esfirra-especial') { 
-                flavorInstructionText.textContent = `Para sua ${selectedItem.name}, escolha apenas 1 sabor.`; // Esfirra Especial e Pizzas Especiais salgadas
-                // Para esfirra especial e pizzas especiais (só salgadas), todos os sabores salgados são permitidos
+                // AQUI FOI FEITO O AJUSTE PARA A "PIZZA GRANDE ESPECIAL" e "PIZZA MÉDIA ESPECIAL"
+                if (selectedItem.id === 'pizza-especial-grande' || selectedItem.id === 'pizza-especial-media') {
+                    flavorInstructionText.textContent = `Para sua ${selectedItem.name}, escolha até 2 sabores para sua pizza. Se selecionar apenas 1, a pizza será inteira desse sabor.`;
+                } else { // Para esfirra-especial
+                    flavorInstructionText.textContent = `Para sua ${selectedItem.name}, escolha apenas 1 sabor.`;
+                }
+                
+                // Para esfirra especial e pizzas especiais, todos os sabores salgados são permitidos
                 flavorCheckboxes.forEach(cb => {
                     if (sweetFlavors.includes(cb.value)) { // Desabilita e esconde se for sabor doce
                         cb.disabled = true;
@@ -520,10 +531,10 @@
                 } else if (selectedItem.id.includes('esfirra')) { // Esfirra Salgada (ambas) e Doce permite apenas 1 sabor
                     maxAllowedFlavors = 1;
                 }
-                else if (selectedItem.id === 'combo1' || selectedItem.id.includes('pizza')) { 
-                    maxAllowedFlavors = 2; // Combos de 1 pizza e todas as pizzas individuais permitem 2 sabores
+                else if (selectedItem.id.includes('pizza')) { // Isso inclui todas as pizzas individuais e Combo1
+                    maxAllowedFlavors = 2; 
                 } else {
-                    maxAllowedFlavors = 2; // Padrão
+                    maxAllowedFlavors = 2; // Padrão (fallback)
                 }
 
                 if (checkedCount >= maxAllowedFlavors) {
@@ -537,18 +548,18 @@
                     // Re-habilita os checkboxes que não foram desabilitados por restrição de categoria de pizza
                     flavorCheckboxes.forEach(cb => {
                         if (!cb.checked) { // Se não estiver checado
-                            if (selectedItem.type === 'combo' || selectedItem.id === 'pizza-tradicional-grande' || selectedItem.id === 'pizza-media' || selectedItem.id === 'esfirra-tradicional') { 
-                                // Se for esfirra tradicional ou pizza/combo tradicional, só re-habilita se for tradicional
+                            if (selectedItem.id === 'combo2' || selectedItem.id === 'combo1' || selectedItem.id === 'pizza-tradicional-grande' || selectedItem.id === 'pizza-media' || selectedItem.id === 'esfirra-tradicional') { 
+                                // Regra para itens tradicionais: só re-habilita tradicionais
                                 if (traditionalFlavors.includes(cb.value)) {
                                     cb.disabled = false;
                                 }
-                            } else if (selectedItem.id === 'esfirra-doce') { // Se for esfirra doce, só re-habilita se for doce
+                            } else if (selectedItem.id === 'esfirra-doce') { // Regra para esfirra doce: só re-habilita doces
                                 if (sweetFlavors.includes(cb.value)) {
                                     cb.disabled = false;
                                 }
                             }
                             else if (selectedItem.id === 'esfirra-especial' || selectedItem.id === 'pizza-especial-grande' || selectedItem.id === 'pizza-especial-media') {
-                                // Para Esfirra Especial e Pizzas Especiais, re-habilita tudo que não for doce
+                                // Regra para esfirra especial e pizzas especiais: re-habilita tudo que não for doce
                                 if (!sweetFlavors.includes(cb.value)) {
                                      cb.disabled = false;
                                 }
@@ -587,8 +598,8 @@
             } else if (selectedItem.id.includes('esfirra')) { // Esfirras (ambas) exigem apenas 1 sabor
                 minFlavorsToEnableButton = 1;
             }
-            else if (selectedItem.type === 'combo' || selectedItem.id.includes('pizza')) { 
-                minFlavorsToEnableButton = 1;
+            else if (selectedItem.id.includes('pizza')) { // Combos de 1 pizza e todas as pizzas individuais
+                minFlavorsToEnableButton = 1; 
             } else {
                 minFlavorsToEnableButton = 0; 
             }
