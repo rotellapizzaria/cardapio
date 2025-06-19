@@ -3,941 +3,647 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rotella Pizzaria – Cardápio</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Rotella Pizzaria - Seu Pedido</title>
+    <!-- Inclui o Tailwind CSS para estilização rápida e responsiva -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for icons -->
+    <!-- Inclui Font Awesome para o ícone de carrinho -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Custom font for a more inviting look */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Pacifico&display=swap');
+        /* Estilos personalizados para a fonte Inter e outros ajustes */
         body {
             font-family: 'Inter', sans-serif;
-            /* Background with the provided image, adjusted for "less zoom" and better quality */
-            background-image:
-                linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), /* Dark overlay for better text contrast */
-                url('https://i.ibb.co/s9k1T8P0/pizza-de-pepperoni-italiana-classica-e-prato-vazio-vista-superior-foto-vertical-foto-de-alta-qualida.jpg');
-            background-size: auto 100vh; /* Scales image to fill viewport height, preserving aspect ratio */
-            background-position: center; /* Centers the background image */
-            background-attachment: fixed; /* Keeps background fixed during scroll */
-            background-repeat: no-repeat; /* Prevents image repetition */
-            background-color: #333; /* Dark fallback color to fill gaps if image doesn't cover full width */
+            background-color: #f8f8f8; /* Cor de fundo suave */
+            color: #333;
+            line-height: 1.6;
         }
-        .menu-card {
-            background-color: rgba(255, 255, 255, 0.90); /* Slightly more transparent white for background to show through */
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); /* Stronger shadow for professionalism */
-            border-radius: 1.5rem; /* Slightly less rounded corners */
-            border: 2px solid #CD853F; /* Reduced border thickness */
-            padding: 2rem; /* Reduced padding for more vertical feel */
-            max-width: 32rem; /* Max width to make it more vertical on larger screens */
-            transition: transform 0.3s ease; /* Smooth transition on hover */
-        }
-        .menu-card:hover {
-            transform: translateY(-5px); /* Slight lift on hover */
-        }
-        .section-title {
-            font-family: 'Pacifico', cursive; /* Playful font for titles */
-            color: #CC5500; /* Darker, richer orange for titles */
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.15); /* More pronounced shadow */
-        }
-        .item-name {
-            color: #333; /* Darker text for item names */
-            font-weight: 600; /* Slightly bolder for clarity */
-            letter-spacing: 0.025em; /* A bit of letter spacing for elegance */
-            text-align: center; /* Ensure name is centered */
-        }
-        .item-ingredients {
-            font-size: 0.85rem; /* Smaller font for ingredients */
-            color: #555; /* Slightly muted color for ingredients */
-            text-align: center; /* Center ingredients text */
-            margin-top: 0.25rem; /* Small space between name and ingredients */
-            line-height: 1.2; /* Adjust line height for better readability */
-            padding: 0 0.5rem; /* Small padding left/right */
-        }
-        .item-price {
-            color: #E44D26; /* Brighter red-orange for prices */
-            font-weight: 700;
-        }
-        .footer-phone-container {
-            background-color: #E44D26; /* Brighter, more inviting red-orange for phone number */
-            padding: 0.75rem 1.5rem;
-            border-radius: 9999px; /* Fully rounded pill shape */
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            display: inline-block; /* Allows padding and rounding to work */
-            transition: background-color 0.3s ease; /* Smooth transition on hover */
-        }
-        .footer-phone-container:hover {
-            background-color: #FF6347; /* Tomato red on hover */
-        }
-        .footer-phone-link {
-            color: #fff; /* White text for phone number */
-            text-decoration: none; /* Remove underline from link */
-            font-size: 1.1rem; /* Reduced font size for better fit */
-            line-height: 1.5rem; /* Adjusted line height */
-        }
-        @media (min-width: 640px) { /* sm breakpoint */
-            .footer-phone-link {
-                font-size: 1.25rem; /* text-xl for small screens */
-                line-height: 1.75rem; /* leading-7 */
-            }
-        }
-        @media (min-width: 768px) { /* md breakpoint */
-            .footer-phone-link {
-                font-size: 1.5rem; /* text-2xl for medium screens */
-                line-height: 2rem; /* leading-8 */
-            }
-        }
+        /* Definição da fonte Inter */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
-        /* Style for clickable items */
-        .pizza-link {
-            display: flex;
-            flex-direction: column; /* Stack name and ingredients vertically */
-            align-items: center;
-            justify-content: center; /* Center content within the link */
-            flex-grow: 1; /* Make the link fill the list item */
-            text-decoration: none; /* Remove underline by default */
-            color: inherit; /* Inherit text color */
-            padding: 0.75rem; /* Match padding of the li */
-            border-radius: 0.5rem; /* Match border-radius of the li */
-            transition: background-color 0.2s ease-in-out, transform 0.2s ease; /* Smooth transition on hover */
-            text-align: center; /* Ensure text inside is centered */
-        }
-        .pizza-link:hover {
-            background-color: #F5DEB3; /* Wheat color on hover */
-            transform: scale(1.02); /* Slight scale up on hover */
-        }
-        .combo-link {
-            display: flex;
-            align-items: center;
-            justify-content: space-between; /* Space between name and price */
-            flex-grow: 1;
-            text-decoration: none;
-            color: inherit;
-            padding: 0.75rem;
-            border-radius: 0.5rem;
-            transition: background-color 0.2s ease-in-out, transform 0.2s ease;
-            width: 100%; /* Ensure the link takes full width of the li */
-        }
-        .combo-link:hover {
-            background-color: #E8D7F1; /* Lighter purple on hover */
-            transform: scale(1.02);
-        }
-        .observation {
-            font-size: 0.9rem; /* Smaller font for observations */
-            color: #666; /* Slightly lighter text for observations */
-            text-align: center;
-            margin-top: 1rem; /* Space above the observation */
-        }
-        .pizzaria-logo {
-            max-width: 80%; /* Ensure logo is responsive */
-            height: auto;
-            margin: 0 auto 2rem auto; /* Center logo and add some bottom margin */
-            display: block; /* Make it a block element to center with auto margin */
-        }
-        .footer-observation {
-            font-size: 0.95rem; /* Slightly larger than other observations for emphasis */
-            color: #333; /* Darker text for visibility */
-            text-align: center;
-            margin-top: 2rem; /* More space above this final observation */
-            font-weight: 500;
-        }
-        .pizza-dough-observation {
-            font-size: 0.95rem;
-            color: #333;
-            text-align: center;
-            margin-top: 1.5rem; /* Space after the pizza sections */
-            font-weight: 500;
-            padding: 0 1rem; /* Some padding for smaller screens */
-        }
-
-        /* Cart Icon Styling */
-        #cart-icon-container {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background-color: #E44D26; /* Match main accent color */
-            color: white;
-            border-radius: 50%;
-            width: 3.5rem;
-            height: 3.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
+        /* Estilo para itens clicáveis */
+        .clickable-item {
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-            transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         }
-        #cart-icon-container:hover {
-            transform: scale(1.1);
-            background-color: #FF6347;
+        .clickable-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
         }
-        #cart-count {
-            position: absolute;
-            top: -0.5rem;
-            right: -0.5rem;
-            background-color: #FFD700; /* Gold/Yellow for visibility */
-            color: #333;
-            border-radius: 50%;
-            padding: 0.2rem 0.5rem;
-            font-size: 0.8rem;
-            font-weight: bold;
-            display: none; /* Hidden by default */
-        }
-
-        /* Cart View Specific Styling */
-        #cart-view {
-            display: none; /* Hidden by default */
-            padding: 2rem;
-            max-width: 32rem;
-            margin: 0 auto;
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 1.5rem;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            min-height: 50vh; /* Ensure some height for the cart view */
-        }
-        .cart-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.75rem 0;
-            border-bottom: 1px dashed #eee;
-        }
-        .cart-item:last-child {
-            border-bottom: none;
-        }
-        .cart-item-info {
-            flex-grow: 1;
-            margin-right: 1rem;
-        }
-        .cart-item-name {
-            font-weight: 600;
-            color: #333;
-        }
-        .cart-item-details {
-            font-size: 0.85rem;
-            color: #666;
-        }
-        .cart-item-quantity {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .cart-quantity-btn {
-            background-color: #ddd;
-            color: #333;
-            border: none;
-            border-radius: 0.25rem;
-            width: 1.8rem;
-            height: 1.8rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-        .cart-quantity-btn:hover {
-            background-color: #ccc;
-        }
-        .cart-item-price {
-            font-weight: 700;
-            color: #E44D26;
-            text-align: right;
-            min-width: 4rem; /* Ensure price column aligns */
-        }
-        .cart-total {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #CC5500;
-            text-align: right;
-            margin-top: 1.5rem;
-            padding-top: 1rem;
-            border-top: 2px solid #CD853F;
-        }
-        .cart-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        .btn-primary {
-            background-color: #4CAF50; /* Green for success/action */
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            text-align: center;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.2s;
-        }
-        .btn-primary:hover {
-            background-color: #45a049;
-        }
-        .btn-secondary {
-            background-color: #f44336; /* Red for destructive/cancel */
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            text-align: center;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.2s;
-        }
-        .btn-secondary:hover {
-            background-color: #da190b;
-        }
-        .empty-cart-message {
-            text-align: center;
-            color: #777;
-            margin-top: 3rem;
-            font-size: 1.1rem;
-        }
-        .address-input-group,
-        .payment-input-group {
-            margin-top: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        .address-input-group label,
-        .payment-input-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #333;
-        }
-        .address-input-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ccc;
-            border-radius: 0.5rem;
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            resize: vertical; /* Allow vertical resizing */
-            min-height: 4rem; /* Minimum height for textarea */
-        }
-        .payment-options {
-            display: flex;
-            flex-wrap: wrap; /* Allow wrapping on smaller screens */
-            gap: 1rem;
-            margin-top: 0.5rem;
-        }
-        .payment-option {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-        }
-        .payment-option input[type="radio"] {
-            margin-right: 0.5rem;
-            cursor: pointer;
-        }
-        .payment-option label {
-            font-weight: normal; /* Override bold from general label */
-            color: #555;
-            cursor: pointer;
-            margin-bottom: 0; /* Remove default margin */
-        }
-        .store-status {
-            text-align: center;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-        }
-        .store-status.open {
-            background-color: #d4edda; /* Light green */
-            color: #155724; /* Dark green */
-        }
-        .store-status.closed {
-            background-color: #f8d7da; /* Light red */
-            color: #721c24; /* Dark red */
-        }
-
-        /* Image for pizza item */
-        .pizza-item-image {
-            width: 250px; /* Increased width significantly */
-            height: 250px; /* Increased height significantly */
-            object-fit: cover; /* Cover the area, crop if necessary */
-            border-radius: 0.5rem; /* Rounded corners for the image */
-            margin-bottom: 0.5rem; /* Space between image and text */
+        /* Estilo para sabores/bebidas desabilitados (aplicado SOMENTE na tela de escolha de sabores) */
+        .disabled-option {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
     </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen p-3 sm:p-5 md:p-7">
-
-    <!-- Menu View -->
-    <div id="menu-view" class="menu-card w-full mx-auto p-6 my-8">
-        <!-- Título/Logo do Cardápio -->
-        <img src="https://i.ibb.co/9kTCsqsh/Whats-App-Image-2025-06-06-at-14-24-25-removebg-preview.png" alt="Rotella Pizzaria Logo" class="pizzaria-logo">
-
-        <!-- Seção de Combos Promocionais -->
-        <div class="mb-8">
-            <h2 class="text-3xl sm:text-4xl section-title mb-4 flex items-center justify-center">
-                <i class="fas fa-tags mr-3 text-purple-600"></i> Combos Promocionais
-            </h2>
-            <ul class="grid grid-cols-1 gap-3 text-lg sm:text-xl text-gray-800">
-                <li class="bg-purple-50 p-3 rounded-lg shadow-sm flex items-center justify-between cursor-pointer"
-                    data-name="Combo: 1 Pizza grande + 1 Coca-Cola 1L" data-price="39.90">
-                    <span class="item-name">1 Pizza grande + 1 Coca-Cola 1L</span>
-                    <span class="item-price">R$ 39,90</span>
-                </li>
-                <li class="bg-purple-50 p-3 rounded-lg shadow-sm flex items-center justify-between cursor-pointer"
-                    data-name="Combo: 2 Pizzas grandes + 1 Coca-Cola 2L" data-price="75.99">
-                    <span class="item-name">2 Pizzas grandes + 1 Coca-Cola 2L</span>
-                    <span class="item-price">R$ 75,99</span>
-                </li>
-            </ul>
-            <p class="observation">
-                *Pizzas dos combos são válidas apenas para sabores tradicionais.
-            </p>
+<body class="p-4 sm:p-6 lg:p-8 flex items-center justify-center min-h-screen">
+    <div class="container mx-auto bg-white rounded-xl shadow-lg p-6 sm:p-8 lg:p-10 max-w-3xl border-t-4 border-red-600 relative">
+        <!-- Ícone do Carrinho (Visível em todas as telas controladas por showPage) -->
+        <div id="cart-icon-container" class="absolute top-4 right-4 cursor-pointer flex items-center justify-center bg-red-600 text-white rounded-full p-3 shadow-lg hover:bg-red-700 transition-colors z-10" onclick="showPage('order-summary')">
+            <i class="fas fa-shopping-cart text-xl"></i>
+            <span id="cart-count" class="ml-2 text-lg font-bold">0</span>
         </div>
 
-        <!-- Seção de Pizzas Grandes -->
-        <div class="mb-8">
-            <h2 class="text-3xl sm:text-4xl section-title mb-4 flex items-center justify-center">
-                <i class="fas fa-pizza-slice mr-3 text-red-600"></i> Pizzas Grandes
-            </h2>
+        <!-- Título da Pizzaria (visível em todas as "páginas") -->
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-red-700 text-center mb-6 mt-4">Rotella Pizzaria</h1>
 
-            <!-- Subseção de Sabores Tradicionais -->
-            <h3 class="text-2xl sm:text-3xl section-title mb-4 flex items-center justify-center">
-                Sabores Tradicionais
-            </h3>
-            <p class="text-center text-xl sm:text-2xl font-semibold text-gray-700 mb-6">
-                Preço: <span class="item-price">R$ 34,99 cada</span>
-            </p>
-            <ul class="grid grid-cols-1 gap-3 text-lg sm:text-xl text-gray-800 mb-6">
-                <li class="bg-red-50 rounded-lg shadow-sm cursor-pointer"
-                    data-name="Pizza Grande de Calabresa" data-price="34.99"
-                    data-ingredients="delicioso molho de tomate caseiro, bastante mussarela, muita calabresa, cebola e orégano.">
-                    <a href="#" class="pizza-link">
-                        <img src="https://i.ibb.co/VY77Qdyx/10074724-1-removebg-preview.png" alt="Pizza de Calabresa" class="pizza-item-image">
-                        <span class="item-name">Calabresa</span>
-                        <span class="item-ingredients">delicioso molho de tomate caseiro, bastante mussarela, muita calabresa, cebola e orégano.</span>
-                    </a>
-                </li>
-                <li class="bg-red-50 rounded-lg shadow-sm cursor-pointer"
-                    data-name="Pizza Grande de Mussarela" data-price="34.99"
-                    data-ingredients="delicioso molho de tomate caseiro, muita mussarela, tomate e orégano.">
-                    <a href="#" class="pizza-link">
-                        <img src="https://i.ibb.co/93NrzVJ8/11857650-removebg-preview.png" alt="[Image of Pizza de Mussarela]" class="pizza-item-image">
-                        <span class="item-name">Mussarela</span>
-                        <span class="item-ingredients">delicioso molho de tomate caseiro, muita mussarela, tomate e orégano.</span>
-                    </a>
-                </li>
-                <li class="bg-red-50 rounded-lg shadow-sm cursor-pointer"
-                    data-name="Pizza Grande de Portuguesa" data-price="34.99"
-                    data-ingredients="delicioso molho de tomate caseiro, mussarela à vontade, presunto de peru, cebola, pimentão, tomate, ovos cozidos, ervilha, azeitona e orégano.">
-                    <a href="#" class="pizza-link">
-                        <img src="https://i.ibb.co/tT7SJ5Cy/portuguesa-removebg-preview.png" alt="Pizza Portuguesa" class="pizza-item-image">
-                        <span class="item-name">Portuguesa</span>
-                        <span class="item-ingredients">delicioso molho de tomate caseiro, mussarela à vontade, presunto de peru, cebola, pimentão, tomate, ovos cozidos, ervilha, azeitona e orégano.</span>
-                    </a>
-                </li>
-                <li class="bg-red-50 rounded-lg shadow-sm cursor-pointer"
-                    data-name="Pizza Grande de Marguerita" data-price="34.99"
-                    data-ingredients="delicioso molho de tomate caseiro, bastante mussarela, manjericão fresco e orégano.">
-                    <a href="#" class="pizza-link">
-                        <img src="https://i.ibb.co/7t4RbzW2/marguerita-removebg-preview.png" alt="[Image of Pizza de Marguerita]" class="pizza-item-image">
-                        <span class="item-name">Marguerita</span>
-                        <span class="item-ingredients">delicioso molho de tomate caseiro, bastante mussarela, manjericão fresco e orégano.</span>
-                    </a>
-                </li>
-            </ul>
+        <!-- Seção do Cardápio Principal -->
+        <div id="main-menu" class="page-section">
+            <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800 text-center mb-8">Nosso Cardápio Delicioso!</h2>
 
-            <!-- Subseção de Sabores Especiais -->
-            <h3 class="text-2xl sm:text-3xl section-title mb-4 flex items-center justify-center">
-                Sabores Especiais
-            </h3>
-            <p class="text-center text-xl sm:text-2xl font-semibold text-gray-700 mb-6">
-                Preço: <span class="item-price">R$ 44,99 cada</span>
-            </p>
-            <ul class="grid grid-cols-1 gap-3 text-lg sm:text-xl text-gray-800">
-                <li class="bg-red-50 rounded-lg shadow-sm cursor-pointer"
-                    data-name="Pizza Grande Especial de Frango com Catupiry" data-price="44.99"
-                    data-ingredients="delicioso molho de tomate caseiro, frango desfiado temperado, catupiry e orégano.">
-                    <a href="#" class="pizza-link">
-                        <img src="https://i.ibb.co/FbWRXZsj/11491102-removebg-preview.png" alt="[Image of Pizza de Frango com Catupiry]" class="pizza-item-image">
-                        <span class="item-name">Frango com Catupiry</span>
-                        <span class="item-ingredients">delicioso molho de tomate caseiro, frango desfiado temperado, catupiry e orégano.</span>
-                    </a>
-                </li>
-                <li class="bg-red-50 rounded-lg shadow-sm cursor-pointer"
-                    data-name="Pizza Grande Especial de Calabresa Supreme" data-price="44.99"
-                    data-ingredients="delicioso molho de tomate caseiro, muita calabresa, cebola, catupiry e orégano.">
-                    <a href="#" class="pizza-link">
-                        <img src="https://i.ibb.co/N58Bgkh/calabresa-com-requeij-o-baee9539-0c70-40e2-8017-b42a52119a48-removebg-preview.png" alt="[Image of Pizza Calabresa Supreme]" class="pizza-item-image">
-                        <span class="item-name">Calabresa Supreme</span>
-                        <span class="item-ingredients">delicioso molho de tomate caseiro, muita calabresa, cebola, catupiry e orégano.</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
+            <!-- Seção de Combos Especiais -->
+            <div class="mb-10">
+                <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Combos Especiais</h3>
+                <p class="text-sm text-gray-600 mb-4 italic text-center">
+                    *Obs: Válido somente para sabores tradicionais de pizza.
+                </p>
+                
+                <!-- Item do Combo 1 (Clicável) -->
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
+                     data-item-type="combo" data-item-id="combo1" data-item-name="Combo 1" data-item-price="39.90">
+                    <div class="flex-grow">
+                        <p class="text-lg font-bold text-gray-900">Combo 1</p>
+                        <p class="text-sm text-gray-600 mt-1">Pizza grande (até dois sabores) + Coca-cola de 1L</p>
+                    </div>
+                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 39,90</p>
+                </div>
 
-        <!-- Seção de Pizzas Médias -->
-        <div class="mb-8">
-            <h2 class="text-3xl sm:text-4xl section-title mb-4 flex items-center justify-center">
-                <i class="fas fa-pizza-slice mr-3 text-red-600"></i> Pizzas Médias
-            </h2>
-            <p class="text-center text-xl sm:text-2xl font-semibold text-gray-700 mb-6">
-                Preço: <span class="item-price">R$ 29,99 cada</span>
-            </p>
-            <ul class="grid grid-cols-1 gap-3 text-lg sm:text-xl text-gray-800">
-                <li class="bg-red-50 rounded-lg shadow-sm cursor-pointer"
-                    data-name="Pizza Média de Chocolate" data-price="29.99"
-                    data-ingredients="delicioso chocolate ao leite, creme de avelã e granulado.">
-                    <a href="#" class="pizza-link">
-                        <img src="https://i.ibb.co/6Rkkb2N6/43780-removebg-preview.png" alt="[Image of Pizza de Chocolate]" class="pizza-item-image">
-                        <span class="item-name">Chocolate</span>
-                        <span class="item-ingredients">delicioso chocolate ao leite, creme de avelã e granulado.</span>
-                    </a>
-                </li>
-                <li class="bg-red-50 rounded-lg shadow-sm cursor-pointer"
-                    data-name="Pizza Média de Romeu e Julieta" data-price="29.99"
-                    data-ingredients="creme de queijo, goiabada e toque de canela.">
-                    <a href="#" class="pizza-link">
-                        <img src="https://i.ibb.co/mrLW4LK4/pizza-romeu-e-julieta-removebg-preview.png" alt="[Image of Pizza de Romeu e Julieta]" class="pizza-item-image">
-                        <span class="item-name">Romeu e Julieta</span>
-                        <span class="item-ingredients">creme de queijo, goiabada e toque de canela.</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <!-- Observação sobre Massa Artesanal -->
-        <p class="pizza-dough-observation">
-            *Todas as nossas pizzas são feitas com massa artesanal.
-        </p>
-
-        <!-- Seção de Refrigerantes -->
-        <div class="mb-8">
-            <h2 class="text-3xl sm:text-4xl section-title mb-4 flex items-center justify-center">
-                <i class="fas fa-wine-bottle mr-3 text-green-600"></i> Refrigerantes
-            </h2>
-            <ul class="grid grid-cols-1 gap-3 text-lg sm:text-xl text-gray-800">
-                <li class="bg-green-50 p-3 rounded-lg shadow-sm flex items-center justify-between cursor-pointer"
-                    data-name="Coca-Cola 1L" data-price="8.99">
-                    <span class="item-name">Coca-Cola 1L</span>
-                    <span class="item-price">R$ 8,99</span>
-                </li>
-                <li class="bg-green-50 p-3 rounded-lg shadow-sm flex items-center justify-between cursor-pointer"
-                    data-name="Coca-Cola 2L" data-price="12.99">
-                    <span class="item-name">Coca-Cola 2L</span>
-                    <span class="item-price">R$ 12,99</span>
-                </li>
-                <li class="bg-green-50 p-3 rounded-lg shadow-sm flex items-center justify-between cursor-pointer"
-                    data-name="Fanta Laranja 2L" data-price="12.99">
-                    <span class="item-name">Fanta Laranja 2L</span>
-                    <span class="item-price">R$ 12,99</span>
-                </li>
-                <li class="bg-green-50 p-3 rounded-lg shadow-sm flex items-center justify-between cursor-pointer"
-                    data-name="Guaraná Antárctica 2L" data-price="10.99">
-                    <span class="item-name">Guaraná Antárctica 2L</span>
-                    <span class="item-price">R$ 10,99</span>
-                </li>
-            </ul>
-        </div>
-
-        <!-- Rodapé com Telefone para Pedidos -->
-        <div class="text-center mt-10">
-            <div class="footer-phone-container">
-                <a href="https://wa.me/559286161640?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!" target="_blank" class="footer-phone-link">
-                    WhatsApp: (92) 9986161640
-                </a>
+                <!-- Item do Combo 2 (Clicável) -->
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
+                     data-item-type="combo" data-item-id="combo2" data-item-name="Combo 2" data-item-price="74.90">
+                    <div class="flex-grow">
+                        <p class="text-lg font-bold text-gray-900">Combo 2</p>
+                        <p class="text-sm text-gray-600 mt-1">2 Pizzas grandes (até dois sabores cada) + Coca-cola de 2L</p>
+                    </div>
+                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 74,90</p>
+                </div>
             </div>
-            <p class="footer-observation">
-                *Funcionamos apenas para delivery de sexta - domingo das 18h às 00h.<br>
-                *Consulte taxa de entrega.
-            </p>
-        </div>
-    </div>
 
-    <!-- Cart View -->
-    <div id="cart-view" class="menu-card w-full mx-auto p-6 my-8">
-        <h2 class="text-3xl sm:text-4xl section-title mb-6 flex items-center justify-center">
-            <i class="fas fa-shopping-cart mr-3 text-red-600"></i> Seu Pedido
-        </h2>
-        <div id="cart-items-container">
-            <!-- Cart items will be rendered here by JavaScript -->
+            <!-- Seção de Pizzas -->
+            <div class="mb-10">
+                <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Pizzas</h3>
+                <!-- Item Pizza Grande Tradicional (Clicável) -->
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
+                     data-item-type="pizza-tradicional" data-item-id="pizza-tradicional-grande" data-item-name="Pizza Grande Tradicional" data-item-price="34.90">
+                    <div class="flex-grow">
+                        <p class="text-lg font-bold text-gray-900">Pizza Grande Tradicional</p>
+                        <p class="text-sm text-gray-600 mt-1">Até dois sabores</p>
+                    </div>
+                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 34,90</p>
+                </div>
+                <!-- Item Pizza Grande Especial (Clicável) -->
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
+                     data-item-type="pizza-especial" data-item-id="pizza-especial-grande" data-item-name="Pizza Grande Especial" data-item-price="44.90">
+                    <div class="flex-grow">
+                        <p class="text-lg font-bold text-gray-900">Pizza Grande Especial</p>
+                        <p class="text-sm text-gray-600 mt-1">Até dois sabores</p>
+                    </div>
+                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 44,90</p>
+                </div>
+                <!-- Item Pizza Média Tradicional (Clicável) -->
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
+                     data-item-type="pizza-media" data-item-id="pizza-media" data-item-name="Pizza Média Tradicional" data-item-price="29.90">
+                    <div class="flex-grow">
+                        <p class="text-lg font-bold text-gray-900">Pizza Média Tradicional</p>
+                        <p class="text-sm text-gray-600 mt-1">Até dois sabores</p>
+                    </div>
+                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 29,90</p>
+                </div>
+                <!-- Item Pizza Média Especial (Clicável) -->
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
+                     data-item-type="pizza-especial" data-item-id="pizza-especial-media" data-item-name="Pizza Média Especial" data-item-price="39.90">
+                    <div class="flex-grow">
+                        <p class="text-lg font-bold text-gray-900">Pizza Média Especial</p>
+                        <p class="text-sm text-gray-600 mt-1">Até dois sabores</p>
+                    </div>
+                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 39,90</p>
+                </div>
+            </div>
+            
         </div>
 
-        <!-- Campo para Endereço de Entrega -->
-        <div class="address-input-group">
-            <label for="delivery-address">Endereço para Entrega:</label>
-            <textarea id="delivery-address" placeholder="Rua, número, bairro, complemento (se houver)" rows="3"></textarea>
-        </div>
+        <!-- Seção de Seleção de Sabores e Bebidas -->
+        <div id="flavor-selection" class="page-section hidden">
+            <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800 text-center mb-8">Personalize seu Pedido</h2>
 
-        <!-- Campo para Forma de Pagamento -->
-        <div class="payment-input-group">
-            <label>Forma de Pagamento:</label>
-            <div class="payment-options">
-                <div class="payment-option">
-                    <input type="radio" id="payment-pix" name="payment-method" value="Pix">
-                    <label for="payment-pix">Pix</label>
+            <div id="item-info" class="text-center text-lg text-gray-700 mb-6 p-4 bg-red-50 rounded-lg">
+                <!-- Informações do item selecionado serão carregadas aqui pelo JS -->
+            </div>
+
+            <!-- Seção de Sabores -->
+            <div class="mb-10">
+                <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Selecione seus Sabores</h3>
+                <p id="flavor-instruction-text" class="text-md text-gray-600 text-center mb-6">
+                    <!-- Este texto será atualizado dinamicamente -->
+                </p>
+
+                <div id="flavor-options" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    <!-- Sabores tradicionais -->
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor" value="Portuguesa" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <span class="ml-3 text-lg text-gray-800 font-medium">Portuguesa</span>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor" value="Calabresa" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <span class="ml-3 text-lg text-gray-800 font-medium">Calabresa</span>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor" value="Mussarela" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <span class="ml-3 text-lg text-gray-800 font-medium">Mussarela</span>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor" value="Marguerita" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <span class="ml-3 text-lg text-gray-800 font-medium">Marguerita</span>
+                    </label>
+                    <!-- Sabores especiais -->
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor" value="Frango com Catupiry" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <span class="ml-3 text-lg text-gray-800 font-medium">Frango com Catupiry</span>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor" value="Calabresa com Catupiry" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <span class="ml-3 text-lg text-gray-800 font-medium">Calabresa com Catupiry</span>
+                    </label>
+                    <!-- Sabores doces -->
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor" value="Brigadeiro" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <span class="ml-3 text-lg text-gray-800 font-medium">Brigadeiro</span>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor" value="Romeu e Julieta" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <span class="ml-3 text-lg text-gray-800 font-medium">Romeu e Julieta</span>
+                    </label>
+                    <!-- Outros sabores -->
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor" value="Pepperoni" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <span class="ml-3 text-lg text-gray-800 font-medium">Pepperoni</span>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor" value="Quatro Queijos" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <span class="ml-3 text-lg text-gray-800 font-medium">Quatro Queijos</span>
+                    </label>
                 </div>
-                <div class="payment-option">
-                    <input type="radio" id="payment-credit" name="payment-method" value="Crédito">
-                    <label for="payment-credit">Crédito</label>
+            </div>
+
+            <!-- Seção de Bebidas -->
+            <div class="mb-10">
+                <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Selecione sua Bebida (Opcional)</h3>
+                <div id="beverage-options" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="radio" name="beverage" value="Coca-cola 1L" data-beverage-price="9.90" data-beverage-id="coca-1l" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500">
+                        <span class="ml-3 text-lg text-gray-800 font-medium">Coca-cola 1L - R$ 9,90</span>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="radio" name="beverage" value="Coca-cola 2L" data-beverage-price="13.90" data-beverage-id="coca-2l" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500">
+                        <span class="ml-3 text-lg text-gray-800 font-medium">Coca-cola 2L - R$ 13,90</span>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="radio" name="beverage" value="Fanta Laranja 2L" data-beverage-price="12.90" data-beverage-id="fanta-2l" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500">
+                        <span class="ml-3 text-lg text-gray-800 font-medium">Fanta Laranja 2L - R$ 12,90</span>
+                    </label>
+                    <!-- Opção "Nenhuma bebida" -->
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="radio" name="beverage" value="Nenhuma bebida" data-beverage-price="0.00" data-beverage-id="no-beverage" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500" checked>
+                        <span class="ml-3 text-lg text-gray-800 font-medium">Nenhuma bebida</span>
+                    </label>
                 </div>
-                <div class="payment-option">
-                    <input type="radio" id="payment-debit" name="payment-method" value="Débito">
-                    <label for="payment-debit">Débito</label>
-                </div>
+            </div>
+
+            <div class="text-center space-x-4">
+                <button id="add-to-cart-btn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50" disabled>
+                    Adicionar ao Carrinho
+                </button>
+                <button onclick="showPage('main-menu')" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50">
+                    Voltar ao Cardápio
+                </button>
             </div>
         </div>
 
-        <!-- Status da Loja -->
-        <div id="store-status" class="store-status">
-            <!-- Store status will be rendered here by JavaScript -->
-        </div>
+        <!-- Seção de Resumo do Pedido (Carrinho de Compras) -->
+        <div id="order-summary" class="page-section hidden">
+            <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800 text-center mb-8">Seu Carrinho</h2>
 
-        <div class="cart-total">
-            Total: <span id="cart-total-price">R$ 0,00</span>
-        </div>
-        <div class="cart-actions">
-            <button id="finalize-order-btn" class="btn-primary">Finalizar Pedido via WhatsApp</button>
-            <button id="back-to-menu-btn" class="btn-secondary">Voltar ao Cardápio</button>
-        </div>
-    </div>
+            <div id="cart-items-container" class="bg-gray-50 p-6 rounded-lg shadow-inner mb-8">
+                <!-- Itens do carrinho serão inseridos aqui dinamicamente -->
+                <p id="empty-cart-message" class="text-center text-gray-600 italic hidden">Seu carrinho está vazio.</p>
+            </div>
 
-    <!-- Floating Cart Icon -->
-    <div id="cart-icon-container">
-        <i class="fas fa-shopping-cart"></i>
-        <span id="cart-count">0</span>
+            <!-- Campo de CEP e Cálculo de Entrega -->
+            <div class="mb-6 p-4 border rounded-lg bg-white shadow-sm">
+                <h3 class="text-xl font-bold text-gray-800 mb-3">Calculo de Entrega</h3>
+                <p class="text-sm text-gray-600 mb-2">CEP de Origem: 69095510</p>
+                <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
+                    <input type="text" id="delivery-zip-code" placeholder="Digite o CEP de destino" class="flex-grow p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" maxlength="8">
+                    <button id="calculate-delivery-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                        Calcular Taxa
+                    </button>
+                </div>
+                <p id="delivery-info" class="text-md text-gray-700 mt-3"></p>
+            </div>
+
+            <div class="text-right text-3xl font-extrabold text-red-700 mt-6 pt-4 border-t-2 border-red-300 mb-8">
+                <span class="font-semibold">Total do Pedido:</span> <span id="cart-total-price">R$ 0,00</span>
+            </div>
+
+            <div class="text-center space-x-4">
+                <button id="place-order-btn" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50" disabled>
+                    Finalizar Pedido
+                </button>
+                <button onclick="showPage('main-menu')" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50">
+                    Voltar ao Cardápio
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mensagem de rodapé (visível em todas as "páginas") -->
+        <p class="text-center text-gray-500 text-sm mt-10">Obrigado por escolher Rotella Pizzaria! Bom apetite!</p>
     </div>
 
     <script>
-        // Array para armazenar os itens do carrinho
-        let cart = [];
+        // Array para armazenar os itens no carrinho (pizza/combo e bebidas separadas)
+        let cart = []; 
+        let selectedItem = {}; // Item (pizza/combo) sendo configurado na tela de seleção de sabores
+        let selectedBeverage = { name: 'Nenhuma bebida', price: 0, id: 'no-beverage' }; // Bebida selecionada na tela de seleção
+        let deliveryFee = 0; // Armazena a taxa de entrega calculada
 
-        // Elementos do DOM
-        const menuView = document.getElementById('menu-view');
-        const cartView = document.getElementById('cart-view');
-        const cartIconContainer = document.getElementById('cart-icon-container');
-        const cartCountSpan = document.getElementById('cart-count');
-        const cartItemsContainer = document.getElementById('cart-items-container');
-        const cartTotalPriceSpan = document.getElementById('cart-total-price');
-        const finalizeOrderBtn = document.getElementById('finalize-order-btn');
-        const backToMenuBtn = document.getElementById('back-to-menu-btn');
-        const deliveryAddressInput = document.getElementById('delivery-address');
-        const storeStatusDiv = document.getElementById('store-status');
-        const paymentMethodRadios = document.querySelectorAll('input[name="payment-method"]');
+        const ORIGIN_ZIP_CODE = '69095510'; // CEP de origem fixo
+        const GOOGLE_MAPS_API_KEY = 'AIzaSyDYedK-RMid_7gWq3_fmNrHrei6F2OiBAc'; // Sua chave de API - AGORA USADA!
 
-        // Adiciona event listeners aos itens do menu para adicionar ao carrinho
-        // Modificado para que o clique não ative o link padrão, apenas o JS
-        document.querySelectorAll('ul li[data-name]').forEach(item => {
-            item.addEventListener('click', (event) => {
-                // Previne o comportamento padrão do link, se houver
-                if (event.target.tagName === 'A' || event.target.closest('a')) {
-                    event.preventDefault();
+        // Função para mostrar a página correta e esconder as outras
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            document.getElementById(pageId).classList.remove('hidden');
+
+            // Se for para a página de resumo, atualiza o carrinho
+            if (pageId === 'order-summary') {
+                renderCart();
+            }
+        }
+
+        // Função para atualizar a contagem de itens no ícone do carrinho
+        function updateCartIconCount() {
+            let totalItemsInCart = 0;
+            cart.forEach(item => {
+                totalItemsInCart += item.quantity;
+            });
+            document.getElementById('cart-count').textContent = totalItemsInCart;
+        }
+
+        // === Lógica do Cardápio Principal ===
+        document.querySelectorAll('.clickable-item').forEach(item => {
+            item.addEventListener('click', function() {
+                selectedItem = {
+                    type: this.dataset.itemType, // 'combo', 'pizza-tradicional', 'pizza-especial', 'pizza-media'
+                    id: this.dataset.itemId,
+                    name: this.dataset.itemName,
+                    price: parseFloat(this.dataset.itemPrice)
+                };
+                
+                // Reinicia os checkboxes de sabor e o botão ao ir para seleção de sabores
+                document.querySelectorAll('input[name="flavor"]').forEach(cb => {
+                    cb.checked = false;
+                    cb.disabled = false;
+                    cb.closest('label').classList.remove('disabled-option'); // Remove o estilo de desabilitado
+                });
+                
+                // Reinicia a seleção de bebida para "Nenhuma bebida"
+                selectedBeverage = { name: 'Nenhuma bebida', price: 0, id: 'no-beverage' };
+                document.querySelectorAll('input[name="beverage"]').forEach(radio => {
+                    radio.checked = (radio.value === 'Nenhuma bebida'); // Marca a opção "Nenhuma bebida"
+                });
+
+                // Atualiza o texto de instrução da seleção de sabores e o estado do botão
+                updateFlavorSelectionInstructions();
+                updateFinalizeButtonState(); 
+                
+                // Atualiza as informações do item na página de seleção de sabores
+                document.getElementById('item-info').innerHTML = `Você selecionou: <span class="font-bold">${selectedItem.name}</span> por <span class="font-bold">R$ ${selectedItem.price.toFixed(2).replace('.', ',')}</span>`;
+                
+                // Redireciona para a seleção de sabor para combos e pizzas que exigem sabor
+                if (selectedItem.type === 'combo' || selectedItem.id === 'pizza-tradicional-grande' || selectedItem.type === 'pizza-especial' || selectedItem.id === 'pizza-media') {
+                    showPage('flavor-selection');
+                } else {
+                    // Para outros itens que não precisam de seleção de sabor (se houver no futuro)
+                    // Adiciona o item diretamente ao carrinho se não precisar de seleção de sabor
+                    cart.push({
+                        name: selectedItem.name,
+                        price: selectedItem.price,
+                        quantity: 1,
+                        flavors: [],
+                        type: selectedItem.type,
+                        id: selectedItem.id 
+                    });
+                    renderCart(); // Renderiza o carrinho e atualiza o ícone (chamado aqui para itens sem seleção)
+                    showPage('order-summary');
                 }
-                const name = item.dataset.name;
-                const price = parseFloat(item.dataset.price);
-                const ingredients = item.dataset.ingredients || '';
-                addToCart(name, price, ingredients);
             });
         });
 
-        // Event listener para o ícone do carrinho
-        cartIconContainer.addEventListener('click', showCart);
+        // === Lógica da Seleção de Sabores e Bebidas ===
+        const flavorCheckboxes = document.querySelectorAll('input[name="flavor"]');
+        const beverageRadios = document.querySelectorAll('input[name="beverage"]');
+        const addToCartBtn = document.getElementById('add-to-cart-btn'); // Botão "Adicionar ao Carrinho"
+        const flavorInstructionText = document.getElementById('flavor-instruction-text');
 
-        // Event listeners para os botões da tela do carrinho
-        backToMenuBtn.addEventListener('click', hideCart);
-        finalizeOrderBtn.addEventListener('click', finalizeOrder);
+        const traditionalFlavors = ['Portuguesa', 'Calabresa', 'Mussarela', 'Marguerita'];
 
-        /**
-         * Adiciona um item ao carrinho ou atualiza sua quantidade.
-         * @param {string} name - Nome do item.
-         * @param {number} price - Preço individual do item.
-         * @param {string} ingredients - Ingredientes do item (opcional).
-         */
-        function addToCart(name, price, ingredients = '') {
-            const existingItemIndex = cart.findIndex(item => item.name === name);
+        // Função para atualizar as instruções de seleção de sabor e habilitar/desabilitar checkboxes
+        function updateFlavorSelectionInstructions() {
+            // Re-habilita todos os checkboxes inicialmente antes de aplicar novas restrições
+            flavorCheckboxes.forEach(cb => {
+                cb.disabled = false;
+                cb.closest('label').classList.remove('disabled-option');
+            });
 
-            if (existingItemIndex > -1) {
-                cart[existingItemIndex].quantity++;
-            } else {
-                cart.push({ name, price, ingredients, quantity: 1 });
-            }
-            updateCartDisplay();
-            showTemporaryMessage(`"${name}" adicionado ao carrinho!`);
-        }
-
-        /**
-         * Remove um item do carrinho ou diminui sua quantidade.
-         * @param {string} name - Nome do item a ser removido.
-         */
-        function removeFromCart(name) {
-            const existingItemIndex = cart.findIndex(item => item.name === name);
-
-            if (existingItemIndex > -1) {
-                if (cart[existingItemIndex].quantity > 1) {
-                    cart[existingItemIndex].quantity--;
-                } else {
-                    cart.splice(existingItemIndex, 1);
-                }
-            }
-            updateCartDisplay();
-            renderCartItems();
-        }
-
-        /**
-         * Atualiza o contador no ícone do carrinho.
-         */
-        function updateCartDisplay() {
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            if (totalItems > 0) {
-                cartCountSpan.textContent = totalItems;
-                cartCountSpan.style.display = 'flex';
-            } else {
-                cartCountSpan.style.display = 'none';
-            }
-        }
-
-        /**
-         * Verifica se a loja está aberta com base nos dias e horários de delivery.
-         * Sexta-feira: 18h00 às 00:00h
-         * Sábado e Domingo: 18h00 às 23:30h
-         * @returns {object} - { isOpen: boolean, statusText: string }
-         */
-        function checkStoreStatus() {
-            const now = new Date();
-            const day = now.getDay(); // 0 = Domingo, 1 = Segunda, ..., 5 = Sexta, 6 = Sábado
-            const hours = now.getHours();
-            const minutes = now.getMinutes();
-
-            let isOpen = false;
-            let statusText = "Loja Fechada";
-            let statusClass = "closed";
-
-            // Sexta-feira: 18:00h até 00:00h (tecnicamente 23:59:59 da sexta)
-            if (day === 5 && hours >= 18) { // Friday after 6 PM
-                isOpen = true;
-            }
-            // Sábado: 18:00h até 23:30h
-            else if (day === 6 && hours >= 18 && (hours < 23 || (hours === 23 && minutes <= 30))) { // Saturday 6 PM to 11:30 PM
-                isOpen = true;
-            }
-            // Domingo: 18:00h até 23:30h
-            else if (day === 0 && hours >= 18 && (hours < 23 || (hours === 23 && minutes <= 30))) { // Sunday 6 PM to 11:30 PM
-                isOpen = true;
-            }
-
-            if (isOpen) {
-                statusText = "Loja Aberta";
-                statusClass = "open";
-            }
-
-            return { isOpen, statusText, statusClass };
-        }
-
-
-        /**
-         * Mostra a tela do carrinho e esconde o menu.
-         */
-        function showCart() {
-            menuView.style.display = 'none';
-            cartView.style.display = 'block';
-            cartIconContainer.style.display = 'none'; /* Hide cart icon when cart view is open */
-            renderCartItems();
-            updateStoreStatusDisplay(); /* Atualiza o status da loja ao abrir o carrinho */
-            updateFinalizeButtonText(); /* Atualiza o texto do botão finalizar pedido */
-        }
-
-        /**
-         * Atualiza a exibição do status da loja.
-         */
-        function updateStoreStatusDisplay() {
-            const { statusText, statusClass } = checkStoreStatus();
-            storeStatusDiv.textContent = statusText;
-            storeStatusDiv.className = `store-status ${statusClass}`;
-        }
-
-        /**
-         * Atualiza o texto do botão de finalizar pedido com base no status da loja.
-         */
-        function updateFinalizeButtonText() {
-            const { isOpen } = checkStoreStatus();
-            if (isOpen) {
-                finalizeOrderBtn.textContent = 'Finalizar Pedido via WhatsApp';
-                finalizeOrderBtn.classList.add('btn-primary');
-                finalizeOrderBtn.classList.remove('btn-secondary');
-            } else {
-                finalizeOrderBtn.textContent = 'Agendar Pedido via WhatsApp';
-                finalizeOrderBtn.classList.remove('btn-primary');
-                finalizeOrderBtn.classList.add('btn-secondary');
-            }
-        }
-
-
-        /**
-         * Esconde a tela do carrinho e mostra o menu.
-         */
-        function hideCart() {
-            cartView.style.display = 'none';
-            menuView.style.display = 'block';
-            cartIconContainer.style.display = 'flex';
-            updateCartDisplay();
-            // Clear payment method selection when returning to menu
-            paymentMethodRadios.forEach(radio => radio.checked = false);
-            deliveryAddressInput.value = ''; // Clear address field
-        }
-
-        /**
-         * Renderiza os itens dentro da tela do carrinho.
-         */
-        function renderCartItems() {
-            cartItemsContainer.innerHTML = '';
-            let totalPrice = 0;
-
-            if (cart.length === 0) {
-                cartItemsContainer.innerHTML = '<p class="empty-cart-message">Seu carrinho está vazio.</p>';
-                finalizeOrderBtn.disabled = true;
-            } else {
-                finalizeOrderBtn.disabled = false;
-                cart.forEach(item => {
-                    const itemTotal = item.price * item.quantity;
-                    totalPrice += itemTotal;
-
-                    const itemElement = document.createElement('div');
-                    itemElement.className = 'cart-item';
-                    itemElement.innerHTML = `
-                        <div class="cart-item-info">
-                            <span class="cart-item-name">${item.name} (${item.quantity}x)</span>
-                            ${item.ingredients ? `<span class="cart-item-details">${item.ingredients}</span>` : ''}
-                        </div>
-                        <div class="cart-item-quantity">
-                            <button class="cart-quantity-btn" data-action="decrease" data-name="${item.name}">-</button>
-                            <span>${item.quantity}</span>
-                            <button class="cart-quantity-btn" data-action="increase" data-name="${item.name}">+</button>
-                        </div>
-                        <span class="cart-item-price">R$ ${itemTotal.toFixed(2).replace('.', ',')}</span>
-                    `;
-                    cartItemsContainer.appendChild(itemElement);
-                });
-            }
-
-            cartTotalPriceSpan.textContent = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
-
-            document.querySelectorAll('.cart-quantity-btn').forEach(button => {
-                button.addEventListener('click', (event) => {
-                    const action = event.target.dataset.action;
-                    const name = event.target.dataset.name;
-                    if (action === 'increase') {
-                        const itemToUpdate = cart.find(i => i.name === name);
-                        addToCart(name, itemToUpdate.price, itemToUpdate.ingredients);
-                    } else if (action === 'decrease') {
-                        removeFromCart(name);
+            if (selectedItem.id === 'combo2') {
+                flavorInstructionText.textContent = 'Para o Combo 2 (2 pizzas grandes), escolha até 4 sabores (2 por pizza).';
+                // Para combos, apenas sabores tradicionais são permitidos
+                flavorCheckboxes.forEach(cb => {
+                    if (!traditionalFlavors.includes(cb.value)) {
+                        cb.disabled = true;
+                        cb.closest('label').classList.add('disabled-option');
                     }
                 });
-            });
+            } else if (selectedItem.id === 'combo1' || selectedItem.id === 'pizza-tradicional-grande' || selectedItem.id === 'pizza-media') {
+                flavorInstructionText.textContent = 'Escolha até 2 sabores para sua pizza. Se selecionar apenas 1, a pizza será inteira desse sabor.';
+                // Para Combo 1, Pizza Grande Tradicional e Pizza Média, apenas sabores tradicionais são permitidos
+                flavorCheckboxes.forEach(cb => {
+                    if (!traditionalFlavors.includes(cb.value)) {
+                        cb.disabled = true;
+                        cb.closest('label').classList.add('disabled-option');
+                    }
+                });
+            } else if (selectedItem.id === 'pizza-especial-grande' || selectedItem.id === 'pizza-especial-media') {
+                flavorInstructionText.textContent = `Para sua ${selectedItem.name}, escolha até 2 sabores. Se selecionar apenas 1, a pizza será inteira desse sabor.`;
+                // Para Pizzas Especiais (grande e média), todos os sabores são permitidos
+            } else {
+                flavorInstructionText.textContent = 'Escolha seus sabores.'; // Genérico para outros itens
+            }
         }
 
-        /**
-         * Gera a mensagem do WhatsApp com os itens do carrinho e o total.
-         */
-        function finalizeOrder() {
+        // Adiciona listener para cada checkbox de sabor
+        flavorCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                const checkedCount = document.querySelectorAll('input[name="flavor"]:checked').length;
+                let maxAllowedFlavors;
+
+                if (selectedItem.id === 'combo2') {
+                    maxAllowedFlavors = 4;
+                } else if (selectedItem.id === 'combo1' || selectedItem.id === 'pizza-tradicional-grande' || selectedItem.id === 'pizza-especial-grande' || selectedItem.id === 'pizza-media' || selectedItem.id === 'pizza-especial-media') {
+                    maxAllowedFlavors = 2; // Combos de 1 pizza e todas as pizzas individuais permitem 2 sabores
+                } else {
+                    maxAllowedFlavors = 2; // Padrão
+                }
+
+                if (checkedCount >= maxAllowedFlavors) {
+                    flavorCheckboxes.forEach(cb => {
+                        // Só desabilita se não estiver checado E se não for um sabor já desabilitado pela categoria (ex: não tradicional)
+                        if (!cb.checked && !cb.disabled) { 
+                            cb.disabled = true;
+                        }
+                    });
+                } else {
+                    // Re-habilita os checkboxes que não foram desabilitados por restrição de categoria de pizza
+                    flavorCheckboxes.forEach(cb => {
+                        if (!cb.checked) { // Se não estiver checado
+                            if (selectedItem.type === 'combo' || selectedItem.id === 'pizza-tradicional-grande' || selectedItem.id === 'pizza-media') {
+                                // Se for um tipo que restringe a tradicionais, só re-habilita se for tradicional
+                                if (traditionalFlavors.includes(cb.value)) {
+                                    cb.disabled = false;
+                                }
+                            } else { // Para tipos que permitem todos os sabores (ex: Pizza Especial)
+                                cb.disabled = false;
+                            }
+                        }
+                    });
+                }
+                updateFinalizeButtonState();
+            });
+        });
+
+        // Adiciona listener para cada radio button de bebida
+        beverageRadios.forEach(radio => {
+            radio.addEventListener('change', () => {
+                selectedBeverage = {
+                    name: radio.value,
+                    price: parseFloat(radio.dataset.beveragePrice),
+                    id: radio.dataset.beverageId // Adiciona o ID da bebida
+                };
+                updateFinalizeButtonState(); 
+            });
+        });
+
+
+        // Função para atualizar o estado do botão "Adicionar ao Carrinho"
+        function updateFinalizeButtonState() {
+            const checkedFlavorsCount = document.querySelectorAll('input[name="flavor"]:checked').length;
+            let minFlavorsToEnableButton;
+
+            // Determina o número mínimo de sabores para habilitar o botão
+            if (selectedItem.id === 'combo2') {
+                minFlavorsToEnableButton = 2;
+            } else if (selectedItem.type === 'combo' || selectedItem.id === 'pizza-tradicional-grande' || selectedItem.id === 'pizza-especial-grande' || selectedItem.id === 'pizza-media' || selectedItem.id === 'pizza-especial-media') {
+                minFlavorsToEnableButton = 1;
+            } else {
+                minFlavorsToEnableButton = 0; 
+            }
+
+            // O botão "Adicionar ao Carrinho" é habilitado se a condição de sabores for atendida
+            const isFlavorConditionMet = checkedFlavorsCount >= minFlavorsToEnableButton;
+            addToCartBtn.disabled = !isFlavorConditionMet; // Usa addToCartBtn
+        }
+
+        // Evento de clique para o botão "Adicionar ao Carrinho"
+        addToCartBtn.addEventListener('click', () => { // Usa addToCartBtn
+            const selectedFlavors = Array.from(document.querySelectorAll('input[name="flavor"]:checked'))
+                                       .map(cb => cb.value);
+            
+            // Adiciona a pizza/combo ao carrinho
+            cart.push({
+                name: selectedItem.name,
+                price: selectedItem.price,
+                quantity: 1, 
+                flavors: selectedFlavors,
+                type: selectedItem.type,
+                id: selectedItem.id 
+            });
+
+            // Se uma bebida foi selecionada (e não é "Nenhuma bebida"), adicione-a como um item separado
+            if (selectedBeverage.name !== 'Nenhuma bebida') {
+                cart.push({
+                    name: selectedBeverage.name,
+                    price: selectedBeverage.price,
+                    quantity: 1, // Bebida é adicionada como 1 unidade por padrão
+                    type: 'beverage', // Novo tipo para bebidas
+                    id: selectedBeverage.id 
+                });
+            }
+
+            updateCartIconCount(); // Atualiza a contagem no ícone do carrinho
+            showPage('order-summary'); // Vai para a tela de resumo/carrinho
+        });
+
+        // === Lógica do Carrinho de Compras / Resumo ===
+        const cartItemsContainer = document.getElementById('cart-items-container');
+        const cartTotalPriceElement = document.getElementById('cart-total-price');
+        const placeOrderBtn = document.getElementById('place-order-btn');
+        const emptyCartMessage = document.getElementById('empty-cart-message');
+        const deliveryZipCodeInput = document.getElementById('delivery-zip-code');
+        const calculateDeliveryBtn = document.getElementById('calculate-delivery-btn');
+        const deliveryInfoElement = document.getElementById('delivery-info');
+
+
+        function renderCart() {
+            cartItemsContainer.innerHTML = ''; // Limpa o conteúdo atual do carrinho
+            
             if (cart.length === 0) {
-                showTemporaryMessage('Seu carrinho está vazio! Adicione itens antes de finalizar o pedido.');
-                return;
-            }
+                emptyCartMessage.classList.remove('hidden');
+                placeOrderBtn.disabled = true;
+            } else {
+                emptyCartMessage.classList.add('hidden');
+                placeOrderBtn.disabled = false;
 
-            const deliveryAddress = deliveryAddressInput.value.trim();
-            if (!deliveryAddress) {
-                showTemporaryMessage('Por favor, preencha o endereço para entrega.');
-                deliveryAddressInput.focus();
-                return;
-            }
+                cart.forEach((item, index) => {
+                    let itemDisplayPrice = item.price; // Preço unitário para exibição
+                    let itemDescription = '';
 
-            // Get selected payment method
-            let selectedPaymentMethod = '';
-            for (const radio of paymentMethodRadios) {
-                if (radio.checked) {
-                    selectedPaymentMethod = radio.value;
-                    break;
+                    if (item.type === 'beverage') {
+                        itemDescription = `Bebida: ${item.name}`;
+                    } else { // É uma pizza ou combo
+                        // Monta o texto dos sabores
+                        let flavorsText = '';
+                        if (item.flavors && item.flavors.length > 0) {
+                            if (item.flavors.length === 1) {
+                                flavorsText = `${item.flavors[0]} (inteira)`;
+                            } else if (item.flavors.length === 2 && (item.id === 'combo1' || item.id === 'pizza-tradicional-grande' || item.id === 'pizza-especial-grande' || item.id === 'pizza-media' || item.id === 'pizza-especial-media')) {
+                                flavorsText = `${item.flavors[0]} e ${item.flavors[1]}`;
+                            } else if (item.flavors.length >= 2 && item.id === 'combo2') { 
+                                flavorsText = item.flavors.slice(0, -1).join(', ') + ' e ' + item.flavors[item.flavors.length - 1];
+                            }
+                        } else {
+                            flavorsText = 'N/A';
+                        }
+                        itemDescription = `Sabores: ${flavorsText}`;
+                    }
+                    
+                    const cartItemHtml = `
+                        <div class="flex items-center justify-between py-3 border-b border-gray-200 last:border-b-0">
+                            <div class="flex-grow">
+                                <p class="text-lg font-bold text-gray-900">${item.name}</p>
+                                <p class="text-sm text-gray-600">${itemDescription}</p>
+                                <p class="text-sm text-gray-700 font-semibold">R$ ${itemDisplayPrice.toFixed(2).replace('.', ',')} /un</p>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <button onclick="updateQuantity(${index}, -1)" class="bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-lg">-</button>
+                                <span class="text-xl font-bold">${item.quantity}</span>
+                                <button onclick="updateQuantity(${index}, 1)" class="bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-lg">+</button>
+                            </div>
+                        </div>
+                    `;
+                    cartItemsContainer.innerHTML += cartItemHtml;
+                });
+                updateCartIconCount(); // Atualiza a contagem no ícone do carrinho
+            }
+            calculateTotalCartPrice(); // Recalcula o total (incluindo a taxa de entrega)
+        }
+
+        // Função para atualizar a quantidade de um item no carrinho
+        function updateQuantity(index, change) {
+            if (cart[index]) {
+                cart[index].quantity += change;
+                if (cart[index].quantity <= 0) {
+                    cart.splice(index, 1); // Remove o item se a quantidade for 0 ou menos
                 }
             }
+            renderCart(); // Re-renderiza o carrinho para refletir as mudanças
+        }
 
-            if (!selectedPaymentMethod) {
-                showTemporaryMessage('Por favor, selecione uma forma de pagamento.');
-                return;
+        // Função para calcular a taxa de entrega com base na distância
+        function calculateDeliveryFee(distance) {
+            if (distance <= 5) return 5.00;
+            if (distance <= 10) return 7.00;
+            if (distance <= 15) return 12.00;
+            if (distance <= 20) return 15.00;
+            return 25.00;
+        }
+
+        // Função para obter a distância via Google Maps Distance Matrix API
+        async function getDistanceViaGoogleMapsAPI(originZip, destinationZip) {
+            const url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${originZip}&destinations=${destinationZip}&units=metric&key=${GOOGLE_MAPS_API_KEY}`;
+            
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (data.status === 'OK' && data.rows.length > 0 && data.rows[0].elements.length > 0 && data.rows[0].elements[0].status === 'OK') {
+                    const distanceInMeters = data.rows[0].elements[0].distance.value;
+                    return distanceInMeters / 1000; // Converte metros para quilômetros
+                } else {
+                    console.error('Erro ao obter distância da API:', data.status, data);
+                    return null; // Retorna null se não conseguir obter a distância
+                }
+            } catch (error) {
+                console.error('Erro na requisição da API de distância: Error: Failed to fetch (possível problema de CORS ou rede)', error);
+                return null; 
             }
+        }
 
-            const { isOpen } = checkStoreStatus();
-            let message = "Olá Rotella Pizzaria! Gostaria de fazer o seguinte pedido:\n\n";
-
-            if (!isOpen) {
-                message += "*(Este é um agendamento. A loja está atualmente fechada.)*\n\n";
+        // Função para simular a distância caso a API falhe ou esteja desativada
+        function getSimulatedDistance(destinationZip) {
+            if (destinationZip && destinationZip.startsWith('69095')) { 
+                return 3.5; // km
+            } else if (destinationZip && destinationZip.startsWith('69085')) { 
+                return 8.2; // km
+            } else if (destinationZip && destinationZip.startsWith('69099')) {
+                return 13.0; // km
+            } else if (destinationZip && destinationZip.startsWith('69000')) {
+                return 18.0; // km
+            } else {
+                return 25.0; // km (distância alta para taxa alta)
             }
+        }
 
-            let total = 0;
 
+        // Função para calcular e exibir o total do carrinho, incluindo a taxa de entrega
+        function calculateTotalCartPrice() {
+            let subtotal = 0;
             cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                message += `${item.quantity}x ${item.name}`;
-                if (item.ingredients) {
-                    message += ` (${item.ingredients.replace(/\.$/, '')})`;
-                }
-                message += ` - R$ ${itemTotal.toFixed(2).replace('.', ',')}\n`;
-                total += itemTotal;
+                subtotal += item.price * item.quantity;
             });
 
-            message += `\nTotal: R$ ${total.toFixed(2).replace('.', ',')}`;
-            message += `\n\nEndereço para entrega: ${deliveryAddress}`;
-            message += `\nForma de pagamento: ${selectedPaymentMethod}`;
-
-            const whatsappUrl = `https://wa.me/559286161640?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-
-            cart = [];
-            deliveryAddressInput.value = '';
-            paymentMethodRadios.forEach(radio => radio.checked = false); // Limpa seleção
-            updateCartDisplay();
-            hideCart();
-            showTemporaryMessage('Pedido enviado! Aguarde a confirmação da Rotella Pizzaria.');
+            let total = subtotal + deliveryFee;
+            cartTotalPriceElement.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
         }
 
-        /**
-         * Exibe uma mensagem temporária ao usuário (substitui alert/confirm).
-         * @param {string} msg - A mensagem a ser exibida.
-         * @param {number} duration - Duração em milissegundos (padrão: 3000).
-         */
-        function showTemporaryMessage(msg, duration = 3000) {
-            let messageBox = document.getElementById('custom-message-box');
-            if (!messageBox) {
-                messageBox = document.createElement('div');
-                messageBox.id = 'custom-message-box';
-                messageBox.style.cssText = `
-                    position: fixed;
-                    bottom: 7rem;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    background-color: #333;
-                    color: white;
-                    padding: 0.75rem 1.5rem;
-                    border-radius: 0.5rem;
-                    z-index: 1001;
-                    opacity: 0;
-                    transition: opacity 0.3s ease-in-out;
-                    font-size: 0.9rem;
-                    text-align: center;
-                    pointer-events: none;
-                `;
-                document.body.appendChild(messageBox);
+        // Evento para o botão "Calcular Taxa"
+        calculateDeliveryBtn.addEventListener('click', async () => {
+            const destinationZip = deliveryZipCodeInput.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+            deliveryFee = 0; // Zera a taxa antes de recalcular
+            deliveryInfoElement.textContent = 'Calculando...';
+
+            if (destinationZip.length === 8) {
+                let distance = await getDistanceViaGoogleMapsAPI(ORIGIN_ZIP_CODE, destinationZip);
+                
+                if (distance !== null) { // Se a API real funcionar
+                    deliveryFee = calculateDeliveryFee(distance);
+                    deliveryInfoElement.textContent = `Distância (API): ${distance.toFixed(1).replace('.', ',')} km. Taxa de entrega: R$ ${deliveryFee.toFixed(2).replace('.', ',')}.`;
+                } else {
+                    // Se a API falhar, usa a simulação
+                    distance = getSimulatedDistance(destinationZip);
+                    deliveryFee = calculateDeliveryFee(distance);
+                    deliveryInfoElement.textContent = `Distância (Simulada): ${distance.toFixed(1).replace('.', ',')} km. Taxa de entrega: R$ ${deliveryFee.toFixed(2).replace('.', ',')}. (Não foi possível conectar à API de mapas - usando simulação)`;
+                }
+            } else {
+                deliveryInfoElement.textContent = 'Por favor, digite um CEP válido (8 dígitos).';
             }
-            messageBox.textContent = msg;
-            messageBox.style.opacity = '1';
+            calculateTotalCartPrice(); // Atualiza o total com a nova taxa de entrega
+        });
 
-            setTimeout(() => {
-                messageBox.style.opacity = '0';
-            }, duration);
-        }
-
-        // Inicializa a exibição do carrinho ao carregar a página
+        // Inicializa mostrando a página do cardápio principal e atualiza o ícone do carrinho
         document.addEventListener('DOMContentLoaded', () => {
-            updateCartDisplay();
-            updateFinalizeButtonText();
+            showPage('main-menu');
+            updateCartIconCount(); // Garante que a contagem do carrinho seja exibida corretamente ao carregar
         });
     </script>
 </body>
