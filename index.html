@@ -187,16 +187,6 @@
                 </button>
             </div>
 
-            <!-- Botão Sugestão do Dia (IA) -->
-            <div class="text-center mt-6 mb-6">
-                <button id="ai-suggestion-btn" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50">
-                    Sugestão do Dia ✨
-                </button>
-                <div id="ai-suggestion-output" class="ai-suggestion-box mt-4 hidden">
-                    <!-- A sugestão da IA será exibida aqui -->
-                </div>
-            </div>
-            
         </div>
 
         <!-- Seção de Seleção de Sabores e Bebidas -->
@@ -215,7 +205,7 @@
                 </p>
 
                 <div id="flavor-options" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                    <!-- Sabores tradicionais (permanecem, mas serão desabilitados/escondidos se não forem relevantes) -->
+                    <!-- Sabores tradicionais -->
                     <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
                         <input type="checkbox" name="flavor" value="Portuguesa" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
                         <span class="ml-3 text-lg text-gray-800 font-medium">Portuguesa</span>
@@ -232,7 +222,7 @@
                         <input type="checkbox" name="flavor" value="Marguerita" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
                         <span class="ml-3 text-lg text-gray-800 font-medium">Marguerita</span>
                     </label>
-                    <!-- Sabores especiais salgados (permanecem) -->
+                    <!-- Sabores especiais salgados -->
                     <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
                         <input type="checkbox" name="flavor" value="Frango com Catupiry" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
                         <span class="ml-3 text-lg text-gray-800 font-medium">Frango com Catupiry</span>
@@ -328,7 +318,7 @@
                         <span class="ml-3 text-lg text-gray-800 font-medium">Pix</span>
                     </label>
                     <label class="flex items-center p-3 border rounded-lg shadow-sm cursor-pointer bg-white">
-                        <input type="radio" name="payment-method" value="Crédito" class class="form-radio h-5 w-5 text-red-600 focus:ring-red-500">
+                        <input type="radio" name="payment-method" value="Crédito" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500">
                         <span class="ml-3 text-lg text-gray-800 font-medium">Crédito</span>
                     </label>
                     <label class="flex items-center p-3 border rounded-lg shadow-sm cursor-pointer bg-white">
