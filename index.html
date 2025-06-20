@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rotella Pizzaria - Seu Pedido</title>
-    <!-- Inclui o Tailwind CSS para estilização rápida e responsiva -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Inclui Font Awesome para o ícone de carrinho -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Estilos personalizados para a fonte Inter e outros ajustes */
@@ -60,33 +58,27 @@
 </head>
 <body class="p-4 sm:p-6 lg:p-8 flex items-center justify-center min-h-screen">
     <div class="container mx-auto bg-white rounded-xl shadow-lg p-6 sm:p-8 lg:p-10 max-w-3xl border-t-4 border-red-600 relative">
-        <!-- Ícone do Carrinho (Visível em todas as telas controladas por showPage) -->
         <div id="cart-icon-container" class="absolute top-4 right-4 cursor-pointer flex items-center justify-center bg-red-600 text-white rounded-full p-3 shadow-lg hover:bg-red-700 transition-colors z-10" onclick="showPage('order-summary')">
             <i class="fas fa-shopping-cart text-xl"></i>
             <span id="cart-count" class="ml-2 text-lg font-bold">0</span>
         </div>
 
-        <!-- Logo da Pizzaria -->
         <div class="text-center mb-6 mt-4">
             <img src="https://i.ibb.co/YFhQZvBG/Whats-App-Image-2025-06-06-at-14-24-25.jpg" alt="Logo Rotella Pizzaria" class="mx-auto w-48 sm:w-64 h-auto rounded-lg shadow-md">
-            <!-- Link do Instagram -->
             <a href="https://www.instagram.com/rotellapizzaria" target="_blank" class="mt-4 inline-block text-red-600 hover:text-red-800 font-semibold text-lg">
                 Nos siga no Instagram: @rotellapizzaria
             </a>
         </div>
 
-        <!-- Seção do Cardápio Principal -->
         <div id="main-menu" class="page-section">
             <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800 text-center mb-8">Nosso Cardápio Delicioso!</h2>
 
-            <!-- Seção de Combos Especiais -->
             <div class="mb-10">
                 <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Combos Especiais</h3>
                 <p class="text-sm text-gray-600 mb-4 italic text-center">
                     *Obs: Válido somente para sabores tradicionais de pizza.
                 </p>
                 
-                <!-- Item do Combo 1 (Clicável) -->
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
                      data-item-type="combo" data-item-id="combo1" data-item-name="Combo 1" data-item-price="39.90">
                     <div class="flex-grow">
@@ -96,7 +88,6 @@
                     <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 39,90</p>
                 </div>
 
-                <!-- Item do Combo 2 (Clicável) -->
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
                      data-item-type="combo" data-item-id="combo2" data-item-name="Combo 2" data-item-price="74.90">
                     <div class="flex-grow">
@@ -107,10 +98,8 @@
                 </div>
             </div>
 
-            <!-- Seção de Pizzas -->
             <div class="mb-10">
                 <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Pizzas</h3>
-                <!-- Item Pizza Grande Tradicional (Clicável) -->
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
                      data-item-type="pizza-tradicional" data-item-id="pizza-tradicional-grande" data-item-name="Pizza Grande Tradicional" data-item-price="34.90">
                     <div class="flex-grow">
@@ -119,7 +108,6 @@
                     </div>
                     <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 34,90</p>
                 </div>
-                <!-- Item Pizza Grande Especial (Clicável) -->
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
                      data-item-type="pizza-especial" data-item-id="pizza-especial-grande" data-item-name="Pizza Grande Especial" data-item-price="44.90">
                     <div class="flex-grow">
@@ -128,7 +116,6 @@
                     </div>
                     <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 44,90</p>
                 </div>
-                <!-- Item Pizza Média Tradicional (Clicável) -->
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
                      data-item-type="pizza-media" data-item-id="pizza-media" data-item-name="Pizza Média Tradicional" data-item-price="29.90">
                     <div class="flex-grow">
@@ -137,7 +124,6 @@
                     </div>
                     <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 29,90</p>
                 </div>
-                <!-- Item Pizza Média Especial (Clicável) -->
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
                      data-item-type="pizza-especial" data-item-id="pizza-especial-media" data-item-name="Pizza Média Especial" data-item-price="39.90">
                     <div class="flex-grow">
@@ -148,10 +134,8 @@
                 </div>
             </div>
             
-            <!-- Seção de Esfirras -->
             <div class="mb-10">
                 <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Esfirras</h3>
-                <!-- Item Esfirra Salgada Tradicional (Clicável) -->
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
                      data-item-type="esfirra-tradicional" data-item-id="esfirra-tradicional" data-item-name="Esfirra Salgada Tradicional" data-item-price="6.90">
                     <div class="flex-grow">
@@ -160,7 +144,6 @@
                     </div>
                     <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 6,90</p>
                 </div>
-                <!-- Item Esfirra Salgada Especial (Clicável) -->
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
                      data-item-type="esfirra-especial" data-item-id="esfirra-especial" data-item-name="Esfirra Salgada Especial" data-item-price="7.90">
                     <div class="flex-grow">
@@ -169,10 +152,8 @@
                     </div>
                     <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 7,90</p>
                 </div>
-                <!-- Item Esfirra Doce (Clicável) -->
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
-                     data-item-type="esfirra-doce" data-item-id="esfirra-doce" data-item-name="Esfirra Doce" data-item-price="7.90"> <!-- Preço alterado para R$ 7,90 -->
-                    <div class="flex-grow">
+                     data-item-type="esfirra-doce" data-item-id="esfirra-doce" data-item-name="Esfirra Doce" data-item-price="7.90"> <div class="flex-grow">
                         <p class="text-lg font-bold text-gray-900">Esfirra Doce</p>
                         <p class="text-sm text-gray-600 mt-1">Brigadeiro e Romeu e Julieta</p>
                     </div>
@@ -180,32 +161,48 @@
                 </div>
             </div>
             
-            <!-- Botão Falar com um Atendente -->
             <div class="text-center mt-10 mb-6">
                 <button onclick="window.open('https://wa.me/92986161640?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!', '_blank')" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
                     <i class="fab fa-whatsapp mr-2"></i> Falar com um atendente
                 </button>
             </div>
-
+            
         </div>
 
-        <!-- Seção de Seleção de Sabores e Bebidas -->
         <div id="flavor-selection" class="page-section hidden">
             <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800 text-center mb-8">Personalize seu Pedido</h2>
 
             <div id="item-info" class="text-center text-lg text-gray-700 mb-6 p-4 bg-red-50 rounded-lg">
-                <!-- Informações do item selecionado serão carregadas aqui pelo JS -->
+                </div>
+
+            <div id="crust-options-section" class="mb-10 hidden">
+                <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Borda Recheada</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="radio" name="stuffed-crust" value="Sem Borda Recheada" data-crust-price="0.00" data-crust-id="no-crust" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500" checked>
+                        <span class="ml-3 text-lg text-gray-800 font-medium">Sem Borda Recheada</span>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="radio" name="stuffed-crust" value="Borda Recheada Catupiry" data-crust-price="10.00" data-crust-id="catupiry-crust" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500">
+                        <span class="ml-3 text-lg text-gray-800 font-medium">Borda Recheada Catupiry +R$10,00</span>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="radio" name="stuffed-crust" value="Borda Recheada Chocolate" data-crust-price="10.00" data-crust-id="chocolate-crust" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500">
+                        <span class="ml-3 text-lg text-gray-800 font-medium">Borda Recheada Chocolate +R$10,00</span>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="radio" name="stuffed-crust" value="Borda Recheada Romeu e Julieta" data-crust-price="10.00" data-crust-id="rj-crust" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500">
+                        <span class="ml-3 text-lg text-gray-800 font-medium">Borda Recheada Romeu e Julieta +R$10,00</span>
+                    </label>
+                </div>
             </div>
 
-            <!-- Seção de Sabores -->
             <div class="mb-10">
                 <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Selecione seus Sabores</h3>
                 <p id="flavor-instruction-text" class="text-md text-gray-600 text-center mb-6">
-                    <!-- Este texto será atualizado dinamicamente -->
-                </p>
+                    </p>
 
                 <div id="flavor-options" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                    <!-- Sabores tradicionais -->
                     <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
                         <input type="checkbox" name="flavor" value="Portuguesa" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
                         <span class="ml-3 text-lg text-gray-800 font-medium">Portuguesa</span>
@@ -222,7 +219,6 @@
                         <input type="checkbox" name="flavor" value="Marguerita" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
                         <span class="ml-3 text-lg text-gray-800 font-medium">Marguerita</span>
                     </label>
-                    <!-- Sabores especiais salgados -->
                     <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
                         <input type="checkbox" name="flavor" value="Frango com Catupiry" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
                         <span class="ml-3 text-lg text-gray-800 font-medium">Frango com Catupiry</span>
@@ -231,7 +227,6 @@
                         <input type="checkbox" name="flavor" value="Calabresa com Catupiry" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
                         <span class="ml-3 text-lg text-gray-800 font-medium">Calabresa com Catupiry</span>
                     </label>
-                    <!-- Sabores doces -->
                     <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
                         <input type="checkbox" name="flavor" value="Brigadeiro" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
                         <span class="ml-3 text-lg text-gray-800 font-medium">Brigadeiro</span>
@@ -243,10 +238,8 @@
                 </div>
             </div>
 
-            <!-- Seção de Bebidas -->
             <div class="mb-10">
-                <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6" id="beverage-heading"></h3> <!-- ID para o cabeçalho das bebidas -->
-                <div id="beverage-options" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6" id="beverage-heading"></h3> <div id="beverage-options" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                     <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
                         <input type="radio" name="beverage" value="Coca-cola 1L" data-beverage-price="9.90" data-beverage-id="coca-1l" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500">
                         <span class="ml-3 text-lg text-gray-800 font-medium">Coca-cola 1L - R$ 9,90</span>
@@ -259,7 +252,6 @@
                         <input type="radio" name="beverage" value="Fanta Laranja 2L" data-beverage-price="12.90" data-beverage-id="fanta-2l" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500">
                         <span class="ml-3 text-lg text-gray-800 font-medium">Fanta Laranja 2L - R$ 12,90</span>
                     </label>
-                    <!-- Opção "Nenhuma bebida" -->
                     <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
                         <input type="radio" name="beverage" value="Nenhuma bebida" data-beverage-price="0.00" data-beverage-id="no-beverage" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500" checked>
                         <span class="ml-3 text-lg text-gray-800 font-medium">Nenhuma bebida</span>
@@ -277,16 +269,13 @@
             </div>
         </div>
 
-        <!-- Seção de Resumo do Pedido (Carrinho de Compras) -->
         <div id="order-summary" class="page-section hidden">
             <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800 text-center mb-8">Seu Carrinho</h2>
 
             <div id="cart-items-container" class="bg-gray-50 p-6 rounded-lg shadow-inner mb-8">
-                <!-- Itens do carrinho serão inseridos aqui dinamicamente -->
                 <p id="empty-cart-message" class="text-center text-gray-600 italic hidden">Seu carrinho está vazio.</p>
             </div>
 
-            <!-- Campo para Endereço de Entrega -->
             <div class="mb-6 p-4 border rounded-lg bg-white shadow-sm">
                 <h3 class="text-xl font-bold text-gray-800 mb-3">Endereço de Entrega</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -309,12 +298,11 @@
                 </div>
             </div>
 
-            <!-- Opções de Pagamento -->
             <div class="mb-6 p-4 border rounded-lg bg-white shadow-sm">
                 <h3 class="text-xl font-bold text-gray-800 mb-3">Forma de pagamento</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
                     <label class="flex items-center p-3 border rounded-lg shadow-sm cursor-pointer bg-white">
-                        <input type="radio" name="payment-method" value="Pix" class class="form-radio h-5 w-5 text-red-600 focus:ring-red-500" checked>
+                        <input type="radio" name="payment-method" value="Pix" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500" checked>
                         <span class="ml-3 text-lg text-gray-800 font-medium">Pix</span>
                     </label>
                     <label class="flex items-center p-3 border rounded-lg shadow-sm cursor-pointer bg-white">
@@ -347,7 +335,6 @@
             </div>
         </div>
         
-        <!-- Mensagem de rodapé (visível em todas as "páginas, mas o footer não precisa de estar em um div separado) -->
         <p class="text-center text-gray-500 text-sm mt-10">Obrigado por escolher Rotella Pizzaria! Bom apetite!</p>
     </div>
 
@@ -356,10 +343,11 @@
         let cart = []; 
         let selectedItem = {}; // Item (pizza/combo) sendo configurado na tela de seleção de sabores
         let selectedBeverage = { name: 'Nenhuma bebida', price: 0, id: 'no-beverage' }; // Bebida selecionada na tela de seleção
+        let selectedCrust = { name: 'Sem Borda Recheada', price: 0, id: 'no-crust' }; // Borda selecionada
         let deliveryFee = 0; // Armazena a taxa de entrega calculada, agora sempre 0
 
         // const ORIGIN_ZIP_CODE = '69095510'; // CEP de origem fixo - Comentado
-        // const GOOGLE_MAPS_API_KEY = 'AIzaSyBd6-d4xDeEdHCILpv_c5xqGTBAR8o8xm4'; // Sua chave de API - Comentado
+        // const Maps_API_KEY = 'AIzaSyBd6-d4xDeEdHCILpv_c5xqGTBAR8o8xm4'; // Sua chave de API - Comentado
 
         // Função para mostrar a página correta e esconder as outras
         function showPage(pageId) {
@@ -406,6 +394,13 @@
                     radio.checked = (radio.value === 'Nenhuma bebida'); // Marca a opção "Nenhuma bebida"
                 });
 
+                // Reinicia a seleção de borda para "Sem Borda Recheada"
+                selectedCrust = { name: 'Sem Borda Recheada', price: 0, id: 'no-crust' };
+                document.querySelectorAll('input[name="stuffed-crust"]').forEach(radio => {
+                    radio.checked = (radio.value === 'Sem Borda Recheada');
+                });
+
+
                 // Atualiza o texto de instrução da seleção de sabores e o estado do botão
                 updateFlavorSelectionInstructions();
                 updateFinalizeButtonState(); 
@@ -436,6 +431,9 @@
         // === Lógica da Seleção de Sabores e Bebidas ===
         const flavorCheckboxes = document.querySelectorAll('input[name="flavor"]');
         const beverageRadios = document.querySelectorAll('input[name="beverage"]');
+        const stuffedCrustRadios = document.querySelectorAll('input[name="stuffed-crust"]'); // Referência às bordas
+        const crustOptionsSection = document.getElementById('crust-options-section'); // Referência à seção de bordas
+
         const addToCartBtn = document.getElementById('add-to-cart-btn'); // Botão "Adicionar ao Carrinho"
         const flavorInstructionText = document.getElementById('flavor-instruction-text');
         const beverageHeading = document.getElementById('beverage-heading'); // Referência ao cabeçalho das bebidas
@@ -462,6 +460,26 @@
                 beverageHeading.textContent = 'Deseja acrescentar refrigerante ao seu pedido ?'; // Texto padrão para outros itens
             }
 
+            // Lógica de exibição e habilitação das bordas recheadas
+            if (selectedItem.id === 'pizza-tradicional-grande' || selectedItem.id === 'pizza-especial-grande') {
+                crustOptionsSection.style.display = 'block'; // Mostra a seção de bordas
+                stuffedCrustRadios.forEach(radio => {
+                    radio.disabled = false;
+                    radio.closest('label').classList.remove('disabled-option');
+                    radio.closest('label').style.display = 'flex'; // Garante que as bordas estejam visíveis
+                });
+            } else {
+                crustOptionsSection.style.display = 'none'; // Esconde a seção de bordas
+                stuffedCrustRadios.forEach(radio => { // Desabilita e desmarca as bordas se a seção estiver escondida
+                    radio.checked = false;
+                    radio.disabled = true;
+                    if (radio.dataset.crustId === 'no-crust') { // Garante que "Sem Borda Recheada" esteja marcada por padrão, mesmo escondida
+                        radio.checked = true;
+                        selectedCrust = { name: 'Sem Borda Recheada', price: 0, id: 'no-crust' };
+                    }
+                });
+            }
+
 
             if (selectedItem.id === 'combo2') {
                 flavorInstructionText.textContent = 'Para o Combo 2 (2 pizzas grandes), escolha 1 sabor para ambas as pizzas, ou até 4 sabores para pizzas diferentes.';
@@ -484,6 +502,7 @@
                 });
             }
             else if (selectedItem.id === 'combo1' || selectedItem.id === 'pizza-tradicional-grande' || selectedItem.id === 'pizza-media') { 
+                // AQUI FOI FEITO O AJUSTE PARA A "PIZZA GRANDE TRADICIONAL" PARA ATÉ 2 SABORES
                 flavorInstructionText.textContent = `Escolha até 2 sabores para sua pizza. Se selecionar apenas 1, a pizza será inteira desse sabor.`;
                 
                 // Para Combo 1, Pizzas Tradicionais e Pizza Média, apenas sabores tradicionais são permitidos
@@ -591,6 +610,19 @@
             });
         });
 
+        // Adiciona listener para cada radio button de borda recheada
+        stuffedCrustRadios.forEach(radio => {
+            radio.addEventListener('change', () => {
+                selectedCrust = {
+                    name: radio.value,
+                    price: parseFloat(radio.dataset.crustPrice),
+                    id: radio.dataset.crustId
+                };
+                // A seleção da borda não altera a habilitação do botão "Adicionar ao Carrinho"
+                // pois o botão já depende da seleção de sabores.
+            });
+        });
+
 
         // Função para atualizar o estado do botão "Adicionar ao Carrinho"
         function updateFinalizeButtonState() {
@@ -622,11 +654,12 @@
             // Adiciona a pizza/combo/esfirra ao carrinho
             cart.push({
                 name: selectedItem.name,
-                price: selectedItem.price,
+                price: selectedItem.price + selectedCrust.price, // PREÇO AJUSTADO COM A BORDA
                 quantity: 1, 
                 flavors: selectedFlavors,
                 type: selectedItem.type,
-                id: selectedItem.id 
+                id: selectedItem.id,
+                crust: selectedCrust.name !== 'Sem Borda Recheada' ? selectedCrust : null // Armazena a borda selecionada
             });
 
             // Se uma bebida foi selecionada (e não é "Nenhuma bebida"), adicione-a como um item separado
@@ -649,10 +682,6 @@
         const cartTotalPriceElement = document.getElementById('cart-total-price');
         const placeOrderBtn = document.getElementById('place-order-btn');
         const emptyCartMessage = document.getElementById('empty-cart-message');
-        // As constantes para cálculo de entrega foram removidas
-        // const deliveryZipCodeInput = document.getElementById('delivery-zip-code');
-        // const calculateDeliveryBtn = document.getElementById('calculate-delivery-btn');
-        // const deliveryInfoElement = document.getElementById('delivery-info');
 
         // Referências aos campos de endereço
         const addressStreetInput = document.getElementById('address-street');
@@ -706,6 +735,11 @@
                             flavorsText = 'N/A';
                         }
                         itemDescription = `Sabores: ${flavorsText}`;
+
+                        // Adiciona a borda recheada à descrição
+                        if (item.crust && item.crust.name !== 'Sem Borda Recheada') {
+                            itemDescription += `<br>Borda: ${item.crust.name}`;
+                        }
                     }
                     
                     const cartItemHtml = `
@@ -744,7 +778,7 @@
         /*
         function calculateDeliveryFee(distance) { ... }
         const ORIGIN_ZIP_CODE = '69095510';
-        const GOOGLE_MAPS_API_KEY = 'AIzaSyBd6-d4xDeEdHCILpv_c5xqGTBAR8o8xm4';
+        const Maps_API_KEY = 'AIzaSyBd6-d4xDeEdHCILpv_c5xqGTBAR8o8xm4';
         async function getDistanceViaGoogleMapsAPI(originZip, destinationZip) { ... }
         function getSimulatedDistance(destinationZip) { ... }
         */
@@ -778,20 +812,24 @@
 
             cart.forEach(item => {
                 let itemDetails = `- ${item.quantity}x ${item.name}`;
-                if (item.type !== 'beverage') { // Se for pizza/combo, adiciona sabores
+                if (item.type !== 'beverage') { // Se for pizza/combo, adiciona sabores e borda
                     let flavorsText = '';
                     if (item.flavors && item.flavors.length > 0) {
-                        if (item.id.includes('esfirra') && item.flavors.length === 1) { // Esfirras têm apenas 1 sabor, sempre inteira
+                        if (item.id.includes('esfirra') && item.flavors.length === 1) { 
                             flavorsText = ` (${item.flavors[0]} inteira)`;
-                        } else if (item.flavors.length === 1) { // Pizzas com 1 sabor
+                        } else if (item.flavors.length === 1) { 
                             flavorsText = ` (${item.flavors[0]} inteira)`;
-                        } else if (item.flavors.length === 2) { // Pizzas com 2 sabores
+                        } else if (item.flavors.length === 2) { 
                             flavorsText = ` (${item.flavors[0]} e ${item.flavors[1]})`;
-                        } else { // Para 3 ou 4 sabores no combo 2
+                        } else { 
                             flavorsText = ` (${item.flavors.join(', ')})`;
                         }
                     }
-                    itemDetails += flavorsText;
+                    let crustText = '';
+                    if (item.crust && item.crust.name !== 'Sem Borda Recheada') {
+                        crustText = ` (Borda: ${item.crust.name})`;
+                    }
+                    itemDetails += flavorsText + crustText;
                 }
                 message += itemDetails + ` - R$ ${item.price.toFixed(2).replace('.', ',')}\n`;
             });
