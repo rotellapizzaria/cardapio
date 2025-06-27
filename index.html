@@ -106,7 +106,10 @@
                         <p class="text-lg font-bold text-gray-900">Pizza Grande Tradicional</p>
                         <p class="text-sm text-gray-600 mt-1">Até dois sabores</p>
                     </div>
-                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 34,90</p>
+                    <!-- Displaying old price with strikethrough and new price -->
+                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">
+                        <span class="line-through text-gray-500 text-base mr-2">R$ 44,90</span> R$ 34,90
+                    </p>
                 </div>
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
                      data-item-type="pizza-especial" data-item-id="pizza-especial-grande" data-item-name="Pizza Grande Especial" data-item-price="44.90">
@@ -114,7 +117,10 @@
                         <p class="text-lg font-bold text-gray-900">Pizza Grande Especial</p>
                         <p class="text-sm text-gray-600 mt-1">Até dois sabores</p>
                     </div>
-                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 44,90</p>
+                    <!-- Displaying old price with strikethrough and new price for Pizza Grande Especial -->
+                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">
+                        <span class="line-through text-gray-500 text-base mr-2">R$ 54,90</span> R$ 44,90
+                    </p>
                 </div>
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
                      data-item-type="pizza-media" data-item-id="pizza-media" data-item-name="Pizza Média Tradicional" data-item-price="29.90">
@@ -122,7 +128,10 @@
                         <p class="text-lg font-bold text-gray-900">Pizza Média Tradicional</p>
                         <p class="text-sm text-gray-600 mt-1">Até dois sabores</p>
                     </div>
-                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 29,90</p>
+                    <!-- Displaying old price with strikethrough and new price for Pizza Média Tradicional -->
+                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">
+                        <span class="line-through text-gray-500 text-base mr-2">R$ 34,90</span> R$ 29,90
+                    </p>
                 </div>
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
                      data-item-type="pizza-especial" data-item-id="pizza-especial-media" data-item-name="Pizza Média Especial" data-item-price="39.90">
@@ -130,7 +139,10 @@
                         <p class="text-lg font-bold text-gray-900">Pizza Média Especial</p>
                         <p class="text-sm text-gray-600 mt-1">Até dois sabores</p>
                     </div>
-                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 39,90</p>
+                    <!-- Displaying old price with strikethrough and new price for Pizza Média Especial -->
+                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">
+                        <span class="line-through text-gray-500 text-base mr-2">R$ 44,90</span> R$ 39,90
+                    </p>
                 </div>
             </div>
             
@@ -725,12 +737,12 @@
                         let flavorsText = '';
                         if (item.flavors && item.flavors.length > 0) {
                             // Adjusted for esfirras: if it's an esfirra and only 1 flavor, show as whole
-                            if (item.flavors.length === 1 && item.id.includes('esfirra')) {
+                            if (item.flavors.length === 1 && item.id.includes('esfirra')) { 
                                 flavorsText = ` (${item.flavors[0]} inteira)`;
                             } else if (item.flavors.length === 1) { 
                                 flavorsText = ` (${item.flavors[0]} inteira)`;
                             }
-                             else if (item.flavors.length === 2 && (item.id.includes('pizza') || item.id === 'combo1' || item.id.includes('esfirra-tradicional'))) {
+                             else if (item.flavors.length === 2) { 
                                 flavorsText = ` (${item.flavors[0]} e ${item.flavors[1]})`;
                             } else if (item.flavors.length >= 2 && item.id === 'combo2') { 
                                 flavorsText = item.flavors.slice(0, -1).join(', ') + ' e ' + item.flavors[item.flavors.length - 1];
@@ -742,7 +754,7 @@
 
                         // Add stuffed crust to description
                         if (item.crust && item.crust.name !== 'Sem Borda Recheada') {
-                            itemDescription += `<br>Borda: ${item.crust.name}`;
+                            crustText = ` (Borda: ${item.crust.name})`;
                         }
                     }
                     
