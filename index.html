@@ -68,6 +68,8 @@
             <a href="https://www.instagram.com/rotellapizzaria" target="_blank" class="mt-4 inline-block text-red-600 hover:text-red-800 font-semibold text-lg">
                 Nos siga no Instagram: @rotellapizzaria
             </a>
+            <!-- Div para exibir o status de funcionamento da pizzaria -->
+            <div id="pizzaria-status" class="mt-2 text-lg font-semibold"></div>
         </div>
 
         <div id="main-menu" class="page-section">
@@ -102,25 +104,35 @@
                 <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Pizzas</h3>
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
                      data-item-type="pizza-tradicional" data-item-id="pizza-tradicional-grande" data-item-name="Pizza Grande Tradicional" data-item-price="34.90">
-                    <div class="flex-grow">
-                        <p class="text-lg font-bold text-gray-900">Pizza Grande Tradicional</p>
-                        <p class="text-sm text-gray-600 mt-1">Até dois sabores</p>
+                    <!-- Container para a imagem, texto e preço, usando flexbox para alinhamento -->
+                    <div class="flex flex-col sm:flex-row items-center w-full">
+                        <!-- Imagem da pizza -->
+                        <img src="https://i.ibb.co/TqdcMknx/pizza-calabresa-rotella.png" alt="Pizza Calabresa Rotella" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-lg mr-4 mb-2 sm:mb-0">
+                        <div class="flex-grow text-center sm:text-left">
+                            <p class="text-lg font-bold text-gray-900">Pizza Grande Tradicional</p>
+                            <p class="text-sm text-gray-600 mt-1">Até dois sabores</p>
+                        </div>
+                        <!-- Displaying old price with strikethrough and new price -->
+                        <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0 sm:ml-auto">
+                            <span class="line-through text-gray-500 text-base mr-2">R$ 44,90</span> R$ 34,90
+                        </p>
                     </div>
-                    <!-- Displaying old price with strikethrough and new price -->
-                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">
-                        <span class="line-through text-gray-500 text-base mr-2">R$ 44,90</span> R$ 34,90
-                    </p>
                 </div>
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
                      data-item-type="pizza-especial" data-item-id="pizza-especial-grande" data-item-name="Pizza Grande Especial" data-item-price="44.90">
-                    <div class="flex-grow">
-                        <p class="text-lg font-bold text-gray-900">Pizza Grande Especial</p>
-                        <p class="text-sm text-gray-600 mt-1">Até dois sabores</p>
+                    <!-- Container para a imagem, texto e preço, usando flexbox para alinhamento -->
+                    <div class="flex flex-col sm:flex-row items-center w-full">
+                        <!-- Imagem da pizza -->
+                        <img src="https://i.ibb.co/tPKgFvTp/pizza-frango-e-calabresa-com-catupiry-rotella.png" alt="Pizza Frango e Calabresa com Catupiry Rotella" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-lg mr-4 mb-2 sm:mb-0">
+                        <div class="flex-grow text-center sm:text-left">
+                            <p class="text-lg font-bold text-gray-900">Pizza Grande Especial</p>
+                            <p class="text-sm text-gray-600 mt-1">Até dois sabores</p>
+                        </div>
+                        <!-- Displaying old price with strikethrough and new price for Pizza Grande Especial -->
+                        <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0 sm:ml-auto">
+                            <span class="line-through text-gray-500 text-base mr-2">R$ 54,90</span> R$ 44,90
+                        </p>
                     </div>
-                    <!-- Displaying old price with strikethrough and new price for Pizza Grande Especial -->
-                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">
-                        <span class="line-through text-gray-500 text-base mr-2">R$ 54,90</span> R$ 44,90
-                    </p>
                 </div>
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
                      data-item-type="pizza-media" data-item-id="pizza-media" data-item-name="Pizza Média Tradicional" data-item-price="29.90">
@@ -172,6 +184,42 @@
                     <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 7,90</p>
                 </div>
             </div>
+
+            <!-- Início da nova seção de Bebidas no menu principal -->
+            <div class="mb-10">
+                <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Bebidas</h3>
+                <div id="main-menu-beverage-options" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
+                         data-item-type="beverage" data-item-id="coca-1l-main-menu" data-item-name="Coca-cola 1L" data-item-price="9.90">
+                        <div class="flex-grow">
+                            <p class="text-lg font-bold text-gray-900">Coca-cola 1L</p>
+                        </div>
+                        <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 9,90</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
+                         data-item-type="beverage" data-item-id="coca-2l-main-menu" data-item-name="Coca-cola 2L" data-item-price="13.90">
+                        <div class="flex-grow">
+                            <p class="text-lg font-bold text-gray-900">Coca-cola 2L</p>
+                        </div>
+                        <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 13,90</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
+                         data-item-type="beverage" data-item-id="fanta-1l-main-menu" data-item-name="Fanta Laranja 1L" data-item-price="9.90">
+                        <div class="flex-grow">
+                            <p class="text-lg font-bold text-gray-900">Fanta Laranja 1L</p>
+                        </div>
+                        <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 9,90</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
+                         data-item-type="beverage" data-item-id="fanta-2l-main-menu" data-item-name="Fanta Laranja 2L" data-item-price="12.90">
+                        <div class="flex-grow">
+                            <p class="text-lg font-bold text-gray-900">Fanta Laranja 2L</p>
+                        </div>
+                        <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 12,90</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Fim da nova seção de Bebidas no menu principal -->
             
             <div class="text-center mt-10 mb-6">
                 <button onclick="window.open('https://wa.me/92986161640?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!', '_blank')" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
@@ -186,6 +234,327 @@
 
             <div id="item-info" class="text-center text-lg text-gray-700 mb-6 p-4 bg-red-50 rounded-lg">
                 </div>
+
+            <!-- Section for Pizza 1 Flavors (hidden by default, shown for Combo 2) -->
+            <div id="pizza1-flavor-section" class="mb-10 hidden">
+                <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Sabores da Pizza 1</h3>
+                <p id="flavor-instruction-text-pizza1" class="text-md text-gray-600 text-center mb-6"></p>
+                <div id="flavor-options-pizza1" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    <!-- Checkboxes for Pizza 1 - Dynamically generated or copied from main flavor-options -->
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor-pizza1" value="Portuguesa" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Portuguesa</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, presunto, mussarela, ovos, cebola, ervilha e azeitona.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor-pizza1" value="Calabresa" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Calabresa</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, calabresa fatiada e cebola.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor-pizza1" value="Mussarela" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Mussarela</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro e mussarela.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor-pizza1" value="Marguerita" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Marguerita</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, tomate e manjericão.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor-pizza1" value="Frango com Catupiry" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Frango com Catupiry</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, frango desfiado e catupiry.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor-pizza1" value="Calabresa com Catupiry" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Calabresa com Catupiry</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, calabresa fatiada e catupiry.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor-pizza1" value="Bacon" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Bacon</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela e bacon crocante.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor-pizza1" value="Bacon com Catupiry" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Bacon com Catupiry</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, bacon crocante e catupiry.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor-pizza1" value="Bacon com Cheddar" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Bacon com Cheddar</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, bacon crocante e cheddar cremoso.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor-pizza1" value="M&M" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">M&M</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, chocolate, M&M's.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor-pizza1" value="Brigadeiro" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Brigadeiro</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, chocolate, granulado.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor-pizza1" value="Romeu e Julieta" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Romeu e Julieta</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, goiabada e queijo mussarela.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor-pizza1" value="Doce de Leite" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Doce de Leite</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, doce de leite e queijo mussarela.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor-pizza1" value="Frango" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Frango</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, frango desfiado.</p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Section for Pizza 2 Flavors (hidden by default, shown for Combo 2) -->
+            <div id="pizza2-flavor-section" class="mb-10 hidden">
+                <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Sabores da Pizza 2</h3>
+                <p id="flavor-instruction-text-pizza2" class="text-md text-gray-600 text-center mb-6"></p>
+                <div id="flavor-options-pizza2" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    <!-- Checkboxes for Pizza 2 - Dynamically generated or copied from main flavor-options -->
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor-pizza2" value="Portuguesa" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Portuguesa</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, presunto, mussarela, ovos, cebola, ervilha e azeitona.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor-pizza2" value="Calabresa" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Calabresa</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, calabresa fatiada e cebola.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor-pizza2" value="Mussarela" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Mussarela</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro e mussarela.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor-pizza2" value="Marguerita" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Marguerita</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, tomate e manjericão.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor-pizza2" value="Frango com Catupiry" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Frango com Catupiry</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, frango desfiado e catupiry.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor-pizza2" value="Calabresa com Catupiry" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Calabresa com Catupiry</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, calabresa fatiada e catupiry.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor-pizza2" value="Bacon" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Bacon</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela e bacon crocante.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor-pizza2" value="Bacon com Catupiry" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Bacon com Catupiry</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, bacon crocante e catupiry.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor-pizza2" value="Bacon com Cheddar" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Bacon com Cheddar</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, bacon crocante e cheddar cremoso.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor-pizza2" value="M&M" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">M&M</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, chocolate, M&M's.</p>
+                        </div>
+                    </label>
+                    <!-- Sweet flavors hidden for Combo 2 -->
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white hidden">
+                        <input type="checkbox" name="flavor-pizza2" value="Brigadeiro" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Brigadeiro</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, chocolate, granulado.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white hidden">
+                        <input type="checkbox" name="flavor-pizza2" value="Romeu e Julieta" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Romeu e Julieta</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, goiabada e queijo mussarela.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor-pizza2" value="Doce de Leite" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Doce de Leite</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, doce de leite e queijo mussarela.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor-pizza2" value="Frango" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Frango</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, frango desfiado.</p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Original flavor-options section (hidden for Combo 2) -->
+            <div id="flavor-options-single" class="mb-10">
+                <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Selecione seus Sabores</h3>
+                <p id="flavor-instruction-text-single" class="text-md text-gray-600 text-center mb-6"></p>
+                <div id="flavor-options" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor" value="Portuguesa" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Portuguesa</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, presunto, mussarela, ovos, cebola, ervilha e azeitona.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor" value="Calabresa" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Calabresa</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, calabresa fatiada e cebola.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor" value="Mussarela" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Mussarela</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro e mussarela.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor" value="Marguerita" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Marguerita</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, tomate e manjericão.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor" value="Frango com Catupiry" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Frango com Catupiry</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, frango desfiado e catupiry.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor" value="Calabresa com Catupiry" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Calabresa com Catupiry</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, calabresa fatiada e catupiry.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor" value="Bacon" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Bacon</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela e bacon crocante.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor" value="Bacon com Catupiry" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Bacon com Catupiry</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, bacon crocante e catupiry.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor" value="Bacon com Cheddar" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Bacon com Cheddar</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, bacon crocante e cheddar cremoso.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor" value="M&M" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">M&M</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, chocolate, M&M's.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor" value="Brigadeiro" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Brigadeiro</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, chocolate, granulado.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor" value="Romeu e Julieta" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Romeu e Julieta</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, goiabada e queijo mussarela.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor" value="Doce de Leite" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Doce de Leite</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, doce de leite e queijo mussarela.</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor" value="Frango" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Frango</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, frango desfiado.</p>
+                        </div>
+                    </label>
+                </div>
+            </div>
 
             <div id="crust-options-section" class="mb-10 hidden">
                 <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Borda Recheada</h3>
@@ -206,46 +575,9 @@
                         <input type="radio" name="stuffed-crust" value="Borda Recheada Romeu e Julieta" data-crust-price="10.00" data-crust-id="rj-crust" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500">
                         <span class="ml-3 text-lg text-gray-800 font-medium">Borda Recheada Romeu e Julieta +R$10,00</span>
                     </label>
-                </div>
-            </div>
-
-            <div class="mb-10">
-                <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Selecione seus Sabores</h3>
-                <p id="flavor-instruction-text" class="text-md text-gray-600 text-center mb-6">
-                    </p>
-
-                <div id="flavor-options" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                     <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor" value="Portuguesa" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <span class="ml-3 text-lg text-gray-800 font-medium">Portuguesa</span>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor" value="Calabresa" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <span class="ml-3 text-lg text-gray-800 font-medium">Calabresa</span>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor" value="Mussarela" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <span class="ml-3 text-lg text-gray-800 font-medium">Mussarela</span>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor" value="Marguerita" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <span class="ml-3 text-lg text-gray-800 font-medium">Marguerita</span>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor" value="Frango com Catupiry" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <span class="ml-3 text-lg text-gray-800 font-medium">Frango com Catupiry</span>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor" value="Calabresa com Catupiry" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <span class="ml-3 text-lg text-gray-800 font-medium">Calabresa com Catupiry</span>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor" value="Brigadeiro" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <span class="ml-3 text-lg text-gray-800 font-medium">Brigadeiro</span>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor" value="Romeu e Julieta" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <span class="ml-3 text-lg text-gray-800 font-medium">Romeu e Julieta</span>
+                        <input type="radio" name="stuffed-crust" value="Borda Recheada Cheddar" data-crust-price="10.00" data-crust-id="cheddar-crust" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500">
+                        <span class="ml-3 text-lg text-gray-800 font-medium">Borda Recheada Cheddar +R$10,00</span>
                     </label>
                 </div>
             </div>
@@ -279,6 +611,7 @@
                 <button id="add-to-cart-btn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50" disabled>
                     Adicionar ao Carrinho
                 </button>
+                <span id="add-to-cart-message" class="text-sm text-red-500 ml-2"></span>
                 <button onclick="showPage('main-menu')" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50">
                     Voltar ao Cardápio
                 </button>
@@ -355,81 +688,103 @@
     </div>
 
     <script>
-        // Array to store items in the cart (pizza/combo and separate drinks)
+        // Array para armazenar os itens no carrinho (pizza/combo e bebidas separadas)
         let cart = []; 
-        let selectedItem = {}; // Item (pizza/combo) being configured on the flavor selection screen
-        let selectedBeverage = { name: 'Nenhuma bebida', price: 0, id: 'no-beverage' }; // Selected beverage on the selection screen
-        let selectedCrust = { name: 'Sem Borda Recheada', price: 0, id: 'no-crust' }; // Selected crust
-        let deliveryFee = 0; // Stores the calculated delivery fee, now always 0
+        let selectedItem = {}; // Item (pizza/combo) sendo configurado na tela de seleção de sabores
+        let selectedBeverage = { name: 'Nenhuma bebida', price: 0, id: 'no-beverage' }; // Bebida selecionada na tela de seleção
+        let selectedCrust = { name: 'Sem Borda Recheada', price: 0, id: 'no-crust' }; // Borda selecionada
+        let deliveryFee = 0; // Armazena a taxa de entrega calculada, agora sempre 0
 
-        // const ORIGIN_ZIP_CODE = '69095510'; // Fixed origin ZIP code - Commented out
-        // const Maps_API_KEY = 'AIzaSyBd6-d4xDeEdHCILpv_c5xqGTBAR8o8xm4'; // Your API key - Commented out
+        // Armazenar os sabores selecionados para cada pizza do Combo 2
+        let selectedFlavorsPizza1 = [];
+        let selectedFlavorsPizza2 = [];
+        // Variável para armazenar os sabores para itens de sabor único (pizza individual, esfirra)
+        let selectedFlavors = []; 
 
-        // Function to show the correct page and hide others
+        // Função para mostrar a página correta e esconder as outras
         function showPage(pageId) {
             document.querySelectorAll('.page-section').forEach(section => {
                 section.classList.add('hidden');
             });
             document.getElementById(pageId).classList.remove('hidden');
 
-            // If it's the order summary page, update the cart
+            // Se for para a página de resumo, atualiza o carrinho
             if (pageId === 'order-summary') {
                 renderCart();
             }
         }
 
-        // Function to update the item count on the cart icon
+        // Função para atualizar a contagem de itens no ícone do carrinho
         function updateCartIconCount() {
             let totalItemsInCart = 0;
             cart.forEach(item => {
                 totalItemsInCart += item.quantity;
             });
-            document.getElementById('cart-count').textContent = totalItemsInCart;
+            // Se o carrinho estiver vazio, exibe 0. Caso contrário, exibe a contagem total.
+            document.getElementById('cart-count').textContent = totalItemsInCart === 0 ? '0' : totalItemsInCart;
         }
 
-        // === Main Menu Logic ===
+        // === Lógica do Cardápio Principal ===
         document.querySelectorAll('.clickable-item').forEach(item => {
             item.addEventListener('click', function() {
                 selectedItem = {
-                    type: this.dataset.itemType, // 'combo', 'pizza-tradicional', 'pizza-especial', 'pizza-media', 'esfirra-tradicional', 'esfirra-especial', 'esfirra-doce'
+                    type: this.dataset.itemType, // 'combo', 'pizza-tradicional', 'pizza-especial', 'pizza-media', 'esfirra-tradicional', 'esfirra-especial', 'esfirra-doce', 'beverage'
                     id: this.dataset.itemId,
                     name: this.dataset.itemName,
                     price: parseFloat(this.dataset.itemPrice)
                 };
-                
-                // Reset flavor checkboxes and button when going to flavor selection
-                document.querySelectorAll('input[name="flavor"]').forEach(cb => {
+                console.log('Item selecionado no menu principal:', selectedItem); // Log de depuração
+
+                // Reinicia os checkboxes de sabor e o botão ao ir para seleção de sabores
+                document.querySelectorAll('input[name="flavor"], input[name="flavor-pizza1"], input[name="flavor-pizza2"]').forEach(cb => {
                     cb.checked = false;
                     cb.disabled = false;
-                    cb.closest('label').classList.remove('disabled-option'); // Remove disabled style
+                    cb.closest('label').classList.remove('disabled-option'); // Remove o estilo de desabilitado
                 });
                 
-                // Reset beverage selection to "Nenhuma bebida"
+                // Reinicia a seleção de bebida para "Nenhuma bebida"
                 selectedBeverage = { name: 'Nenhuma bebida', price: 0, id: 'no-beverage' };
                 document.querySelectorAll('input[name="beverage"]').forEach(radio => {
-                    radio.checked = (radio.value === 'Nenhuma bebida'); // Check "Nenhuma bebida" option
+                    radio.checked = (radio.value === 'Nenhuma bebida'); // Marca a opção "Nenhuma bebida"
                 });
 
-                // Reset crust selection to "Sem Borda Recheada"
+                // Reinicia a seleção de borda para "Sem Borda Recheada"
                 selectedCrust = { name: 'Sem Borda Recheada', price: 0, id: 'no-crust' };
                 document.querySelectorAll('input[name="stuffed-crust"]').forEach(radio => {
                     radio.checked = (radio.value === 'Sem Borda Recheada');
                 });
 
+                // Limpa os arrays de sabores das pizzas do combo e do item único
+                selectedFlavorsPizza1 = [];
+                selectedFlavorsPizza2 = [];
+                selectedFlavors = [];
 
-                // Update flavor selection instructions text and button state
+
+                // Atualiza o texto de instrução da seleção de sabores e o estado do botão
                 updateFlavorSelectionInstructions();
                 updateFinalizeButtonState(); 
                 
-                // Update item information on the flavor selection page
+                // Atualiza as informações do item na página de seleção de sabores
                 document.getElementById('item-info').innerHTML = `Você selecionou: <span class="font-bold">${selectedItem.name}</span> por <span class="font-bold">R$ ${selectedItem.price.toFixed(2).replace('.', ',')}</span>`;
                 
-                // Redirect to flavor selection for items that require flavor
+                // Redireciona para a seleção de sabor para itens que exigem sabor
                 if (selectedItem.id.includes('pizza') || selectedItem.id.includes('combo') || selectedItem.id.includes('esfirra')) {
                     showPage('flavor-selection');
+                } else if (selectedItem.type === 'beverage') {
+                    // Para bebidas, adiciona diretamente ao carrinho e vai para o resumo
+                    cart.push({
+                        name: selectedItem.name,
+                        price: selectedItem.price,
+                        quantity: 1,
+                        flavors: [], // Bebidas não têm sabores
+                        type: selectedItem.type,
+                        id: selectedItem.id 
+                    });
+                    updateCartIconCount();
+                    showPage('order-summary');
                 } else {
-                    // For other items that don't need flavor selection (if any in the future)
-                    // Add the item directly to the cart if no flavor selection is needed
+                    // Para outros itens que não precisam de seleção de sabor (se houver no futuro)
+                    // Adiciona o item diretamente ao carrinho se não precisar de seleção de sabor
                     cart.push({
                         name: selectedItem.name,
                         price: selectedItem.price,
@@ -438,58 +793,77 @@
                         type: selectedItem.type,
                         id: selectedItem.id 
                     });
-                    renderCart(); // Render cart and update icon (called here for items without selection)
+                    updateCartIconCount();
                     showPage('order-summary');
                 }
             });
         });
 
-        // === Flavor and Beverage Selection Logic ===
-        const flavorCheckboxes = document.querySelectorAll('input[name="flavor"]');
+        // === Lógica da Seleção de Sabores e Bebidas ===
+        const flavorCheckboxesSingle = document.querySelectorAll('input[name="flavor"]');
+        const flavorCheckboxesPizza1 = document.querySelectorAll('input[name="flavor-pizza1"]');
+        const flavorCheckboxesPizza2 = document.querySelectorAll('input[name="flavor-pizza2"]');
+
         const beverageRadios = document.querySelectorAll('input[name="beverage"]');
-        const stuffedCrustRadios = document.querySelectorAll('input[name="stuffed-crust"]'); // Reference to crusts
-        const crustOptionsSection = document.getElementById('crust-options-section'); // Reference to crust section
+        const stuffedCrustRadios = document.querySelectorAll('input[name="stuffed-crust"]'); // Referência às bordas
+        const crustOptionsSection = document.getElementById('crust-options-section'); // Referência à seção de bordas
 
-        const addToCartBtn = document.getElementById('add-to-cart-btn'); // "Add to Cart" button
-        const flavorInstructionText = document.getElementById('flavor-instruction-text');
-        const beverageHeading = document.getElementById('beverage-heading'); // Reference to beverage heading
+        const addToCartBtn = document.getElementById('add-to-cart-btn'); // Botão "Adicionar ao Carrinho"
+        const addToCartMessage = document.getElementById('add-to-cart-message'); // Mensagem de instrução para o botão
+        const flavorInstructionTextSingle = document.getElementById('flavor-instruction-text-single');
+        const flavorInstructionTextPizza1 = document.getElementById('flavor-instruction-text-pizza1');
+        const flavorInstructionTextPizza2 = document.getElementById('flavor-instruction-text-pizza2');
+        const beverageHeading = document.getElementById('beverage-heading'); // Referência ao cabeçalho das bebidas
+
+        const pizza1FlavorSection = document.getElementById('pizza1-flavor-section');
+        const pizza2FlavorSection = document.getElementById('pizza2-flavor-section');
+        const singleFlavorSection = document.getElementById('flavor-options-single');
 
 
-        const traditionalFlavors = ['Portuguesa', 'Calabresa', 'Mussarela', 'Marguerita'];
-        const sweetFlavors = ['Brigadeiro', 'Romeu e Julieta']; // Specific sweet flavors
+        const traditionalFlavors = ['Portuguesa', 'Calabresa', 'Mussarela', 'Marguerita', 'Frango', 'Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon', 'Bacon com Catupiry', 'Bacon com Cheddar']; // Inclui os sabores tradicionais que podem ser escolhidos
+        const sweetFlavors = ['Brigadeiro', 'Romeu e Julieta', 'M&M', 'Doce de Leite']; // Sabores doces específicos
 
 
-        // Function to update flavor selection instructions and enable/disable checkboxes
+        // Função para atualizar as instruções de seleção de sabor e habilitar/desabilitar checkboxes
         function updateFlavorSelectionInstructions() {
-            // Re-enable all checkboxes initially before applying new restrictions
-            flavorCheckboxes.forEach(cb => {
-                cb.checked = false; // Ensure no flavor is pre-selected
+            console.log('updateFlavorSelectionInstructions chamada'); // Log de depuração
+            // Esconde todas as seções de sabor e re-habilita todos os checkboxes inicialmente
+            pizza1FlavorSection.classList.add('hidden');
+            pizza2FlavorSection.classList.add('hidden');
+            singleFlavorSection.classList.add('hidden');
+
+            document.querySelectorAll('input[name="flavor"], input[name="flavor-pizza1"], input[name="flavor-pizza2"]').forEach(cb => {
+                cb.checked = false;
                 cb.disabled = false;
-                cb.closest('label').classList.remove('disabled-option');
-                cb.closest('label').style.display = 'flex'; // Ensure they are visible before filtering
+                cb.closest('label').classList.remove('disabled-option'); // Remove o estilo de desabilitado
+                cb.closest('label').style.display = 'flex'; // Garante que estejam visíveis antes de filtrar
             });
 
-            // Adjust beverage heading text
+            // Ajusta o texto do cabeçalho da bebida
             if (selectedItem.type === 'combo') {
-                beverageHeading.textContent = 'Seu combo já possui refrigerante, deseja acrescentar mais alguma bebida?'; // Adjusted text for combos
+                beverageHeading.textContent = 'Seu combo já possui refrigerante, deseja acrescentar mais alguma bebida?'; // Texto ajustado para combos
+                document.getElementById('beverage-options').classList.remove('hidden'); // Garante que a seção de bebidas da página de seleção esteja visível para combos
+            } else if (selectedItem.type === 'beverage') {
+                document.getElementById('beverage-options').classList.add('hidden'); // Esconde a seção de bebidas se o item selecionado já for uma bebida
             } else {
-                beverageHeading.textContent = 'Deseja acrescentar refrigerante ao seu pedido ?'; // Default text for other items
+                beverageHeading.textContent = 'Deseja acrescentar refrigerante ao seu pedido ?'; // Texto padrão para outros itens
+                document.getElementById('beverage-options').classList.remove('hidden'); // Garante que a seção de bebidas da página de seleção esteja visível
             }
 
-            // Logic for displaying and enabling stuffed crusts
-            if (selectedItem.id === 'pizza-tradicional-grande' || selectedItem.id === 'pizza-especial-grande') {
-                crustOptionsSection.style.display = 'block'; // Show crust section
+            // Lógica de exibição e habilitação das bordas recheadas
+            if (selectedItem.id.includes('pizza') || selectedItem.type === 'combo') {
+                crustOptionsSection.style.display = 'block'; // Mostra a seção de bordas
                 stuffedCrustRadios.forEach(radio => {
                     radio.disabled = false;
                     radio.closest('label').classList.remove('disabled-option');
-                    radio.closest('label').style.display = 'flex'; // Ensure crusts are visible
+                    radio.closest('label').style.display = 'flex'; // Garante que as bordas estejam visíveis
                 });
             } else {
-                crustOptionsSection.style.display = 'none'; // Hide crust section
-                stuffedCrustRadios.forEach(radio => { // Disable and uncheck crusts if section is hidden
+                crustOptionsSection.style.display = 'none'; // Esconde a seção de bordas
+                stuffedCrustRadios.forEach(radio => { // Desabilita e desmarca as bordas se a seção estiver escondida
                     radio.checked = false;
                     radio.disabled = true;
-                    if (radio.dataset.crustId === 'no-crust') { // Ensure "Sem Borda Recheada" is checked by default, even if hidden
+                    if (radio.dataset.crustId === 'no-crust') { // Garante que "Sem Borda Recheada" esteja marcada por padrão, mesmo escondida
                         radio.checked = true;
                         selectedCrust = { name: 'Sem Borda Recheada', price: 0, id: 'no-crust' };
                     }
@@ -498,135 +872,221 @@
 
 
             if (selectedItem.id === 'combo2') {
-                flavorInstructionText.textContent = 'Para o Combo 2 (2 pizzas grandes), escolha 1 sabor para ambas as pizzas, ou até 4 sabores para pizzas diferentes.';
-                // For combos, only traditional flavors are allowed
-                flavorCheckboxes.forEach(cb => {
-                    if (!traditionalFlavors.includes(cb.value)) {
+                pizza1FlavorSection.classList.remove('hidden');
+                pizza2FlavorSection.classList.remove('hidden');
+                flavorInstructionTextPizza1.textContent = 'Escolha até 2 sabores para a Pizza 1.';
+                flavorInstructionTextPizza2.textContent = 'Escolha até 2 sabores para a Pizza 2.';
+
+                // Para Combo 2, apenas sabores tradicionais são permitidos para ambas as pizzas
+                // Esconde os sabores não tradicionais e doces para Pizza 1
+                const combo2ForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar', 'M&M', 'Doce de Leite']; // Adicionado M&M e Doce de Leite
+                document.querySelectorAll('#flavor-options-pizza1 input[name="flavor-pizza1"]').forEach(cb => {
+                    if (combo2ForbiddenFlavors.includes(cb.value) || sweetFlavors.includes(cb.value)) {
                         cb.disabled = true;
                         cb.closest('label').classList.add('disabled-option');
-                        cb.closest('label').style.display = 'none'; // Hide non-traditional flavors
+                        cb.closest('label').style.display = 'none'; // Esconde sabores não permitidos para Combo 2
                     }
                 });
+                // Esconde os sabores não tradicionais e doces para Pizza 2
+                document.querySelectorAll('#flavor-options-pizza2 input[name="flavor-pizza2"]').forEach(cb => {
+                    if (combo2ForbiddenFlavors.includes(cb.value) || sweetFlavors.includes(cb.value)) {
+                        cb.disabled = true;
+                        cb.closest('label').classList.add('disabled-option');
+                        cb.closest('label').style.display = 'none'; // Esconde sabores não permitidos para Combo 2
+                    }
+                });
+
             } else if (selectedItem.id === 'esfirra-doce') { 
-                flavorInstructionText.textContent = 'Escolha apenas 1 sabor para sua esfirra doce (Brigadeiro ou Romeu e Julieta).';
-                 flavorCheckboxes.forEach(cb => {
-                    if (!sweetFlavors.includes(cb.value)) { // Disable if not a sweet flavor
+                singleFlavorSection.classList.remove('hidden');
+                flavorInstructionTextSingle.textContent = 'Escolha apenas 1 sabor para sua esfirra doce (Brigadeiro ou Romeu e Julieta).';
+                 flavorCheckboxesSingle.forEach(cb => {
+                    if (!sweetFlavors.includes(cb.value)) { // Desabilita se não for sabor doce
                         cb.disabled = true;
                         cb.closest('label').classList.add('disabled-option');
-                        cb.closest('label').style.display = 'none'; // Hide non-sweet flavors
+                        cb.closest('label').style.display = 'none'; // Esconde sabores não doces
                     }
                 });
             }
-            else if (selectedItem.id === 'combo1' || selectedItem.id === 'pizza-tradicional-grande' || selectedItem.id === 'pizza-media') { 
-                // ADJUSTMENT MADE HERE FOR "PIZZA GRANDE TRADICIONAL" FOR UP TO 2 FLAVORS
-                flavorInstructionText.textContent = `Escolha até 2 sabores para sua pizza. Se selecionar apenas 1, a pizza será inteira desse sabor.`;
-                
-                // For Combo 1, Traditional Pizzas and Medium Pizza, only traditional flavors are allowed
-                flavorCheckboxes.forEach(cb => {
-                    if (!traditionalFlavors.includes(cb.value)) {
+            // Alteração aqui: para pizzas individuais (tradicional, especial e média), permitir todos os sabores
+            else if (selectedItem.id === 'pizza-tradicional-grande') { // Lógica específica para Pizza Grande Tradicional
+                singleFlavorSection.classList.remove('hidden');
+                flavorInstructionTextSingle.textContent = `Escolha até 2 sabores para sua pizza. Se selecionar apenas 1, a pizza será inteira desse sabor.`;
+                const pizzaTradicionalForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar'];
+                flavorCheckboxesSingle.forEach(cb => {
+                    if (pizzaTradicionalForbiddenFlavors.includes(cb.value)) {
                         cb.disabled = true;
                         cb.closest('label').classList.add('disabled-option');
-                        cb.closest('label').style.display = 'none'; // Hide non-traditional flavors
-                    }
-                });
-            } else if (selectedItem.id === 'esfirra-tradicional') { 
-                flavorInstructionText.textContent = 'Escolha apenas 1 sabor para sua esfirra tradicional.';
-                // For Traditional Esfirra, only traditional flavors are allowed
-                flavorCheckboxes.forEach(cb => {
-                    if (!traditionalFlavors.includes(cb.value)) {
-                        cb.disabled = true;
-                        cb.closest('label').classList.add('disabled-option');
-                        cb.closest('label').style.display = 'none'; // Hide non-traditional flavors
+                        cb.closest('label').style.display = 'none';
                     }
                 });
             }
-            else if (selectedItem.id === 'pizza-especial-grande' || selectedItem.id === 'pizza-especial-media' || selectedItem.id === 'esfirra-especial') { 
-                if (selectedItem.id === 'pizza-especial-grande' || selectedItem.id === 'pizza-especial-media') {
-                    flavorInstructionText.textContent = `Para sua ${selectedItem.name}, escolha até 2 sabores para sua pizza. Se selecionar apenas 1, a pizza será inteira desse sabor.`;
-                } else { // For esfirra-especial
-                    flavorInstructionText.textContent = `Para sua ${selectedItem.name}, escolha apenas 1 sabor.`;
-                }
-                
-                // For special esfirra and special pizzas, all savory flavors are allowed
-                flavorCheckboxes.forEach(cb => {
-                    if (sweetFlavors.includes(cb.value)) { // Disable and hide if it's a sweet flavor
+            else if (selectedItem.id === 'pizza-media') { // Lógica específica para Pizza Média Tradicional
+                singleFlavorSection.classList.remove('hidden');
+                flavorInstructionTextSingle.textContent = `Escolha até 2 sabores para sua pizza. Se selecionar apenas 1, a pizza será inteira desse sabor.`;
+                const pizzaMediaTradicionalForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar'];
+                flavorCheckboxesSingle.forEach(cb => {
+                    if (pizzaMediaTradicionalForbiddenFlavors.includes(cb.value)) {
                         cb.disabled = true;
                         cb.closest('label').classList.add('disabled-option');
-                        cb.closest('label').style.display = 'none'; // Hide sweet flavors
+                        cb.closest('label').style.display = 'none';
                     }
                 });
-            } else {
-                flavorInstructionText.textContent = 'Escolha seus sabores.'; // Generic for other items
+            }
+            else if (selectedItem.id.includes('pizza-especial')) {
+                singleFlavorSection.classList.remove('hidden');
+                flavorInstructionTextSingle.textContent = `Escolha até 2 sabores para sua pizza. Se selecionar apenas 1, a pizza será inteira desse sabor.`;
+                // Não há necessidade de desabilitar ou esconder nenhum sabor aqui, pois todos são permitidos.
+            }
+            else if (selectedItem.id === 'combo1') { // Combo 1 ainda só permite sabores tradicionais
+                singleFlavorSection.classList.remove('hidden');
+                flavorInstructionTextSingle.textContent = `Escolha até 2 sabores para sua pizza. Se selecionar apenas 1, a pizza será inteira desse sabor.`;
+                
+                // Para Combo 1, apenas sabores tradicionais são permitidos.
+                // Filtra os sabores que não devem aparecer no Combo 1
+                const combo1ForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar', 'M&M', 'Doce de Leite']; 
+                flavorCheckboxesSingle.forEach(cb => {
+                    if (combo1ForbiddenFlavors.includes(cb.value) || sweetFlavors.includes(cb.value)) {
+                        cb.disabled = true;
+                        cb.closest('label').classList.add('disabled-option');
+                        cb.closest('label').style.display = 'none'; // Esconde sabores não permitidos para Combo 1
+                    }
+                });
+            }
+            else if (selectedItem.id === 'esfirra-tradicional') { 
+                singleFlavorSection.classList.remove('hidden');
+                flavorInstructionTextSingle.textContent = 'Escolha apenas 1 sabor para sua esfirra.';
+                // Para Esfirra Tradicional, apenas sabores salgados permitidos, exceto os especificados
+                const esfirraTradicionalForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar'];
+                flavorCheckboxesSingle.forEach(cb => {
+                    if (sweetFlavors.includes(cb.value) || esfirraTradicionalForbiddenFlavors.includes(cb.value)) {
+                        cb.disabled = true;
+                        cb.closest('label').classList.add('disabled-option');
+                        cb.closest('label').style.display = 'none'; // Esconde sabores doces e os especificados
+                    }
+                });
+            } else if (selectedItem.id === 'esfirra-especial') { // Esfirra Especial
+                singleFlavorSection.classList.remove('hidden');
+                flavorInstructionTextSingle.textContent = 'Escolha apenas 1 sabor para sua esfirra.';
+                // Para Esfirra Especial, apenas os 4 sabores especificados são permitidos.
+                const esfirraEspecialAllowedFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar'];
+                flavorCheckboxesSingle.forEach(cb => {
+                    if (!esfirraEspecialAllowedFlavors.includes(cb.value)) {
+                        cb.disabled = true;
+                        cb.closest('label').classList.add('disabled-option');
+                        cb.closest('label').style.display = 'none'; // Esconde sabores não permitidos
+                    }
+                });
+            } else { // Se o item selecionado não for pizza, combo ou esfirra (ex: bebidas do menu principal)
+                singleFlavorSection.classList.add('hidden'); // Esconde a seção de sabores
+                flavorInstructionTextSingle.textContent = '';
+                // Não precisa fazer nada com os checkboxes de sabor, pois esta seção estará oculta
             }
         }
 
-        // Add listener for each flavor checkbox
-        flavorCheckboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', () => {
-                const checkedCount = document.querySelectorAll('input[name="flavor"]:checked').length;
-                let maxAllowedFlavors;
+        // Função genérica para gerenciar a seleção de sabores por grupo (pizza1, pizza2, ou single)
+        function handleFlavorSelection(checkboxes, targetFlavorsArray, isCombo2Pizza = false) {
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', (event) => {
+                    console.log(`Checkbox ${event.target.name} value ${event.target.value} changed. Checked: ${event.target.checked}`); // Log de depuração
+                    
+                    const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
+                    console.log(`Checked count for ${checkboxes[0].name}: ${checkedCount}`); // Log de depuração
+                    
+                    let maxAllowedFlavors = 2; // Padrão para pizzas
+                    if (selectedItem.id.includes('esfirra') && !isCombo2Pizza) { 
+                        maxAllowedFlavors = 1;
+                    }
 
-                if (selectedItem.id === 'combo2') {
-                    maxAllowedFlavors = 4;
-                } else if (selectedItem.id.includes('esfirra')) { // Savory (both) and Sweet Esfirra allow only 1 flavor
-                    maxAllowedFlavors = 1;
-                }
-                else if (selectedItem.id.includes('pizza')) { // This includes all individual pizzas and Combo1
-                    maxAllowedFlavors = 2; 
-                } else {
-                    maxAllowedFlavors = 2; // Default (fallback)
-                }
-
-                if (checkedCount >= maxAllowedFlavors) {
-                    flavorCheckboxes.forEach(cb => {
-                        // Only disable if not checked AND if not a flavor already disabled by category (e.g. non-traditional or non-sweet for sweet esfirra)
-                        if (!cb.checked && !cb.disabled) { 
-                            cb.disabled = true;
-                        }
-                    });
-                } else {
-                    // Re-enable checkboxes that were not disabled by pizza category restriction
-                    flavorCheckboxes.forEach(cb => {
-                        if (!cb.checked) { // If not checked
-                            if (selectedItem.id === 'combo2' || selectedItem.id === 'combo1' || selectedItem.id === 'pizza-tradicional-grande' || selectedItem.id === 'pizza-media' || selectedItem.id === 'esfirra-tradicional') { 
-                                // Rule for traditional items: only re-enable traditional
-                                if (traditionalFlavors.includes(cb.value)) {
+                    if (checkedCount >= maxAllowedFlavors) {
+                        checkboxes.forEach(cb => {
+                            if (!cb.checked && !cb.disabled) { 
+                                cb.disabled = true;
+                                console.log(`Disabling checkbox: ${cb.value}`); // Log de depuração
+                            }
+                        });
+                    } else {
+                        checkboxes.forEach(cb => {
+                            if (!cb.checked) { 
+                                // Re-habilita baseado nas regras de categoria (tradicional, doce, especial)
+                                // A lógica de re-habilitação precisa ser mais inteligente para permitir doces em pizzas
+                                if (isCombo2Pizza) { // Combos 2 ainda só permitem tradicionais
+                                    const combo2ForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar', 'M&M', 'Doce de Leite'];
+                                    if (traditionalFlavors.includes(cb.value) && !combo2ForbiddenFlavors.includes(cb.value)) {
+                                        cb.disabled = false;
+                                    }
+                                } else if (selectedItem.id === 'combo1') { // Combo 1: re-habilita apenas sabores permitidos
+                                    const combo1ForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar', 'M&M', 'Doce de Leite']; // Removido 'Frango'
+                                    if (!combo1ForbiddenFlavors.includes(cb.value) && !sweetFlavors.includes(cb.value)) {
+                                        cb.disabled = false;
+                                    }
+                                } else if (selectedItem.id === 'pizza-tradicional-grande' || selectedItem.id === 'pizza-media') { // Pizza Grande/Média Tradicional
+                                    const pizzaTradicionalForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar'];
+                                    if (!pizzaTradicionalForbiddenFlavors.includes(cb.value)) {
+                                        cb.disabled = false;
+                                    }
+                                } else if (selectedItem.id.includes('pizza-especial')) {
+                                    // Para pizzas individuais (especial), re-habilitar todos os sabores
                                     cb.disabled = false;
                                 }
-                            } else if (selectedItem.id === 'esfirra-doce') { // Rule for sweet esfirra: only re-enable sweet
-                                if (sweetFlavors.includes(cb.value)) {
+                                else if (selectedItem.id === 'esfirra-doce') {
+                                    if (sweetFlavors.includes(cb.value)) {
+                                        cb.disabled = false;
+                                    }
+                                } else if (selectedItem.id === 'esfirra-tradicional') { // Esfirra Tradicional
+                                    const esfirraTradicionalForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar'];
+                                    if (!sweetFlavors.includes(cb.value) && !esfirraTradicionalForbiddenFlavors.includes(cb.value)) {
+                                        cb.disabled = false;
+                                    }
+                                } else if (selectedItem.id === 'esfirra-especial') { // Esfirra Especial
+                                    const esfirraEspecialAllowedFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar'];
+                                    if (esfirraEspecialAllowedFlavors.includes(cb.value)) { // Apenas os sabores permitidos são re-habilitados
+                                        cb.disabled = false;
+                                    }
+                                } else { // Fallback para outros tipos
                                     cb.disabled = false;
                                 }
+                                console.log(`(Re)enabling checkbox: ${cb.value}, disabled: ${cb.disabled}`); // Log de depuração
                             }
-                            else if (selectedItem.id === 'esfirra-especial' || selectedItem.id === 'pizza-especial-grande' || selectedItem.id === 'pizza-especial-media') {
-                                // Rule for special esfirra and special pizzas: re-enable everything that is not sweet
-                                if (!sweetFlavors.includes(cb.value)) {
-                                     cb.disabled = false;
-                                }
-                            }
-                            else { // For other types (fallback), enable all
-                                cb.disabled = false;
-                            }
-                        }
-                    });
-                }
-                updateFinalizeButtonState();
+                        });
+                    }
+                    // Atualiza o array de sabores do alvo
+                    // Reatribuir diretamente para garantir que a variável global seja atualizada
+                    if (checkboxes[0].name === "flavor") {
+                        selectedFlavors = Array.from(checkboxes).filter(cb => cb.checked).map(cb => cb.value);
+                    } else if (checkboxes[0].name === "flavor-pizza1") {
+                        selectedFlavorsPizza1 = Array.from(checkboxes).filter(cb => cb.checked).map(cb => cb.value);
+                    } else if (checkboxes[0].name === "flavor-pizza2") {
+                        selectedFlavorsPizza2 = Array.from(checkboxes).filter(cb => cb.checked).map(cb => cb.value);
+                    }
+                    
+                    console.log('selectedFlavors (depois da atualização em handleFlavorSelection):', selectedFlavors); // NOVO LOG
+                    console.log('selectedFlavorsPizza1 (depois da atualização em handleFlavorSelection):', selectedFlavorsPizza1); // NOVO LOG
+                    console.log('selectedFlavorsPizza2 (depois da atualização em handleFlavorSelection):', selectedFlavorsPizza2); // NOVO LOG
+                    updateFinalizeButtonState();
+                });
             });
-        });
+        }
 
-        // Add listener for each beverage radio button
+        // Aplica a função de seleção de sabores para cada grupo de checkboxes
+        handleFlavorSelection(flavorCheckboxesSingle, selectedFlavors);
+        handleFlavorSelection(flavorCheckboxesPizza1, selectedFlavorsPizza1, true); // Pass true for isCombo2Pizza
+        handleFlavorSelection(flavorCheckboxesPizza2, selectedFlavorsPizza2, true); // Pass true for isCombo2Pizza
+
+
+        // Adiciona listener para cada radio button de bebida
         beverageRadios.forEach(radio => {
             radio.addEventListener('change', () => {
                 selectedBeverage = {
                     name: radio.value,
                     price: parseFloat(radio.dataset.beveragePrice),
-                    id: radio.dataset.beverageId // Add beverage ID
+                    id: radio.dataset.beverageId // Adiciona o ID da bebida
                 };
+                console.log('Bebida selecionada:', selectedBeverage); // Log de depuração
                 updateFinalizeButtonState(); 
             });
         });
 
-        // Add listener for each stuffed crust radio button
+        // Adiciona listener para cada radio button de borda recheada
         stuffedCrustRadios.forEach(radio => {
             radio.addEventListener('change', () => {
                 selectedCrust = {
@@ -634,81 +1094,112 @@
                     price: parseFloat(radio.dataset.crustPrice),
                     id: radio.dataset.crustId
                 };
-                // Crust selection does not change the "Add to Cart" button's enabled state
-                // as the button already depends on flavor selection.
+                console.log('Borda selecionada:', selectedCrust); // Log de depuração
             });
         });
 
 
-        // Function to update the state of the "Add to Cart" button
+        // Função para atualizar o estado do botão "Adicionar ao Carrinho"
         function updateFinalizeButtonState() {
-            const checkedFlavorsCount = document.querySelectorAll('input[name="flavor"]:checked').length;
-            let minFlavorsToEnableButton;
+            console.log('--- updateFinalizeButtonState chamada ---'); // Log de depuração
+            console.log('selectedItem:', selectedItem); // Log de depuração
+            console.log('selectedFlavors (no início de updateFinalizeButtonState):', selectedFlavors); // NOVO LOG
+            console.log('selectedFlavorsPizza1 (no início de updateFinalizeButtonState):', selectedFlavorsPizza1); // NOVO LOG
+            console.log('selectedFlavorsPizza2 (no início de updateFinalizeButtonState):', selectedFlavorsPizza2); // NOVO LOG
 
-            // Determine the minimum number of flavors to enable the button
-            if (selectedItem.id === 'combo2') {
-                minFlavorsToEnableButton = 1; 
-            } else if (selectedItem.id.includes('esfirra')) { // Savory (both) and Sweet Esfirra allow only 1 flavor
-                minFlavorsToEnableButton = 1;
-            }
-            else if (selectedItem.id.includes('pizza') || selectedItem.type === 'combo') { // Includes all pizza types and Combo1
-                minFlavorsToEnableButton = 1; 
+            let isFlavorConditionMet = false;
+            addToCartMessage.textContent = ''; // Limpa a mensagem por padrão
+
+            const itemType = selectedItem.type;
+            const itemId = selectedItem.id;
+
+            if (itemType === 'combo' || itemId.includes('pizza') || itemId.includes('esfirra')) {
+                // Estes itens requerem seleção de sabor
+                if (itemId === 'combo2') {
+                    // Combo 2 requer sabores para ambas as pizzas
+                    // Usar os arrays de sabores já atualizados pela função handleFlavorSelection
+                    isFlavorConditionMet = (selectedFlavorsPizza1.length >= 1) && (selectedFlavorsPizza2.length >= 1);
+                    console.log('Combo 2 - Pizza 1 selecionada (array):', selectedFlavorsPizza1.length, 'Pizza 2 selecionada (array):', selectedFlavorsPizza2.length); // Log de depuração
+                } else if (itemId === 'esfirra-doce' || itemId === 'esfirra-tradicional' || itemId === 'esfirra-especial') {
+                    // Esfirras requerem exatamente 1 sabor
+                    // Usar o array de sabores já atualizado
+                    isFlavorConditionMet = (selectedFlavors.length === 1); // Esfirras precisam de exatamente 1
+                    console.log('Esfirra - selecionada (array):', selectedFlavors.length); // Log de depuração
+                } else if (itemId === 'combo1' || itemId.includes('pizza')) { // Alterado para incluir pizzas individuais
+                    // Pizzas e Combo 1 requerem pelo menos 1 sabor (até 2)
+                    // Usar o array de sabores já atualizado
+                    isFlavorConditionMet = (selectedFlavors.length >= 1); // Pizzas/Combo1 precisam de pelo menos 1
+                    console.log('Pizza/Combo 1 - selecionada (array):', selectedFlavors.length); // Log de depuração
+                }
             } else {
-                minFlavorsToEnableButton = 0; 
+                // Para itens que não precisam de seleção de sabor (ex: bebidas do menu principal)
+                isFlavorConditionMet = true; 
+                console.log('Item sem seleção de sabor (ex: bebida do menu principal).'); // Log de depuração
             }
 
-            // The "Add to Cart" button is enabled if the flavor condition is met
-            const isFlavorConditionMet = checkedFlavorsCount >= minFlavorsToEnableButton;
-            addToCartBtn.disabled = !isFlavorConditionMet; // Use addToCartBtn
+            addToCartBtn.disabled = !isFlavorConditionMet;
+            console.log('isFlavorConditionMet:', isFlavorConditionMet); // Log de depuração
+            console.log('addToCartBtn.disabled definido para:', !isFlavorConditionMet); // Log de depuração
+            console.log('-----------------------------------------'); // Log de depuração
         }
 
-        // Click event for the "Add to Cart" button
-        addToCartBtn.addEventListener('click', () => { // Use addToCartBtn
-            const selectedFlavors = Array.from(document.querySelectorAll('input[name="flavor"]:checked'))
-                                       .map(cb => cb.value);
-            
-            // Add pizza/combo/esfirra to cart
-            cart.push({
-                name: selectedItem.name,
-                price: selectedItem.price + selectedCrust.price, // PRICE ADJUSTED WITH CRUST
-                quantity: 1, 
-                flavors: selectedFlavors,
-                type: selectedItem.type,
-                id: selectedItem.id,
-                crust: selectedCrust.name !== 'Sem Borda Recheada' ? selectedCrust : null // Store selected crust
-            });
+        // Evento de clique para o botão "Adicionar ao Carrinho"
+        addToCartBtn.addEventListener('click', () => {
+            // Se for Combo 2, adiciona com os sabores separados
+            if (selectedItem.id === 'combo2') {
+                cart.push({
+                    name: selectedItem.name,
+                    price: selectedItem.price + selectedCrust.price,
+                    quantity: 1, 
+                    flavors: { pizza1: selectedFlavorsPizza1, pizza2: selectedFlavorsPizza2 }, // Sabores como objeto
+                    type: selectedItem.type,
+                    id: selectedItem.id,
+                    crust: selectedCrust.name !== 'Sem Borda Recheada' ? selectedCrust : null
+                });
+            } else {
+                // Para outros itens, adiciona com o array de sabores normal
+                cart.push({
+                    name: selectedItem.name,
+                    price: selectedItem.price + selectedCrust.price,
+                    quantity: 1, 
+                    flavors: selectedFlavors, // Usa o array de sabores único
+                    type: selectedItem.type,
+                    id: selectedItem.id,
+                    crust: selectedCrust.name !== 'Sem Borda Recheada' ? selectedCrust : null
+                });
+            }
 
-            // If a beverage was selected (and is not "Nenhuma bebida"), add it as a separate item
+            // Se uma bebida foi selecionada (e não é "Nenhuma bebida"), adicione-a como um item separado
             if (selectedBeverage.name !== 'Nenhuma bebida') {
                 cart.push({
                     name: selectedBeverage.name,
                     price: selectedBeverage.price,
-                    quantity: 1, // Beverage is added as 1 unit by default
-                    type: 'beverage', // New type for beverages
+                    quantity: 1,
+                    type: 'beverage',
                     id: selectedBeverage.id 
                 });
             }
 
-            updateCartIconCount(); // Update cart icon count
-            showPage('order-summary'); // Go to order summary/cart screen
+            updateCartIconCount();
+            showPage('order-summary');
         });
 
-        // === Shopping Cart / Summary Logic ===
+        // === Lógica do Carrinho de Compras / Resumo ===
         const cartItemsContainer = document.getElementById('cart-items-container');
         const cartTotalPriceElement = document.getElementById('cart-total-price');
         const placeOrderBtn = document.getElementById('place-order-btn');
         const emptyCartMessage = document.getElementById('empty-cart-message');
 
-        // References to address fields
+        // Referências aos campos de endereço
         const addressStreetInput = document.getElementById('address-street');
         const addressNumberInput = document.getElementById('address-number');
         const addressNeighborhoodInput = document.getElementById('address-neighborhood');
         const addressReferenceInput = document.getElementById('address-reference');
 
-        // Variable to store the selected payment option
-        let selectedPaymentMethod = 'Pix'; // Pix as default
+        // Variável para armazenar a opção de pagamento selecionada
+        let selectedPaymentMethod = 'Pix'; // Pix como padrão
 
-        // Listener for payment radio buttons
+        // Listener para os radio buttons de pagamento
         document.querySelectorAll('input[name="payment-method"]').forEach(radio => {
             radio.addEventListener('change', () => {
                 selectedPaymentMethod = radio.value;
@@ -717,7 +1208,7 @@
 
 
         function renderCart() {
-            cartItemsContainer.innerHTML = ''; // Clear current cart content
+            cartItemsContainer.innerHTML = ''; // Limpa o conteúdo atual do carrinho
             
             if (cart.length === 0) {
                 emptyCartMessage.classList.remove('hidden');
@@ -727,16 +1218,17 @@
                 placeOrderBtn.disabled = false;
 
                 cart.forEach((item, index) => {
-                    let itemDisplayPrice = item.price; // Unit price for display
+                    let itemDisplayPrice = item.price; // Preço unitário para exibição
                     let itemDescription = '';
 
                     if (item.type === 'beverage') {
                         itemDescription = `Bebida: ${item.name}`;
-                    } else { // It's a pizza or combo or esfirra
-                        // Build flavor text
+                    } else { // É uma pizza ou combo ou esfirra
+                        // Monta o texto dos sabores
                         let flavorsText = '';
-                        if (item.flavors && item.flavors.length > 0) {
-                            // Adjusted for esfirras: if it's an esfirra and only 1 flavor, show as whole
+                        if (item.id === 'combo2' && item.flavors && item.flavors.pizza1 && item.flavors.pizza2) {
+                            flavorsText = `\n  Pizza 1: (${item.flavors.pizza1.join(' e ')})\n  Pizza 2: (${item.flavors.pizza2.join(' e ')})`;
+                        } else if (item.flavors && item.flavors.length > 0) {
                             if (item.flavors.length === 1 && item.id.includes('esfirra')) { 
                                 flavorsText = ` (${item.flavors[0]} inteira)`;
                             } else if (item.flavors.length === 1) { 
@@ -744,17 +1236,17 @@
                             }
                              else if (item.flavors.length === 2) { 
                                 flavorsText = ` (${item.flavors[0]} e ${item.flavors[1]})`;
-                            } else if (item.flavors.length >= 2 && item.id === 'combo2') { 
-                                flavorsText = item.flavors.slice(0, -1).join(', ') + ' e ' + item.flavors[item.flavors.length - 1];
+                            } else { 
+                                flavorsText = ` (${item.flavors.join(', ')})`;
                             }
                         } else {
                             flavorsText = 'N/A';
                         }
                         itemDescription = `Sabores: ${flavorsText}`;
 
-                        // Add stuffed crust to description
+                        // Adiciona a borda recheada à descrição
                         if (item.crust && item.crust.name !== 'Sem Borda Recheada') {
-                            crustText = ` (Borda: ${item.crust.name})`;
+                            itemDescription += `<br>Borda: ${item.crust.name}`;
                         }
                     }
                     
@@ -774,64 +1266,54 @@
                     `;
                     cartItemsContainer.innerHTML += cartItemHtml;
                 });
-                updateCartIconCount(); // Update cart icon count
+                updateCartIconCount(); // Atualiza a contagem no ícone do carrinho
             }
-            calculateTotalCartPrice(); // Recalculate total (now without delivery fee)
+            calculateTotalCartPrice(); // Recalcula o total (agora sem taxa de entrega)
         }
 
-        // Function to update the quantity of an item in the cart
+        // Função para atualizar a quantidade de um item no carrinho
         function updateQuantity(index, change) {
             if (cart[index]) {
                 cart[index].quantity += change;
                 if (cart[index].quantity <= 0) {
-                    cart.splice(index, 1); // Remove item if quantity is 0 or less
+                    cart.splice(index, 1); // Remove o item se a quantidade for 0 ou menos
                 }
             }
-            renderCart(); // Re-render cart to reflect changes
+            renderCart(); // Re-renderiza o carrinho para refletir as mudanças
         }
 
-        // Functions related to delivery fee calculation were commented out/removed
-        /*
-        function calculateDeliveryFee(distance) { ... }
-        const ORIGIN_ZIP_CODE = '69095510';
-        const Maps_API_KEY = 'AIzaSyBd6-d4xDeEdHCILpv_c5xqGTBAR8o8xm4';
-        async function getDistanceViaGoogleMapsAPI(originZip, destinationZip) { ... }
-        function getSimulatedDistance(destinationZip) { ... }
-        */
-
-        // Function to calculate and display the cart total, WITHOUT the delivery fee
+        // Função para calcular e exibir o total do carrinho, SEM a taxa de entrega
         function calculateTotalCartPrice() {
             let subtotal = 0;
             cart.forEach(item => {
                 subtotal += item.price * item.quantity;
             });
 
-            // deliveryFee is now always 0, so just sum the subtotal
-            let total = subtotal; // Do not sum deliveryFee
+            // deliveryFee agora é sempre 0, então basta somar o subtotal
+            let total = subtotal; // Não soma deliveryFee
             cartTotalPriceElement.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
         }
 
-        // The event for the "Calcular Taxa" button was removed
-        // calculateDeliveryBtn.addEventListener('click', async () => { ... });
-
-        // Event for the "Enviar Pedido" button
+        // Evento para o botão "Enviar Pedido"
         placeOrderBtn.addEventListener('click', () => {
             const whatsappNumber = '92986161640';
             const message = prepareWhatsAppMessage();
             const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-            window.open(whatsappLink, '_blank'); // Open WhatsApp link in a new tab
+            window.open(whatsappLink, '_blank'); // Abre o link no WhatsApp em uma nova aba
         });
 
-        // Function to prepare the WhatsApp message
+        // Função para preparar a mensagem do WhatsApp
         function prepareWhatsAppMessage() {
             let message = 'Olá! Gostaria de fazer um pedido na Rotella Pizzaria:\n\n*Itens do Pedido:*\n';
 
             cart.forEach(item => {
                 let itemDetails = `- ${item.quantity}x ${item.name}`;
-                if (item.type !== 'beverage') { // If it's pizza/combo, add flavors and crust
+                if (item.type !== 'beverage') { // Se for pizza/combo, adiciona sabores e borda
                     let flavorsText = '';
-                    if (item.flavors && item.flavors.length > 0) {
-                        if (item.id.includes('esfirra') && item.flavors.length === 1) { 
+                    if (item.id === 'combo2' && item.flavors && item.flavors.pizza1 && item.flavors.pizza2) {
+                        flavorsText = `\n  Pizza 1: (${item.flavors.pizza1.join(' e ')})\n  Pizza 2: (${item.flavors.pizza2.join(' e ')})`;
+                    } else if (item.flavors && item.flavors.length > 0) {
+                        if (item.flavors.length === 1 && item.id.includes('esfirra')) { 
                             flavorsText = ` (${item.flavors[0]} inteira)`;
                         } else if (item.flavors.length === 1) { 
                             flavorsText = ` (${item.flavors[0]} inteira)`;
@@ -851,7 +1333,7 @@
             });
 
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            message += `\n*Total do Pedido:* R$ ${subtotal.toFixed(2).replace('.', ',')}\n\n`; // Subtotal only
+            message += `\n*Total do Pedido:* R$ ${subtotal.toFixed(2).replace('.', ',')}\n\n`; // Apenas o subtotal
             
             message += `*Endereço de Entrega:*\n`;
             message += `Rua: ${addressStreetInput.value || 'Não informado'}\n`;
@@ -869,11 +1351,43 @@
             return message;
         }
 
+        // Function to check if the pizzaria is open and display the status
+        function updatePizzariaStatus() {
+            const now = new Date();
+            const dayOfWeek = now.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+            const currentHour = now.getHours();
+            const currentMinute = now.getMinutes();
 
-        // Initialize by showing the main menu page and updating the cart icon
+            const statusElement = document.getElementById('pizzaria-status');
+            let isOpen = false;
+            let message = '';
+
+            // Operating hours: Thursday (4) to Sunday (0) from 18:00 to 00:00 (next day)
+            const openHour = 18; // 6 PM
+            const closeHour = 0; // 12 AM (midnight)
+
+            if (dayOfWeek === 4 || dayOfWeek === 5 || dayOfWeek === 6 || dayOfWeek === 0) { // Thursday, Friday, Saturday, Sunday
+                if (currentHour >= openHour || currentHour < closeHour) { // From 6 PM to midnight, or from midnight to 12 AM (next day)
+                    isOpen = true;
+                }
+            }
+
+            if (isOpen) {
+                message = '<span class="text-green-600">Pizzaria Aberta! Faça seu pedido!</span>';
+            } else {
+                message = '<span class="text-red-600">Pizzaria Fechada. Horário de funcionamento: Qui-Dom, 18h - 00h.</span>';
+            }
+            statusElement.innerHTML = message;
+        }
+
+
+        // Inicializa mostrando a página do cardápio principal e atualiza o ícone do carrinho
         document.addEventListener('DOMContentLoaded', () => {
             showPage('main-menu');
-            updateCartIconCount(); // Ensure cart count is displayed correctly on load
+            updateCartIconCount(); // Garante que a contagem do carrinho seja exibida corretamente ao carregar
+            updatePizzariaStatus(); // Atualiza o status da pizzaria ao carregar
+            // Opcionalmente, atualiza o status a cada minuto para mantê-lo atualizado
+            setInterval(updatePizzariaStatus, 60 * 1000); 
         });
     </script>
 </body>
