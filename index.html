@@ -122,7 +122,7 @@
                      data-item-type="pizza-especial" data-item-id="pizza-especial-grande" data-item-name="Pizza Grande Especial" data-item-price="44.90">
                     <!-- Container para a imagem, texto e preço, usando flexbox para alinhamento -->
                     <div class="flex flex-col sm:flex-row items-center w-full">
-                        <!-- Imagem da pizza -->
+                        <!-- Image of the pizza -->
                         <img src="https://i.ibb.co/tPKgFvTp/pizza-frango-e-calabresa-com-catupiry-rotella.png" alt="Pizza Frango e Calabresa com Catupiry Rotella" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-lg mr-4 mb-2 sm:mb-0">
                         <div class="flex-grow text-center sm:text-left">
                             <p class="text-lg font-bold text-gray-900">Pizza Grande Especial</p>
@@ -556,6 +556,129 @@
                 </div>
             </div>
 
+            <div id="esfirra-options-single" class="mb-10 hidden">
+                <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Escolha a Quantidade de Esfirras</h3>
+                <div id="esfirra-flavor-quantity-options" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    <!-- Esfirra flavors with quantity controls will be dynamically shown/hidden -->
+                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+                        <span class="text-lg text-gray-800 font-medium">Portuguesa</span>
+                        <div class="flex items-center space-x-2">
+                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Portuguesa">-</button>
+                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Portuguesa">
+                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Portuguesa">+</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+                        <span class="text-lg text-gray-800 font-medium">Calabresa</span>
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Calabresa</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, calabresa fatiada e cebola.</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Calabresa">-</button>
+                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Calabresa">
+                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Calabresa">+</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+                        <span class="text-lg text-gray-800 font-medium">Mussarela</span>
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Mussarela</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro e mussarela.</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Mussarela">-</button>
+                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Mussarela">
+                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Mussarela">+</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+                        <span class="text-lg text-gray-800 font-medium">Marguerita</span>
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Marguerita</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, tomate e manjericão.</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Marguerita">-</button>
+                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Marguerita">
+                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Marguerita">+</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+                        <span class="text-lg text-gray-800 font-medium">Frango com Catupiry</span>
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Frango com Catupiry</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, frango desfiado e catupiry.</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Frango com Catupiry">-</button>
+                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Frango com Catupiry">
+                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Frango com Catupiry">+</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+                        <span class="text-lg text-gray-800 font-medium">Calabresa com Catupiry</span>
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Calabresa com Catupiry</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, calabresa fatiada e catupiry.</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Calabresa com Catupiry">-</button>
+                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Calabresa com Catupiry">
+                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Calabresa com Catupiry">+</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+                        <span class="text-lg text-gray-800 font-medium">Bacon com Catupiry</span>
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Bacon com Catupiry</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, bacon crocante e catupiry.</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Bacon com Catupiry">-</button>
+                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Bacon com Catupiry">
+                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Bacon com Catupiry">+</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+                        <span class="text-lg text-gray-800 font-medium">Bacon com Cheddar</span>
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Bacon com Cheddar</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, bacon crocante e cheddar cremoso.</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Bacon com Cheddar">-</button>
+                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Bacon com Cheddar">
+                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Bacon com Cheddar">+</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+                        <span class="text-lg text-gray-800 font-medium">Bacon</span>
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Bacon</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela e bacon crocante.</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Bacon">-</button>
+                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Bacon">
+                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Bacon">+</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+                        <span class="text-lg text-gray-800 font-medium">Frango</span>
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Frango</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, frango desfiado.</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Frango">-</button>
+                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Frango">
+                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Frango">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div id="crust-options-section" class="mb-10 hidden">
                 <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Borda Recheada</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
@@ -701,6 +824,9 @@
         // Variável para armazenar os sabores para itens de sabor único (pizza individual, esfirra)
         let selectedFlavors = []; 
 
+        // Objeto para armazenar as quantidades das esfirras selecionadas
+        let esfirraQuantities = {};
+
         // Função para mostrar a página correta e esconder as outras
         function showPage(pageId) {
             document.querySelectorAll('.page-section').forEach(section => {
@@ -758,6 +884,12 @@
                 selectedFlavorsPizza1 = [];
                 selectedFlavorsPizza2 = [];
                 selectedFlavors = [];
+
+                // Reinicia as quantidades das esfirras
+                esfirraQuantities = {};
+                document.querySelectorAll('.quantity-input').forEach(input => {
+                    input.value = 0;
+                });
 
 
                 // Atualiza o texto de instrução da seleção de sabores e o estado do botão
@@ -818,10 +950,14 @@
         const pizza1FlavorSection = document.getElementById('pizza1-flavor-section');
         const pizza2FlavorSection = document.getElementById('pizza2-flavor-section');
         const singleFlavorSection = document.getElementById('flavor-options-single');
+        const esfirraOptionsSection = document.getElementById('esfirra-options-single'); // Nova seção para esfirras com quantidade
 
 
         const traditionalFlavors = ['Portuguesa', 'Calabresa', 'Mussarela', 'Marguerita', 'Frango', 'Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon', 'Bacon com Catupiry', 'Bacon com Cheddar']; // Inclui os sabores tradicionais que podem ser escolhidos
         const sweetFlavors = ['Brigadeiro', 'Romeu e Julieta', 'M&M', 'Doce de Leite']; // Sabores doces específicos
+
+        const esfirraSalgadaAllowedFlavors = ['Portuguesa', 'Calabresa', 'Mussarela', 'Marguerita', 'Frango', 'Bacon']; // Sabores permitidos para esfirra salgada tradicional
+        const esfirraEspecialAllowedFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar']; // Sabores permitidos para esfirra salgada especial
 
 
         // Função para atualizar as instruções de seleção de sabor e habilitar/desabilitar checkboxes
@@ -831,6 +967,7 @@
             pizza1FlavorSection.classList.add('hidden');
             pizza2FlavorSection.classList.add('hidden');
             singleFlavorSection.classList.add('hidden');
+            esfirraOptionsSection.classList.add('hidden'); // Esconde a seção de esfirras por padrão
 
             document.querySelectorAll('input[name="flavor"], input[name="flavor-pizza1"], input[name="flavor-pizza2"]').forEach(cb => {
                 cb.checked = false;
@@ -953,31 +1090,34 @@
                 });
             }
             else if (selectedItem.id === 'esfirra-tradicional') { 
-                singleFlavorSection.classList.remove('hidden');
-                flavorInstructionTextSingle.textContent = 'Escolha apenas 1 sabor para sua esfirra.';
-                // Para Esfirra Tradicional, apenas sabores salgados permitidos, exceto os especificados
+                esfirraOptionsSection.classList.remove('hidden'); // Mostra a seção de esfirras com quantidade
+                flavorInstructionTextSingle.textContent = 'Escolha a quantidade para cada sabor de esfirra.';
+                // Esfirra Tradicional: apenas sabores salgados permitidos, exceto os especificados
                 const esfirraTradicionalForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar'];
-                flavorCheckboxesSingle.forEach(cb => {
-                    if (sweetFlavors.includes(cb.value) || esfirraTradicionalForbiddenFlavors.includes(cb.value)) {
-                        cb.disabled = true;
-                        cb.closest('label').classList.add('disabled-option');
-                        cb.closest('label').style.display = 'none'; // Esconde sabores doces e os especificados
+                document.querySelectorAll('#esfirra-flavor-quantity-options .esfirra-flavor-item').forEach(itemDiv => {
+                    const flavorName = itemDiv.querySelector('span').textContent.trim();
+                    if (sweetFlavors.includes(flavorName) || esfirraTradicionalForbiddenFlavors.includes(flavorName)) {
+                        itemDiv.style.display = 'none'; // Esconde sabores não permitidos
+                    } else {
+                        itemDiv.style.display = 'flex'; // Garante que os permitidos estejam visíveis
                     }
                 });
-            } else if (selectedItem.id === 'esfirra-especial') { // Esfirra Especial
-                singleFlavorSection.classList.remove('hidden');
-                flavorInstructionTextSingle.textContent = 'Escolha apenas 1 sabor para sua esfirra.';
-                // Para Esfirra Especial, apenas os 4 sabores especificados são permitidos.
+            } else if (selectedItem.id === 'esfirra-especial') { 
+                esfirraOptionsSection.classList.remove('hidden'); // Mostra a seção de esfirras com quantidade
+                flavorInstructionTextSingle.textContent = 'Escolha a quantidade para cada sabor de esfirra.';
+                // Esfirra Especial: apenas os 4 sabores especificados são permitidos.
                 const esfirraEspecialAllowedFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar'];
-                flavorCheckboxesSingle.forEach(cb => {
-                    if (!esfirraEspecialAllowedFlavors.includes(cb.value)) {
-                        cb.disabled = true;
-                        cb.closest('label').classList.add('disabled-option');
-                        cb.closest('label').style.display = 'none'; // Esconde sabores não permitidos
+                document.querySelectorAll('#esfirra-flavor-quantity-options .esfirra-flavor-item').forEach(itemDiv => {
+                    const flavorName = itemDiv.querySelector('span').textContent.trim();
+                    if (!esfirraEspecialAllowedFlavors.includes(flavorName)) {
+                        itemDiv.style.display = 'none'; // Esconde sabores não permitidos
+                    } else {
+                        itemDiv.style.display = 'flex'; // Garante que os permitidos estejam visíveis
                     }
                 });
             } else { // Se o item selecionado não for pizza, combo ou esfirra (ex: bebidas do menu principal)
                 singleFlavorSection.classList.add('hidden'); // Esconde a seção de sabores
+                esfirraOptionsSection.classList.add('hidden'); // Garante que a seção de esfirras esteja oculta
                 flavorInstructionTextSingle.textContent = '';
                 // Não precisa fazer nada com os checkboxes de sabor, pois esta seção estará oculta
             }
@@ -1098,6 +1238,40 @@
             });
         });
 
+        // Event listeners para os botões de quantidade das esfirras
+        document.querySelectorAll('#esfirra-flavor-quantity-options .quantity-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const flavor = this.dataset.flavor;
+                const action = this.dataset.action;
+                const input = this.parentNode.querySelector('.quantity-input');
+                let currentValue = parseInt(input.value);
+
+                if (action === 'increase') {
+                    currentValue++;
+                } else if (action === 'decrease' && currentValue > 0) {
+                    currentValue--;
+                }
+                input.value = currentValue;
+                esfirraQuantities[flavor] = currentValue;
+                console.log('esfirraQuantities:', esfirraQuantities);
+                updateFinalizeButtonState();
+            });
+        });
+
+        document.querySelectorAll('#esfirra-flavor-quantity-options .quantity-input').forEach(input => {
+            input.addEventListener('change', function() {
+                const flavor = this.dataset.flavor;
+                let currentValue = parseInt(this.value);
+                if (isNaN(currentValue) || currentValue < 0) {
+                    currentValue = 0;
+                    this.value = 0;
+                }
+                esfirraQuantities[flavor] = currentValue;
+                console.log('esfirraQuantities:', esfirraQuantities);
+                updateFinalizeButtonState();
+            });
+        });
+
 
         // Função para atualizar o estado do botão "Adicionar ao Carrinho"
         function updateFinalizeButtonState() {
@@ -1106,47 +1280,61 @@
             console.log('selectedFlavors (no início de updateFinalizeButtonState):', selectedFlavors); // NOVO LOG
             console.log('selectedFlavorsPizza1 (no início de updateFinalizeButtonState):', selectedFlavorsPizza1); // NOVO LOG
             console.log('selectedFlavorsPizza2 (no início de updateFinalizeButtonState):', selectedFlavorsPizza2); // NOVO LOG
+            console.log('esfirraQuantities (no início de updateFinalizeButtonState):', esfirraQuantities); // NOVO LOG para esfirras
 
-            let isFlavorConditionMet = false;
+            let isConditionMet = false;
             addToCartMessage.textContent = ''; // Limpa a mensagem por padrão
 
             const itemType = selectedItem.type;
             const itemId = selectedItem.id;
 
-            if (itemType === 'combo' || itemId.includes('pizza') || itemId.includes('esfirra')) {
-                // Estes itens requerem seleção de sabor
+            if (itemType === 'combo' || itemId.includes('pizza')) {
+                // Lógica para pizzas e combos (seleção de sabores por checkbox)
                 if (itemId === 'combo2') {
-                    // Combo 2 requer sabores para ambas as pizzas
-                    // Usar os arrays de sabores já atualizados pela função handleFlavorSelection
-                    isFlavorConditionMet = (selectedFlavorsPizza1.length >= 1) && (selectedFlavorsPizza2.length >= 1);
+                    isConditionMet = (selectedFlavorsPizza1.length >= 1) && (selectedFlavorsPizza2.length >= 1);
                     console.log('Combo 2 - Pizza 1 selecionada (array):', selectedFlavorsPizza1.length, 'Pizza 2 selecionada (array):', selectedFlavorsPizza2.length); // Log de depuração
-                } else if (itemId === 'esfirra-doce' || itemId === 'esfirra-tradicional' || itemId === 'esfirra-especial') {
-                    // Esfirras requerem exatamente 1 sabor
-                    // Usar o array de sabores já atualizado
-                    isFlavorConditionMet = (selectedFlavors.length === 1); // Esfirras precisam de exatamente 1
-                    console.log('Esfirra - selecionada (array):', selectedFlavors.length); // Log de depuração
-                } else if (itemId === 'combo1' || itemId.includes('pizza')) { // Alterado para incluir pizzas individuais
-                    // Pizzas e Combo 1 requerem pelo menos 1 sabor (até 2)
-                    // Usar o array de sabores já atualizado
-                    isFlavorConditionMet = (selectedFlavors.length >= 1); // Pizzas/Combo1 precisam de pelo menos 1
+                } else { // Combo 1 ou pizzas individuais
+                    isConditionMet = (selectedFlavors.length >= 1);
                     console.log('Pizza/Combo 1 - selecionada (array):', selectedFlavors.length); // Log de depuração
                 }
+            } else if (itemId.includes('esfirra')) {
+                // Lógica para esfirras (seleção de quantidade por sabor)
+                let totalEsfirraQuantity = 0;
+                for (const flavor in esfirraQuantities) {
+                    totalEsfirraQuantity += esfirraQuantities[flavor];
+                }
+                isConditionMet = (totalEsfirraQuantity > 0);
+                console.log('Esfirra - Quantidade total:', totalEsfirraQuantity); // Log de depuração
             } else {
-                // Para itens que não precisam de seleção de sabor (ex: bebidas do menu principal)
-                isFlavorConditionMet = true; 
-                console.log('Item sem seleção de sabor (ex: bebida do menu principal).'); // Log de depuração
+                // Para outros itens que não precisam de seleção de sabor/quantidade (ex: bebidas do menu principal)
+                isConditionMet = true; 
+                console.log('Item sem seleção de sabor/quantidade (ex: bebida do menu principal).'); // Log de depuração
             }
 
-            addToCartBtn.disabled = !isFlavorConditionMet;
-            console.log('isFlavorConditionMet:', isFlavorConditionMet); // Log de depuração
-            console.log('addToCartBtn.disabled definido para:', !isFlavorConditionMet); // Log de depuração
+            addToCartBtn.disabled = !isConditionMet;
+            console.log('isConditionMet:', isConditionMet); // Log de depuração
+            console.log('addToCartBtn.disabled definido para:', !isConditionMet); // Log de depuração
             console.log('-----------------------------------------'); // Log de depuração
         }
 
         // Evento de clique para o botão "Adicionar ao Carrinho"
         addToCartBtn.addEventListener('click', () => {
-            // Se for Combo 2, adiciona com os sabores separados
-            if (selectedItem.id === 'combo2') {
+            if (selectedItem.id.includes('esfirra')) {
+                // Adiciona esfirras com suas quantidades
+                for (const flavor in esfirraQuantities) {
+                    const quantity = esfirraQuantities[flavor];
+                    if (quantity > 0) {
+                        cart.push({
+                            name: `${selectedItem.name} (${flavor})`,
+                            price: selectedItem.price, // Preço por unidade de esfirra
+                            quantity: quantity,
+                            flavors: [flavor],
+                            type: selectedItem.type,
+                            id: `${selectedItem.id}-${flavor.toLowerCase().replace(/\s/g, '-')}`
+                        });
+                    }
+                }
+            } else if (selectedItem.id === 'combo2') {
                 cart.push({
                     name: selectedItem.name,
                     price: selectedItem.price + selectedCrust.price,
@@ -1223,15 +1411,15 @@
 
                     if (item.type === 'beverage') {
                         itemDescription = `Bebida: ${item.name}`;
+                    } else if (item.type.includes('esfirra') && item.flavors.length === 1) { // Esfirra com quantidade
+                        itemDescription = `Sabor: ${item.flavors[0]}`;
                     } else { // É uma pizza ou combo ou esfirra
                         // Monta o texto dos sabores
                         let flavorsText = '';
                         if (item.id === 'combo2' && item.flavors && item.flavors.pizza1 && item.flavors.pizza2) {
-                            flavorsText = `\n  Pizza 1: (${item.flavors.pizza1.join(' e ')})\n  Pizza 2: (${item.flavors.pizza2.join(' e ')})`;
+                            flavorsText = `Pizza 1: (${item.flavors.pizza1.join(' e ')})\n  Pizza 2: (${item.flavors.pizza2.join(' e ')})`;
                         } else if (item.flavors && item.flavors.length > 0) {
-                            if (item.flavors.length === 1 && item.id.includes('esfirra')) { 
-                                flavorsText = ` (${item.flavors[0]} inteira)`;
-                            } else if (item.flavors.length === 1) { 
+                            if (item.flavors.length === 1) { 
                                 flavorsText = ` (${item.flavors[0]} inteira)`;
                             }
                              else if (item.flavors.length === 2) { 
@@ -1313,8 +1501,8 @@
                     if (item.id === 'combo2' && item.flavors && item.flavors.pizza1 && item.flavors.pizza2) {
                         flavorsText = `\n  Pizza 1: (${item.flavors.pizza1.join(' e ')})\n  Pizza 2: (${item.flavors.pizza2.join(' e ')})`;
                     } else if (item.flavors && item.flavors.length > 0) {
-                        if (item.flavors.length === 1 && item.id.includes('esfirra')) { 
-                            flavorsText = ` (${item.flavors[0]} inteira)`;
+                        if (item.flavors.length === 1 && item.type.includes('esfirra')) { // Esfirra com quantidade
+                            flavorsText = ` (${item.flavors[0]})`;
                         } else if (item.flavors.length === 1) { 
                             flavorsText = ` (${item.flavors[0]} inteira)`;
                         } else if (item.flavors.length === 2) { 
