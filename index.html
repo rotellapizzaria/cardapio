@@ -82,28 +82,28 @@
                 </p>
                 
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
-                     data-item-type="combo" data-item-id="combo1" data-item-name="Combo 1" data-item-price="39.90">
+                     data-item-type="combo" data-item-id="combo1" data-item-name="Combo 1" data-item-price="44.90">
                     <div class="flex-grow">
                         <p class="text-lg font-bold text-gray-900">Combo 1</p>
                         <p class="text-sm text-gray-600 mt-1">Pizza grande (até dois sabores) + Coca-cola ou Fanta laranja de 1L</p>
                     </div>
-                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 39,90</p>
+                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 44,90</p>
                 </div>
 
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
-                     data-item-type="combo" data-item-id="combo2" data-item-name="Combo 2" data-item-price="74.90">
+                     data-item-type="combo" data-item-id="combo2" data-item-name="Combo 2" data-item-price="79.90">
                     <div class="flex-grow">
                         <p class="text-lg font-bold text-gray-900">Combo 2</p>
                         <p class="text-sm text-gray-600 mt-1">2 Pizzas grandes (até dois sabores cada) + Coca-cola ou Fanta laranja de 2L</p>
                     </div>
-                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 74,90</p>
+                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 79,90</p>
                 </div>
             </div>
 
             <div class="mb-10">
                 <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Pizzas</h3>
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
-                     data-item-type="pizza-tradicional" data-item-id="pizza-tradicional-grande" data-item-name="Pizza Grande Tradicional" data-item-price="34.90">
+                     data-item-type="pizza-tradicional" data-item-id="pizza-tradicional-grande" data-item-name="Pizza Grande Tradicional" data-item-price="39.90">
                     <!-- Container para a imagem, texto e preço, usando flexbox para alinhamento -->
                     <div class="flex flex-col sm:flex-row items-center w-full">
                         <!-- Imagem da pizza -->
@@ -114,12 +114,12 @@
                         </div>
                         <!-- Displaying old price with strikethrough and new price -->
                         <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0 sm:ml-auto">
-                            <span class="line-through text-gray-500 text-base mr-2">R$ 44,90</span> R$ 34,90
+                            <span class="line-through text-gray-500 text-base mr-2">R$ 44,90</span> R$ 39,90
                         </p>
                     </div>
                 </div>
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
-                     data-item-type="pizza-especial" data-item-id="pizza-especial-grande" data-item-name="Pizza Grande Especial" data-item-price="44.90">
+                     data-item-type="pizza-especial" data-item-id="pizza-especial-grande" data-item-name="Pizza Grande Especial" data-item-price="49.90">
                     <!-- Container para a imagem, texto e preço, usando flexbox para alinhamento -->
                     <div class="flex flex-col sm:flex-row items-center w-full">
                         <!-- Image of the pizza -->
@@ -130,7 +130,7 @@
                         </div>
                         <!-- Displaying old price with strikethrough and new price for Pizza Grande Especial -->
                         <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0 sm:ml-auto">
-                            <span class="line-through text-gray-500 text-base mr-2">R$ 54,90</span> R$ 44,90
+                            <span class="line-through text-gray-500 text-base mr-2">R$ 54,90</span> R$ 49,90
                         </p>
                     </div>
                 </div>
@@ -172,7 +172,7 @@
                      data-item-type="esfirra-especial" data-item-id="esfirra-especial" data-item-name="Esfirra Salgada Especial" data-item-price="7.90">
                     <div class="flex-grow">
                         <p class="text-lg font-bold text-gray-900">Esfirra Salgada Especial</p>
-                        <p class="text-sm text-gray-600 mt-1">Todos os sabores</p>
+                        <p class="text-sm text-gray-600 mt-1">Sabores especiais</p>
                     </div>
                     <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 7,90</p>
                 </div>
@@ -553,6 +553,13 @@
                             <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, frango desfiado.</p>
                         </div>
                     </label>
+                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+                        <input type="checkbox" name="flavor" value="Oreo" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Oreo</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, chocolate, biscoito Oreo triturado.</p>
+                        </div>
+                    </label>
                 </div>
             </div>
 
@@ -561,7 +568,10 @@
                 <div id="esfirra-flavor-quantity-options" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                     <!-- Esfirra flavors with quantity controls will be dynamically shown/hidden -->
                     <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
-                        <span class="text-lg text-gray-800 font-medium">Portuguesa</span>
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Portuguesa</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, presunto, mussarela, ovos, cebola, ervilha e azeitona.</p>
+                        </div>
                         <div class="flex items-center space-x-2">
                             <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Portuguesa">-</button>
                             <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Portuguesa">
@@ -569,7 +579,6 @@
                         </div>
                     </div>
                     <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
-                        <span class="text-lg text-gray-800 font-medium">Calabresa</span>
                         <div class="ml-3">
                             <span class="text-lg text-gray-800 font-medium">Calabresa</span>
                             <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, calabresa fatiada e cebola.</p>
@@ -581,7 +590,6 @@
                         </div>
                     </div>
                     <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
-                        <span class="text-lg text-gray-800 font-medium">Mussarela</span>
                         <div class="ml-3">
                             <span class="text-lg text-gray-800 font-medium">Mussarela</span>
                             <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro e mussarela.</p>
@@ -593,7 +601,6 @@
                         </div>
                     </div>
                     <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
-                        <span class="text-lg text-gray-800 font-medium">Marguerita</span>
                         <div class="ml-3">
                             <span class="text-lg text-gray-800 font-medium">Marguerita</span>
                             <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, tomate e manjericão.</p>
@@ -605,7 +612,6 @@
                         </div>
                     </div>
                     <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
-                        <span class="text-lg text-gray-800 font-medium">Frango com Catupiry</span>
                         <div class="ml-3">
                             <span class="text-lg text-gray-800 font-medium">Frango com Catupiry</span>
                             <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, frango desfiado e catupiry.</p>
@@ -617,7 +623,6 @@
                         </div>
                     </div>
                     <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
-                        <span class="text-lg text-gray-800 font-medium">Calabresa com Catupiry</span>
                         <div class="ml-3">
                             <span class="text-lg text-gray-800 font-medium">Calabresa com Catupiry</span>
                             <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, calabresa fatiada e catupiry.</p>
@@ -629,7 +634,6 @@
                         </div>
                     </div>
                     <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
-                        <span class="text-lg text-gray-800 font-medium">Bacon com Catupiry</span>
                         <div class="ml-3">
                             <span class="text-lg text-gray-800 font-medium">Bacon com Catupiry</span>
                             <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, bacon crocante e catupiry.</p>
@@ -641,7 +645,6 @@
                         </div>
                     </div>
                     <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
-                        <span class="text-lg text-gray-800 font-medium">Bacon com Cheddar</span>
                         <div class="ml-3">
                             <span class="text-lg text-gray-800 font-medium">Bacon com Cheddar</span>
                             <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, bacon crocante e cheddar cremoso.</p>
@@ -653,7 +656,6 @@
                         </div>
                     </div>
                     <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
-                        <span class="text-lg text-gray-800 font-medium">Bacon</span>
                         <div class="ml-3">
                             <span class="text-lg text-gray-800 font-medium">Bacon</span>
                             <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela e bacon crocante.</p>
@@ -665,7 +667,6 @@
                         </div>
                     </div>
                     <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
-                        <span class="text-lg text-gray-800 font-medium">Frango</span>
                         <div class="ml-3">
                             <span class="text-lg text-gray-800 font-medium">Frango</span>
                             <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, frango desfiado.</p>
@@ -674,6 +675,67 @@
                             <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Frango">-</button>
                             <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Frango">
                             <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Frango">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="esfirra-doce-options-single" class="mb-10 hidden">
+                <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Escolha a Quantidade de Esfirras Doces</h3>
+                <div id="esfirra-doce-flavor-quantity-options" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Brigadeiro</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, chocolate, granulado.</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Brigadeiro">-</button>
+                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Brigadeiro">
+                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Brigadeiro">+</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Romeu e Julieta</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, goiabada e queijo mussarela.</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Romeu e Julieta">-</button>
+                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Romeu e Julieta">
+                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Romeu e Julieta">+</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">M&M</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, chocolate, M&M's.</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="M&M">-</button>
+                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="M&M">
+                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="M&M">+</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Doce de Leite</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, doce de leite e queijo mussarela.</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Doce de Leite">-</button>
+                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Doce de Leite">
+                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Doce de Leite">+</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+                        <div class="ml-3">
+                            <span class="text-lg text-gray-800 font-medium">Oreo</span>
+                            <p class="text-sm text-gray-600">Massa artesanal, chocolate, biscoito Oreo triturado.</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Oreo">-</button>
+                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Oreo">
+                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Oreo">+</button>
                         </div>
                     </div>
                 </div>
@@ -705,28 +767,57 @@
                 </div>
             </div>
 
-            <div class="mb-10">
-                <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6" id="beverage-heading"></h3> <div id="beverage-options" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="radio" name="beverage" value="Coca-cola 1L" data-beverage-price="9.90" data-beverage-id="coca-1l" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500">
-                        <span class="ml-3 text-lg text-gray-800 font-medium">Coca-cola 1L - R$ 9,90</span>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="radio" name="beverage" value="Coca-cola 2L" data-beverage-price="13.90" data-beverage-id="coca-2l" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500">
-                        <span class="ml-3 text-lg text-gray-800 font-medium">Coca-cola 2L - R$ 13,90</span>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="radio" name="beverage" value="Fanta Laranja 1L" data-beverage-price="9.90" data-beverage-id="fanta-1l" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500">
-                        <span class="ml-3 text-lg text-gray-800 font-medium">Fanta Laranja 1L - R$ 9,90</span>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="radio" name="beverage" value="Fanta Laranja 2L" data-beverage-price="12.90" data-beverage-id="fanta-2l" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500">
-                        <span class="ml-3 text-lg text-gray-800 font-medium">Fanta Laranja 2L - R$ 12,90</span>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="radio" name="beverage" value="Nenhuma bebida" data-beverage-price="0.00" data-beverage-id="no-beverage" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500" checked>
-                        <span class="ml-3 text-lg text-gray-800 font-medium">Nenhuma bebida</span>
-                    </label>
+            <div id="beverage-options-with-quantity" class="mb-10 hidden">
+                <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6" id="beverage-heading"></h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white beverage-item-with-quantity">
+                        <span class="text-lg text-gray-800 font-medium">Coca-cola 1L - R$ 9,90</span>
+                        <div class="flex items-center space-x-2">
+                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-beverage-flavor="Coca-cola 1L" data-beverage-price="9.90">-</button>
+                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-beverage-flavor="Coca-cola 1L" data-beverage-price="9.90">
+                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-beverage-flavor="Coca-cola 1L" data-beverage-price="9.90">+</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white beverage-item-with-quantity">
+                        <span class="text-lg text-gray-800 font-medium">Coca-cola 2L - R$ 13,90</span>
+                        <div class="flex items-center space-x-2">
+                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-beverage-flavor="Coca-cola 2L" data-beverage-price="13.90">-</button>
+                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-beverage-flavor="Coca-cola 2L" data-beverage-price="13.90">
+                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-beverage-flavor="Coca-cola 2L" data-beverage-price="13.90">+</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white beverage-item-with-quantity">
+                        <span class="text-lg text-gray-800 font-medium">Coca-cola Zero 2L - R$ 13,90</span>
+                        <div class="flex items-center space-x-2">
+                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-beverage-flavor="Coca-cola Zero 2L" data-beverage-price="13.90">-</button>
+                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-beverage-flavor="Coca-cola Zero 2L" data-beverage-price="13.90">
+                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-beverage-flavor="Coca-cola Zero 2L" data-beverage-price="13.90">+</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white beverage-item-with-quantity">
+                        <span class="text-lg text-gray-800 font-medium">Fanta Laranja 1L - R$ 9,90</span>
+                        <div class="flex items-center space-x-2">
+                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-beverage-flavor="Fanta Laranja 1L" data-beverage-price="9.90">-</button>
+                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-beverage-flavor="Fanta Laranja 1L" data-beverage-price="9.90">
+                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-beverage-flavor="Fanta Laranja 1L" data-beverage-price="9.90">+</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white beverage-item-with-quantity">
+                        <span class="text-lg text-gray-800 font-medium">Fanta Laranja 2L - R$ 12,90</span>
+                        <div class="flex items-center space-x-2">
+                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-beverage-flavor="Fanta Laranja 2L" data-beverage-price="12.90">-</button>
+                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-beverage-flavor="Fanta Laranja 2L" data-beverage-price="12.90">
+                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-beverage-flavor="Fanta Laranja 2L" data-beverage-price="12.90">+</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white beverage-item-with-quantity">
+                        <span class="text-lg text-gray-800 font-medium">Guaraná Antarctica 2L - R$ 12,90</span>
+                        <div class="flex items-center space-x-2">
+                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-beverage-flavor="Guaraná Antarctica 2L" data-beverage-price="12.90">-</button>
+                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-beverage-flavor="Guaraná Antarctica 2L" data-beverage-price="12.90">
+                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-beverage-flavor="Guaraná Antarctica 2L" data-beverage-price="12.90">+</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -746,6 +837,12 @@
 
             <div id="cart-items-container" class="bg-gray-50 p-6 rounded-lg shadow-inner mb-8">
                 <p id="empty-cart-message" class="text-center text-gray-600 italic hidden">Seu carrinho está vazio.</p>
+            </div>
+
+            <!-- Campo de Observação -->
+            <div class="mb-6 p-4 border rounded-lg bg-white shadow-sm">
+                <h3 class="text-xl font-bold text-gray-800 mb-3">Observações do Pedido</h3>
+                <textarea id="order-notes" rows="3" placeholder="Ex: Sem cebola, massa bem passada, etc." class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"></textarea>
             </div>
 
             <div class="mb-6 p-4 border rounded-lg bg-white shadow-sm">
@@ -826,6 +923,9 @@
 
         // Objeto para armazenar as quantidades das esfirras selecionadas
         let esfirraQuantities = {};
+        // Objeto para armazenar as quantidades de bebidas selecionadas
+        let beverageQuantities = {};
+
 
         // Função para mostrar a página correta e esconder as outras
         function showPage(pageId) {
@@ -865,14 +965,18 @@
                 document.querySelectorAll('input[name="flavor"], input[name="flavor-pizza1"], input[name="flavor-pizza2"]').forEach(cb => {
                     cb.checked = false;
                     cb.disabled = false;
-                    cb.closest('label').classList.remove('disabled-option'); // Remove o estilo de desabilitado
+                    const label = cb.closest('label');
+                    if (label) label.classList.remove('disabled-option'); // Remove o estilo de desabilitado
                 });
                 
                 // Reinicia a seleção de bebida para "Nenhuma bebida"
                 selectedBeverage = { name: 'Nenhuma bebida', price: 0, id: 'no-beverage' };
-                document.querySelectorAll('input[name="beverage"]').forEach(radio => {
-                    radio.checked = (radio.value === 'Nenhuma bebida'); // Marca a opção "Nenhuma bebida"
+                // Reinicia as quantidades das bebidas na página de seleção de sabores
+                beverageQuantities = {};
+                document.querySelectorAll('#beverage-options-with-quantity .quantity-input').forEach(input => {
+                    input.value = 0;
                 });
+
 
                 // Reinicia a seleção de borda para "Sem Borda Recheada"
                 selectedCrust = { name: 'Sem Borda Recheada', price: 0, id: 'no-crust' };
@@ -887,7 +991,10 @@
 
                 // Reinicia as quantidades das esfirras
                 esfirraQuantities = {};
-                document.querySelectorAll('.quantity-input').forEach(input => {
+                document.querySelectorAll('#esfirra-flavor-quantity-options .quantity-input').forEach(input => {
+                    input.value = 0;
+                });
+                document.querySelectorAll('#esfirra-doce-flavor-quantity-options .quantity-input').forEach(input => {
                     input.value = 0;
                 });
 
@@ -932,59 +1039,88 @@
         });
 
         // === Lógica da Seleção de Sabores e Bebidas ===
-        const flavorCheckboxesSingle = document.querySelectorAll('input[name="flavor"]');
-        const flavorCheckboxesPizza1 = document.querySelectorAll('input[name="flavor-pizza1"]');
-        const flavorCheckboxesPizza2 = document.querySelectorAll('input[name="flavor-pizza2"]');
+        // Move these declarations inside DOMContentLoaded or a function called after DOM is ready
+        // const flavorCheckboxesSingle = document.querySelectorAll('input[name="flavor"]');
+        // const flavorCheckboxesPizza1 = document.querySelectorAll('input[name="flavor-pizza1"]');
+        // const flavorCheckboxesPizza2 = document.querySelectorAll('input[name="flavor-pizza2"]');
 
-        const beverageRadios = document.querySelectorAll('input[name="beverage"]');
-        const stuffedCrustRadios = document.querySelectorAll('input[name="stuffed-crust"]'); // Referência às bordas
-        const crustOptionsSection = document.getElementById('crust-options-section'); // Referência à seção de bordas
+        // const beverageRadios = document.querySelectorAll('input[name="beverage"]'); // Removed, no longer used
+        // const stuffedCrustRadios = document.querySelectorAll('input[name="stuffed-crust"]'); // Referência às bordas
+        // const crustOptionsSection = document.getElementById('crust-options-section'); // Referência à seção de bordas
 
-        const addToCartBtn = document.getElementById('add-to-cart-btn'); // Botão "Adicionar ao Carrinho"
-        const addToCartMessage = document.getElementById('add-to-cart-message'); // Mensagem de instrução para o botão
-        const flavorInstructionTextSingle = document.getElementById('flavor-instruction-text-single');
-        const flavorInstructionTextPizza1 = document.getElementById('flavor-instruction-text-pizza1');
-        const flavorInstructionTextPizza2 = document.getElementById('flavor-instruction-text-pizza2');
-        const beverageHeading = document.getElementById('beverage-heading'); // Referência ao cabeçalho das bebidas
+        // const addToCartBtn = document.getElementById('add-to-cart-btn'); // Botão "Adicionar ao Carrinho"
+        // const addToCartMessage = document.getElementById('add-to-cart-message'); // Mensagem de instrução para o botão
+        // const flavorInstructionTextSingle = document.getElementById('flavor-instruction-text-single');
+        // const flavorInstructionTextPizza1 = document.getElementById('flavor-instruction-text-pizza1');
+        // const flavorInstructionTextPizza2 = document.getElementById('flavor-instruction-text-pizza2');
+        // const beverageHeading = document.getElementById('beverage-heading'); // Referência ao cabeçalho das bebidas
 
-        const pizza1FlavorSection = document.getElementById('pizza1-flavor-section');
-        const pizza2FlavorSection = document.getElementById('pizza2-flavor-section');
-        const singleFlavorSection = document.getElementById('flavor-options-single');
-        const esfirraOptionsSection = document.getElementById('esfirra-options-single'); // Nova seção para esfirras com quantidade
+        // const pizza1FlavorSection = document.getElementById('pizza1-flavor-section');
+        // const pizza2FlavorSection = document.getElementById('pizza2-flavor-section');
+        // const singleFlavorSection = document.getElementById('flavor-options-single');
+        // const esfirraOptionsSection = document.getElementById('esfirra-options-single'); // Nova seção para esfirras com quantidade
+        // const beverageOptionsWithQuantity = document.getElementById('beverage-options-with-quantity'); // Nova seção para bebidas com quantidade
 
 
         const traditionalFlavors = ['Portuguesa', 'Calabresa', 'Mussarela', 'Marguerita', 'Frango', 'Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon', 'Bacon com Catupiry', 'Bacon com Cheddar']; // Inclui os sabores tradicionais que podem ser escolhidos
-        const sweetFlavors = ['Brigadeiro', 'Romeu e Julieta', 'M&M', 'Doce de Leite']; // Sabores doces específicos
+        const sweetFlavors = ['Brigadeiro', 'Romeu e Julieta', 'M&M', 'Doce de Leite', 'Oreo']; // Sabores doces específicos
 
-        const esfirraSalgadaAllowedFlavors = ['Portuguesa', 'Calabresa', 'Mussarela', 'Marguerita', 'Frango', 'Bacon']; // Sabores permitidos para esfirra salgada tradicional
+        const esfirraTradicionalAllowedFlavors = ['Portuguesa', 'Calabresa', 'Mussarela', 'Marguerita', 'Frango', 'Bacon']; // Sabores permitidos para esfirra salgada tradicional
         const esfirraEspecialAllowedFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar']; // Sabores permitidos para esfirra salgada especial
 
 
         // Função para atualizar as instruções de seleção de sabor e habilitar/desabilitar checkboxes
         function updateFlavorSelectionInstructions() {
+            // Get elements inside the function to ensure they are loaded
+            const pizza1FlavorSection = document.getElementById('pizza1-flavor-section');
+            const pizza2FlavorSection = document.getElementById('pizza2-flavor-section');
+            const singleFlavorSection = document.getElementById('flavor-options-single');
+            const esfirraOptionsSection = document.getElementById('esfirra-options-single');
+            const esfirraDoceOptionsSection = document.getElementById('esfirra-doce-options-single'); // Get here
+            const beverageOptionsWithQuantity = document.getElementById('beverage-options-with-quantity');
+            const beverageHeading = document.getElementById('beverage-heading');
+            const stuffedCrustRadios = document.querySelectorAll('input[name="stuffed-crust"]');
+            const crustOptionsSection = document.getElementById('crust-options-section');
+            const flavorInstructionTextSingle = document.getElementById('flavor-instruction-text-single');
+            const flavorInstructionTextPizza1 = document.getElementById('flavor-instruction-text-pizza1');
+            const flavorInstructionTextPizza2 = document.getElementById('flavor-instruction-text-pizza2');
+            const flavorCheckboxesSingle = document.querySelectorAll('input[name="flavor"]'); // Get here
+            const flavorCheckboxesPizza1 = document.querySelectorAll('input[name="flavor-pizza1"]'); // Get here
+            const flavorCheckboxesPizza2 = document.querySelectorAll('input[name="flavor-pizza2"]'); // Get here
+
+
             console.log('updateFlavorSelectionInstructions chamada'); // Log de depuração
             // Esconde todas as seções de sabor e re-habilita todos os checkboxes inicialmente
             pizza1FlavorSection.classList.add('hidden');
             pizza2FlavorSection.classList.add('hidden');
             singleFlavorSection.classList.add('hidden');
             esfirraOptionsSection.classList.add('hidden'); // Esconde a seção de esfirras por padrão
+            esfirraDoceOptionsSection.classList.add('hidden'); // Esconde a seção de esfirras doces por padrão
 
-            document.querySelectorAll('input[name="flavor"], input[name="flavor-pizza1"], input[name="flavor-pizza2"]').forEach(cb => {
-                cb.checked = false;
-                cb.disabled = false;
-                cb.closest('label').classList.remove('disabled-option'); // Remove o estilo de desabilitado
-                cb.closest('label').style.display = 'flex'; // Garante que estejam visíveis antes de filtrar
-            });
+            // Defensive check for beverageOptionsWithQuantity
+            if (beverageOptionsWithQuantity) {
+                beverageOptionsWithQuantity.classList.add('hidden'); // Esconde a seção de bebidas com quantidade por padrão
+                console.log('beverageOptionsWithQuantity element found:', beverageOptionsWithQuantity);
+            } else {
+                console.error('Element with ID "beverage-options-with-quantity" not found!');
+            }
+
 
             // Ajusta o texto do cabeçalho da bebida
-            if (selectedItem.type === 'combo') {
-                beverageHeading.textContent = 'Seu combo já possui refrigerante, deseja acrescentar mais alguma bebida?'; // Texto ajustado para combos
-                document.getElementById('beverage-options').classList.remove('hidden'); // Garante que a seção de bebidas da página de seleção esteja visível para combos
+            if (selectedItem.id === 'combo1') { // Lógica específica para Combo 1
+                beverageHeading.textContent = 'Seu combo já tem refrigerante de 1L, deseja acrescentar mais refrigerante ?'; // Texto ajustado para Combo 1
+                if (beverageOptionsWithQuantity) beverageOptionsWithQuantity.classList.remove('hidden'); // Mostra a seção de bebidas com quantidade
+            } else if (selectedItem.id === 'combo2') { // Lógica específica para Combo 2
+                beverageHeading.textContent = 'Seu combo já tem refrigerante de 2L, deseja acrescentar mais refrigerante ?'; // Texto ajustado para Combo 2
+                if (beverageOptionsWithQuantity) beverageOptionsWithQuantity.classList.remove('hidden'); // Mostra a seção de bebidas com quantidade
+            } else if (selectedItem.type === 'combo' || selectedItem.id.includes('pizza') || selectedItem.id.includes('esfirra')) { // Mostra bebidas com quantidade para outros combos, pizzas e esfirras
+                beverageHeading.textContent = 'Deseja acrescentar refrigerante ao seu pedido ?'; // Texto padrão para outros itens
+                if (beverageOptionsWithQuantity) beverageOptionsWithQuantity.classList.remove('hidden'); // Mostra a seção de bebidas com quantidade
             } else if (selectedItem.type === 'beverage') {
-                document.getElementById('beverage-options').classList.add('hidden'); // Esconde a seção de bebidas se o item selecionado já for uma bebida
+                if (beverageOptionsWithQuantity) beverageOptionsWithQuantity.classList.add('hidden'); // Esconde a seção de bebidas se o item selecionado já for uma bebida
             } else {
                 beverageHeading.textContent = 'Deseja acrescentar refrigerante ao seu pedido ?'; // Texto padrão para outros itens
-                document.getElementById('beverage-options').classList.remove('hidden'); // Garante que a seção de bebidas da página de seleção esteja visível
+                if (beverageOptionsWithQuantity) beverageOptionsWithQuantity.classList.remove('hidden'); // Mostra a seção de bebidas com quantidade
             }
 
             // Lógica de exibição e habilitação das bordas recheadas
@@ -992,8 +1128,9 @@
                 crustOptionsSection.style.display = 'block'; // Mostra a seção de bordas
                 stuffedCrustRadios.forEach(radio => {
                     radio.disabled = false;
-                    radio.closest('label').classList.remove('disabled-option');
-                    radio.closest('label').style.display = 'flex'; // Garante que as bordas estejam visíveis
+                    const label = radio.closest('label');
+                    if (label) label.classList.remove('disabled-option');
+                    if (label) label.style.display = 'flex'; // Garante que as bordas estejam visíveis
                 });
             } else {
                 crustOptionsSection.style.display = 'none'; // Esconde a seção de bordas
@@ -1016,31 +1153,34 @@
 
                 // Para Combo 2, apenas sabores tradicionais são permitidos para ambas as pizzas
                 // Esconde os sabores não tradicionais e doces para Pizza 1
-                const combo2ForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar', 'M&M', 'Doce de Leite']; // Adicionado M&M e Doce de Leite
+                const combo2ForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar', 'M&M', 'Doce de Leite', 'Oreo']; // Adicionado M&M e Doce de Leite
                 document.querySelectorAll('#flavor-options-pizza1 input[name="flavor-pizza1"]').forEach(cb => {
                     if (combo2ForbiddenFlavors.includes(cb.value) || sweetFlavors.includes(cb.value)) {
                         cb.disabled = true;
-                        cb.closest('label').classList.add('disabled-option');
-                        cb.closest('label').style.display = 'none'; // Esconde sabores não permitidos para Combo 2
+                        const label = cb.closest('label');
+                        if (label) label.classList.add('disabled-option');
+                        if (label) label.style.display = 'none'; // Esconde sabores não permitidos para Combo 2
                     }
                 });
                 // Esconde os sabores não tradicionais e doces para Pizza 2
                 document.querySelectorAll('#flavor-options-pizza2 input[name="flavor-pizza2"]').forEach(cb => {
                     if (combo2ForbiddenFlavors.includes(cb.value) || sweetFlavors.includes(cb.value)) {
                         cb.disabled = true;
-                        cb.closest('label').classList.add('disabled-option');
-                        cb.closest('label').style.display = 'none'; // Esconde sabores não permitidos para Combo 2
+                        const label = cb.closest('label');
+                        if (label) label.classList.add('disabled-option');
+                        if (label) label.style.display = 'none'; // Esconde sabores não permitidos para Combo 2
                     }
                 });
 
             } else if (selectedItem.id === 'esfirra-doce') { 
-                singleFlavorSection.classList.remove('hidden');
-                flavorInstructionTextSingle.textContent = 'Escolha apenas 1 sabor para sua esfirra doce (Brigadeiro ou Romeu e Julieta).';
-                 flavorCheckboxesSingle.forEach(cb => {
-                    if (!sweetFlavors.includes(cb.value)) { // Desabilita se não for sabor doce
-                        cb.disabled = true;
-                        cb.closest('label').classList.add('disabled-option');
-                        cb.closest('label').style.display = 'none'; // Esconde sabores não doces
+                esfirraDoceOptionsSection.classList.remove('hidden'); // Mostra a seção de esfirras doces com quantidade
+                flavorInstructionTextSingle.textContent = 'Escolha a quantidade para cada sabor de esfirra doce.';
+                document.querySelectorAll('#esfirra-doce-flavor-quantity-options .esfirra-flavor-item').forEach(itemDiv => {
+                    const flavorName = itemDiv.querySelector('span').textContent.trim();
+                    if (!sweetFlavors.includes(flavorName)) { // Desabilita se não for sabor doce
+                        itemDiv.style.display = 'none'; // Esconde sabores não doces
+                    } else {
+                        itemDiv.style.display = 'flex'; // Garante que os permitidos estejam visíveis
                     }
                 });
             }
@@ -1050,10 +1190,15 @@
                 flavorInstructionTextSingle.textContent = `Escolha até 2 sabores para sua pizza. Se selecionar apenas 1, a pizza será inteira desse sabor.`;
                 const pizzaTradicionalForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar'];
                 flavorCheckboxesSingle.forEach(cb => {
+                    const label = cb.closest('label');
                     if (pizzaTradicionalForbiddenFlavors.includes(cb.value)) {
                         cb.disabled = true;
-                        cb.closest('label').classList.add('disabled-option');
-                        cb.closest('label').style.display = 'none';
+                        if (label) label.classList.add('disabled-option');
+                        if (label) label.style.display = 'none';
+                    } else {
+                        cb.disabled = false;
+                        if (label) label.classList.remove('disabled-option');
+                        if (label) label.style.display = 'flex';
                     }
                 });
             }
@@ -1062,10 +1207,15 @@
                 flavorInstructionTextSingle.textContent = `Escolha até 2 sabores para sua pizza. Se selecionar apenas 1, a pizza será inteira desse sabor.`;
                 const pizzaMediaTradicionalForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar'];
                 flavorCheckboxesSingle.forEach(cb => {
+                    const label = cb.closest('label');
                     if (pizzaMediaTradicionalForbiddenFlavors.includes(cb.value)) {
                         cb.disabled = true;
-                        cb.closest('label').classList.add('disabled-option');
-                        cb.closest('label').style.display = 'none';
+                        if (label) label.classList.add('disabled-option');
+                        if (label) label.style.display = 'none';
+                    } else {
+                        cb.disabled = false;
+                        if (label) label.classList.remove('disabled-option');
+                        if (label) label.style.display = 'flex';
                     }
                 });
             }
@@ -1080,12 +1230,17 @@
                 
                 // Para Combo 1, apenas sabores tradicionais são permitidos.
                 // Filtra os sabores que não devem aparecer no Combo 1
-                const combo1ForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar', 'M&M', 'Doce de Leite']; 
+                const combo1ForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar', 'M&M', 'Doce de Leite', 'Oreo']; 
                 flavorCheckboxesSingle.forEach(cb => {
+                    const label = cb.closest('label');
                     if (combo1ForbiddenFlavors.includes(cb.value) || sweetFlavors.includes(cb.value)) {
                         cb.disabled = true;
-                        cb.closest('label').classList.add('disabled-option');
-                        cb.closest('label').style.display = 'none'; // Esconde sabores não permitidos para Combo 1
+                        if (label) label.classList.add('disabled-option');
+                        if (label) label.style.display = 'none'; // Esconde sabores não permitidos para Combo 1
+                    } else {
+                        cb.disabled = false;
+                        if (label) label.classList.remove('disabled-option');
+                        if (label) label.style.display = 'flex';
                     }
                 });
             }
@@ -1118,6 +1273,7 @@
             } else { // Se o item selecionado não for pizza, combo ou esfirra (ex: bebidas do menu principal)
                 singleFlavorSection.classList.add('hidden'); // Esconde a seção de sabores
                 esfirraOptionsSection.classList.add('hidden'); // Garante que a seção de esfirras esteja oculta
+                esfirraDoceOptionsSection.classList.add('hidden'); // Garante que a seção de esfirras doces esteja oculta
                 flavorInstructionTextSingle.textContent = '';
                 // Não precisa fazer nada com os checkboxes de sabor, pois esta seção estará oculta
             }
@@ -1141,6 +1297,8 @@
                         checkboxes.forEach(cb => {
                             if (!cb.checked && !cb.disabled) { 
                                 cb.disabled = true;
+                                const label = cb.closest('label');
+                                if (label) label.classList.add('disabled-option');
                                 console.log(`Disabling checkbox: ${cb.value}`); // Log de depuração
                             }
                         });
@@ -1150,40 +1308,56 @@
                                 // Re-habilita baseado nas regras de categoria (tradicional, doce, especial)
                                 // A lógica de re-habilitação precisa ser mais inteligente para permitir doces em pizzas
                                 if (isCombo2Pizza) { // Combos 2 ainda só permitem tradicionais
-                                    const combo2ForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar', 'M&M', 'Doce de Leite'];
+                                    const combo2ForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar', 'M&M', 'Doce de Leite', 'Oreo'];
                                     if (traditionalFlavors.includes(cb.value) && !combo2ForbiddenFlavors.includes(cb.value)) {
                                         cb.disabled = false;
+                                        const label = cb.closest('label');
+                                        if (label) label.classList.remove('disabled-option');
                                     }
                                 } else if (selectedItem.id === 'combo1') { // Combo 1: re-habilita apenas sabores permitidos
-                                    const combo1ForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar', 'M&M', 'Doce de Leite']; // Removido 'Frango'
+                                    const combo1ForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar', 'M&M', 'Doce de Leite', 'Oreo']; // Removido 'Frango'
                                     if (!combo1ForbiddenFlavors.includes(cb.value) && !sweetFlavors.includes(cb.value)) {
                                         cb.disabled = false;
+                                        const label = cb.closest('label');
+                                        if (label) label.classList.remove('disabled-option');
                                     }
                                 } else if (selectedItem.id === 'pizza-tradicional-grande' || selectedItem.id === 'pizza-media') { // Pizza Grande/Média Tradicional
                                     const pizzaTradicionalForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar'];
                                     if (!pizzaTradicionalForbiddenFlavors.includes(cb.value)) {
                                         cb.disabled = false;
+                                        const label = cb.closest('label');
+                                        if (label) label.classList.remove('disabled-option');
                                     }
                                 } else if (selectedItem.id.includes('pizza-especial')) {
                                     // Para pizzas individuais (especial), re-habilitar todos os sabores
                                     cb.disabled = false;
+                                    const label = cb.closest('label');
+                                    if (label) label.classList.remove('disabled-option');
                                 }
                                 else if (selectedItem.id === 'esfirra-doce') {
                                     if (sweetFlavors.includes(cb.value)) {
                                         cb.disabled = false;
+                                        const label = cb.closest('label');
+                                        if (label) label.classList.remove('disabled-option');
                                     }
                                 } else if (selectedItem.id === 'esfirra-tradicional') { // Esfirra Tradicional
                                     const esfirraTradicionalForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar'];
                                     if (!sweetFlavors.includes(cb.value) && !esfirraTradicionalForbiddenFlavors.includes(cb.value)) {
                                         cb.disabled = false;
+                                        const label = cb.closest('label');
+                                        if (label) label.classList.remove('disabled-option');
                                     }
                                 } else if (selectedItem.id === 'esfirra-especial') { // Esfirra Especial
                                     const esfirraEspecialAllowedFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar'];
                                     if (esfirraEspecialAllowedFlavors.includes(cb.value)) { // Apenas os sabores permitidos são re-habilitados
                                         cb.disabled = false;
+                                        const label = cb.closest('label');
+                                        if (label) label.classList.remove('disabled-option');
                                     }
                                 } else { // Fallback para outros tipos
                                     cb.disabled = false;
+                                    const label = cb.closest('label');
+                                    if (label) label.classList.remove('disabled-option');
                                 }
                                 console.log(`(Re)enabling checkbox: ${cb.value}, disabled: ${cb.disabled}`); // Log de depuração
                             }
@@ -1208,79 +1382,114 @@
         }
 
         // Aplica a função de seleção de sabores para cada grupo de checkboxes
-        handleFlavorSelection(flavorCheckboxesSingle, selectedFlavors);
-        handleFlavorSelection(flavorCheckboxesPizza1, selectedFlavorsPizza1, true); // Pass true for isCombo2Pizza
-        handleFlavorSelection(flavorCheckboxesPizza2, selectedFlavorsPizza2, true); // Pass true for isCombo2Pizza
+        // Move these calls inside DOMContentLoaded or a function called after DOM is ready
+        // handleFlavorSelection(flavorCheckboxesSingle, selectedFlavors);
+        // handleFlavorSelection(flavorCheckboxesPizza1, selectedFlavorsPizza1, true); // Pass true for isCombo2Pizza
+        // handleFlavorSelection(flavorCheckboxesPizza2, selectedFlavorsPizza2, true); // Pass true for isCombo2Pizza
 
 
         // Adiciona listener para cada radio button de bebida
-        beverageRadios.forEach(radio => {
-            radio.addEventListener('change', () => {
-                selectedBeverage = {
-                    name: radio.value,
-                    price: parseFloat(radio.dataset.beveragePrice),
-                    id: radio.dataset.beverageId // Adiciona o ID da bebida
-                };
-                console.log('Bebida selecionada:', selectedBeverage); // Log de depuração
-                updateFinalizeButtonState(); 
-            });
-        });
+        // Move this setup inside DOMContentLoaded or a function called after DOM is ready
+        // document.querySelectorAll('#beverage-options-with-quantity .quantity-btn').forEach(button => {
+        //     button.addEventListener('click', function() {
+        //         const flavor = this.dataset.beverageFlavor;
+        //         const action = this.dataset.action;
+        //         const input = this.parentNode.querySelector('.quantity-input');
+        //         let currentValue = parseInt(input.value);
+        //         const price = parseFloat(input.dataset.beveragePrice);
+
+        //         if (action === 'increase') {
+        //             currentValue++;
+        //         } else if (action === 'decrease' && currentValue > 0) {
+        //             currentValue--;
+        //         }
+        //         input.value = currentValue;
+        //         beverageQuantities[flavor] = { quantity: currentValue, price: price };
+        //         console.log('beverageQuantities:', beverageQuantities);
+        //         updateFinalizeButtonState();
+        //     });
+        // });
+
+        // document.querySelectorAll('#beverage-options-with-quantity .quantity-input').forEach(input => {
+        //     input.addEventListener('change', function() {
+        //         const flavor = this.dataset.beverageFlavor;
+        //         let currentValue = parseInt(this.value);
+        //         const price = parseFloat(this.dataset.beveragePrice);
+        //         if (isNaN(currentValue) || currentValue < 0) {
+        //             currentValue = 0;
+        //             this.value = 0;
+        //         }
+        //         beverageQuantities[flavor] = { quantity: currentValue, price: price };
+        //         console.log('beverageQuantities:', beverageQuantities);
+        //         updateFinalizeButtonState();
+        //     });
+        // });
+
 
         // Adiciona listener para cada radio button de borda recheada
-        stuffedCrustRadios.forEach(radio => {
-            radio.addEventListener('change', () => {
-                selectedCrust = {
-                    name: radio.value,
-                    price: parseFloat(radio.dataset.crustPrice),
-                    id: radio.dataset.crustId
-                };
-                console.log('Borda selecionada:', selectedCrust); // Log de depuração
-            });
-        });
+        // Move this setup inside DOMContentLoaded or a function called after DOM is ready
+        // stuffedCrustRadios.forEach(radio => {
+        //     radio.addEventListener('change', () => {
+        //         selectedCrust = {
+        //             name: radio.value,
+        //             price: parseFloat(radio.dataset.crustPrice),
+        //             id: radio.dataset.crustId
+        //         };
+        //         console.log('Borda selecionada:', selectedCrust); // Log de depuração
+        //     });
+        // });
 
         // Event listeners para os botões de quantidade das esfirras
-        document.querySelectorAll('#esfirra-flavor-quantity-options .quantity-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const flavor = this.dataset.flavor;
-                const action = this.dataset.action;
-                const input = this.parentNode.querySelector('.quantity-input');
-                let currentValue = parseInt(input.value);
+        // Move this setup inside DOMContentLoaded or a function called after DOM is ready
+        // document.querySelectorAll('#esfirra-flavor-quantity-options .quantity-btn').forEach(button => {
+        //     button.addEventListener('click', function() {
+        //         const flavor = this.dataset.flavor;
+        //         const action = this.dataset.action;
+        //         const input = this.parentNode.querySelector('.quantity-input');
+        //         let currentValue = parseInt(input.value);
 
-                if (action === 'increase') {
-                    currentValue++;
-                } else if (action === 'decrease' && currentValue > 0) {
-                    currentValue--;
-                }
-                input.value = currentValue;
-                esfirraQuantities[flavor] = currentValue;
-                console.log('esfirraQuantities:', esfirraQuantities);
-                updateFinalizeButtonState();
-            });
-        });
+        //         if (action === 'increase') {
+        //             currentValue++;
+        //         } else if (action === 'decrease' && currentValue > 0) {
+        //             currentValue--;
+        //         }
+        //         input.value = currentValue;
+        //         esfirraQuantities[flavor] = currentValue;
+        //         console.log('esfirraQuantities:', esfirraQuantities);
+        //         updateFinalizeButtonState();
+        //     });
+        // });
 
-        document.querySelectorAll('#esfirra-flavor-quantity-options .quantity-input').forEach(input => {
-            input.addEventListener('change', function() {
-                const flavor = this.dataset.flavor;
-                let currentValue = parseInt(this.value);
-                if (isNaN(currentValue) || currentValue < 0) {
-                    currentValue = 0;
-                    this.value = 0;
-                }
-                esfirraQuantities[flavor] = currentValue;
-                console.log('esfirraQuantities:', esfirraQuantities);
-                updateFinalizeButtonState();
-            });
-        });
+        // document.querySelectorAll('#esfirra-flavor-quantity-options .quantity-input').forEach(input => {
+        //     input.addEventListener('change', function() {
+        //         const flavor = this.dataset.flavor;
+        //         let currentValue = parseInt(this.value);
+        //         if (isNaN(currentValue) || currentValue < 0) {
+        //             currentValue = 0;
+        //             this.value = 0;
+        //         }
+        //         esfirraQuantities[flavor] = currentValue;
+        //         console.log('esfirraQuantities:', esfirraQuantities);
+        //         updateFinalizeButtonState();
+        //     });
+        // });
 
 
         // Função para atualizar o estado do botão "Adicionar ao Carrinho"
         function updateFinalizeButtonState() {
+            // Get elements inside the function to ensure they are loaded
+            const addToCartBtn = document.getElementById('add-to-cart-btn');
+            const addToCartMessage = document.getElementById('add-to-cart-message');
+            const beverageOptionsWithQuantity = document.getElementById('beverage-options-with-quantity');
+
+
             console.log('--- updateFinalizeButtonState chamada ---'); // Log de depuração
             console.log('selectedItem:', selectedItem); // Log de depuração
             console.log('selectedFlavors (no início de updateFinalizeButtonState):', selectedFlavors); // NOVO LOG
             console.log('selectedFlavorsPizza1 (no início de updateFinalizeButtonState):', selectedFlavorsPizza1); // NOVO LOG
             console.log('selectedFlavorsPizza2 (no início de updateFinalizeButtonState):', selectedFlavorsPizza2); // NOVO LOG
             console.log('esfirraQuantities (no início de updateFinalizeButtonState):', esfirraQuantities); // NOVO LOG para esfirras
+            console.log('beverageQuantities (no início de updateFinalizeButtonState):', beverageQuantities); // NOVO LOG para bebidas
 
             let isConditionMet = false;
             addToCartMessage.textContent = ''; // Limpa a mensagem por padrão
@@ -1311,6 +1520,26 @@
                 console.log('Item sem seleção de sabor/quantidade (ex: bebida do menu principal).'); // Log de depuração
             }
 
+            // Se a seção de bebidas com quantidade estiver visível, verifique se alguma bebida foi selecionada
+            if (beverageOptionsWithQuantity && !beverageOptionsWithQuantity.classList.contains('hidden')) {
+                let totalBeverageQuantity = 0;
+                for (const flavor in beverageQuantities) {
+                    totalBeverageQuantity += beverageQuantities[flavor].quantity;
+                }
+                // A condição principal para habilitar o botão "Adicionar ao Carrinho" deve ser a seleção do item principal (pizza/esfirra).
+                // A seleção de bebidas é um adicional e não deve impedir a adição ao carrinho se o item principal for válido.
+                // No entanto, se o item principal *não* for uma pizza/combo/esfirra (ou seja, se for uma bebida selecionada diretamente do menu principal),
+                // então a condição de habilitação do botão deve ser baseada na quantidade de bebidas.
+                if (selectedItem.type === 'beverage') { // Se o item clicado no menu principal foi uma bebida
+                    isConditionMet = (totalBeverageQuantity > 0);
+                } else {
+                    // Se for pizza, combo ou esfirra, a isConditionMet já foi definida acima.
+                    // A seleção de bebidas é opcional para esses itens.
+                }
+                 console.log('Bebidas - Quantidade total:', totalBeverageQuantity); // Log de depuração
+            }
+
+
             addToCartBtn.disabled = !isConditionMet;
             console.log('isConditionMet:', isConditionMet); // Log de depuração
             console.log('addToCartBtn.disabled definido para:', !isConditionMet); // Log de depuração
@@ -1318,92 +1547,49 @@
         }
 
         // Evento de clique para o botão "Adicionar ao Carrinho"
-        addToCartBtn.addEventListener('click', () => {
-            if (selectedItem.id.includes('esfirra')) {
-                // Adiciona esfirras com suas quantidades
-                for (const flavor in esfirraQuantities) {
-                    const quantity = esfirraQuantities[flavor];
-                    if (quantity > 0) {
-                        cart.push({
-                            name: `${selectedItem.name} (${flavor})`,
-                            price: selectedItem.price, // Preço por unidade de esfirra
-                            quantity: quantity,
-                            flavors: [flavor],
-                            type: selectedItem.type,
-                            id: `${selectedItem.id}-${flavor.toLowerCase().replace(/\s/g, '-')}`
-                        });
-                    }
-                }
-            } else if (selectedItem.id === 'combo2') {
-                cart.push({
-                    name: selectedItem.name,
-                    price: selectedItem.price + selectedCrust.price,
-                    quantity: 1, 
-                    flavors: { pizza1: selectedFlavorsPizza1, pizza2: selectedFlavorsPizza2 }, // Sabores como objeto
-                    type: selectedItem.type,
-                    id: selectedItem.id,
-                    crust: selectedCrust.name !== 'Sem Borda Recheada' ? selectedCrust : null
-                });
-            } else {
-                // Para outros itens, adiciona com o array de sabores normal
-                cart.push({
-                    name: selectedItem.name,
-                    price: selectedItem.price + selectedCrust.price,
-                    quantity: 1, 
-                    flavors: selectedFlavors, // Usa o array de sabores único
-                    type: selectedItem.type,
-                    id: selectedItem.id,
-                    crust: selectedCrust.name !== 'Sem Borda Recheada' ? selectedCrust : null
-                });
-            }
+        // Move this setup inside DOMContentLoaded or a function called after DOM is ready
+        // addToCartBtn.addEventListener('click', () => { ... });
 
-            // Se uma bebida foi selecionada (e não é "Nenhuma bebida"), adicione-a como um item separado
-            if (selectedBeverage.name !== 'Nenhuma bebida') {
-                cart.push({
-                    name: selectedBeverage.name,
-                    price: selectedBeverage.price,
-                    quantity: 1,
-                    type: 'beverage',
-                    id: selectedBeverage.id 
-                });
-            }
-
-            updateCartIconCount();
-            showPage('order-summary');
-        });
 
         // === Lógica do Carrinho de Compras / Resumo ===
-        const cartItemsContainer = document.getElementById('cart-items-container');
-        const cartTotalPriceElement = document.getElementById('cart-total-price');
-        const placeOrderBtn = document.getElementById('place-order-btn');
-        const emptyCartMessage = document.getElementById('empty-cart-message');
+        // Move these declarations inside DOMContentLoaded or a function called after DOM is ready
+        // const cartItemsContainer = document.getElementById('cart-items-container');
+        // const cartTotalPriceElement = document.getElementById('cart-total-price');
+        // const placeOrderBtn = document.getElementById('place-order-btn');
+        // const emptyCartMessage = document.getElementById('empty-cart-message');
 
         // Referências aos campos de endereço
-        const addressStreetInput = document.getElementById('address-street');
-        const addressNumberInput = document.getElementById('address-number');
-        const addressNeighborhoodInput = document.getElementById('address-neighborhood');
-        const addressReferenceInput = document.getElementById('address-reference');
+        // const addressStreetInput = document.getElementById('address-street');
+        // const addressNumberInput = document.getElementById('address-number');
+        // const addressNeighborhoodInput = document.getElementById('address-neighborhood');
+        // const addressReferenceInput = document.getElementById('address-reference');
 
         // Variável para armazenar a opção de pagamento selecionada
-        let selectedPaymentMethod = 'Pix'; // Pix como padrão
+        // let selectedPaymentMethod = 'Pix'; // Pix como padrão
 
         // Listener para os radio buttons de pagamento
-        document.querySelectorAll('input[name="payment-method"]').forEach(radio => {
-            radio.addEventListener('change', () => {
-                selectedPaymentMethod = radio.value;
-            });
-        });
+        // document.querySelectorAll('input[name="payment-method"]').forEach(radio => {
+        //     radio.addEventListener('change', () => {
+        //         selectedPaymentMethod = radio.value;
+        //     });
+        // });
 
 
         function renderCart() {
+            // Get elements inside the function to ensure they are loaded
+            const cartItemsContainer = document.getElementById('cart-items-container');
+            const emptyCartMessage = document.getElementById('empty-cart-message');
+            const placeOrderBtn = document.getElementById('place-order-btn');
+            const cartTotalPriceElement = document.getElementById('cart-total-price');
+
             cartItemsContainer.innerHTML = ''; // Limpa o conteúdo atual do carrinho
             
             if (cart.length === 0) {
-                emptyCartMessage.classList.remove('hidden');
-                placeOrderBtn.disabled = true;
+                if (emptyCartMessage) emptyCartMessage.classList.remove('hidden');
+                if (placeOrderBtn) placeOrderBtn.disabled = true;
             } else {
-                emptyCartMessage.classList.add('hidden');
-                placeOrderBtn.disabled = false;
+                if (emptyCartMessage) emptyCartMessage.classList.add('hidden');
+                if (placeOrderBtn) placeOrderBtn.disabled = false; 
 
                 cart.forEach((item, index) => {
                     let itemDisplayPrice = item.price; // Preço unitário para exibição
@@ -1472,6 +1658,7 @@
 
         // Função para calcular e exibir o total do carrinho, SEM a taxa de entrega
         function calculateTotalCartPrice() {
+            const cartTotalPriceElement = document.getElementById('cart-total-price');
             let subtotal = 0;
             cart.forEach(item => {
                 subtotal += item.price * item.quantity;
@@ -1483,15 +1670,21 @@
         }
 
         // Evento para o botão "Enviar Pedido"
-        placeOrderBtn.addEventListener('click', () => {
-            const whatsappNumber = '92986161640';
-            const message = prepareWhatsAppMessage();
-            const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-            window.open(whatsappLink, '_blank'); // Abre o link no WhatsApp em uma nova aba
-        });
+        // Move this setup inside DOMContentLoaded or a function called after DOM is ready
+        // placeOrderBtn.addEventListener('click', () => { ... });
+
 
         // Função para preparar a mensagem do WhatsApp
         function prepareWhatsAppMessage() {
+            // Get elements inside the function to ensure they are loaded
+            const addressStreetInput = document.getElementById('address-street');
+            const addressNumberInput = document.getElementById('address-number');
+            const addressNeighborhoodInput = document.getElementById('address-neighborhood');
+            const addressReferenceInput = document.getElementById('address-reference');
+            const selectedPaymentMethod = document.querySelector('input[name="payment-method"]:checked')?.value || 'Não informado';
+            const orderNotes = document.getElementById('order-notes').value;
+
+
             let message = 'Olá! Gostaria de fazer um pedido na Rotella Pizzaria:\n\n*Itens do Pedido:*\n';
 
             cart.forEach(item => {
@@ -1523,6 +1716,11 @@
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             message += `\n*Total do Pedido:* R$ ${subtotal.toFixed(2).replace('.', ',')}\n\n`; // Apenas o subtotal
             
+            // Adiciona as observações, se houver
+            if (orderNotes.trim() !== '') {
+                message += `*Observações:* ${orderNotes.trim()}\n\n`;
+            }
+
             message += `*Endereço de Entrega:*\n`;
             message += `Rua: ${addressStreetInput.value || 'Não informado'}\n`;
             message += `Número: ${addressNumberInput.value || 'Não informado'}\n`;
@@ -1571,6 +1769,161 @@
 
         // Inicializa mostrando a página do cardápio principal e atualiza o ícone do carrinho
         document.addEventListener('DOMContentLoaded', () => {
+            // Get elements here after DOM is fully loaded
+            const flavorCheckboxesSingle = document.querySelectorAll('input[name="flavor"]');
+            const flavorCheckboxesPizza1 = document.querySelectorAll('input[name="flavor-pizza1"]');
+            const flavorCheckboxesPizza2 = document.querySelectorAll('input[name="flavor-pizza2"]');
+            const stuffedCrustRadios = document.querySelectorAll('input[name="stuffed-crust"]');
+            const addToCartBtn = document.getElementById('add-to-cart-btn');
+            const placeOrderBtn = document.getElementById('place-order-btn');
+
+            // Apply event listeners for flavor selection
+            handleFlavorSelection(flavorCheckboxesSingle, selectedFlavors);
+            handleFlavorSelection(flavorCheckboxesPizza1, selectedFlavorsPizza1, true); // Pass true for isCombo2Pizza
+            handleFlavorSelection(flavorCheckboxesPizza2, selectedFlavorsPizza2, true); // Pass true for isCombo2Pizza
+
+            // Add to cart button event listener
+            addToCartBtn.addEventListener('click', () => {
+                if (selectedItem.id.includes('esfirra')) {
+                    // Adiciona esfirras com suas quantidades
+                    for (const flavor in esfirraQuantities) {
+                        const quantity = esfirraQuantities[flavor];
+                        if (quantity > 0) {
+                            cart.push({
+                                name: `${selectedItem.name} (${flavor})`,
+                                price: selectedItem.price, // Preço por unidade de esfirra
+                                quantity: quantity,
+                                flavors: [flavor],
+                                type: selectedItem.type,
+                                id: `${selectedItem.id}-${flavor.toLowerCase().replace(/\s/g, '-')}`
+                            });
+                        }
+                    }
+                } else if (selectedItem.id === 'combo2') {
+                    cart.push({
+                        name: selectedItem.name,
+                        price: selectedItem.price + selectedCrust.price,
+                        quantity: 1, 
+                        flavors: { pizza1: selectedFlavorsPizza1, pizza2: selectedFlavorsPizza2 }, // Sabores como objeto
+                        type: selectedItem.type,
+                        id: selectedItem.id,
+                        crust: selectedCrust.name !== 'Sem Borda Recheada' ? selectedCrust : null
+                    });
+                } else {
+                    // Para outros itens (incluindo pizzas individuais e Combo 1), adiciona com o array de sabores normal
+                    cart.push({
+                        name: selectedItem.name,
+                        price: selectedItem.price + selectedCrust.price,
+                        quantity: 1, 
+                        flavors: selectedFlavors, // Usa o array de sabores único
+                        type: selectedItem.type,
+                        id: selectedItem.id,
+                        crust: selectedCrust.name !== 'Sem Borda Recheada' ? selectedCrust : null
+                    });
+                }
+
+                // Adiciona bebidas com suas quantidades
+                for (const flavor in beverageQuantities) {
+                    const { quantity, price } = beverageQuantities[flavor];
+                    if (quantity > 0) {
+                        cart.push({
+                            name: `${flavor}`,
+                            price: price,
+                            quantity: quantity,
+                            flavors: [], // Bebidas não têm sabores
+                            type: 'beverage',
+                            id: `${flavor.toLowerCase().replace(/\s/g, '-')}`
+                        });
+                    }
+                }
+
+                updateCartIconCount();
+                showPage('order-summary');
+            });
+
+            // Event listeners para os botões de quantidade das esfirras
+            document.querySelectorAll('#esfirra-flavor-quantity-options .quantity-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const flavor = this.dataset.flavor;
+                    const action = this.dataset.action;
+                    const input = this.parentNode.querySelector('.quantity-input');
+                    let currentValue = parseInt(input.value);
+
+                    if (action === 'increase') {
+                        currentValue++;
+                    } else if (action === 'decrease' && currentValue > 0) {
+                        currentValue--;
+                    }
+                    input.value = currentValue;
+                    esfirraQuantities[flavor] = currentValue;
+                    console.log('esfirraQuantities:', esfirraQuantities);
+                    updateFinalizeButtonState();
+                });
+            });
+
+            document.querySelectorAll('#esfirra-flavor-quantity-options .quantity-input').forEach(input => {
+                input.addEventListener('change', function() {
+                    const flavor = this.dataset.flavor;
+                    let currentValue = parseInt(this.value);
+                    if (isNaN(currentValue) || currentValue < 0) {
+                        currentValue = 0;
+                        this.value = 0;
+                    }
+                    esfirraQuantities[flavor] = currentValue;
+                    console.log('esfirraQuantities:', esfirraQuantities);
+                    updateFinalizeButtonState();
+                });
+            });
+
+            // Add event listeners for beverage quantity buttons
+            document.querySelectorAll('#beverage-options-with-quantity .quantity-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const flavor = this.dataset.beverageFlavor;
+                    const action = this.dataset.action;
+                    const input = this.parentNode.querySelector('.quantity-input');
+                    let currentValue = parseInt(input.value);
+                    const price = parseFloat(input.dataset.beveragePrice);
+
+                    if (action === 'increase') {
+                        currentValue++;
+                    } else if (action === 'decrease' && currentValue > 0) {
+                        currentValue--;
+                    }
+                    input.value = currentValue;
+                    beverageQuantities[flavor] = { quantity: currentValue, price: price };
+                    console.log('beverageQuantities:', beverageQuantities);
+                    updateFinalizeButtonState();
+                });
+            });
+
+            document.querySelectorAll('#beverage-options-with-quantity .quantity-input').forEach(input => {
+                input.addEventListener('change', function() {
+                    const flavor = this.dataset.beverageFlavor;
+                    let currentValue = parseInt(this.value);
+                    const price = parseFloat(this.dataset.beveragePrice);
+                    if (isNaN(currentValue) || currentValue < 0) {
+                        currentValue = 0;
+                        this.value = 0;
+                    }
+                    beverageQuantities[flavor] = { quantity: currentValue, price: price };
+                    console.log('beverageQuantities:', beverageQuantities);
+                    updateFinalizeButtonState();
+                });
+            });
+
+            // Add listener for stuffed crust radios
+            stuffedCrustRadios.forEach(radio => {
+                radio.addEventListener('change', () => {
+                    selectedCrust = {
+                        name: radio.value,
+                        price: parseFloat(radio.dataset.crustPrice),
+                        id: radio.dataset.crustId
+                    };
+                    console.log('Borda selecionada:', selectedCrust); // Log de depuração
+                });
+            });
+
+            // Initial setup
             showPage('main-menu');
             updateCartIconCount(); // Garante que a contagem do carrinho seja exibida corretamente ao carregar
             updatePizzariaStatus(); // Atualiza o status da pizzaria ao carregar
