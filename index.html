@@ -1703,7 +1703,11 @@
             });
 
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            message += `\n*Total do Pedido:* R$ ${subtotal.toFixed(2).replace('.', ',')}\n\n`; // Apenas o subtotal
+            const totalComTaxa = subtotal + deliveryFee;
+
+message += `\n*Subtotal:* R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+message += `\n*Taxa de entrega:* R$ ${deliveryFee.toFixed(2).replace('.', ',')}`;
+message += `\n*Total com entrega:* R$ ${totalComTaxa.toFixed(2).replace('.', ',')}\n\n`;
             
             // Adiciona as observações, se houver
             if (orderNotes.trim() !== '') {
@@ -1952,6 +1956,7 @@ function calcularTaxaEntrega() {
             else if (distanciaKm <= 19) taxa = 20;
             else taxa = 25;
 
+            deliveryFee = taxa;
             document.getElementById("taxa-entrega").innerText = `Taxa de entrega: R$ ${taxa.toFixed(2).replace('.', ',')}`;
 
             const totalSpan = document.getElementById("cart-total-price");
