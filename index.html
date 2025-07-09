@@ -78,7 +78,7 @@
         }
     }
     </style>
-</head>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd6-d4xDeEdHCILpv_c5xqGTBAR8o8xm4&amp;libraries=places"></script></head>
 <body class="p-4 sm:p-6 lg:p-8 flex items-center justify-center min-h-screen">
 <div class="container mx-auto bg-white rounded-xl shadow-lg p-6 sm:p-8 lg:p-10 max-w-3xl border-t-4 border-red-600 relative">
 <div class="absolute top-4 right-4 cursor-pointer flex items-center justify-center bg-red-600 text-white rounded-full p-3 shadow-lg hover:bg-red-700 transition-colors z-10" id="cart-icon-container" onclick="showPage('order-summary')">
@@ -1931,22 +1931,23 @@ placeOrderBtn.addEventListener('click', () => {
     </script>
 
 <script>
-async function calcularTaxaEntrega() {
+function calcularTaxaEntrega() {
     const cepDestino = document.getElementById("cep-destino").value;
     const origem = "69095510";
-    const apiKey = "AIzaSyBd6-d4xDeEdHCILpv_c5xqGTBAR8o8xm4";
 
-    const url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origem}&destinations=${cepDestino}&key=${apiKey}&language=pt-BR&units=metric`;
-
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-
-        if (data.status === "OK" && data.rows[0].elements[0].status === "OK") {
-            const distanciaMetros = data.rows[0].elements[0].distance.value;
+    const service = new google.maps.DistanceMatrixService();
+    service.getDistanceMatrix({
+        origins: [origem],
+        destinations: [cepDestino],
+        travelMode: 'DRIVING',
+        unitSystem: google.maps.UnitSystem.METRIC,
+        language: 'pt-BR'
+    }, (response, status) => {
+        if (status === "OK") {
+            const distanciaMetros = response.rows[0].elements[0].distance.value;
             const distanciaKm = distanciaMetros / 1000;
-
             let taxa = 0;
+
             if (distanciaKm <= 5) taxa = 5;
             else if (distanciaKm <= 9) taxa = 10;
             else if (distanciaKm <= 15) taxa = 15;
@@ -1960,12 +1961,10 @@ async function calcularTaxaEntrega() {
             const novoTotal = parseFloat(totalText) + taxa;
             totalSpan.innerText = `R$ ${novoTotal.toFixed(2).replace('.', ',')}`;
         } else {
+            console.error("Erro no DistanceMatrixService:", status);
             document.getElementById("taxa-entrega").innerText = "Erro ao calcular a distância.";
         }
-    } catch (error) {
-        document.getElementById("taxa-entrega").innerText = "Erro na conexão com a API.";
-        console.error(error);
-    }
+    });
 }
 </script>
 </body>
