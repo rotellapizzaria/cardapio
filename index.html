@@ -55,6 +55,28 @@
         .ai-suggestion-box.loading {
             color: #555;
         }
+    
+    @media (max-width: 640px) {
+        .container {
+            padding: 1rem !important;
+            border-radius: 0.5rem !important;
+        }
+        .text-2xl, .text-3xl {
+            font-size: 1.25rem !important;
+        }
+        .text-lg {
+            font-size: 1rem !important;
+        }
+        button, input, textarea {
+            font-size: 1rem !important;
+        }
+        .rounded-full {
+            border-radius: 9999px !important;
+        }
+        .shadow-lg {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+        }
+    }
     </style>
 </head>
 <body class="p-4 sm:p-6 lg:p-8 flex items-center justify-center min-h-screen">
