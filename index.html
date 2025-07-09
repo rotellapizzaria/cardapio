@@ -1660,11 +1660,18 @@
 
         // Evento para o botão "Enviar Pedido"
         // Move this setup inside DOMContentLoaded or a function called after DOM is ready
-        // placeOrderBtn.addEventListener('click', () => { ... });
+    const taxaEntregaText = document.getElementById("taxa-entrega")?.innerText || "";
+    const totalPedidoText = document.getElementById("cart-total-price")?.innerText || "";
+
+    const message = prepareWhatsAppMessage(taxaEntregaText, totalPedidoText);
+    const whatsappNumber = '5592986161640';
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+}); ... });
 
 
         // Função para preparar a mensagem do WhatsApp
-        function prepareWhatsAppMessage() {
+        function prepareWhatsAppMessage(taxaEntregaText = '', totalPedidoText = '') {
             // Get elements inside the function to ensure they are loaded
             const addressStreetInput = document.getElementById('address-street');
             const addressNumberInput = document.getElementById('address-number');
@@ -1919,7 +1926,14 @@
             // Opcionalmente, atualiza o status a cada minuto para mantê-lo atualizado
             setInterval(updatePizzariaStatus, 60 * 1000); 
         
-placeOrderBtn.addEventListener('click', () => {
+    const taxaEntregaText = document.getElementById("taxa-entrega")?.innerText || "";
+    const totalPedidoText = document.getElementById("cart-total-price")?.innerText || "";
+
+    const message = prepareWhatsAppMessage(taxaEntregaText, totalPedidoText);
+    const whatsappNumber = '5592986161640';
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+});
     const message = prepareWhatsAppMessage();
     const whatsappNumber = '5592986161640';
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
@@ -1965,5 +1979,18 @@ function calcularTaxaEntrega() {
     });
 }
 </script>
-</body>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const placeOrderBtn = document.getElementById('place-order-btn');
+    placeOrderBtn.addEventListener('click', () => {
+        const taxaEntregaText = document.getElementById("taxa-entrega")?.innerText || "";
+        const totalPedidoText = document.getElementById("cart-total-price")?.innerText || "";
+
+        const message = prepareWhatsAppMessage(taxaEntregaText, totalPedidoText);
+        const whatsappNumber = '5592986161640';
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+    });
+});
+</script></body>
 </html>
