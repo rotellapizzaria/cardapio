@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rotella Pizzaria - Seu Pedido</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rotella Pizzaria - Seu Pedido</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<style>
         /* Estilos personalizados para a fonte Inter e outros ajustes */
         body {
             font-family: 'Inter', sans-serif;
@@ -57,857 +58,814 @@
     </style>
 </head>
 <body class="p-4 sm:p-6 lg:p-8 flex items-center justify-center min-h-screen">
-    <div class="container mx-auto bg-white rounded-xl shadow-lg p-6 sm:p-8 lg:p-10 max-w-3xl border-t-4 border-red-600 relative">
-        <div id="cart-icon-container" class="absolute top-4 right-4 cursor-pointer flex items-center justify-center bg-red-600 text-white rounded-full p-3 shadow-lg hover:bg-red-700 transition-colors z-10" onclick="showPage('order-summary')">
-            <i class="fas fa-shopping-cart text-xl"></i>
-            <span id="cart-count" class="ml-2 text-lg font-bold">0</span>
-        </div>
-
-        <div class="text-center mb-6 mt-4">
-            <img src="https://i.ibb.co/YFhQZvBG/Whats-App-Image-2025-06-06-at-14-24-25.jpg" alt="Logo Rotella Pizzaria" class="mx-auto w-48 sm:w-64 h-auto rounded-lg shadow-md">
-            <a href="https://www.instagram.com/rotellapizzaria" target="_blank" class="mt-4 inline-block text-red-600 hover:text-red-800 font-semibold text-lg">
+<div class="container mx-auto bg-white rounded-xl shadow-lg p-6 sm:p-8 lg:p-10 max-w-3xl border-t-4 border-red-600 relative">
+<div class="absolute top-4 right-4 cursor-pointer flex items-center justify-center bg-red-600 text-white rounded-full p-3 shadow-lg hover:bg-red-700 transition-colors z-10" id="cart-icon-container" onclick="showPage('order-summary')">
+<i class="fas fa-shopping-cart text-xl"></i>
+<span class="ml-2 text-lg font-bold" id="cart-count">0</span>
+</div>
+<div class="text-center mb-6 mt-4">
+<img alt="Logo Rotella Pizzaria" class="mx-auto w-48 sm:w-64 h-auto rounded-lg shadow-md" src="https://i.ibb.co/YFhQZvBG/Whats-App-Image-2025-06-06-at-14-24-25.jpg"/>
+<a class="mt-4 inline-block text-red-600 hover:text-red-800 font-semibold text-lg" href="https://www.instagram.com/rotellapizzaria" target="_blank">
                 Nos siga no Instagram: @rotellapizzaria
             </a>
-            <!-- Div para exibir o status de funcionamento da pizzaria -->
-            <div id="pizzaria-status" class="mt-2 text-lg font-semibold"></div>
-        </div>
-
-        <div id="main-menu" class="page-section">
-            <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800 text-center mb-8">Nosso Cardápio Delicioso!</h2>
-
-            <div class="mb-10">
-                <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Combos Especiais</h3>
-                <p class="text-sm text-gray-600 mb-4 italic text-center">
+<!-- Div para exibir o status de funcionamento da pizzaria -->
+<div class="mt-2 text-lg font-semibold" id="pizzaria-status"></div>
+</div>
+<div class="page-section" id="main-menu">
+<h2 class="text-2xl sm:text-3xl font-semibold text-gray-800 text-center mb-8">Nosso Cardápio Delicioso!</h2>
+<div class="mb-10">
+<h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Combos Especiais</h3>
+<p class="text-sm text-gray-600 mb-4 italic text-center">
                     *Obs: Válido somente para sabores tradicionais de pizza.
                 </p>
-                
-                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
-                     data-item-type="combo" data-item-id="combo1" data-item-name="Combo 1" data-item-price="44.90">
-                    <div class="flex-grow">
-                        <p class="text-lg font-bold text-gray-900">Combo 1</p>
-                        <p class="text-sm text-gray-600 mt-1">Pizza grande (até dois sabores) + Coca-cola ou Fanta laranja de 1L</p>
-                    </div>
-                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 44,90</p>
-                </div>
-
-                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
-                     data-item-type="combo" data-item-id="combo2" data-item-name="Combo 2" data-item-price="79.90">
-                    <div class="flex-grow">
-                        <p class="text-lg font-bold text-gray-900">Combo 2</p>
-                        <p class="text-sm text-gray-600 mt-1">2 Pizzas grandes (até dois sabores cada) + Coca-cola ou Fanta laranja de 2L</p>
-                    </div>
-                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 79,90</p>
-                </div>
-            </div>
-
-            <div class="mb-10">
-                <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Pizzas</h3>
-                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
-                     data-item-type="pizza-tradicional" data-item-id="pizza-tradicional-grande" data-item-name="Pizza Grande Tradicional" data-item-price="39.90">
-                    <!-- Container para a imagem, texto e preço, usando flexbox para alinhamento -->
-                    <div class="flex flex-col sm:flex-row items-center w-full">
-                        <!-- Imagem da pizza -->
-                        <img src="https://i.ibb.co/TqdcMknx/pizza-calabresa-rotella.png" alt="Pizza Calabresa Rotella" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-lg mr-4 mb-2 sm:mb-0">
-                        <div class="flex-grow text-center sm:text-left">
-                            <p class="text-lg font-bold text-gray-900">Pizza Grande Tradicional</p>
-                            <p class="text-sm text-gray-600 mt-1">Até dois sabores</p>
-                        </div>
-                        <!-- Displaying old price with strikethrough and new price -->
-                        <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0 sm:ml-auto">
-                            <span class="line-through text-gray-500 text-base mr-2">R$ 44,90</span> R$ 39,90
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item" data-item-id="combo1" data-item-name="Combo 1" data-item-price="44.90" data-item-type="combo">
+<div class="flex-grow">
+<p class="text-lg font-bold text-gray-900">Combo 1</p>
+<p class="text-sm text-gray-600 mt-1">Pizza grande (até dois sabores) + Coca-cola ou Fanta laranja de 1L</p>
+</div>
+<p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 44,90</p>
+</div>
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item" data-item-id="combo2" data-item-name="Combo 2" data-item-price="79.90" data-item-type="combo">
+<div class="flex-grow">
+<p class="text-lg font-bold text-gray-900">Combo 2</p>
+<p class="text-sm text-gray-600 mt-1">2 Pizzas grandes (até dois sabores cada) + Coca-cola ou Fanta laranja de 2L</p>
+</div>
+<p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 79,90</p>
+</div>
+</div>
+<div class="mb-10">
+<h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Pizzas</h3>
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item" data-item-id="pizza-tradicional-grande" data-item-name="Pizza Grande Tradicional" data-item-price="39.90" data-item-type="pizza-tradicional">
+<!-- Container para a imagem, texto e preço, usando flexbox para alinhamento -->
+<div class="flex flex-col sm:flex-row items-center w-full">
+<!-- Imagem da pizza -->
+<img alt="Pizza Calabresa Rotella" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-lg mr-4 mb-2 sm:mb-0" src="https://i.ibb.co/TqdcMknx/pizza-calabresa-rotella.png"/>
+<div class="flex-grow text-center sm:text-left">
+<p class="text-lg font-bold text-gray-900">Pizza Grande Tradicional</p>
+<p class="text-sm text-gray-600 mt-1">Até dois sabores</p>
+</div>
+<!-- Displaying old price with strikethrough and new price -->
+<p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0 sm:ml-auto">
+<span class="line-through text-gray-500 text-base mr-2">R$ 44,90</span> R$ 39,90
                         </p>
-                    </div>
-                </div>
-                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
-                     data-item-type="pizza-especial" data-item-id="pizza-especial-grande" data-item-name="Pizza Grande Especial" data-item-price="49.90">
-                    <!-- Container para a imagem, texto e preço, usando flexbox para alinhamento -->
-                    <div class="flex flex-col sm:flex-row items-center w-full">
-                        <!-- Image of the pizza -->
-                        <img src="https://i.ibb.co/tPKgFvTp/pizza-frango-e-calabresa-com-catupiry-rotella.png" alt="Pizza Frango e Calabresa com Catupiry Rotella" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-lg mr-4 mb-2 sm:mb-0">
-                        <div class="flex-grow text-center sm:text-left">
-                            <p class="text-lg font-bold text-gray-900">Pizza Grande Especial</p>
-                            <p class="text-sm text-gray-600 mt-1">Até dois sabores</p>
-                        </div>
-                        <!-- Displaying old price with strikethrough and new price for Pizza Grande Especial -->
-                        <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0 sm:ml-auto">
-                            <span class="line-through text-gray-500 text-base mr-2">R$ 54,90</span> R$ 49,90
+</div>
+</div>
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item" data-item-id="pizza-especial-grande" data-item-name="Pizza Grande Especial" data-item-price="49.90" data-item-type="pizza-especial">
+<!-- Container para a imagem, texto e preço, usando flexbox para alinhamento -->
+<div class="flex flex-col sm:flex-row items-center w-full">
+<!-- Image of the pizza -->
+<img alt="Pizza Frango e Calabresa com Catupiry Rotella" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-lg mr-4 mb-2 sm:mb-0" src="https://i.ibb.co/tPKgFvTp/pizza-frango-e-calabresa-com-catupiry-rotella.png"/>
+<div class="flex-grow text-center sm:text-left">
+<p class="text-lg font-bold text-gray-900">Pizza Grande Especial</p>
+<p class="text-sm text-gray-600 mt-1">Até dois sabores</p>
+</div>
+<!-- Displaying old price with strikethrough and new price for Pizza Grande Especial -->
+<p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0 sm:ml-auto">
+<span class="line-through text-gray-500 text-base mr-2">R$ 54,90</span> R$ 49,90
                         </p>
-                    </div>
-                </div>
-                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
-                     data-item-type="pizza-media" data-item-id="pizza-media" data-item-name="Pizza Média Tradicional" data-item-price="29.90">
-                    <div class="flex-grow">
-                        <p class="text-lg font-bold text-gray-900">Pizza Média Tradicional</p>
-                        <p class="text-sm text-gray-600 mt-1">Até dois sabores</p>
-                    </div>
-                    <!-- Displaying old price with strikethrough and new price for Pizza Média Tradicional -->
-                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">
-                        <span class="line-through text-gray-500 text-base mr-2">R$ 34,90</span> R$ 29,90
+</div>
+</div>
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item" data-item-id="pizza-media" data-item-name="Pizza Média Tradicional" data-item-price="29.90" data-item-type="pizza-media">
+<div class="flex-grow">
+<p class="text-lg font-bold text-gray-900">Pizza Média Tradicional</p>
+<p class="text-sm text-gray-600 mt-1">Até dois sabores</p>
+</div>
+<!-- Displaying old price with strikethrough and new price for Pizza Média Tradicional -->
+<p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">
+<span class="line-through text-gray-500 text-base mr-2">R$ 34,90</span> R$ 29,90
                     </p>
-                </div>
-                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
-                     data-item-type="pizza-especial" data-item-id="pizza-especial-media" data-item-name="Pizza Média Especial" data-item-price="39.90">
-                    <div class="flex-grow">
-                        <p class="text-lg font-bold text-gray-900">Pizza Média Especial</p>
-                        <p class="text-sm text-gray-600 mt-1">Até dois sabores</p>
-                    </div>
-                    <!-- Displaying old price with strikethrough and new price for Pizza Média Especial -->
-                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">
-                        <span class="line-through text-gray-500 text-base mr-2">R$ 44,90</span> R$ 39,90
+</div>
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item" data-item-id="pizza-especial-media" data-item-name="Pizza Média Especial" data-item-price="39.90" data-item-type="pizza-especial">
+<div class="flex-grow">
+<p class="text-lg font-bold text-gray-900">Pizza Média Especial</p>
+<p class="text-sm text-gray-600 mt-1">Até dois sabores</p>
+</div>
+<!-- Displaying old price with strikethrough and new price for Pizza Média Especial -->
+<p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">
+<span class="line-through text-gray-500 text-base mr-2">R$ 44,90</span> R$ 39,90
                     </p>
-                </div>
-            </div>
-            
-            <div class="mb-10">
-                <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Esfirras</h3>
-                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
-                     data-item-type="esfirra-tradicional" data-item-id="esfirra-tradicional" data-item-name="Esfirra Salgada Tradicional" data-item-price="6.90">
-                    <div class="flex-grow">
-                        <p class="text-lg font-bold text-gray-900">Esfirra Salgada Tradicional</p>
-                        <p class="text-sm text-gray-600 mt-1">Sabores tradicionais</p>
-                    </div>
-                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 6,90</p>
-                </div>
-                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
-                     data-item-type="esfirra-especial" data-item-id="esfirra-especial" data-item-name="Esfirra Salgada Especial" data-item-price="7.90">
-                    <div class="flex-grow">
-                        <p class="text-lg font-bold text-gray-900">Esfirra Salgada Especial</p>
-                        <p class="text-sm text-gray-600 mt-1">Sabores especiais</p>
-                    </div>
-                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 7,90</p>
-                </div>
-                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
-                     data-item-type="esfirra-doce" data-item-id="esfirra-doce" data-item-name="Esfirra Doce" data-item-price="7.90"> <div class="flex-grow">
-                        <p class="text-lg font-bold text-gray-900">Esfirra Doce</p>
-                        <p class="text-sm text-gray-600 mt-1">Brigadeiro e Romeu e Julieta</p>
-                    </div>
-                    <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 7,90</p>
-                </div>
-            </div>
-
-            <!-- Início da nova seção de Bebidas no menu principal -->
-            <div class="mb-10">
-                <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Bebidas</h3>
-                <div id="main-menu-beverage-options" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
-                         data-item-type="beverage" data-item-id="coca-1l-main-menu" data-item-name="Coca-cola 1L" data-item-price="9.90">
-                        <div class="flex-grow">
-                            <p class="text-lg font-bold text-gray-900">Coca-cola 1L</p>
-                        </div>
-                        <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 9,90</p>
-                    </div>
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
-                         data-item-type="beverage" data-item-id="coca-2l-main-menu" data-item-name="Coca-cola 2L" data-item-price="13.90">
-                        <div class="flex-grow">
-                            <p class="text-lg font-bold text-gray-900">Coca-cola 2L</p>
-                        </div>
-                        <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 13,90</p>
-                    </div>
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
-                         data-item-type="beverage" data-item-id="fanta-1l-main-menu" data-item-name="Fanta Laranja 1L" data-item-price="9.90">
-                        <div class="flex-grow">
-                            <p class="text-lg font-bold text-gray-900">Fanta Laranja 1L</p>
-                        </div>
-                        <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 9,90</p>
-                    </div>
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item"
-                         data-item-type="beverage" data-item-id="fanta-2l-main-menu" data-item-name="Fanta Laranja 2L" data-item-price="12.90">
-                        <div class="flex-grow">
-                            <p class="text-lg font-bold text-gray-900">Fanta Laranja 2L</p>
-                        </div>
-                        <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 12,90</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Fim da nova seção de Bebidas no menu principal -->
-            
-            <div class="text-center mt-10 mb-6">
-                <button onclick="window.open('https://wa.me/92986161640?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!', '_blank')" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
-                    <i class="fab fa-whatsapp mr-2"></i> Falar com um atendente
+</div>
+</div>
+<div class="mb-10">
+<h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Esfirras</h3>
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item" data-item-id="esfirra-tradicional" data-item-name="Esfirra Salgada Tradicional" data-item-price="6.90" data-item-type="esfirra-tradicional">
+<div class="flex-grow">
+<p class="text-lg font-bold text-gray-900">Esfirra Salgada Tradicional</p>
+<p class="text-sm text-gray-600 mt-1">Sabores tradicionais</p>
+</div>
+<p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 6,90</p>
+</div>
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item" data-item-id="esfirra-especial" data-item-name="Esfirra Salgada Especial" data-item-price="7.90" data-item-type="esfirra-especial">
+<div class="flex-grow">
+<p class="text-lg font-bold text-gray-900">Esfirra Salgada Especial</p>
+<p class="text-sm text-gray-600 mt-1">Sabores especiais</p>
+</div>
+<p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 7,90</p>
+</div>
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item" data-item-id="esfirra-doce" data-item-name="Esfirra Doce" data-item-price="7.90" data-item-type="esfirra-doce"> <div class="flex-grow">
+<p class="text-lg font-bold text-gray-900">Esfirra Doce</p>
+<p class="text-sm text-gray-600 mt-1">Brigadeiro e Romeu e Julieta</p>
+</div>
+<p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 7,90</p>
+</div>
+</div>
+<!-- Início da nova seção de Bebidas no menu principal -->
+<div class="mb-10">
+<h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Bebidas</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8" id="main-menu-beverage-options">
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item" data-item-id="coca-1l-main-menu" data-item-name="Coca-cola 1L" data-item-price="9.90" data-item-type="beverage">
+<div class="flex-grow">
+<p class="text-lg font-bold text-gray-900">Coca-cola 1L</p>
+</div>
+<p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 9,90</p>
+</div>
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item" data-item-id="coca-2l-main-menu" data-item-name="Coca-cola 2L" data-item-price="13.90" data-item-type="beverage">
+<div class="flex-grow">
+<p class="text-lg font-bold text-gray-900">Coca-cola 2L</p>
+</div>
+<p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 13,90</p>
+</div>
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item" data-item-id="fanta-1l-main-menu" data-item-name="Fanta Laranja 1L" data-item-price="9.90" data-item-type="beverage">
+<div class="flex-grow">
+<p class="text-lg font-bold text-gray-900">Fanta Laranja 1L</p>
+</div>
+<p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 9,90</p>
+</div>
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item" data-item-id="fanta-2l-main-menu" data-item-name="Fanta Laranja 2L" data-item-price="12.90" data-item-type="beverage">
+<div class="flex-grow">
+<p class="text-lg font-bold text-gray-900">Fanta Laranja 2L</p>
+</div>
+<p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 12,90</p>
+</div>
+</div>
+</div>
+<!-- Fim da nova seção de Bebidas no menu principal -->
+<div class="text-center mt-10 mb-6">
+<button class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50" onclick="window.open('https://wa.me/92986161640?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!', '_blank')">
+<i class="fab fa-whatsapp mr-2"></i> Falar com um atendente
                 </button>
-            </div>
-            
-        </div>
-
-        <div id="flavor-selection" class="page-section hidden">
-            <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800 text-center mb-8">Personalize seu Pedido</h2>
-
-            <div id="item-info" class="text-center text-lg text-gray-700 mb-6 p-4 bg-red-50 rounded-lg">
-                </div>
-
-            <!-- Section for Pizza 1 Flavors (hidden by default, shown for Combo 2) -->
-            <div id="pizza1-flavor-section" class="mb-10 hidden">
-                <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Sabores da Pizza 1</h3>
-                <p id="flavor-instruction-text-pizza1" class="text-md text-gray-600 text-center mb-6"></p>
-                <div id="flavor-options-pizza1" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                    <!-- Checkboxes for Pizza 1 - Dynamically generated or copied from main flavor-options -->
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor-pizza1" value="Portuguesa" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Portuguesa</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, presunto, mussarela, ovos, cebola, ervilha e azeitona.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor-pizza1" value="Calabresa" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Calabresa</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, calabresa fatiada e cebola.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor-pizza1" value="Mussarela" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Mussarela</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro e mussarela.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor-pizza1" value="Marguerita" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Marguerita</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, tomate e manjericão.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor-pizza1" value="Frango com Catupiry" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Frango com Catupiry</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, frango desfiado e catupiry.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor-pizza1" value="Calabresa com Catupiry" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Calabresa com Catupiry</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, calabresa fatiada e catupiry.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor-pizza1" value="Bacon" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Bacon</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela e bacon crocante.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor-pizza1" value="Bacon com Catupiry" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Bacon com Catupiry</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, bacon crocante e catupiry.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor-pizza1" value="Bacon com Cheddar" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Bacon com Cheddar</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, bacon crocante e cheddar cremoso.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor-pizza1" value="M&M" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">M&M</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, chocolate, M&M's.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor-pizza1" value="Brigadeiro" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Brigadeiro</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, chocolate, granulado.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor-pizza1" value="Romeu e Julieta" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Romeu e Julieta</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, goiabada e queijo mussarela.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor-pizza1" value="Doce de Leite" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Doce de Leite</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, doce de leite e queijo mussarela.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor-pizza1" value="Frango" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Frango</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, frango desfiado.</p>
-                        </div>
-                    </label>
-                </div>
-            </div>
-
-            <!-- Section for Pizza 2 Flavors (hidden by default, shown for Combo 2) -->
-            <div id="pizza2-flavor-section" class="mb-10 hidden">
-                <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Sabores da Pizza 2</h3>
-                <p id="flavor-instruction-text-pizza2" class="text-md text-gray-600 text-center mb-6"></p>
-                <div id="flavor-options-pizza2" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                    <!-- Checkboxes for Pizza 2 - Dynamically generated or copied from main flavor-options -->
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor-pizza2" value="Portuguesa" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Portuguesa</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, presunto, mussarela, ovos, cebola, ervilha e azeitona.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor-pizza2" value="Calabresa" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Calabresa</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, calabresa fatiada e cebola.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor-pizza2" value="Mussarela" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Mussarela</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro e mussarela.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor-pizza2" value="Marguerita" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Marguerita</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, tomate e manjericão.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor-pizza2" value="Frango com Catupiry" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Frango com Catupiry</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, frango desfiado e catupiry.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor-pizza2" value="Calabresa com Catupiry" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Calabresa com Catupiry</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, calabresa fatiada e catupiry.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor-pizza2" value="Bacon" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Bacon</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela e bacon crocante.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor-pizza2" value="Bacon com Catupiry" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Bacon com Catupiry</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, bacon crocante e catupiry.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor-pizza2" value="Bacon com Cheddar" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Bacon com Cheddar</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, bacon crocante e cheddar cremoso.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor-pizza2" value="M&M" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">M&M</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, chocolate, M&M's.</p>
-                        </div>
-                    </label>
-                    <!-- Sweet flavors hidden for Combo 2 -->
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white hidden">
-                        <input type="checkbox" name="flavor-pizza2" value="Brigadeiro" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Brigadeiro</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, chocolate, granulado.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white hidden">
-                        <input type="checkbox" name="flavor-pizza2" value="Romeu e Julieta" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Romeu e Julieta</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, goiabada e queijo mussarela.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor-pizza2" value="Doce de Leite" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Doce de Leite</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, doce de leite e queijo mussarela.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor-pizza2" value="Frango" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Frango</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, frango desfiado.</p>
-                        </div>
-                    </label>
-                </div>
-            </div>
-
-            <!-- Original flavor-options section (hidden for Combo 2) -->
-            <div id="flavor-options-single" class="mb-10">
-                <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Selecione seus Sabores</h3>
-                <p id="flavor-instruction-text-single" class="text-md text-gray-600 text-center mb-6"></p>
-                <div id="flavor-options" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor" value="Portuguesa" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Portuguesa</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, presunto, mussarela, ovos, cebola, ervilha e azeitona.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor" value="Calabresa" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Calabresa</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, calabresa fatiada e cebola.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor" value="Mussarela" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Mussarela</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro e mussarela.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor" value="Marguerita" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Marguerita</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, tomate e manjericão.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor" value="Frango com Catupiry" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Frango com Catupiry</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, frango desfiado e catupiry.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor" value="Calabresa com Catupiry" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Calabresa com Catupiry</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, calabresa fatiada e catupiry.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor" value="Bacon" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Bacon</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela e bacon crocante.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor" value="Bacon com Catupiry" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Bacon com Catupiry</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, bacon crocante e catupiry.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor" value="Bacon com Cheddar" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Bacon com Cheddar</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, bacon crocante e cheddar cremoso.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor" value="M&M" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">M&M</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, chocolate, M&M's.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor" value="Brigadeiro" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Brigadeiro</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, chocolate, granulado.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor" value="Romeu e Julieta" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Romeu e Julieta</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, goiabada e queijo mussarela.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor" value="Doce de Leite" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Doce de Leite</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, doce de leite e queijo mussarela.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor" value="Frango" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Frango</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, frango desfiado.</p>
-                        </div>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="checkbox" name="flavor" value="Oreo" class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Oreo</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, chocolate, biscoito Oreo triturado.</p>
-                        </div>
-                    </label>
-                </div>
-            </div>
-
-            <div id="esfirra-options-single" class="mb-10 hidden">
-                <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Escolha a Quantidade de Esfirras</h3>
-                <div id="esfirra-flavor-quantity-options" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                    <!-- Esfirra flavors with quantity controls will be dynamically shown/hidden -->
-                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Portuguesa</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, presunto, mussarela, ovos, cebola, ervilha e azeitona.</p>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Portuguesa">-</button>
-                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Portuguesa">
-                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Portuguesa">+</button>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Calabresa</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, calabresa fatiada e cebola.</p>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Calabresa">-</button>
-                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Calabresa">
-                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Calabresa">+</button>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Mussarela</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro e mussarela.</p>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Mussarela">-</button>
-                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Mussarela">
-                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Mussarela">+</button>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Marguerita</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, tomate e manjericão.</p>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Marguerita">-</button>
-                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Marguerita">
-                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Marguerita">+</button>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Frango com Catupiry</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, frango desfiado e catupiry.</p>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Frango com Catupiry">-</button>
-                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Frango com Catupiry">
-                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Frango com Catupiry">+</button>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Calabresa com Catupiry</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, calabresa fatiada e catupiry.</p>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Calabresa com Catupiry">-</button>
-                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Calabresa com Catupiry">
-                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Calabresa com Catupiry">+</button>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Bacon com Catupiry</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, bacon crocante e catupiry.</p>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Bacon com Catupiry">-</button>
-                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Bacon com Catupiry">
-                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Bacon com Catupiry">+</button>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Bacon com Cheddar</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, bacon crocante e cheddar cremoso.</p>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Bacon com Cheddar">-</button>
-                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Bacon com Cheddar">
-                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Bacon com Cheddar">+</button>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Bacon</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela e bacon crocante.</p>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Bacon">-</button>
-                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Bacon">
-                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Bacon">+</button>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Frango</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, frango desfiado.</p>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Frango">-</button>
-                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Frango">
-                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Frango">+</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="esfirra-doce-options-single" class="mb-10 hidden">
-                <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Escolha a Quantidade de Esfirras Doces</h3>
-                <div id="esfirra-doce-flavor-quantity-options" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Brigadeiro</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, chocolate, granulado.</p>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Brigadeiro">-</button>
-                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Brigadeiro">
-                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Brigadeiro">+</button>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Romeu e Julieta</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, goiabada e queijo mussarela.</p>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Romeu e Julieta">-</button>
-                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Romeu e Julieta">
-                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Romeu e Julieta">+</button>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">M&M</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, chocolate, M&M's.</p>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="M&M">-</button>
-                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="M&M">
-                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="M&M">+</button>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Doce de Leite</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, doce de leite e queijo mussarela.</p>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Doce de Leite">-</button>
-                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Doce de Leite">
-                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Doce de Leite">+</button>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
-                        <div class="ml-3">
-                            <span class="text-lg text-gray-800 font-medium">Oreo</span>
-                            <p class="text-sm text-gray-600">Massa artesanal, chocolate, biscoito Oreo triturado.</p>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Oreo">-</button>
-                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-flavor="Oreo">
-                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Oreo">+</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="crust-options-section" class="mb-10 hidden">
-                <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Borda Recheada</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="radio" name="stuffed-crust" value="Sem Borda Recheada" data-crust-price="0.00" data-crust-id="no-crust" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500" checked>
-                        <span class="ml-3 text-lg text-gray-800 font-medium">Sem Borda Recheada</span>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="radio" name="stuffed-crust" value="Borda Recheada Catupiry" data-crust-price="10.00" data-crust-id="catupiry-crust" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500">
-                        <span class="ml-3 text-lg text-gray-800 font-medium">Borda Recheada Catupiry +R$10,00</span>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="radio" name="stuffed-crust" value="Borda Recheada Chocolate" data-crust-price="10.00" data-crust-id="chocolate-crust" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500">
-                        <span class="ml-3 text-lg text-gray-800 font-medium">Borda Recheada Chocolate +R$10,00</span>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="radio" name="stuffed-crust" value="Borda Recheada Romeu e Julieta" data-crust-price="10.00" data-crust-id="rj-crust" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500">
-                        <span class="ml-3 text-lg text-gray-800 font-medium">Borda Recheada Romeu e Julieta +R$10,00</span>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
-                        <input type="radio" name="stuffed-crust" value="Borda Recheada Cheddar" data-crust-price="10.00" data-crust-id="cheddar-crust" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500">
-                        <span class="ml-3 text-lg text-gray-800 font-medium">Borda Recheada Cheddar +R$10,00</span>
-                    </label>
-                </div>
-            </div>
-
-            <div id="beverage-options-with-quantity" class="mb-10 hidden">
-                <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6" id="beverage-heading"></h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white beverage-item-with-quantity">
-                        <span class="text-lg text-gray-800 font-medium">Coca-cola 1L - R$ 9,90</span>
-                        <div class="flex items-center space-x-2">
-                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-beverage-flavor="Coca-cola 1L" data-beverage-price="9.90">-</button>
-                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-beverage-flavor="Coca-cola 1L" data-beverage-price="9.90">
-                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-beverage-flavor="Coca-cola 1L" data-beverage-price="9.90">+</button>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white beverage-item-with-quantity">
-                        <span class="text-lg text-gray-800 font-medium">Coca-cola 2L - R$ 13,90</span>
-                        <div class="flex items-center space-x-2">
-                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-beverage-flavor="Coca-cola 2L" data-beverage-price="13.90">-</button>
-                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-beverage-flavor="Coca-cola 2L" data-beverage-price="13.90">
-                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-beverage-flavor="Coca-cola 2L" data-beverage-price="13.90">+</button>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white beverage-item-with-quantity">
-                        <span class="text-lg text-gray-800 font-medium">Coca-cola Zero 2L - R$ 13,90</span>
-                        <div class="flex items-center space-x-2">
-                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-beverage-flavor="Coca-cola Zero 2L" data-beverage-price="13.90">-</button>
-                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-beverage-flavor="Coca-cola Zero 2L" data-beverage-price="13.90">
-                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-beverage-flavor="Coca-cola Zero 2L" data-beverage-price="13.90">+</button>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white beverage-item-with-quantity">
-                        <span class="text-lg text-gray-800 font-medium">Fanta Laranja 1L - R$ 9,90</span>
-                        <div class="flex items-center space-x-2">
-                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-beverage-flavor="Fanta Laranja 1L" data-beverage-price="9.90">-</button>
-                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-beverage-flavor="Fanta Laranja 1L" data-beverage-price="9.90">
-                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-beverage-flavor="Fanta Laranja 1L" data-beverage-price="9.90">+</button>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white beverage-item-with-quantity">
-                        <span class="text-lg text-gray-800 font-medium">Fanta Laranja 2L - R$ 12,90</span>
-                        <div class="flex items-center space-x-2">
-                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-beverage-flavor="Fanta Laranja 2L" data-beverage-price="12.90">-</button>
-                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-beverage-flavor="Fanta Laranja 2L" data-beverage-price="12.90">
-                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-beverage-flavor="Fanta Laranja 2L" data-beverage-price="12.90">+</button>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white beverage-item-with-quantity">
-                        <span class="text-lg text-gray-800 font-medium">Guaraná Antarctica 2L - R$ 12,90</span>
-                        <div class="flex items-center space-x-2">
-                            <button type="button" class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-beverage-flavor="Guaraná Antarctica 2L" data-beverage-price="12.90">-</button>
-                            <input type="number" class="quantity-input w-16 text-center border rounded-md" value="0" min="0" data-beverage-flavor="Guaraná Antarctica 2L" data-beverage-price="12.90">
-                            <button type="button" class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-beverage-flavor="Guaraná Antarctica 2L" data-beverage-price="12.90">+</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center space-x-4">
-                <button id="add-to-cart-btn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50" disabled>
+</div>
+</div>
+<div class="page-section hidden" id="flavor-selection">
+<h2 class="text-2xl sm:text-3xl font-semibold text-gray-800 text-center mb-8">Personalize seu Pedido</h2>
+<div class="text-center text-lg text-gray-700 mb-6 p-4 bg-red-50 rounded-lg" id="item-info">
+</div>
+<!-- Section for Pizza 1 Flavors (hidden by default, shown for Combo 2) -->
+<div class="mb-10 hidden" id="pizza1-flavor-section">
+<h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Sabores da Pizza 1</h3>
+<p class="text-md text-gray-600 text-center mb-6" id="flavor-instruction-text-pizza1"></p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8" id="flavor-options-pizza1">
+<!-- Checkboxes for Pizza 1 - Dynamically generated or copied from main flavor-options -->
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza1" type="checkbox" value="Portuguesa"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Portuguesa</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, presunto, mussarela, ovos, cebola, ervilha e azeitona.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza1" type="checkbox" value="Calabresa"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Calabresa</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, calabresa fatiada e cebola.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza1" type="checkbox" value="Mussarela"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Mussarela</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro e mussarela.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza1" type="checkbox" value="Marguerita"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Marguerita</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, tomate e manjericão.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza1" type="checkbox" value="Frango com Catupiry"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Frango com Catupiry</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, frango desfiado e catupiry.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza1" type="checkbox" value="Calabresa com Catupiry"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Calabresa com Catupiry</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, calabresa fatiada e catupiry.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza1" type="checkbox" value="Bacon"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Bacon</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela e bacon crocante.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza1" type="checkbox" value="Bacon com Catupiry"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Bacon com Catupiry</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, bacon crocante e catupiry.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza1" type="checkbox" value="Bacon com Cheddar"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Bacon com Cheddar</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, bacon crocante e cheddar cremoso.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza1" type="checkbox" value="M&amp;M"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">M&amp;M</span>
+<p class="text-sm text-gray-600">Massa artesanal, chocolate, M&amp;M's.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza1" type="checkbox" value="Brigadeiro"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Brigadeiro</span>
+<p class="text-sm text-gray-600">Massa artesanal, chocolate, granulado.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza1" type="checkbox" value="Romeu e Julieta"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Romeu e Julieta</span>
+<p class="text-sm text-gray-600">Massa artesanal, goiabada e queijo mussarela.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza1" type="checkbox" value="Doce de Leite"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Doce de Leite</span>
+<p class="text-sm text-gray-600">Massa artesanal, doce de leite e queijo mussarela.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza1" type="checkbox" value="Frango"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Frango</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, frango desfiado.</p>
+</div>
+</label>
+</div>
+</div>
+<!-- Section for Pizza 2 Flavors (hidden by default, shown for Combo 2) -->
+<div class="mb-10 hidden" id="pizza2-flavor-section">
+<h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Sabores da Pizza 2</h3>
+<p class="text-md text-gray-600 text-center mb-6" id="flavor-instruction-text-pizza2"></p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8" id="flavor-options-pizza2">
+<!-- Checkboxes for Pizza 2 - Dynamically generated or copied from main flavor-options -->
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza2" type="checkbox" value="Portuguesa"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Portuguesa</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, presunto, mussarela, ovos, cebola, ervilha e azeitona.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza2" type="checkbox" value="Calabresa"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Calabresa</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, calabresa fatiada e cebola.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza2" type="checkbox" value="Mussarela"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Mussarela</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro e mussarela.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza2" type="checkbox" value="Marguerita"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Marguerita</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, tomate e manjericão.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza2" type="checkbox" value="Frango com Catupiry"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Frango com Catupiry</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, frango desfiado e catupiry.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza2" type="checkbox" value="Calabresa com Catupiry"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Calabresa com Catupiry</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, calabresa fatiada e catupiry.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza2" type="checkbox" value="Bacon"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Bacon</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela e bacon crocante.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza2" type="checkbox" value="Bacon com Catupiry"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Bacon com Catupiry</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, bacon crocante e catupiry.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza2" type="checkbox" value="Bacon com Cheddar"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Bacon com Cheddar</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, bacon crocante e cheddar cremoso.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza2" type="checkbox" value="M&amp;M"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">M&amp;M</span>
+<p class="text-sm text-gray-600">Massa artesanal, chocolate, M&amp;M's.</p>
+</div>
+</label>
+<!-- Sweet flavors hidden for Combo 2 -->
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white hidden">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza2" type="checkbox" value="Brigadeiro"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Brigadeiro</span>
+<p class="text-sm text-gray-600">Massa artesanal, chocolate, granulado.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white hidden">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza2" type="checkbox" value="Romeu e Julieta"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Romeu e Julieta</span>
+<p class="text-sm text-gray-600">Massa artesanal, goiabada e queijo mussarela.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza2" type="checkbox" value="Doce de Leite"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Doce de Leite</span>
+<p class="text-sm text-gray-600">Massa artesanal, doce de leite e queijo mussarela.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza2" type="checkbox" value="Frango"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Frango</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, frango desfiado.</p>
+</div>
+</label>
+</div>
+</div>
+<!-- Original flavor-options section (hidden for Combo 2) -->
+<div class="mb-10" id="flavor-options-single">
+<h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Selecione seus Sabores</h3>
+<p class="text-md text-gray-600 text-center mb-6" id="flavor-instruction-text-single"></p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8" id="flavor-options">
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor" type="checkbox" value="Portuguesa"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Portuguesa</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, presunto, mussarela, ovos, cebola, ervilha e azeitona.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor" type="checkbox" value="Calabresa"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Calabresa</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, calabresa fatiada e cebola.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor" type="checkbox" value="Mussarela"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Mussarela</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro e mussarela.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor" type="checkbox" value="Marguerita"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Marguerita</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, tomate e manjericão.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor" type="checkbox" value="Frango com Catupiry"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Frango com Catupiry</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, frango desfiado e catupiry.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor" type="checkbox" value="Calabresa com Catupiry"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Calabresa com Catupiry</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, calabresa fatiada e catupiry.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor" type="checkbox" value="Bacon"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Bacon</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela e bacon crocante.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor" type="checkbox" value="Bacon com Catupiry"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Bacon com Catupiry</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, bacon crocante e catupiry.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor" type="checkbox" value="Bacon com Cheddar"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Bacon com Cheddar</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, bacon crocante e cheddar cremoso.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor" type="checkbox" value="M&amp;M"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">M&amp;M</span>
+<p class="text-sm text-gray-600">Massa artesanal, chocolate, M&amp;M's.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor" type="checkbox" value="Brigadeiro"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Brigadeiro</span>
+<p class="text-sm text-gray-600">Massa artesanal, chocolate, granulado.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor" type="checkbox" value="Romeu e Julieta"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Romeu e Julieta</span>
+<p class="text-sm text-gray-600">Massa artesanal, goiabada e queijo mussarela.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor" type="checkbox" value="Doce de Leite"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Doce de Leite</span>
+<p class="text-sm text-gray-600">Massa artesanal, doce de leite e queijo mussarela.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor" type="checkbox" value="Frango"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Frango</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, frango desfiado.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor" type="checkbox" value="Oreo"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Oreo</span>
+<p class="text-sm text-gray-600">Massa artesanal, chocolate, biscoito Oreo triturado.</p>
+</div>
+</label>
+</div>
+</div>
+<div class="mb-10 hidden" id="esfirra-options-single">
+<h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Escolha a Quantidade de Esfirras</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8" id="esfirra-flavor-quantity-options">
+<!-- Esfirra flavors with quantity controls will be dynamically shown/hidden -->
+<div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Portuguesa</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, presunto, mussarela, ovos, cebola, ervilha e azeitona.</p>
+</div>
+<div class="flex items-center space-x-2">
+<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Portuguesa" type="button">-</button>
+<input class="quantity-input w-16 text-center border rounded-md" data-flavor="Portuguesa" min="0" type="number" value="0"/>
+<button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Portuguesa" type="button">+</button>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Calabresa</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, calabresa fatiada e cebola.</p>
+</div>
+<div class="flex items-center space-x-2">
+<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Calabresa" type="button">-</button>
+<input class="quantity-input w-16 text-center border rounded-md" data-flavor="Calabresa" min="0" type="number" value="0"/>
+<button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Calabresa" type="button">+</button>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Mussarela</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro e mussarela.</p>
+</div>
+<div class="flex items-center space-x-2">
+<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Mussarela" type="button">-</button>
+<input class="quantity-input w-16 text-center border rounded-md" data-flavor="Mussarela" min="0" type="number" value="0"/>
+<button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Mussarela" type="button">+</button>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Marguerita</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, tomate e manjericão.</p>
+</div>
+<div class="flex items-center space-x-2">
+<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Marguerita" type="button">-</button>
+<input class="quantity-input w-16 text-center border rounded-md" data-flavor="Marguerita" min="0" type="number" value="0"/>
+<button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Marguerita" type="button">+</button>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Frango com Catupiry</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, frango desfiado e catupiry.</p>
+</div>
+<div class="flex items-center space-x-2">
+<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Frango com Catupiry" type="button">-</button>
+<input class="quantity-input w-16 text-center border rounded-md" data-flavor="Frango com Catupiry" min="0" type="number" value="0"/>
+<button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Frango com Catupiry" type="button">+</button>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Calabresa com Catupiry</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, calabresa fatiada e catupiry.</p>
+</div>
+<div class="flex items-center space-x-2">
+<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Calabresa com Catupiry" type="button">-</button>
+<input class="quantity-input w-16 text-center border rounded-md" data-flavor="Calabresa com Catupiry" min="0" type="number" value="0"/>
+<button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Calabresa com Catupiry" type="button">+</button>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Bacon com Catupiry</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, bacon crocante e catupiry.</p>
+</div>
+<div class="flex items-center space-x-2">
+<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Bacon com Catupiry" type="button">-</button>
+<input class="quantity-input w-16 text-center border rounded-md" data-flavor="Bacon com Catupiry" min="0" type="number" value="0"/>
+<button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Bacon com Catupiry" type="button">+</button>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Bacon com Cheddar</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, bacon crocante e cheddar cremoso.</p>
+</div>
+<div class="flex items-center space-x-2">
+<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Bacon com Cheddar" type="button">-</button>
+<input class="quantity-input w-16 text-center border rounded-md" data-flavor="Bacon com Cheddar" min="0" type="number" value="0"/>
+<button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Bacon com Cheddar" type="button">+</button>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Bacon</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela e bacon crocante.</p>
+</div>
+<div class="flex items-center space-x-2">
+<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Bacon" type="button">-</button>
+<input class="quantity-input w-16 text-center border rounded-md" data-flavor="Bacon" min="0" type="number" value="0"/>
+<button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Bacon" type="button">+</button>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Frango</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, frango desfiado.</p>
+</div>
+<div class="flex items-center space-x-2">
+<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Frango" type="button">-</button>
+<input class="quantity-input w-16 text-center border rounded-md" data-flavor="Frango" min="0" type="number" value="0"/>
+<button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Frango" type="button">+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="mb-10 hidden" id="esfirra-doce-options-single">
+<h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Escolha a Quantidade de Esfirras Doces</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8" id="esfirra-doce-flavor-quantity-options">
+<div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Brigadeiro</span>
+<p class="text-sm text-gray-600">Massa artesanal, chocolate, granulado.</p>
+</div>
+<div class="flex items-center space-x-2">
+<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Brigadeiro" type="button">-</button>
+<input class="quantity-input w-16 text-center border rounded-md" data-flavor="Brigadeiro" min="0" type="number" value="0"/>
+<button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Brigadeiro" type="button">+</button>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Romeu e Julieta</span>
+<p class="text-sm text-gray-600">Massa artesanal, goiabada e queijo mussarela.</p>
+</div>
+<div class="flex items-center space-x-2">
+<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Romeu e Julieta" type="button">-</button>
+<input class="quantity-input w-16 text-center border rounded-md" data-flavor="Romeu e Julieta" min="0" type="number" value="0"/>
+<button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Romeu e Julieta" type="button">+</button>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">M&amp;M</span>
+<p class="text-sm text-gray-600">Massa artesanal, chocolate, M&amp;M's.</p>
+</div>
+<div class="flex items-center space-x-2">
+<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="M&amp;M" type="button">-</button>
+<input class="quantity-input w-16 text-center border rounded-md" data-flavor="M&amp;M" min="0" type="number" value="0"/>
+<button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="M&amp;M" type="button">+</button>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Doce de Leite</span>
+<p class="text-sm text-gray-600">Massa artesanal, doce de leite e queijo mussarela.</p>
+</div>
+<div class="flex items-center space-x-2">
+<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Doce de Leite" type="button">-</button>
+<input class="quantity-input w-16 text-center border rounded-md" data-flavor="Doce de Leite" min="0" type="number" value="0"/>
+<button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Doce de Leite" type="button">+</button>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Oreo</span>
+<p class="text-sm text-gray-600">Massa artesanal, chocolate, biscoito Oreo triturado.</p>
+</div>
+<div class="flex items-center space-x-2">
+<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Oreo" type="button">-</button>
+<input class="quantity-input w-16 text-center border rounded-md" data-flavor="Oreo" min="0" type="number" value="0"/>
+<button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Oreo" type="button">+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="mb-10 hidden" id="crust-options-section">
+<h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Borda Recheada</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input checked="" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500" data-crust-id="no-crust" data-crust-price="0.00" name="stuffed-crust" type="radio" value="Sem Borda Recheada"/>
+<span class="ml-3 text-lg text-gray-800 font-medium">Sem Borda Recheada</span>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-radio h-5 w-5 text-red-600 focus:ring-red-500" data-crust-id="catupiry-crust" data-crust-price="10.00" name="stuffed-crust" type="radio" value="Borda Recheada Catupiry"/>
+<span class="ml-3 text-lg text-gray-800 font-medium">Borda Recheada Catupiry +R$10,00</span>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-radio h-5 w-5 text-red-600 focus:ring-red-500" data-crust-id="chocolate-crust" data-crust-price="10.00" name="stuffed-crust" type="radio" value="Borda Recheada Chocolate"/>
+<span class="ml-3 text-lg text-gray-800 font-medium">Borda Recheada Chocolate +R$10,00</span>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-radio h-5 w-5 text-red-600 focus:ring-red-500" data-crust-id="rj-crust" data-crust-price="10.00" name="stuffed-crust" type="radio" value="Borda Recheada Romeu e Julieta"/>
+<span class="ml-3 text-lg text-gray-800 font-medium">Borda Recheada Romeu e Julieta +R$10,00</span>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-radio h-5 w-5 text-red-600 focus:ring-red-500" data-crust-id="cheddar-crust" data-crust-price="10.00" name="stuffed-crust" type="radio" value="Borda Recheada Cheddar"/>
+<span class="ml-3 text-lg text-gray-800 font-medium">Borda Recheada Cheddar +R$10,00</span>
+</label>
+</div>
+</div>
+<div class="mb-10 hidden" id="beverage-options-with-quantity">
+<h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6" id="beverage-heading"></h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+<div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white beverage-item-with-quantity">
+<span class="text-lg text-gray-800 font-medium">Coca-cola 1L - R$ 9,90</span>
+<div class="flex items-center space-x-2">
+<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-beverage-flavor="Coca-cola 1L" data-beverage-price="9.90" type="button">-</button>
+<input class="quantity-input w-16 text-center border rounded-md" data-beverage-flavor="Coca-cola 1L" data-beverage-price="9.90" min="0" type="number" value="0"/>
+<button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-beverage-flavor="Coca-cola 1L" data-beverage-price="9.90" type="button">+</button>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white beverage-item-with-quantity">
+<span class="text-lg text-gray-800 font-medium">Coca-cola 2L - R$ 13,90</span>
+<div class="flex items-center space-x-2">
+<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-beverage-flavor="Coca-cola 2L" data-beverage-price="13.90" type="button">-</button>
+<input class="quantity-input w-16 text-center border rounded-md" data-beverage-flavor="Coca-cola 2L" data-beverage-price="13.90" min="0" type="number" value="0"/>
+<button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-beverage-flavor="Coca-cola 2L" data-beverage-price="13.90" type="button">+</button>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white beverage-item-with-quantity">
+<span class="text-lg text-gray-800 font-medium">Coca-cola Zero 2L - R$ 13,90</span>
+<div class="flex items-center space-x-2">
+<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-beverage-flavor="Coca-cola Zero 2L" data-beverage-price="13.90" type="button">-</button>
+<input class="quantity-input w-16 text-center border rounded-md" data-beverage-flavor="Coca-cola Zero 2L" data-beverage-price="13.90" min="0" type="number" value="0"/>
+<button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-beverage-flavor="Coca-cola Zero 2L" data-beverage-price="13.90" type="button">+</button>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white beverage-item-with-quantity">
+<span class="text-lg text-gray-800 font-medium">Fanta Laranja 1L - R$ 9,90</span>
+<div class="flex items-center space-x-2">
+<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-beverage-flavor="Fanta Laranja 1L" data-beverage-price="9.90" type="button">-</button>
+<input class="quantity-input w-16 text-center border rounded-md" data-beverage-flavor="Fanta Laranja 1L" data-beverage-price="9.90" min="0" type="number" value="0"/>
+<button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-beverage-flavor="Fanta Laranja 1L" data-beverage-price="9.90" type="button">+</button>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white beverage-item-with-quantity">
+<span class="text-lg text-gray-800 font-medium">Fanta Laranja 2L - R$ 12,90</span>
+<div class="flex items-center space-x-2">
+<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-beverage-flavor="Fanta Laranja 2L" data-beverage-price="12.90" type="button">-</button>
+<input class="quantity-input w-16 text-center border rounded-md" data-beverage-flavor="Fanta Laranja 2L" data-beverage-price="12.90" min="0" type="number" value="0"/>
+<button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-beverage-flavor="Fanta Laranja 2L" data-beverage-price="12.90" type="button">+</button>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white beverage-item-with-quantity">
+<span class="text-lg text-gray-800 font-medium">Guaraná Antarctica 2L - R$ 12,90</span>
+<div class="flex items-center space-x-2">
+<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-beverage-flavor="Guaraná Antarctica 2L" data-beverage-price="12.90" type="button">-</button>
+<input class="quantity-input w-16 text-center border rounded-md" data-beverage-flavor="Guaraná Antarctica 2L" data-beverage-price="12.90" min="0" type="number" value="0"/>
+<button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-beverage-flavor="Guaraná Antarctica 2L" data-beverage-price="12.90" type="button">+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center space-x-4">
+<button class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50" disabled="" id="add-to-cart-btn">
                     Adicionar ao Carrinho
                 </button>
-                <span id="add-to-cart-message" class="text-sm text-red-500 ml-2"></span>
-                <button onclick="showPage('main-menu')" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50">
+<span class="text-sm text-red-500 ml-2" id="add-to-cart-message"></span>
+<button class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50" onclick="showPage('main-menu')">
                     Voltar ao Cardápio
                 </button>
-            </div>
-        </div>
-
-        <div id="order-summary" class="page-section hidden">
-            <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800 text-center mb-8">Seu Carrinho</h2>
-
-            <div id="cart-items-container" class="bg-gray-50 p-6 rounded-lg shadow-inner mb-8">
-                <p id="empty-cart-message" class="text-center text-gray-600 italic hidden">Seu carrinho está vazio.</p>
-            </div>
-
-            <!-- Campo de Observação -->
-            <div class="mb-6 p-4 border rounded-lg bg-white shadow-sm">
-                <h3 class="text-xl font-bold text-gray-800 mb-3">Observações do Pedido</h3>
-                <textarea id="order-notes" rows="3" placeholder="Ex: Sem cebola, massa bem passada, etc." class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"></textarea>
-            </div>
-
-            <div class="mb-6 p-4 border rounded-lg bg-white shadow-sm">
-                <h3 class="text-xl font-bold text-gray-800 mb-3">Endereço de Entrega</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label for="address-street" class="block text-sm font-medium text-gray-700">Rua</label>
-                        <input type="text" id="address-street" placeholder="Ex: Av. Brasil" class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
-                    </div>
-                    <div>
-                        <label for="address-number" class="block text-sm font-medium text-gray-700">Número</label>
-                        <input type="text" id="address-number" placeholder="Ex: 123" class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
-                    </div>
-                    <div>
-                        <label for="address-neighborhood" class="block text-sm font-medium text-gray-700">Bairro</label>
-                        <input type="text" id="address-neighborhood" placeholder="Ex: Centro" class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
-                    </div>
-                    <div class="sm:col-span-2">
-                        <label for="address-reference" class="block text-sm font-medium text-gray-700">Ponto de Referência (Opcional)</label>
-                        <input type="text" id="address-reference" placeholder="Ex: Próximo à praça" class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-6 p-4 border rounded-lg bg-white shadow-sm">
-                <h3 class="text-xl font-bold text-gray-800 mb-3">Forma de pagamento</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm cursor-pointer bg-white">
-                        <input type="radio" name="payment-method" value="Pix" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500" checked>
-                        <span class="ml-3 text-lg text-gray-800 font-medium">Pix</span>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm cursor-pointer bg-white">
-                        <input type="radio" name="payment-method" value="Crédito" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500">
-                        <span class="ml-3 text-lg text-gray-800 font-medium">Crédito</span>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm cursor-pointer bg-white">
-                        <input type="radio" name="payment-method" value="Débito" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500">
-                        <span class="ml-3 text-lg text-gray-800 font-medium">Débito</span>
-                    </label>
-                    <label class="flex items-center p-3 border rounded-lg shadow-sm cursor-pointer bg-white">
-                        <input type="radio" name="payment-method" value="Dinheiro" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500">
-                        <span class="ml-3 text-lg text-gray-800 font-medium">Dinheiro</span>
-                    </label>
-                </div>
-            </div>
-
-
-            <div class="text-right text-3xl font-extrabold text-red-700 mt-6 pt-4 border-t-2 border-red-300 mb-8">
-                <span class="font-semibold">Total do Pedido:</span> <span id="cart-total-price">R$ 0,00</span>
-            </div>
-
-            <div class="text-center space-x-4">
-                <button id="place-order-btn" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50" disabled>
+</div>
+</div>
+<div class="page-section hidden" id="order-summary">
+<h2 class="text-2xl sm:text-3xl font-semibold text-gray-800 text-center mb-8">Seu Carrinho</h2>
+<div class="bg-gray-50 p-6 rounded-lg shadow-inner mb-8" id="cart-items-container">
+<p class="text-center text-gray-600 italic hidden" id="empty-cart-message">Seu carrinho está vazio.</p>
+</div>
+<!-- Campo de Observação -->
+<div class="mb-6 p-4 border rounded-lg bg-white shadow-sm">
+<h3 class="text-xl font-bold text-gray-800 mb-3">Observações do Pedido</h3>
+<textarea class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" id="order-notes" placeholder="Ex: Sem cebola, massa bem passada, etc." rows="3"></textarea>
+</div>
+<div class="mb-6 p-4 border rounded-lg bg-white shadow-sm">
+<h3 class="text-xl font-bold text-gray-800 mb-3">Endereço de Entrega</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block text-sm font-medium text-gray-700" for="address-street">Rua</label>
+<input class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" id="address-street" placeholder="Ex: Av. Brasil" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700" for="address-number">Número</label>
+<input class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" id="address-number" placeholder="Ex: 123" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700" for="address-neighborhood">Bairro</label>
+<input class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" id="address-neighborhood" placeholder="Ex: Centro" type="text"/>
+</div>
+<div class="sm:col-span-2">
+<label class="block text-sm font-medium text-gray-700" for="address-reference">Ponto de Referência (Opcional)</label>
+<input class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" id="address-reference" placeholder="Ex: Próximo à praça" type="text"/>
+</div>
+</div>
+</div>
+<div class="mb-6 p-4 border rounded-lg bg-white shadow-sm">
+<h3 class="text-xl font-bold text-gray-800 mb-3">Forma de pagamento</h3>
+<div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+<label class="flex items-center p-3 border rounded-lg shadow-sm cursor-pointer bg-white">
+<input checked="" class="form-radio h-5 w-5 text-red-600 focus:ring-red-500" name="payment-method" type="radio" value="Pix"/>
+<span class="ml-3 text-lg text-gray-800 font-medium">Pix</span>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm cursor-pointer bg-white">
+<input class="form-radio h-5 w-5 text-red-600 focus:ring-red-500" name="payment-method" type="radio" value="Crédito"/>
+<span class="ml-3 text-lg text-gray-800 font-medium">Crédito</span>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm cursor-pointer bg-white">
+<input class="form-radio h-5 w-5 text-red-600 focus:ring-red-500" name="payment-method" type="radio" value="Débito"/>
+<span class="ml-3 text-lg text-gray-800 font-medium">Débito</span>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm cursor-pointer bg-white">
+<input class="form-radio h-5 w-5 text-red-600 focus:ring-red-500" name="payment-method" type="radio" value="Dinheiro"/>
+<span class="ml-3 text-lg text-gray-800 font-medium">Dinheiro</span>
+</label>
+</div>
+</div>
+<div class="text-right text-3xl font-extrabold text-red-700 mt-6 pt-4 border-t-2 border-red-300 mb-8">
+<span class="font-semibold">Total do Pedido:</span> <span id="cart-total-price">R$ 0,00</span>
+</div>
+<div class="text-center space-x-4">
+<button class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50" disabled="" id="place-order-btn">
                     Enviar Pedido
                 </button>
-                <button onclick="showPage('main-menu')" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50">
+<button class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50" onclick="showPage('main-menu')">
                     Voltar ao Cardápio
                 </button>
-            </div>
-        </div>
-        
-        <p class="text-center text-gray-500 text-sm mt-10">Obrigado por escolher Rotella Pizzaria! Bom apetite!</p>
-    </div>
-
-    <script>
+</div>
+</div>
+<p class="text-center text-gray-500 text-sm mt-10">Obrigado por escolher Rotella Pizzaria! Bom apetite!</p>
+</div>
+<script>
         // Array para armazenar os itens no carrinho (pizza/combo e bebidas separadas)
         let cart = []; 
         let selectedItem = {}; // Item (pizza/combo) sendo configurado na tela de seleção de sabores
@@ -1929,7 +1887,15 @@
             updatePizzariaStatus(); // Atualiza o status da pizzaria ao carregar
             // Opcionalmente, atualiza o status a cada minuto para mantê-lo atualizado
             setInterval(updatePizzariaStatus, 60 * 1000); 
-        });
+        
+placeOrderBtn.addEventListener('click', () => {
+    const message = prepareWhatsAppMessage();
+    const whatsappNumber = '5592986161640';
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+});
+
+});
     </script>
 </body>
 </html>
