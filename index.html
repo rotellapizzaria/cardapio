@@ -1800,10 +1800,10 @@ function calcularTaxaEntrega() {
             const distanciaKm = distanciaMetros / 1000;
             let taxa = 0;
 
-            if (distanciaKm <= 5) taxa = 5;
-            else if (distanciaKm <= 9) taxa = 10;
-            else if (distanciaKm <= 15) taxa = 15;
-            else if (distanciaKm <= 19) taxa = 20;
+            if (distanciaKm <= 4) taxa = 5;
+            else if (distanciaKm <= 8) taxa = 10;
+            else if (distanciaKm <= 13) taxa = 15;
+            else if (distanciaKm <= 17) taxa = 20;
             else taxa = 25;
 
             deliveryFee = taxa;
