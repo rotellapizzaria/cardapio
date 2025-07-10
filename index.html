@@ -90,11 +90,27 @@
 <a class="mt-4 inline-block text-red-600 hover:text-red-800 font-semibold text-lg" href="https://www.instagram.com/rotellapizzaria" target="_blank">
                 Nos siga no Instagram: @rotellapizzaria
             </a>
-<!-- Div para exibir o status de funcionamento da pizzaria -->
 <div class="mt-2 text-lg font-semibold" id="pizzaria-status"></div>
 </div>
 <div class="page-section" id="main-menu">
 <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800 text-center mb-8">Nosso Cardápio Delicioso!</h2>
+<div class="mb-10">
+<h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Pizza Day</h3>
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item" data-item-id="pizza-day-1" data-item-name="Pizza Day 1" data-item-price="44.90" data-item-type="pizza-day">
+<div class="flex-grow">
+<p class="text-lg font-bold text-gray-900">Pizza Day 1</p>
+<p class="text-sm text-gray-600 mt-1">1 Pizza grande (até dois sabores) + Coca-cola de 1L + Borda recheada de chocolate grátis</p>
+</div>
+<p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 44,90</p>
+</div>
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item" data-item-id="pizza-day-2" data-item-name="Pizza Day 2" data-item-price="79.90" data-item-type="pizza-day">
+<div class="flex-grow">
+<p class="text-lg font-bold text-gray-900">Pizza Day 2</p>
+<p class="text-sm text-gray-600 mt-1">2 Pizzas grandes (até dois sabores cada) + Coca-cola de 2L + Borda recheada de chocolate grátis</p>
+</div>
+<p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 79,90</p>
+</div>
+</div>
 <div class="mb-10">
 <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Combos Especiais</h3>
 <p class="text-sm text-gray-600 mb-4 italic text-center">
@@ -118,30 +134,24 @@
 <div class="mb-10">
 <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Pizzas</h3>
 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item" data-item-id="pizza-tradicional-grande" data-item-name="Pizza Grande Tradicional" data-item-price="39.90" data-item-type="pizza-tradicional">
-<!-- Container para a imagem, texto e preço, usando flexbox para alinhamento -->
 <div class="flex flex-col sm:flex-row items-center w-full">
-<!-- Imagem da pizza -->
 <img alt="Pizza Calabresa Rotella" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-lg mr-4 mb-2 sm:mb-0" src="https://i.ibb.co/TqdcMknx/pizza-calabresa-rotella.png"/>
 <div class="flex-grow text-center sm:text-left">
 <p class="text-lg font-bold text-gray-900">Pizza Grande Tradicional</p>
 <p class="text-sm text-gray-600 mt-1">Até dois sabores</p>
 </div>
-<!-- Displaying old price with strikethrough and new price -->
 <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0 sm:ml-auto">
 <span class="line-through text-gray-500 text-base mr-2">R$ 44,90</span> R$ 39,90
                         </p>
 </div>
 </div>
 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item" data-item-id="pizza-especial-grande" data-item-name="Pizza Grande Especial" data-item-price="49.90" data-item-type="pizza-especial">
-<!-- Container para a imagem, texto e preço, usando flexbox para alinhamento -->
 <div class="flex flex-col sm:flex-row items-center w-full">
-<!-- Image of the pizza -->
 <img alt="Pizza Frango e Calabresa com Catupiry Rotella" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-lg mr-4 mb-2 sm:mb-0" src="https://i.ibb.co/tPKgFvTp/pizza-frango-e-calabresa-com-catupiry-rotella.png"/>
 <div class="flex-grow text-center sm:text-left">
 <p class="text-lg font-bold text-gray-900">Pizza Grande Especial</p>
 <p class="text-sm text-gray-600 mt-1">Até dois sabores</p>
 </div>
-<!-- Displaying old price with strikethrough and new price for Pizza Grande Especial -->
 <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0 sm:ml-auto">
 <span class="line-through text-gray-500 text-base mr-2">R$ 54,90</span> R$ 49,90
                         </p>
@@ -152,7 +162,6 @@
 <p class="text-lg font-bold text-gray-900">Pizza Média Tradicional</p>
 <p class="text-sm text-gray-600 mt-1">Até dois sabores</p>
 </div>
-<!-- Displaying old price with strikethrough and new price for Pizza Média Tradicional -->
 <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">
 <span class="line-through text-gray-500 text-base mr-2">R$ 34,90</span> R$ 29,90
                     </p>
@@ -162,7 +171,6 @@
 <p class="text-lg font-bold text-gray-900">Pizza Média Especial</p>
 <p class="text-sm text-gray-600 mt-1">Até dois sabores</p>
 </div>
-<!-- Displaying old price with strikethrough and new price for Pizza Média Especial -->
 <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">
 <span class="line-through text-gray-500 text-base mr-2">R$ 44,90</span> R$ 39,90
                     </p>
@@ -191,7 +199,6 @@
 <p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 7,90</p>
 </div>
 </div>
-<!-- Início da nova seção de Bebidas no menu principal -->
 <div class="mb-10">
 <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Bebidas</h3>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8" id="main-menu-beverage-options">
@@ -221,7 +228,6 @@
 </div>
 </div>
 </div>
-<!-- Fim da nova seção de Bebidas no menu principal -->
 <div class="text-center mt-10 mb-6">
 <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50" onclick="window.open('https://wa.me/92986161640?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!', '_blank')">
 <i class="fab fa-whatsapp mr-2"></i> Falar com um atendente
@@ -232,12 +238,10 @@
 <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800 text-center mb-8">Personalize seu Pedido</h2>
 <div class="text-center text-lg text-gray-700 mb-6 p-4 bg-red-50 rounded-lg" id="item-info">
 </div>
-<!-- Section for Pizza 1 Flavors (hidden by default, shown for Combo 2) -->
 <div class="mb-10 hidden" id="pizza1-flavor-section">
 <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Sabores da Pizza 1</h3>
 <p class="text-md text-gray-600 text-center mb-6" id="flavor-instruction-text-pizza1"></p>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8" id="flavor-options-pizza1">
-<!-- Checkboxes for Pizza 1 - Dynamically generated or copied from main flavor-options -->
 <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
 <input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza1" type="checkbox" value="Portuguesa"/>
 <div class="ml-3">
@@ -338,12 +342,10 @@
 </label>
 </div>
 </div>
-<!-- Section for Pizza 2 Flavors (hidden by default, shown for Combo 2) -->
 <div class="mb-10 hidden" id="pizza2-flavor-section">
 <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Sabores da Pizza 2</h3>
 <p class="text-md text-gray-600 text-center mb-6" id="flavor-instruction-text-pizza2"></p>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8" id="flavor-options-pizza2">
-<!-- Checkboxes for Pizza 2 - Dynamically generated or copied from main flavor-options -->
 <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
 <input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza2" type="checkbox" value="Portuguesa"/>
 <div class="ml-3">
@@ -414,7 +416,6 @@
 <p class="text-sm text-gray-600">Massa artesanal, chocolate, M&amp;M's.</p>
 </div>
 </label>
-<!-- Sweet flavors hidden for Combo 2 -->
 <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white hidden">
 <input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza2" type="checkbox" value="Brigadeiro"/>
 <div class="ml-3">
@@ -445,7 +446,6 @@
 </label>
 </div>
 </div>
-<!-- Original flavor-options section (hidden for Combo 2) -->
 <div class="mb-10" id="flavor-options-single">
 <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Selecione seus Sabores</h3>
 <p class="text-md text-gray-600 text-center mb-6" id="flavor-instruction-text-single"></p>
@@ -560,7 +560,6 @@
 <div class="mb-10 hidden" id="esfirra-options-single">
 <h3 class="text-2xl sm:text-2xl font-bold text-red-600 border-b-2 border-red-400 pb-2 mb-6">Escolha a Quantidade de Esfirras</h3>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8" id="esfirra-flavor-quantity-options">
-<!-- Esfirra flavors with quantity controls will be dynamically shown/hidden -->
 <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
 <div class="ml-3">
 <span class="text-lg text-gray-800 font-medium">Portuguesa</span>
@@ -586,7 +585,7 @@
 <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
 <div class="ml-3">
 <span class="text-lg text-gray-800 font-medium">Mussarela</span>
-<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro e mussarela.</p>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela.</p>
 </div>
 <div class="flex items-center space-x-2">
 <button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Mussarela" type="button">-</button>
@@ -826,7 +825,6 @@
 <div class="bg-gray-50 p-6 rounded-lg shadow-inner mb-8" id="cart-items-container">
 <p class="text-center text-gray-600 italic hidden" id="empty-cart-message">Seu carrinho está vazio.</p>
 </div>
-<!-- Campo de Observação -->
 <div class="mb-6 p-4 border rounded-lg bg-white shadow-sm">
 <h3 class="text-xl font-bold text-gray-800 mb-3">Observações do Pedido</h3>
 <textarea class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" id="order-notes" placeholder="Ex: Sem cebola, massa bem passada, etc." rows="3"></textarea>
@@ -943,7 +941,7 @@
         document.querySelectorAll('.clickable-item').forEach(item => {
             item.addEventListener('click', function() {
                 selectedItem = {
-                    type: this.dataset.itemType, // 'combo', 'pizza-tradicional', 'pizza-especial', 'pizza-media', 'esfirra-tradicional', 'esfirra-especial', 'esfirra-doce', 'beverage'
+                    type: this.dataset.itemType, // 'combo', 'pizza-tradicional', 'pizza-especial', 'pizza-media', 'esfirra-tradicional', 'esfirra-especial', 'esfirra-doce', 'beverage', 'pizza-day'
                     id: this.dataset.itemId,
                     name: this.dataset.itemName,
                     price: parseFloat(this.dataset.itemPrice)
@@ -955,7 +953,10 @@
                     cb.checked = false;
                     cb.disabled = false;
                     const label = cb.closest('label');
-                    if (label) label.classList.remove('disabled-option'); // Remove o estilo de desabilitado
+                    if (label) {
+                        label.classList.remove('disabled-option'); // Remove o estilo de desabilitado
+                        label.style.display = 'flex'; // Garante que estejam visíveis por padrão
+                    }
                 });
                 
                 // Reinicia a seleção de bebida para "Nenhuma bebida"
@@ -971,6 +972,11 @@
                 selectedCrust = { name: 'Sem Borda Recheada', price: 0, id: 'no-crust' };
                 document.querySelectorAll('input[name="stuffed-crust"]').forEach(radio => {
                     radio.checked = (radio.value === 'Sem Borda Recheada');
+                    // Reset text content to original (important for Pizza Day 1 later)
+                    if (radio.dataset.crustId === 'catupiry-crust') radio.closest('label').querySelector('span').textContent = 'Borda Recheada Catupiry +R$10,00';
+                    if (radio.dataset.crustId === 'chocolate-crust') radio.closest('label').querySelector('span').textContent = 'Borda Recheada Chocolate +R$10,00';
+                    if (radio.dataset.crustId === 'rj-crust') radio.closest('label').querySelector('span').textContent = 'Borda Recheada Romeu e Julieta +R$10,00';
+                    if (radio.dataset.crustId === 'cheddar-crust') radio.closest('label').querySelector('span').textContent = 'Borda Recheada Cheddar +R$10,00';
                 });
 
                 // Limpa os arrays de sabores das pizzas do combo e do item único
@@ -996,7 +1002,7 @@
                 document.getElementById('item-info').innerHTML = `Você selecionou: <span class="font-bold">${selectedItem.name}</span> por <span class="font-bold">R$ ${selectedItem.price.toFixed(2).replace('.', ',')}</span>`;
                 
                 // Redireciona para a seleção de sabor para itens que exigem sabor
-                if (selectedItem.id.includes('pizza') || selectedItem.id.includes('combo') || selectedItem.id.includes('esfirra')) {
+                if (selectedItem.id.includes('pizza') || selectedItem.id.includes('combo') || selectedItem.id.includes('esfirra') || selectedItem.id.includes('pizza-day')) {
                     showPage('flavor-selection');
                 } else if (selectedItem.type === 'beverage') {
                     // Para bebidas, adiciona diretamente ao carrinho e vai para o resumo
@@ -1027,30 +1033,6 @@
             });
         });
 
-        // === Lógica da Seleção de Sabores e Bebidas ===
-        // Move these declarations inside DOMContentLoaded or a function called after DOM is ready
-        // const flavorCheckboxesSingle = document.querySelectorAll('input[name="flavor"]');
-        // const flavorCheckboxesPizza1 = document.querySelectorAll('input[name="flavor-pizza1"]');
-        // const flavorCheckboxesPizza2 = document.querySelectorAll('input[name="flavor-pizza2"]');
-
-        // const beverageRadios = document.querySelectorAll('input[name="beverage"]'); // Removed, no longer used
-        // const stuffedCrustRadios = document.querySelectorAll('input[name="stuffed-crust"]'); // Referência às bordas
-        // const crustOptionsSection = document.getElementById('crust-options-section'); // Referência à seção de bordas
-
-        // const addToCartBtn = document.getElementById('add-to-cart-btn'); // Botão "Adicionar ao Carrinho"
-        // const addToCartMessage = document.getElementById('add-to-cart-message'); // Mensagem de instrução para o botão
-        // const flavorInstructionTextSingle = document.getElementById('flavor-instruction-text-single');
-        // const flavorInstructionTextPizza1 = document.getElementById('flavor-instruction-text-pizza1');
-        // const flavorInstructionTextPizza2 = document.getElementById('flavor-instruction-text-pizza2');
-        // const beverageHeading = document.getElementById('beverage-heading'); // Referência ao cabeçalho das bebidas
-
-        // const pizza1FlavorSection = document.getElementById('pizza1-flavor-section');
-        // const pizza2FlavorSection = document.getElementById('pizza2-flavor-section');
-        // const singleFlavorSection = document.getElementById('flavor-options-single');
-        // const esfirraOptionsSection = document.getElementById('esfirra-options-single'); // Nova seção para esfirras com quantidade
-        // const beverageOptionsWithQuantity = document.getElementById('beverage-options-with-quantity'); // Nova seção para bebidas com quantidade
-
-
         const traditionalFlavors = ['Portuguesa', 'Calabresa', 'Mussarela', 'Marguerita', 'Frango', 'Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon', 'Bacon com Catupiry', 'Bacon com Cheddar']; // Inclui os sabores tradicionais que podem ser escolhidos
         const sweetFlavors = ['Brigadeiro', 'Romeu e Julieta', 'M&M', 'Doce de Leite', 'Oreo']; // Sabores doces específicos
 
@@ -1060,12 +1042,11 @@
 
         // Função para atualizar as instruções de seleção de sabor e habilitar/desabilitar checkboxes
         function updateFlavorSelectionInstructions() {
-            // Get elements inside the function to ensure they are loaded
             const pizza1FlavorSection = document.getElementById('pizza1-flavor-section');
             const pizza2FlavorSection = document.getElementById('pizza2-flavor-section');
             const singleFlavorSection = document.getElementById('flavor-options-single');
             const esfirraOptionsSection = document.getElementById('esfirra-options-single');
-            const esfirraDoceOptionsSection = document.getElementById('esfirra-doce-options-single'); // Get here
+            const esfirraDoceOptionsSection = document.getElementById('esfirra-doce-options-single');
             const beverageOptionsWithQuantity = document.getElementById('beverage-options-with-quantity');
             const beverageHeading = document.getElementById('beverage-heading');
             const stuffedCrustRadios = document.querySelectorAll('input[name="stuffed-crust"]');
@@ -1073,60 +1054,152 @@
             const flavorInstructionTextSingle = document.getElementById('flavor-instruction-text-single');
             const flavorInstructionTextPizza1 = document.getElementById('flavor-instruction-text-pizza1');
             const flavorInstructionTextPizza2 = document.getElementById('flavor-instruction-text-pizza2');
-            const flavorCheckboxesSingle = document.querySelectorAll('input[name="flavor"]'); // Get here
-            const flavorCheckboxesPizza1 = document.querySelectorAll('input[name="flavor-pizza1"]'); // Get here
-            const flavorCheckboxesPizza2 = document.querySelectorAll('input[name="flavor-pizza2"]'); // Get here
+            const flavorCheckboxesSingle = document.querySelectorAll('input[name="flavor"]');
+            const flavorCheckboxesPizza1 = document.querySelectorAll('input[name="flavor-pizza1"]');
+            const flavorCheckboxesPizza2 = document.querySelectorAll('input[name="flavor-pizza2"]');
 
 
-            console.log('updateFlavorSelectionInstructions chamada'); // Log de depuração
+            console.log('updateFlavorSelectionInstructions chamada');
             // Esconde todas as seções de sabor e re-habilita todos os checkboxes inicialmente
             pizza1FlavorSection.classList.add('hidden');
             pizza2FlavorSection.classList.add('hidden');
             singleFlavorSection.classList.add('hidden');
-            esfirraOptionsSection.classList.add('hidden'); // Esconde a seção de esfirras por padrão
-            esfirraDoceOptionsSection.classList.add('hidden'); // Esconde a seção de esfirras doces por padrão
+            esfirraOptionsSection.classList.add('hidden');
+            esfirraDoceOptionsSection.classList.add('hidden');
 
-            // Defensive check for beverageOptionsWithQuantity
             if (beverageOptionsWithQuantity) {
-                beverageOptionsWithQuantity.classList.add('hidden'); // Esconde a seção de bebidas com quantidade por padrão
+                beverageOptionsWithQuantity.classList.add('hidden');
                 console.log('beverageOptionsWithQuantity element found:', beverageOptionsWithQuantity);
             } else {
                 console.error('Element with ID "beverage-options-with-quantity" not found!');
             }
 
+            // Reset all flavor checkboxes to enabled and visible state
+            document.querySelectorAll('input[name="flavor"], input[name="flavor-pizza1"], input[name="flavor-pizza2"]').forEach(cb => {
+                cb.disabled = false;
+                cb.checked = false; // Uncheck all when changing item
+                const label = cb.closest('label');
+                if (label) {
+                    label.classList.remove('disabled-option');
+                    label.style.display = 'flex'; // Ensure all flavors are visible by default
+                }
+            });
+            // Reset all esfirra quantities
+            document.querySelectorAll('.esfirra-flavor-item .quantity-input').forEach(input => {
+                input.value = 0;
+                input.closest('.esfirra-flavor-item').style.display = 'flex'; // Make all visible
+            });
+            esfirraQuantities = {}; // Clear stored quantities
 
-            // Ajusta o texto do cabeçalho da bebida
-            if (selectedItem.id === 'combo1') { // Lógica específica para Combo 1
-                beverageHeading.textContent = 'Seu combo já tem refrigerante de 1L, deseja acrescentar mais refrigerante ?'; // Texto ajustado para Combo 1
-                if (beverageOptionsWithQuantity) beverageOptionsWithQuantity.classList.remove('hidden'); // Mostra a seção de bebidas com quantidade
-            } else if (selectedItem.id === 'combo2') { // Lógica específica para Combo 2
-                beverageHeading.textContent = 'Seu combo já tem refrigerante de 2L, deseja acrescentar mais refrigerante ?'; // Texto ajustado para Combo 2
-                if (beverageOptionsWithQuantity) beverageOptionsWithQuantity.classList.remove('hidden'); // Mostra a seção de bebidas com quantidade
-            } else if (selectedItem.type === 'combo' || selectedItem.id.includes('pizza') || selectedItem.id.includes('esfirra')) { // Mostra bebidas com quantidade para outros combos, pizzas e esfirras
-                beverageHeading.textContent = 'Deseja acrescentar refrigerante ao seu pedido ?'; // Texto padrão para outros itens
-                if (beverageOptionsWithQuantity) beverageOptionsWithQuantity.classList.remove('hidden'); // Mostra a seção de bebidas com quantidade
+
+            // Adjust beverage heading based on selected item
+            if (selectedItem.id === 'combo1') {
+                beverageHeading.textContent = 'Seu combo já tem refrigerante de 1L, deseja acrescentar mais refrigerante ?';
+                if (beverageOptionsWithQuantity) beverageOptionsWithQuantity.classList.remove('hidden');
+            } else if (selectedItem.id === 'combo2') {
+                beverageHeading.textContent = 'Seu combo já tem refrigerante de 2L, deseja acrescentar mais refrigerante ?';
+                if (beverageOptionsWithQuantity) beverageOptionsWithQuantity.classList.remove('hidden');
+            } else if (selectedItem.type === 'combo' || selectedItem.id.includes('pizza') || selectedItem.id.includes('esfirra') || selectedItem.id.includes('pizza-day')) {
+                beverageHeading.textContent = 'Deseja acrescentar refrigerante ao seu pedido ?';
+                if (beverageOptionsWithQuantity) beverageOptionsWithQuantity.classList.remove('hidden');
+                
+                // Special handling for Pizza Day 1 & 2: pre-select Coca-cola as 0 cost, disable input
+                if (selectedItem.id === 'pizza-day-1') {
+                    beverageQuantities = { 'Coca-cola 1L': { quantity: 1, price: 0 } };
+                    document.querySelectorAll('#beverage-options-with-quantity .quantity-input').forEach(input => {
+                        if (input.dataset.beverageFlavor === 'Coca-cola 1L') {
+                            input.value = 1;
+                            input.disabled = true;
+                            input.closest('.beverage-item-with-quantity').querySelectorAll('button').forEach(btn => btn.disabled = true);
+                            input.closest('.beverage-item-with-quantity').querySelector('span').textContent = 'Coca-cola 1L - GRÁTIS';
+                        } else {
+                             input.value = 0;
+                             input.disabled = false;
+                             input.closest('.beverage-item-with-quantity').querySelectorAll('button').forEach(btn => btn.disabled = false);
+                             input.closest('.beverage-item-with-quantity').querySelector('span').textContent = `${input.dataset.beverageFlavor} - R$ ${parseFloat(input.dataset.beveragePrice).toFixed(2).replace('.', ',')}`;
+                        }
+                    });
+                } else if (selectedItem.id === 'pizza-day-2') {
+                    beverageQuantities = { 'Coca-cola 2L': { quantity: 1, price: 0 } };
+                     document.querySelectorAll('#beverage-options-with-quantity .quantity-input').forEach(input => {
+                        if (input.dataset.beverageFlavor === 'Coca-cola 2L') {
+                            input.value = 1;
+                            input.disabled = true;
+                            input.closest('.beverage-item-with-quantity').querySelectorAll('button').forEach(btn => btn.disabled = true);
+                            input.closest('.beverage-item-with-quantity').querySelector('span').textContent = 'Coca-cola 2L - GRÁTIS';
+                        } else {
+                             input.value = 0;
+                             input.disabled = false;
+                             input.closest('.beverage-item-with-quantity').querySelectorAll('button').forEach(btn => btn.disabled = false);
+                             input.closest('.beverage-item-with-quantity').querySelector('span').textContent = `${input.dataset.beverageFlavor} - R$ ${parseFloat(input.dataset.beveragePrice).toFixed(2).replace('.', ',')}`;
+                        }
+                    });
+                }
+                else { // Reset for other items
+                     document.querySelectorAll('#beverage-options-with-quantity .quantity-input').forEach(input => {
+                        input.value = 0;
+                        input.disabled = false;
+                        input.closest('.beverage-item-with-quantity').querySelectorAll('button').forEach(btn => btn.disabled = false);
+                        input.closest('.beverage-item-with-quantity').querySelector('span').textContent = `${input.dataset.beverageFlavor} - R$ ${parseFloat(input.dataset.beveragePrice).toFixed(2).replace('.', ',')}`;
+                    });
+                    beverageQuantities = {};
+                }
             } else if (selectedItem.type === 'beverage') {
-                if (beverageOptionsWithQuantity) beverageOptionsWithQuantity.classList.add('hidden'); // Esconde a seção de bebidas se o item selecionado já for uma bebida
+                if (beverageOptionsWithQuantity) beverageOptionsWithQuantity.classList.add('hidden');
             } else {
-                beverageHeading.textContent = 'Deseja acrescentar refrigerante ao seu pedido ?'; // Texto padrão para outros itens
-                if (beverageOptionsWithQuantity) beverageOptionsWithQuantity.classList.remove('hidden'); // Mostra a seção de bebidas com quantidade
+                beverageHeading.textContent = 'Deseja acrescentar refrigerante ao seu pedido ?';
+                if (beverageOptionsWithQuantity) beverageOptionsWithQuantity.classList.remove('hidden');
             }
 
-            // Lógica de exibição e habilitação das bordas recheadas
-            if (selectedItem.id.includes('pizza') || selectedItem.type === 'combo') {
-                crustOptionsSection.style.display = 'block'; // Mostra a seção de bordas
+            // Logic for displaying and enabling stuffed crusts
+            if (selectedItem.id.includes('pizza') || selectedItem.type === 'combo' || selectedItem.id.includes('pizza-day')) {
+                crustOptionsSection.style.display = 'block';
                 stuffedCrustRadios.forEach(radio => {
                     radio.disabled = false;
                     const label = radio.closest('label');
-                    if (label) label.classList.remove('disabled-option');
-                    if (label) label.style.display = 'flex'; // Garante que as bordas estejam visíveis
+                    if (label) {
+                        label.classList.remove('disabled-option');
+                        label.style.display = 'flex';
+                    }
+                    // Reset text content to original
+                    if (radio.dataset.crustId === 'catupiry-crust') radio.closest('label').querySelector('span').textContent = 'Borda Recheada Catupiry +R$10,00';
+                    if (radio.dataset.crustId === 'chocolate-crust') radio.closest('label').querySelector('span').textContent = 'Borda Recheada Chocolate +R$10,00';
+                    if (radio.dataset.crustId === 'rj-crust') radio.closest('label').querySelector('span').textContent = 'Borda Recheada Romeu e Julieta +R$10,00';
+                    if (radio.dataset.crustId === 'cheddar-crust') radio.closest('label').querySelector('span').textContent = 'Borda Recheada Cheddar +R$10,00';
                 });
+
+                if (selectedItem.id === 'pizza-day-1' || selectedItem.id === 'pizza-day-2') {
+                    // Set 'Borda Recheada Chocolate' as default and free for Pizza Day 1 and 2
+                    document.querySelectorAll('input[name="stuffed-crust"]').forEach(radio => {
+                        if (radio.dataset.crustId === 'chocolate-crust') {
+                            radio.checked = true;
+                            selectedCrust = { name: radio.value, price: 0.00, id: radio.dataset.crustId };
+                            radio.closest('label').querySelector('span').textContent = 'Borda Recheada Chocolate (Grátis)';
+                            radio.disabled = true; // Disable if it's the free one
+                            radio.closest('label').classList.add('disabled-option');
+                        } else {
+                            radio.checked = false;
+                            radio.disabled = true; // Disable other options
+                            radio.closest('label').classList.add('disabled-option');
+                        }
+                    });
+                } else {
+                    // Reset to default for other items
+                    document.querySelectorAll('input[name="stuffed-crust"]').forEach(radio => {
+                        radio.disabled = false; // Re-enable all radio buttons
+                        radio.closest('label').classList.remove('disabled-option');
+                        if (radio.dataset.crustId === 'no-crust') {
+                            radio.checked = true;
+                            selectedCrust = { name: 'Sem Borda Recheada', price: 0, id: 'no-crust' };
+                        }
+                    });
+                }
             } else {
-                crustOptionsSection.style.display = 'none'; // Esconde a seção de bordas
-                stuffedCrustRadios.forEach(radio => { // Desabilita e desmarca as bordas se a seção estiver escondida
+                crustOptionsSection.style.display = 'none';
+                stuffedCrustRadios.forEach(radio => {
                     radio.checked = false;
                     radio.disabled = true;
-                    if (radio.dataset.crustId === 'no-crust') { // Garante que "Sem Borda Recheada" esteja marcada por padrão, mesmo escondida
+                    if (radio.dataset.crustId === 'no-crust') {
                         radio.checked = true;
                         selectedCrust = { name: 'Sem Borda Recheada', price: 0, id: 'no-crust' };
                     }
@@ -1134,153 +1207,107 @@
             }
 
 
-            if (selectedItem.id === 'combo2') {
+            if (selectedItem.id === 'combo2' || selectedItem.id === 'pizza-day-2') {
                 pizza1FlavorSection.classList.remove('hidden');
                 pizza2FlavorSection.classList.remove('hidden');
+                singleFlavorSection.classList.add('hidden'); // Ensure single flavor is hidden
                 flavorInstructionTextPizza1.textContent = 'Escolha até 2 sabores para a Pizza 1.';
                 flavorInstructionTextPizza2.textContent = 'Escolha até 2 sabores para a Pizza 2.';
 
-                // Para Combo 2, apenas sabores tradicionais são permitidos para ambas as pizzas
-                // Esconde os sabores não tradicionais e doces para Pizza 1
-                const combo2ForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar', 'M&M', 'Doce de Leite', 'Oreo']; // Adicionado M&M e Doce de Leite
+                // For Combo 2 and Pizza Day 2, only traditional flavors are allowed for both pizzas
+                const combo2AndPizzaDay2ForbiddenFlavors = sweetFlavors.concat(['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar']);
                 document.querySelectorAll('#flavor-options-pizza1 input[name="flavor-pizza1"]').forEach(cb => {
-                    if (combo2ForbiddenFlavors.includes(cb.value) || sweetFlavors.includes(cb.value)) {
+                    const label = cb.closest('label');
+                    if (combo2AndPizzaDay2ForbiddenFlavors.includes(cb.value)) {
                         cb.disabled = true;
-                        const label = cb.closest('label');
                         if (label) label.classList.add('disabled-option');
-                        if (label) label.style.display = 'none'; // Esconde sabores não permitidos para Combo 2
+                        if (label) label.style.display = 'none';
                     }
                 });
-                // Esconde os sabores não tradicionais e doces para Pizza 2
                 document.querySelectorAll('#flavor-options-pizza2 input[name="flavor-pizza2"]').forEach(cb => {
-                    if (combo2ForbiddenFlavors.includes(cb.value) || sweetFlavors.includes(cb.value)) {
+                    const label = cb.closest('label');
+                    if (combo2AndPizzaDay2ForbiddenFlavors.includes(cb.value)) {
                         cb.disabled = true;
-                        const label = cb.closest('label');
                         if (label) label.classList.add('disabled-option');
-                        if (label) label.style.display = 'none'; // Esconde sabores não permitidos para Combo 2
+                        if (label) label.style.display = 'none';
                     }
                 });
 
             } else if (selectedItem.id === 'esfirra-doce') { 
-                esfirraDoceOptionsSection.classList.remove('hidden'); // Mostra a seção de esfirras doces com quantidade
+                esfirraDoceOptionsSection.classList.remove('hidden');
+                esfirraOptionsSection.classList.add('hidden');
+                singleFlavorSection.classList.add('hidden');
+                pizza1FlavorSection.classList.add('hidden');
+                pizza2FlavorSection.classList.add('hidden');
                 flavorInstructionTextSingle.textContent = 'Escolha a quantidade para cada sabor de esfirra doce.';
                 document.querySelectorAll('#esfirra-doce-flavor-quantity-options .esfirra-flavor-item').forEach(itemDiv => {
                     const flavorName = itemDiv.querySelector('span').textContent.trim();
-                    if (!sweetFlavors.includes(flavorName)) { // Desabilita se não for sabor doce
-                        itemDiv.style.display = 'none'; // Esconde sabores não doces
-                    } else {
-                        itemDiv.style.display = 'flex'; // Garante que os permitidos estejam visíveis
+                    if (!sweetFlavors.includes(flavorName)) {
+                        itemDiv.style.display = 'none';
                     }
                 });
-            }
-            // Alteração aqui: para pizzas individuais (tradicional, especial e média), permitir todos os sabores
-            else if (selectedItem.id === 'pizza-tradicional-grande') { // Lógica específica para Pizza Grande Tradicional
+            } else if (selectedItem.id === 'pizza-tradicional-grande' || selectedItem.id === 'pizza-media' || selectedItem.id === 'combo1' || selectedItem.id === 'pizza-day-1') {
                 singleFlavorSection.classList.remove('hidden');
-                flavorInstructionTextSingle.textContent = `Escolha até 2 sabores para sua pizza. Se selecionar apenas 1, a pizza será inteira desse sabor.`;
-                const pizzaTradicionalForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar'];
-                flavorCheckboxesSingle.forEach(cb => {
-                    const label = cb.closest('label');
-                    if (pizzaTradicionalForbiddenFlavors.includes(cb.value)) {
-                        cb.disabled = true;
-                        if (label) label.classList.add('disabled-option');
-                        if (label) label.style.display = 'none';
-                    } else {
-                        cb.disabled = false;
-                        if (label) label.classList.remove('disabled-option');
-                        if (label) label.style.display = 'flex';
-                    }
-                });
-            }
-            else if (selectedItem.id === 'pizza-media') { // Lógica específica para Pizza Média Tradicional
-                singleFlavorSection.classList.remove('hidden');
-                flavorInstructionTextSingle.textContent = `Escolha até 2 sabores para sua pizza. Se selecionar apenas 1, a pizza será inteira desse sabor.`;
-                const pizzaMediaTradicionalForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar'];
-                flavorCheckboxesSingle.forEach(cb => {
-                    const label = cb.closest('label');
-                    if (pizzaMediaTradicionalForbiddenFlavors.includes(cb.value)) {
-                        cb.disabled = true;
-                        if (label) label.classList.add('disabled-option');
-                        if (label) label.style.display = 'none';
-                    } else {
-                        cb.disabled = false;
-                        if (label) label.classList.remove('disabled-option');
-                        if (label) label.style.display = 'flex';
-                    }
-                });
-            }
-            else if (selectedItem.id.includes('pizza-especial')) {
-                singleFlavorSection.classList.remove('hidden');
-                flavorInstructionTextSingle.textContent = `Escolha até 2 sabores para sua pizza. Se selecionar apenas 1, a pizza será inteira desse sabor.`;
-                // Não há necessidade de desabilitar ou esconder nenhum sabor aqui, pois todos são permitidos.
-            }
-            else if (selectedItem.id === 'combo1') { // Combo 1 ainda só permite sabores tradicionais
-                singleFlavorSection.classList.remove('hidden');
+                pizza1FlavorSection.classList.add('hidden');
+                pizza2FlavorSection.classList.add('hidden');
+                esfirraOptionsSection.classList.add('hidden');
+                esfirraDoceOptionsSection.classList.add('hidden');
+
                 flavorInstructionTextSingle.textContent = `Escolha até 2 sabores para sua pizza. Se selecionar apenas 1, a pizza será inteira desse sabor.`;
                 
-                // Para Combo 1, apenas sabores tradicionais são permitidos.
-                // Filtra os sabores que não devem aparecer no Combo 1
-                const combo1ForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar', 'M&M', 'Doce de Leite', 'Oreo']; 
+                const forbiddenForTraditional = sweetFlavors.concat(['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar']);
                 flavorCheckboxesSingle.forEach(cb => {
                     const label = cb.closest('label');
-                    if (combo1ForbiddenFlavors.includes(cb.value) || sweetFlavors.includes(cb.value)) {
+                    if (forbiddenForTraditional.includes(cb.value)) {
                         cb.disabled = true;
                         if (label) label.classList.add('disabled-option');
-                        if (label) label.style.display = 'none'; // Esconde sabores não permitidos para Combo 1
-                    } else {
-                        cb.disabled = false;
-                        if (label) label.classList.remove('disabled-option');
-                        if (label) label.style.display = 'flex';
+                        if (label) label.style.display = 'none';
                     }
                 });
-            }
-            else if (selectedItem.id === 'esfirra-tradicional') { 
-                esfirraOptionsSection.classList.remove('hidden'); // Mostra a seção de esfirras com quantidade
+            } else if (selectedItem.id.includes('pizza-especial')) {
+                singleFlavorSection.classList.remove('hidden');
+                pizza1FlavorSection.classList.add('hidden');
+                pizza2FlavorSection.classList.add('hidden');
+                esfirraOptionsSection.classList.add('hidden');
+                esfirraDoceOptionsSection.classList.add('hidden');
+
+                flavorInstructionTextSingle.textContent = `Escolha até 2 sabores para sua pizza. Se selecionar apenas 1, a pizza será inteira desse sabor.`;
+                // No need to disable any flavors as all are allowed for special pizzas
+            } else if (selectedItem.id === 'esfirra-tradicional') { 
+                esfirraOptionsSection.classList.remove('hidden');
+                esfirraDoceOptionsSection.classList.add('hidden');
+                singleFlavorSection.classList.add('hidden');
+                pizza1FlavorSection.classList.add('hidden');
+                pizza2FlavorSection.classList.add('hidden');
                 flavorInstructionTextSingle.textContent = 'Escolha a quantidade para cada sabor de esfirra.';
-                // Esfirra Tradicional: apenas sabores salgados permitidos, exceto os especificados
-                const esfirraTradicionalForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar'];
                 document.querySelectorAll('#esfirra-flavor-quantity-options .esfirra-flavor-item').forEach(itemDiv => {
                     const flavorName = itemDiv.querySelector('span').textContent.trim();
-                    if (sweetFlavors.includes(flavorName) || esfirraTradicionalForbiddenFlavors.includes(flavorName)) {
-                        itemDiv.style.display = 'none'; // Esconde sabores não permitidos
-                    } else {
-                        itemDiv.style.display = 'flex'; // Garante que os permitidos estejam visíveis
+                    if (!esfirraTradicionalAllowedFlavors.includes(flavorName)) {
+                        itemDiv.style.display = 'none';
                     }
                 });
             } else if (selectedItem.id === 'esfirra-especial') { 
-                esfirraOptionsSection.classList.remove('hidden'); // Mostra a seção de esfirras com quantidade
+                esfirraOptionsSection.classList.remove('hidden');
+                esfirraDoceOptionsSection.classList.add('hidden');
+                singleFlavorSection.classList.add('hidden');
+                pizza1FlavorSection.classList.add('hidden');
+                pizza2FlavorSection.classList.add('hidden');
                 flavorInstructionTextSingle.textContent = 'Escolha a quantidade para cada sabor de esfirra.';
-                // Esfirra Especial: apenas os 4 sabores especificados são permitidos.
-                const esfirraEspecialAllowedFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar'];
                 document.querySelectorAll('#esfirra-flavor-quantity-options .esfirra-flavor-item').forEach(itemDiv => {
                     const flavorName = itemDiv.querySelector('span').textContent.trim();
                     if (!esfirraEspecialAllowedFlavors.includes(flavorName)) {
-                        itemDiv.style.display = 'none'; // Esconde sabores não permitidos
-                    } else {
-                        itemDiv.style.display = 'flex'; // Garante que os permitidos estejam visíveis
+                        itemDiv.style.display = 'none';
                     }
                 });
-            } else { // Se o item selecionado não for pizza, combo ou esfirra (ex: bebidas do menu principal)
-                singleFlavorSection.classList.add('hidden'); // Esconde a seção de sabores
-                esfirraOptionsSection.classList.add('hidden'); // Garante que a seção de esfirras esteja oculta
-                esfirraDoceOptionsSection.classList.add('hidden'); // Garante que a seção de esfirras doces esteja oculta
-                flavorInstructionTextSingle.textContent = '';
-                // Não precisa fazer nada com os checkboxes de sabor, pois esta seção estará oculta
             }
         }
 
-        // Função genérica para gerenciar a seleção de sabores por grupo (pizza1, pizza2, ou single)
-        function handleFlavorSelection(checkboxes, targetFlavorsArray, isCombo2Pizza = false) {
+        function handleFlavorSelection(checkboxes, targetFlavorsArray, isComboOrPizzaDay2 = false) {
             checkboxes.forEach(checkbox => {
                 checkbox.addEventListener('change', (event) => {
-                    console.log(`Checkbox ${event.target.name} value ${event.target.value} changed. Checked: ${event.target.checked}`); // Log de depuração
-                    
                     const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
-                    console.log(`Checked count for ${checkboxes[0].name}: ${checkedCount}`); // Log de depuração
                     
-                    let maxAllowedFlavors = 2; // Padrão para pizzas
-                    if (selectedItem.id.includes('esfirra') && !isCombo2Pizza) { 
-                        maxAllowedFlavors = 1;
-                    }
+                    let maxAllowedFlavors = 2;
 
                     if (checkedCount >= maxAllowedFlavors) {
                         checkboxes.forEach(cb => {
@@ -1288,72 +1315,30 @@
                                 cb.disabled = true;
                                 const label = cb.closest('label');
                                 if (label) label.classList.add('disabled-option');
-                                console.log(`Disabling checkbox: ${cb.value}`); // Log de depuração
                             }
                         });
                     } else {
                         checkboxes.forEach(cb => {
                             if (!cb.checked) { 
-                                // Re-habilita baseado nas regras de categoria (tradicional, doce, especial)
-                                // A lógica de re-habilitação precisa ser mais inteligente para permitir doces em pizzas
-                                if (isCombo2Pizza) { // Combos 2 ainda só permitem tradicionais
-                                    const combo2ForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar', 'M&M', 'Doce de Leite', 'Oreo'];
-                                    if (traditionalFlavors.includes(cb.value) && !combo2ForbiddenFlavors.includes(cb.value)) {
-                                        cb.disabled = false;
-                                        const label = cb.closest('label');
-                                        if (label) label.classList.remove('disabled-option');
-                                    }
-                                } else if (selectedItem.id === 'combo1') { // Combo 1: re-habilita apenas sabores permitidos
-                                    const combo1ForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar', 'M&M', 'Doce de Leite', 'Oreo']; // Removido 'Frango'
-                                    if (!combo1ForbiddenFlavors.includes(cb.value) && !sweetFlavors.includes(cb.value)) {
-                                        cb.disabled = false;
-                                        const label = cb.closest('label');
-                                        if (label) label.classList.remove('disabled-option');
-                                    }
-                                } else if (selectedItem.id === 'pizza-tradicional-grande' || selectedItem.id === 'pizza-media') { // Pizza Grande/Média Tradicional
-                                    const pizzaTradicionalForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar'];
-                                    if (!pizzaTradicionalForbiddenFlavors.includes(cb.value)) {
-                                        cb.disabled = false;
-                                        const label = cb.closest('label');
-                                        if (label) label.classList.remove('disabled-option');
+                                let shouldReEnable = false;
+                                if (isComboOrPizzaDay2 || selectedItem.id === 'combo1' || selectedItem.id === 'pizza-day-1' || selectedItem.id === 'pizza-tradicional-grande' || selectedItem.id === 'pizza-media') {
+                                    const forbiddenFlavors = sweetFlavors.concat(['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar']);
+                                    if (!forbiddenFlavors.includes(cb.value)) {
+                                        shouldReEnable = true;
                                     }
                                 } else if (selectedItem.id.includes('pizza-especial')) {
-                                    // Para pizzas individuais (especial), re-habilitar todos os sabores
+                                    shouldReEnable = true;
+                                }
+
+                                if (shouldReEnable) {
                                     cb.disabled = false;
                                     const label = cb.closest('label');
                                     if (label) label.classList.remove('disabled-option');
                                 }
-                                else if (selectedItem.id === 'esfirra-doce') {
-                                    if (sweetFlavors.includes(cb.value)) {
-                                        cb.disabled = false;
-                                        const label = cb.closest('label');
-                                        if (label) label.classList.remove('disabled-option');
-                                    }
-                                } else if (selectedItem.id === 'esfirra-tradicional') { // Esfirra Tradicional
-                                    const esfirraTradicionalForbiddenFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar'];
-                                    if (!sweetFlavors.includes(cb.value) && !esfirraTradicionalForbiddenFlavors.includes(cb.value)) {
-                                        cb.disabled = false;
-                                        const label = cb.closest('label');
-                                        if (label) label.classList.remove('disabled-option');
-                                    }
-                                } else if (selectedItem.id === 'esfirra-especial') { // Esfirra Especial
-                                    const esfirraEspecialAllowedFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar'];
-                                    if (esfirraEspecialAllowedFlavors.includes(cb.value)) { // Apenas os sabores permitidos são re-habilitados
-                                        cb.disabled = false;
-                                        const label = cb.closest('label');
-                                        if (label) label.classList.remove('disabled-option');
-                                    }
-                                } else { // Fallback para outros tipos
-                                    cb.disabled = false;
-                                    const label = cb.closest('label');
-                                    if (label) label.classList.remove('disabled-option');
-                                }
-                                console.log(`(Re)enabling checkbox: ${cb.value}, disabled: ${cb.disabled}`); // Log de depuração
                             }
                         });
                     }
-                    // Atualiza o array de sabores do alvo
-                    // Reatribuir diretamente para garantir que a variável global seja atualizada
+                    
                     if (checkboxes[0].name === "flavor") {
                         selectedFlavors = Array.from(checkboxes).filter(cb => cb.checked).map(cb => cb.value);
                     } else if (checkboxes[0].name === "flavor-pizza1") {
@@ -1361,217 +1346,78 @@
                     } else if (checkboxes[0].name === "flavor-pizza2") {
                         selectedFlavorsPizza2 = Array.from(checkboxes).filter(cb => cb.checked).map(cb => cb.value);
                     }
-                    
-                    console.log('selectedFlavors (depois da atualização em handleFlavorSelection):', selectedFlavors); // NOVO LOG
-                    console.log('selectedFlavorsPizza1 (depois da atualização em handleFlavorSelection):', selectedFlavorsPizza1); // NOVO LOG
-                    console.log('selectedFlavorsPizza2 (depois da atualização em handleFlavorSelection):', selectedFlavorsPizza2); // NOVO LOG
                     updateFinalizeButtonState();
                 });
             });
         }
 
-        // Aplica a função de seleção de sabores para cada grupo de checkboxes
-        // Move these calls inside DOMContentLoaded or a function called after DOM is ready
-        // handleFlavorSelection(flavorCheckboxesSingle, selectedFlavors);
-        // handleFlavorSelection(flavorCheckboxesPizza1, selectedFlavorsPizza1, true); // Pass true for isCombo2Pizza
-        // handleFlavorSelection(flavorCheckboxesPizza2, selectedFlavorsPizza2, true); // Pass true for isCombo2Pizza
 
-
-        // Adiciona listener para cada radio button de bebida
-        // Move this setup inside DOMContentLoaded or a function called after DOM is ready
-        // document.querySelectorAll('#beverage-options-with-quantity .quantity-btn').forEach(button => {
-        //     button.addEventListener('click', function() {
-        //         const flavor = this.dataset.beverageFlavor;
-        //         const action = this.dataset.action;
-        //         const input = this.parentNode.querySelector('.quantity-input');
-        //         let currentValue = parseInt(input.value);
-        //         const price = parseFloat(input.dataset.beveragePrice);
-
-        //         if (action === 'increase') {
-        //             currentValue++;
-        //         } else if (action === 'decrease' && currentValue > 0) {
-        //             currentValue--;
-        //         }
-        //         input.value = currentValue;
-        //         beverageQuantities[flavor] = { quantity: currentValue, price: price };
-        //         console.log('beverageQuantities:', beverageQuantities);
-        //         updateFinalizeButtonState();
-        //     });
-        // });
-
-        // document.querySelectorAll('#beverage-options-with-quantity .quantity-input').forEach(input => {
-        //     input.addEventListener('change', function() {
-        //         const flavor = this.dataset.beverageFlavor;
-        //         let currentValue = parseInt(this.value);
-        //         const price = parseFloat(this.dataset.beveragePrice);
-        //         if (isNaN(currentValue) || currentValue < 0) {
-        //             currentValue = 0;
-        //             this.value = 0;
-        //         }
-        //         beverageQuantities[flavor] = { quantity: currentValue, price: price };
-        //         console.log('beverageQuantities:', beverageQuantities);
-        //         updateFinalizeButtonState();
-        //     });
-        // });
-
-
-        // Adiciona listener para cada radio button de borda recheada
-        // Move this setup inside DOMContentLoaded or a function called after DOM is ready
-        // stuffedCrustRadios.forEach(radio => {
-        //     radio.addEventListener('change', () => {
-        //         selectedCrust = {
-        //             name: radio.value,
-        //             price: parseFloat(radio.dataset.crustPrice),
-        //             id: radio.dataset.crustId
-        //         };
-        //         console.log('Borda selecionada:', selectedCrust); // Log de depuração
-        //     });
-        // });
-
-        // Event listeners para os botões de quantidade das esfirras
-        // Move this setup inside DOMContentLoaded or a function called after DOM is ready
-        // document.querySelectorAll('#esfirra-flavor-quantity-options .quantity-btn').forEach(button => {
-        //     button.addEventListener('click', function() {
-        //         const flavor = this.dataset.flavor;
-        //         const action = this.dataset.action;
-        //         const input = this.parentNode.querySelector('.quantity-input');
-        //         let currentValue = parseInt(input.value);
-
-        //         if (action === 'increase') {
-        //             currentValue++;
-        //         } else if (action === 'decrease' && currentValue > 0) {
-        //             currentValue--;
-        //         }
-        //         input.value = currentValue;
-        //         esfirraQuantities[flavor] = currentValue;
-        //         console.log('esfirraQuantities:', esfirraQuantities);
-        //         updateFinalizeButtonState();
-        //     });
-        // });
-
-        // document.querySelectorAll('#esfirra-flavor-quantity-options .quantity-input').forEach(input => {
-        //     input.addEventListener('change', function() {
-        //         const flavor = this.dataset.flavor;
-        //         let currentValue = parseInt(this.value);
-        //         if (isNaN(currentValue) || currentValue < 0) {
-        //             currentValue = 0;
-        //             this.value = 0;
-        //         }
-        //         esfirraQuantities[flavor] = currentValue;
-        //         console.log('esfirraQuantities:', esfirraQuantities);
-        //         updateFinalizeButtonState();
-        //     });
-        // });
-
-
-        // Função para atualizar o estado do botão "Adicionar ao Carrinho"
         function updateFinalizeButtonState() {
-            // Get elements inside the function to ensure they are loaded
             const addToCartBtn = document.getElementById('add-to-cart-btn');
             const addToCartMessage = document.getElementById('add-to-cart-message');
             const beverageOptionsWithQuantity = document.getElementById('beverage-options-with-quantity');
 
 
-            console.log('--- updateFinalizeButtonState chamada ---'); // Log de depuração
-            console.log('selectedItem:', selectedItem); // Log de depuração
-            console.log('selectedFlavors (no início de updateFinalizeButtonState):', selectedFlavors); // NOVO LOG
-            console.log('selectedFlavorsPizza1 (no início de updateFinalizeButtonState):', selectedFlavorsPizza1); // NOVO LOG
-            console.log('selectedFlavorsPizza2 (no início de updateFinalizeButtonState):', selectedFlavorsPizza2); // NOVO LOG
-            console.log('esfirraQuantities (no início de updateFinalizeButtonState):', esfirraQuantities); // NOVO LOG para esfirras
-            console.log('beverageQuantities (no início de updateFinalizeButtonState):', beverageQuantities); // NOVO LOG para bebidas
+            console.log('--- updateFinalizeButtonState chamada ---');
+            console.log('selectedItem:', selectedItem);
+            console.log('selectedFlavors (no início de updateFinalizeButtonState):', selectedFlavors);
+            console.log('selectedFlavorsPizza1 (no início de updateFinalizeButtonState):', selectedFlavorsPizza1);
+            console.log('selectedFlavorsPizza2 (no início de updateFinalizeButtonState):', selectedFlavorsPizza2);
+            console.log('esfirraQuantities (no início de updateFinalizeButtonState):', esfirraQuantities);
+            console.log('beverageQuantities (no início de updateFinalizeButtonState):', beverageQuantities);
 
             let isConditionMet = false;
-            addToCartMessage.textContent = ''; // Limpa a mensagem por padrão
+            addToCartMessage.textContent = '';
 
             const itemType = selectedItem.type;
             const itemId = selectedItem.id;
 
-            if (itemType === 'combo' || itemId.includes('pizza')) {
-                // Lógica para pizzas e combos (seleção de sabores por checkbox)
-                if (itemId === 'combo2') {
+            if (itemType === 'combo' || itemId.includes('pizza') || itemId.includes('pizza-day')) {
+                if (itemId === 'combo2' || itemId === 'pizza-day-2') {
                     isConditionMet = (selectedFlavorsPizza1.length >= 1) && (selectedFlavorsPizza2.length >= 1);
-                    console.log('Combo 2 - Pizza 1 selecionada (array):', selectedFlavorsPizza1.length, 'Pizza 2 selecionada (array):', selectedFlavorsPizza2.length); // Log de depuração
-                } else { // Combo 1 ou pizzas individuais
+                } else {
                     isConditionMet = (selectedFlavors.length >= 1);
-                    console.log('Pizza/Combo 1 - selecionada (array):', selectedFlavors.length); // Log de depuração
                 }
             } else if (itemId.includes('esfirra')) {
-                // Lógica para esfirras (seleção de quantidade por sabor)
                 let totalEsfirraQuantity = 0;
                 for (const flavor in esfirraQuantities) {
                     totalEsfirraQuantity += esfirraQuantities[flavor];
                 }
                 isConditionMet = (totalEsfirraQuantity > 0);
-                console.log('Esfirra - Quantidade total:', totalEsfirraQuantity); // Log de depuração
             } else {
-                // Para outros itens que não precisam de seleção de sabor/quantidade (ex: bebidas do menu principal)
                 isConditionMet = true; 
-                console.log('Item sem seleção de sabor/quantidade (ex: bebida do menu principal).'); // Log de depuração
             }
 
-            // Se a seção de bebidas com quantidade estiver visível, verifique se alguma bebida foi selecionada
             if (beverageOptionsWithQuantity && !beverageOptionsWithQuantity.classList.contains('hidden')) {
                 let totalBeverageQuantity = 0;
                 for (const flavor in beverageQuantities) {
                     totalBeverageQuantity += beverageQuantities[flavor].quantity;
                 }
-                // A condição principal para habilitar o botão "Adicionar ao Carrinho" deve ser a seleção do item principal (pizza/esfirra).
-                // A seleção de bebidas é um adicional e não deve impedir a adição ao carrinho se o item principal for válido.
-                // No entanto, se o item principal *não* for uma pizza/combo/esfirra (ou seja, se for uma bebida selecionada diretamente do menu principal),
-                // então a condição de habilitação do botão deve ser baseada na quantidade de bebidas.
-                if (selectedItem.type === 'beverage') { // Se o item clicado no menu principal foi uma bebida
+                
+                if (selectedItem.type === 'beverage') {
                     isConditionMet = (totalBeverageQuantity > 0);
-                } else {
-                    // Se for pizza, combo ou esfirra, a isConditionMet já foi definida acima.
-                    // A seleção de bebidas é opcional para esses itens.
+                } else if (selectedItem.id === 'pizza-day-1') {
+                    isConditionMet = isConditionMet && (beverageQuantities['Coca-cola 1L'] && beverageQuantities['Coca-cola 1L'].quantity === 1);
+                } else if (selectedItem.id === 'pizza-day-2') {
+                    isConditionMet = isConditionMet && (beverageQuantities['Coca-cola 2L'] && beverageQuantities['Coca-cola 2L'].quantity === 1);
                 }
-                 console.log('Bebidas - Quantidade total:', totalBeverageQuantity); // Log de depuração
             }
 
 
             addToCartBtn.disabled = !isConditionMet;
-            console.log('isConditionMet:', isConditionMet); // Log de depuração
-            console.log('addToCartBtn.disabled definido para:', !isConditionMet); // Log de depuração
-            console.log('-----------------------------------------'); // Log de depuração
+            console.log('isConditionMet:', isConditionMet);
+            console.log('addToCartBtn.disabled definido para:', !isConditionMet);
+            console.log('-----------------------------------------');
         }
-
-        // Evento de clique para o botão "Adicionar ao Carrinho"
-        // Move this setup inside DOMContentLoaded or a function called after DOM is ready
-        // addToCartBtn.addEventListener('click', () => { ... });
-
-
-        // === Lógica do Carrinho de Compras / Resumo ===
-        // Move these declarations inside DOMContentLoaded or a function called after DOM is ready
-        // const cartItemsContainer = document.getElementById('cart-items-container');
-        // const cartTotalPriceElement = document.getElementById('cart-total-price');
-        // const placeOrderBtn = document.getElementById('place-order-btn');
-        // const emptyCartMessage = document.getElementById('empty-cart-message');
-
-        // Referências aos campos de endereço
-        // const addressStreetInput = document.getElementById('address-street');
-        // const addressNumberInput = document.getElementById('address-number');
-        // const addressNeighborhoodInput = document.getElementById('address-neighborhood');
-        // const addressReferenceInput = document.getElementById('address-reference');
-
-        // Variável para armazenar a opção de pagamento selecionada
-        // let selectedPaymentMethod = 'Pix'; // Pix como padrão
-
-        // Listener para os radio buttons de pagamento
-        // document.querySelectorAll('input[name="payment-method"]').forEach(radio => {
-        //     radio.addEventListener('change', () => {
-        //         selectedPaymentMethod = radio.value;
-        //     });
-        // });
 
 
         function renderCart() {
-            // Get elements inside the function to ensure they are loaded
             const cartItemsContainer = document.getElementById('cart-items-container');
             const emptyCartMessage = document.getElementById('empty-cart-message');
             const placeOrderBtn = document.getElementById('place-order-btn');
             const cartTotalPriceElement = document.getElementById('cart-total-price');
 
-            cartItemsContainer.innerHTML = ''; // Limpa o conteúdo atual do carrinho
+            cartItemsContainer.innerHTML = '';
             
             if (cart.length === 0) {
                 if (emptyCartMessage) emptyCartMessage.classList.remove('hidden');
@@ -1581,20 +1427,21 @@
                 if (placeOrderBtn) placeOrderBtn.disabled = false; 
 
                 cart.forEach((item, index) => {
-                    let itemDisplayPrice = item.price; // Preço unitário para exibição
+                    let itemDisplayPrice = item.price;
                     let itemDescription = '';
 
                     if (item.type === 'beverage') {
                         itemDescription = `Bebida: ${item.name}`;
-                    } else if (item.type.includes('esfirra') && item.flavors.length === 1) { // Esfirra com quantidade
+                    } else if (item.type.includes('esfirra') && item.flavors.length === 1) {
                         itemDescription = `Sabor: ${item.flavors[0]}`;
-                    } else { // É uma pizza ou combo ou esfirra
-                        // Monta o texto dos sabores
+                    } else {
                         let flavorsText = '';
-                        if (item.id === 'combo2' && item.flavors && item.flavors.pizza1 && item.flavors.pizza2) {
+                        if ((item.id === 'combo2' || item.id === 'pizza-day-2') && item.flavors && item.flavors.pizza1 && item.flavors.pizza2) {
                             flavorsText = `Pizza 1: (${item.flavors.pizza1.join(' e ')})\n  Pizza 2: (${item.flavors.pizza2.join(' e ')})`;
                         } else if (item.flavors && item.flavors.length > 0) {
-                            if (item.flavors.length === 1) { 
+                            if (item.flavors.length === 1 && item.type.includes('esfirra')) {
+                                flavorsText = ` (${item.flavors[0]})`;
+                            } else if (item.flavors.length === 1) { 
                                 flavorsText = ` (${item.flavors[0]} inteira)`;
                             }
                              else if (item.flavors.length === 2) { 
@@ -1607,7 +1454,6 @@
                         }
                         itemDescription = `Sabores: ${flavorsText}`;
 
-                        // Adiciona a borda recheada à descrição
                         if (item.crust && item.crust.name !== 'Sem Borda Recheada') {
                             itemDescription += `<br>Borda: ${item.crust.name}`;
                         }
@@ -1629,23 +1475,21 @@
                     `;
                     cartItemsContainer.innerHTML += cartItemHtml;
                 });
-                updateCartIconCount(); // Atualiza a contagem no ícone do carrinho
+                updateCartIconCount();
             }
-            calculateTotalCartPrice(); // Recalcula o total (agora sem taxa de entrega)
+            calculateTotalCartPrice();
         }
 
-        // Função para atualizar a quantidade de um item no carrinho
         function updateQuantity(index, change) {
             if (cart[index]) {
                 cart[index].quantity += change;
                 if (cart[index].quantity <= 0) {
-                    cart.splice(index, 1); // Remove o item se a quantidade for 0 ou menos
+                    cart.splice(index, 1);
                 }
             }
-            renderCart(); // Re-renderiza o carrinho para refletir as mudanças
+            renderCart();
         }
 
-        // Função para calcular e exibir o total do carrinho, SEM a taxa de entrega
         function calculateTotalCartPrice() {
             const cartTotalPriceElement = document.getElementById('cart-total-price');
             let subtotal = 0;
@@ -1653,19 +1497,11 @@
                 subtotal += item.price * item.quantity;
             });
 
-            // deliveryFee agora é sempre 0, então basta somar o subtotal
-            let total = subtotal; // Não soma deliveryFee
+            let total = subtotal;
             cartTotalPriceElement.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
         }
 
-        // Evento para o botão "Enviar Pedido"
-        // Move this setup inside DOMContentLoaded or a function called after DOM is ready
-        // placeOrderBtn.addEventListener('click', () => { ... });
-
-
-        // Função para preparar a mensagem do WhatsApp
         function prepareWhatsAppMessage() {
-            // Get elements inside the function to ensure they are loaded
             const addressStreetInput = document.getElementById('address-street');
             const addressNumberInput = document.getElementById('address-number');
             const addressNeighborhoodInput = document.getElementById('address-neighborhood');
@@ -1678,12 +1514,12 @@
 
             cart.forEach(item => {
                 let itemDetails = `- ${item.quantity}x ${item.name}`;
-                if (item.type !== 'beverage') { // Se for pizza/combo, adiciona sabores e borda
+                if (item.type !== 'beverage') {
                     let flavorsText = '';
-                    if (item.id === 'combo2' && item.flavors && item.flavors.pizza1 && item.flavors.pizza2) {
+                    if ((item.id === 'combo2' || item.id === 'pizza-day-2') && item.flavors && item.flavors.pizza1 && item.flavors.pizza2) {
                         flavorsText = `\n  Pizza 1: (${item.flavors.pizza1.join(' e ')})\n  Pizza 2: (${item.flavors.pizza2.join(' e ')})`;
                     } else if (item.flavors && item.flavors.length > 0) {
-                        if (item.flavors.length === 1 && item.type.includes('esfirra')) { // Esfirra com quantidade
+                        if (item.flavors.length === 1 && item.type.includes('esfirra')) {
                             flavorsText = ` (${item.flavors[0]})`;
                         } else if (item.flavors.length === 1) { 
                             flavorsText = ` (${item.flavors[0]} inteira)`;
@@ -1709,7 +1545,6 @@ message += `\n*Subtotal:* R$ ${subtotal.toFixed(2).replace('.', ',')}`;
 message += `\n*Taxa de entrega:* R$ ${deliveryFee.toFixed(2).replace('.', ',')}`;
 message += `\n*Total com entrega:* R$ ${totalComTaxa.toFixed(2).replace('.', ',')}\n\n`;
             
-            // Adiciona as observações, se houver
             if (orderNotes.trim() !== '') {
                 message += `*Observações:* ${orderNotes.trim()}\n\n`;
             }
@@ -1730,10 +1565,9 @@ message += `\n*Total com entrega:* R$ ${totalComTaxa.toFixed(2).replace('.', ','
             return message;
         }
 
-        // Function to check if the pizzaria is open and display the status
         function updatePizzariaStatus() {
             const now = new Date();
-            const dayOfWeek = now.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+            const dayOfWeek = now.getDay();
             const currentHour = now.getHours();
             const currentMinute = now.getMinutes();
 
@@ -1741,12 +1575,11 @@ message += `\n*Total com entrega:* R$ ${totalComTaxa.toFixed(2).replace('.', ','
             let isOpen = false;
             let message = '';
 
-            // Operating hours: Thursday (4) to Sunday (0) from 18:00 to 00:00 (next day)
-            const openHour = 18; // 6 PM
-            const closeHour = 0; // 12 AM (midnight)
+            const openHour = 18;
+            const closeHour = 0;
 
-            if (dayOfWeek === 4 || dayOfWeek === 5 || dayOfWeek === 6 || dayOfWeek === 0) { // Thursday, Friday, Saturday, Sunday
-                if (currentHour >= openHour || currentHour < closeHour) { // From 6 PM to midnight, or from midnight to 12 AM (next day)
+            if (dayOfWeek === 4 || dayOfWeek === 5 || dayOfWeek === 6 || dayOfWeek === 0) {
+                if (currentHour >= openHour || currentHour < closeHour) {
                     isOpen = true;
                 }
             }
@@ -1760,9 +1593,7 @@ message += `\n*Total com entrega:* R$ ${totalComTaxa.toFixed(2).replace('.', ','
         }
 
 
-        // Inicializa mostrando a página do cardápio principal e atualiza o ícone do carrinho
         document.addEventListener('DOMContentLoaded', () => {
-            // Get elements here after DOM is fully loaded
             const flavorCheckboxesSingle = document.querySelectorAll('input[name="flavor"]');
             const flavorCheckboxesPizza1 = document.querySelectorAll('input[name="flavor-pizza1"]');
             const flavorCheckboxesPizza2 = document.querySelectorAll('input[name="flavor-pizza2"]');
@@ -1770,21 +1601,18 @@ message += `\n*Total com entrega:* R$ ${totalComTaxa.toFixed(2).replace('.', ','
             const addToCartBtn = document.getElementById('add-to-cart-btn');
             const placeOrderBtn = document.getElementById('place-order-btn');
 
-            // Apply event listeners for flavor selection
             handleFlavorSelection(flavorCheckboxesSingle, selectedFlavors);
-            handleFlavorSelection(flavorCheckboxesPizza1, selectedFlavorsPizza1, true); // Pass true for isCombo2Pizza
-            handleFlavorSelection(flavorCheckboxesPizza2, selectedFlavorsPizza2, true); // Pass true for isCombo2Pizza
+            handleFlavorSelection(flavorCheckboxesPizza1, selectedFlavorsPizza1, true);
+            handleFlavorSelection(flavorCheckboxesPizza2, selectedFlavorsPizza2, true);
 
-            // Add to cart button event listener
             addToCartBtn.addEventListener('click', () => {
                 if (selectedItem.id.includes('esfirra')) {
-                    // Adiciona esfirras com suas quantidades
                     for (const flavor in esfirraQuantities) {
                         const quantity = esfirraQuantities[flavor];
                         if (quantity > 0) {
                             cart.push({
                                 name: `${selectedItem.name} (${flavor})`,
-                                price: selectedItem.price, // Preço por unidade de esfirra
+                                price: selectedItem.price,
                                 quantity: quantity,
                                 flavors: [flavor],
                                 type: selectedItem.type,
@@ -1792,30 +1620,30 @@ message += `\n*Total com entrega:* R$ ${totalComTaxa.toFixed(2).replace('.', ','
                             });
                         }
                     }
-                } else if (selectedItem.id === 'combo2') {
+                } else if (selectedItem.id === 'combo2' || selectedItem.id === 'pizza-day-2') {
                     cart.push({
                         name: selectedItem.name,
                         price: selectedItem.price + selectedCrust.price,
                         quantity: 1, 
-                        flavors: { pizza1: selectedFlavorsPizza1, pizza2: selectedFlavorsPizza2 }, // Sabores como objeto
+                        flavors: { pizza1: selectedFlavorsPizza1, pizza2: selectedFlavorsPizza2 },
                         type: selectedItem.type,
                         id: selectedItem.id,
                         crust: selectedCrust.name !== 'Sem Borda Recheada' ? selectedCrust : null
                     });
                 } else {
-                    // Para outros itens (incluindo pizzas individuais e Combo 1), adiciona com o array de sabores normal
+                    const isPizzaDay1 = selectedItem.id === 'pizza-day-1';
+                    
                     cart.push({
                         name: selectedItem.name,
-                        price: selectedItem.price + selectedCrust.price,
+                        price: selectedItem.price + (isPizzaDay1 ? 0 : selectedCrust.price), 
                         quantity: 1, 
-                        flavors: selectedFlavors, // Usa o array de sabores único
+                        flavors: selectedFlavors,
                         type: selectedItem.type,
                         id: selectedItem.id,
-                        crust: selectedCrust.name !== 'Sem Borda Recheada' ? selectedCrust : null
+                        crust: isPizzaDay1 ? { name: 'Borda Recheada Chocolate', price: 0, id: 'chocolate-crust' } : (selectedCrust.name !== 'Sem Borda Recheada' ? selectedCrust : null)
                     });
                 }
 
-                // Adiciona bebidas com suas quantidades
                 for (const flavor in beverageQuantities) {
                     const { quantity, price } = beverageQuantities[flavor];
                     if (quantity > 0) {
@@ -1823,7 +1651,7 @@ message += `\n*Total com entrega:* R$ ${totalComTaxa.toFixed(2).replace('.', ','
                             name: `${flavor}`,
                             price: price,
                             quantity: quantity,
-                            flavors: [], // Bebidas não têm sabores
+                            flavors: [],
                             type: 'beverage',
                             id: `${flavor.toLowerCase().replace(/\s/g, '-')}`
                         });
@@ -1834,7 +1662,6 @@ message += `\n*Total com entrega:* R$ ${totalComTaxa.toFixed(2).replace('.', ','
                 showPage('order-summary');
             });
 
-            // Event listeners para os botões de quantidade das esfirras
             document.querySelectorAll('#esfirra-flavor-quantity-options .quantity-btn').forEach(button => {
                 button.addEventListener('click', function() {
                     const flavor = this.dataset.flavor;
@@ -1849,7 +1676,6 @@ message += `\n*Total com entrega:* R$ ${totalComTaxa.toFixed(2).replace('.', ','
                     }
                     input.value = currentValue;
                     esfirraQuantities[flavor] = currentValue;
-                    console.log('esfirraQuantities:', esfirraQuantities);
                     updateFinalizeButtonState();
                 });
             });
@@ -1863,12 +1689,42 @@ message += `\n*Total com entrega:* R$ ${totalComTaxa.toFixed(2).replace('.', ','
                         this.value = 0;
                     }
                     esfirraQuantities[flavor] = currentValue;
-                    console.log('esfirraQuantities:', esfirraQuantities);
                     updateFinalizeButtonState();
                 });
             });
 
-            // Add event listeners for beverage quantity buttons
+            document.querySelectorAll('#esfirra-doce-flavor-quantity-options .quantity-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const flavor = this.dataset.flavor;
+                    const action = this.dataset.action;
+                    const input = this.parentNode.querySelector('.quantity-input');
+                    let currentValue = parseInt(input.value);
+
+                    if (action === 'increase') {
+                        currentValue++;
+                    } else if (action === 'decrease' && currentValue > 0) {
+                        currentValue--;
+                    }
+                    input.value = currentValue;
+                    esfirraQuantities[flavor] = currentValue; // Using esfirraQuantities for sweet too
+                    updateFinalizeButtonState();
+                });
+            });
+
+            document.querySelectorAll('#esfirra-doce-flavor-quantity-options .quantity-input').forEach(input => {
+                input.addEventListener('change', function() {
+                    const flavor = this.dataset.flavor;
+                    let currentValue = parseInt(this.value);
+                    if (isNaN(currentValue) || currentValue < 0) {
+                        currentValue = 0;
+                        this.value = 0;
+                    }
+                    esfirraQuantities[flavor] = currentValue; // Using esfirraQuantities for sweet too
+                    updateFinalizeButtonState();
+                });
+            });
+
+
             document.querySelectorAll('#beverage-options-with-quantity .quantity-btn').forEach(button => {
                 button.addEventListener('click', function() {
                     const flavor = this.dataset.beverageFlavor;
@@ -1884,7 +1740,6 @@ message += `\n*Total com entrega:* R$ ${totalComTaxa.toFixed(2).replace('.', ','
                     }
                     input.value = currentValue;
                     beverageQuantities[flavor] = { quantity: currentValue, price: price };
-                    console.log('beverageQuantities:', beverageQuantities);
                     updateFinalizeButtonState();
                 });
             });
@@ -1899,12 +1754,10 @@ message += `\n*Total com entrega:* R$ ${totalComTaxa.toFixed(2).replace('.', ','
                         this.value = 0;
                     }
                     beverageQuantities[flavor] = { quantity: currentValue, price: price };
-                    console.log('beverageQuantities:', beverageQuantities);
                     updateFinalizeButtonState();
                 });
             });
 
-            // Add listener for stuffed crust radios
             stuffedCrustRadios.forEach(radio => {
                 radio.addEventListener('change', () => {
                     selectedCrust = {
@@ -1912,25 +1765,22 @@ message += `\n*Total com entrega:* R$ ${totalComTaxa.toFixed(2).replace('.', ','
                         price: parseFloat(radio.dataset.crustPrice),
                         id: radio.dataset.crustId
                     };
-                    console.log('Borda selecionada:', selectedCrust); // Log de depuração
                 });
             });
 
-            // Initial setup
             showPage('main-menu');
-            updateCartIconCount(); // Garante que a contagem do carrinho seja exibida corretamente ao carregar
-            updatePizzariaStatus(); // Atualiza o status da pizzaria ao carregar
-            // Opcionalmente, atualiza o status a cada minuto para mantê-lo atualizado
+            updateCartIconCount();
+            updatePizzariaStatus();
             setInterval(updatePizzariaStatus, 60 * 1000); 
         
-placeOrderBtn.addEventListener('click', () => {
-    const message = prepareWhatsAppMessage();
-    const whatsappNumber = '5592986161640';
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
-});
+            placeOrderBtn.addEventListener('click', () => {
+                const message = prepareWhatsAppMessage();
+                const whatsappNumber = '5592986161640';
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+            });
 
-});
+        });
     </script>
 <script>
 function calcularTaxaEntrega() {
