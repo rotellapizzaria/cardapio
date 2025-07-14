@@ -761,7 +761,7 @@
 <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white beverage-item-with-quantity">
 <span class="text-lg text-gray-800 font-medium">Coca-cola Zero 2L - R$ 13,90</span>
 <div class="flex items-center space-x-2">
-<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-beverage-flavor="Coca-cola Zero 2L" data-beverage-price="13.90" type="button">-</button>
+<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-beverage-flavor="Coca-cola Zero 2L" type="button">-</button>
 <input class="quantity-input w-16 text-center border rounded-md" data-beverage-flavor="Coca-cola Zero 2L" data-beverage-price="13.90" min="0" type="number" value="0"/>
 <button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-beverage-flavor="Coca-cola Zero 2L" data-beverage-price="13.90" type="button">+</button>
 </div>
@@ -769,7 +769,7 @@
 <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white beverage-item-with-quantity">
 <span class="text-lg text-gray-800 font-medium">Fanta Laranja 1L - R$ 9,90</span>
 <div class="flex items-center space-x-2">
-<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-beverage-flavor="Fanta Laranja 1L" data-beverage-price="9.90" type="button">-</button>
+<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-beverage-flavor="Fanta Laranja 1L" type="button">-</button>
 <input class="quantity-input w-16 text-center border rounded-md" data-beverage-flavor="Fanta Laranja 1L" data-beverage-price="9.90" min="0" type="number" value="0"/>
 <button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-beverage-flavor="Fanta Laranja 1L" type="button">+</button>
 </div>
@@ -777,7 +777,7 @@
 <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white beverage-item-with-quantity">
 <span class="text-lg text-gray-800 font-medium">Fanta Laranja 2L - R$ 12,90</span>
 <div class="flex items-center space-x-2">
-<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-beverage-flavor="Fanta Laranja 2L" data-beverage-price="12.90" type="button">-</button>
+<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-beverage-flavor="Fanta Laranja 2L" type="button">-</button>
 <input class="quantity-input w-16 text-center border rounded-md" data-beverage-flavor="Fanta Laranja 2L" data-beverage-price="12.90" min="0" type="number" value="0"/>
 <button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-beverage-flavor="Fanta Laranja 2L" data-beverage-price="12.90" type="button">+</button>
 </div>
@@ -785,7 +785,7 @@
 <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white beverage-item-with-quantity">
 <span class="text-lg text-gray-800 font-medium">Guaraná Antarctica 2L - R$ 12,90</span>
 <div class="flex items-center space-x-2">
-<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-beverage-flavor="Guaraná Antarctica 2L" data-beverage-price="12.90" type="button">-</button>
+<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-beverage-flavor="Guaraná Antarctica 2L" type="button">-</button>
 <input class="quantity-input w-16 text-center border rounded-md" data-beverage-flavor="Guaraná Antarctica 2L" data-beverage-price="12.90" min="0" type="number" value="0"/>
 <button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-beverage-flavor="Guaraná Antarctica 2L" data-beverage-price="12.90" type="button">+</button>
 </div>
@@ -1195,7 +1195,7 @@
                             radio.closest('label').classList.add('disabled-option');
                         }
                     });
-                } else {
+                } else { // This block will now also handle 'combo1'
                     // Reset to default for other items
                     document.querySelectorAll('input[name="stuffed-crust"]').forEach(radio => {
                         radio.disabled = false; // Re-enable all radio buttons
@@ -1644,17 +1644,16 @@ message += `\n*Total com entrega:* R$ ${totalComTaxa.toFixed(2).replace('.', ','
                     });
                 } else {
                     const isPizzaDay1 = selectedItem.id === 'pizza-day-1';
-                    const isCombo1 = selectedItem.id === 'combo1';
-                    // The `isCombo2` check for crust is already combined in the `selectedItem.id === 'combo2' || selectedItem.id === 'pizza-day-2'` block above
+                    // const isCombo1 = selectedItem.id === 'combo1'; // Removed this line
                     
                     cart.push({
                         name: selectedItem.name,
-                        price: selectedItem.price + (isPizzaDay1 || isCombo1 ? 0 : selectedCrust.price), 
+                        price: selectedItem.price + (isPizzaDay1 ? 0 : selectedCrust.price), 
                         quantity: 1, 
                         flavors: selectedFlavors,
                         type: selectedItem.type,
                         id: selectedItem.id,
-                        crust: (isPizzaDay1 || isCombo1) ? { name: 'Borda Recheada Chocolate', price: 0, id: 'chocolate-crust' } : (selectedCrust.name !== 'Sem Borda Recheada' ? selectedCrust : null)
+                        crust: (isPizzaDay1) ? { name: 'Borda Recheada Chocolate', price: 0, id: 'chocolate-crust' } : (selectedCrust.name !== 'Sem Borda Recheada' ? selectedCrust : null)
                     });
                 }
 
