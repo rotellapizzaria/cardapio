@@ -99,11 +99,14 @@
                     *Obs: Válido somente para sabores tradicionais de pizza.
                 </p>
 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item" data-item-id="combo1" data-item-name="Combo 1" data-item-price="44.90" data-item-type="combo">
-<div class="flex-grow">
+<div class="flex flex-col sm:flex-row items-center w-full">
+<img alt="Combo 1 Rotella Pizzaria" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-lg mr-4 mb-2 sm:mb-0" src="https://i.ibb.co/Fbsdrdz5/Whats-App-Image-2025-07-12-at-20-40-04.jpg"/>
+<div class="flex-grow text-center sm:text-left">
 <p class="text-lg font-bold text-gray-900">Combo 1</p>
 <p class="text-sm text-gray-600 mt-1">Pizza grande (até dois sabores) + Coca-cola ou Fanta laranja de 1L</p>
 </div>
-<p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0">R$ 44,90</p>
+<p class="text-xl font-extrabold text-red-700 mt-2 sm:mt-0 sm:ml-auto">R$ 44,90</p>
+</div>
 </div>
 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 px-3 rounded-lg border border-gray-200 mb-4 clickable-item" data-item-id="combo2" data-item-name="Combo 2" data-item-price="79.90" data-item-type="combo">
 <div class="flex-grow">
@@ -288,6 +291,13 @@
 </div>
 </label>
 <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza1" type="checkbox" value="Atum"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Atum</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela e atum sólido.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
 <input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza1" type="checkbox" value="M&amp;M"/>
 <div class="ml-3">
 <span class="text-lg text-gray-800 font-medium">M&amp;M</span>
@@ -392,6 +402,13 @@
 </div>
 </label>
 <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza2" type="checkbox" value="Atum"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Atum</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela e atum sólido.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
 <input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor-pizza2" type="checkbox" value="M&amp;M"/>
 <div class="ml-3">
 <span class="text-lg text-gray-800 font-medium">M&amp;M</span>
@@ -493,6 +510,13 @@
 <div class="ml-3">
 <span class="text-lg text-gray-800 font-medium">Bacon com Cheddar</span>
 <p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela, bacon crocante e cheddar cremoso.</p>
+</div>
+</label>
+<label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+<input class="form-checkbox h-5 w-5 text-red-600 rounded focus:ring-red-500" name="flavor" type="checkbox" value="Atum"/>
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Atum</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela e atum sólido.</p>
 </div>
 </label>
 <label class="flex items-center p-3 border rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
@@ -652,6 +676,17 @@
 <button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Frango" type="button">+</button>
 </div>
 </div>
+<div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
+<div class="ml-3">
+<span class="text-lg text-gray-800 font-medium">Atum</span>
+<p class="text-sm text-gray-600">Massa artesanal, molho de tomate caseiro, mussarela e atum sólido.</p>
+</div>
+<div class="flex items-center space-x-2">
+<button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-flavor="Atum" type="button">-</button>
+<input class="quantity-input w-16 text-center border rounded-md" data-flavor="Atum" min="0" type="number" value="0"/>
+<button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-flavor="Atum" type="button">+</button>
+</div>
+</div>
 </div>
 </div>
 <div class="mb-10 hidden" id="esfirra-doce-options-single">
@@ -779,7 +814,7 @@
 <div class="flex items-center space-x-2">
 <button class="quantity-btn bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full" data-action="decrease" data-beverage-flavor="Fanta Laranja 2L" type="button">-</button>
 <input class="quantity-input w-16 text-center border rounded-md" data-beverage-flavor="Fanta Laranja 2L" data-beverage-price="12.90" min="0" type="number" value="0"/>
-<button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-beverage-flavor="Fanta Laranja 2L" data-beverage-price="12.90" type="button">+</button>
+<button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full" data-action="increase" data-beverage-flavor="Fanta Laranja 2L" type="button">+</button>
 </div>
 </div>
 <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white beverage-item-with-quantity">
@@ -1015,11 +1050,11 @@
             });
         });
 
-        const traditionalFlavors = ['Portuguesa', 'Calabresa', 'Mussarela', 'Marguerita', 'Frango', 'Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon', 'Bacon com Catupiry', 'Bacon com Cheddar']; // Inclui os sabores tradicionais que podem ser escolhidos
+        const traditionalFlavors = ['Portuguesa', 'Calabresa', 'Mussarela', 'Marguerita', 'Frango', 'Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon', 'Bacon com Catupiry', 'Bacon com Cheddar', 'Atum']; // Inclui os sabores tradicionais que podem ser escolhidos
         const sweetFlavors = ['Brigadeiro', 'Romeu e Julieta', 'M&M', 'Doce de Leite', 'Oreo']; // Sabores doces específicos
 
-        const esfirraTradicionalAllowedFlavors = ['Portuguesa', 'Calabresa', 'Mussarela', 'Marguerita', 'Frango', 'Bacon']; // Sabores permitidos para esfirra salgada tradicional
-        const esfirraEspecialAllowedFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar']; // Sabores permitidos para esfirra salgada especial
+        const esfirraTradicionalAllowedFlavors = ['Portuguesa', 'Calabresa', 'Mussarela', 'Marguerita', 'Frango', 'Bacon', 'Atum']; // Sabores permitidos para esfirra salgada tradicional
+        const esfirraEspecialAllowedFlavors = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar', 'Atum']; // Sabores permitidos para esfirra salgada especial
 
 
         // Função para atualizar as instruções de seleção de sabor e habilitar/desabilitar checkboxes
