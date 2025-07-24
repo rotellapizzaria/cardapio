@@ -24,10 +24,16 @@ body {
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
 /* Estilo para itens clicáveis */
+
 .clickable-item {
     cursor: pointer;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    gap: 1rem;
 }
+
 .clickable-item:hover {
     transform: translateY(-3px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
@@ -106,20 +112,27 @@ body {
         padding: 0.5rem 1rem;
         font-size: 0.875rem;
     }
-    .clickable-item {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
     
+.clickable-item {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    gap: 1rem;
+}
+
+    
+
 
 .clickable-item img {
     width: 72px;
     height: auto;
     object-fit: cover;
-    margin-right: 0.75rem;
     border-radius: 0.5rem;
+    order: 2;
 }
+
 
 
     .overflow-x-auto {
@@ -130,21 +143,28 @@ body {
 /* Reduz tamanho das imagens nos itens para caber junto com descrição e valor */
 
 
+
 .clickable-item img {
     width: 72px;
     height: auto;
     object-fit: cover;
-    margin-right: 0.75rem;
     border-radius: 0.5rem;
+    order: 2;
 }
 
 
+
 @media (max-width: 640px) {
-    .clickable-item {
-        flex-direction: row;
-        align-items: center;
-        gap: 0.75rem;
-    }
+    
+.clickable-item {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    gap: 1rem;
+}
+
 }
 </style>
 <script src="https://cdn.tailwindcss.com"></script>
