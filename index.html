@@ -8,7 +8,76 @@
 <meta content="Peça online na Rotella Pizzaria. Cardápio digital com combos, pizzas, esfirras e bebidas. Entrega rápida e fácil!" name="description"/>
 <meta content="pizzaria, pizza, delivery, cardápio, rotella, esfirra, bebidas, combos, manaus" name="keywords"/>
 <meta content="Rotella Pizzaria" name="author"/>
-<link href="style.css" rel="stylesheet"/>
+<style>
+/* Estilos personalizados para a fonte Inter e outros ajustes */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f8f8; /* Cor de fundo suave */
+    color: #333;
+    line-height: 1.6;
+    /* Adiciona a imagem de fundo */
+    background-size: cover; /* Faz a imagem cobrir toda a área */
+    background-position: center; /* Centraliza a imagem */
+    background-attachment: fixed; /* Mantém a imagem fixa ao rolar */
+}
+/* Definição da fonte Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* Estilo para itens clicáveis */
+.clickable-item {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.clickable-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+/* Estilo para sabores/bebidas desabilitados (aplicado SOMENTE na tela de escolha de sabores) */
+.disabled-option {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+/* Adiciona uma opacidade ao contêiner principal para o texto ficar legível sobre a imagem de fundo */
+.container {
+    background-color: rgba(255, 255, 255, 1); /* Branco totalmente opaco */
+}
+/* Estilo para o contêiner de sugestão da IA */
+.ai-suggestion-box {
+    background-color: #ffeccf;
+    border: 1px solid #ffcc80;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 20px;
+    text-align: center;
+    font-style: italic;
+    color: #8a6d3b;
+}
+.ai-suggestion-box.loading {
+    color: #555;
+}
+
+@media (max-width: 640px) {
+    .container {
+        padding: 1rem !important;
+        border-radius: 0.5rem !important;
+    }
+    .text-2xl, .text-3xl {
+        font-size: 1.25rem !important;
+    }
+    .text-lg {
+        font-size: 1rem !important;
+    }
+    button, input, textarea {
+        font-size: 1rem !important;
+    }
+    .rounded-full {
+        border-radius: 9999px !important;
+    }
+    .shadow-lg {
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    }
+} 
+</style>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
 </head>
@@ -903,7 +972,42 @@
 <span>Falar com um atendente</span>
 </a>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd6-d4xDeEdHCILpv_c5xqGTBAR8o8xm4&amp;libraries=places"></script>
-<script src="calcularTaxaEntrega.js"></script>
+<script>
+function calcularTaxaEntrega(cepDestino) {
+    const origem = "69095510"; // CEP da pizzaria
+
+    const service = new google.maps.DistanceMatrixService();
+    service.getDistanceMatrix({
+        origins: [origem],
+        destinations: [cepDestino],
+        travelMode: 'DRIVING',
+        unitSystem: google.maps.UnitSystem.METRIC,
+        language: 'pt-BR'
+    }, (response, status) => {
+        if (status === "OK") {
+            const distanciaMetros = response.rows[0].elements[0].distance.value;
+            const distanciaKm = distanciaMetros / 1000;
+            let taxa = 0;
+
+            if (distanciaKm <= 4) taxa = 5;
+            else if (distanciaKm <= 8) taxa = 10;
+            else if (distanciaKm <= 14) taxa = 15;
+            else if (distanciaKm <= 18) taxa = 20;
+            else taxa = 25;
+
+            deliveryFee = taxa;
+            document.getElementById("taxa-entrega").innerText = `Taxa de entrega: R$ ${taxa.toFixed(2).replace('.', ',')}`;
+
+            calculateTotalCartPrice(); // Recalcula o total com a nova taxa
+        } else {
+            console.error("Erro no DistanceMatrixService:", status);
+            document.getElementById("taxa-entrega").innerText = "Erro ao calcular a distância.";
+            deliveryFee = 0; // Reset delivery fee
+            calculateTotalCartPrice(); // Recalculate total
+        }
+    });
+} 
+</script>
 <script>
 // Array para armazenar os itens no carrinho (pizza/combo e bebidas separadas)
 let cart = []; 
