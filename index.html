@@ -111,23 +111,30 @@ body {
         align-items: center;
         text-align: center;
     }
-    .clickable-item img {
-        max-width: 100%;
-        height: auto;
-    }
+    
+.clickable-item img {
+    width: 40px;
+    height: auto;
+    object-fit: cover;
+    margin-right: 0.75rem;
+    border-radius: 0.5rem;
+}
+
     .overflow-x-auto {
         -webkit-overflow-scrolling: touch;
     }
 }
 
 /* Reduz tamanho das imagens nos itens para caber junto com descrição e valor */
+
 .clickable-item img {
-    width: 80px;
+    width: 40px;
     height: auto;
     object-fit: cover;
     margin-right: 0.75rem;
     border-radius: 0.5rem;
 }
+
 @media (max-width: 640px) {
     .clickable-item {
         flex-direction: row;
@@ -1024,7 +1031,7 @@ body {
 <p class="text-center text-gray-500 text-sm mt-10">Obrigado por escolher Rotella Pizzaria! Bom apetite!</p>
 </div>
 <!-- Botão flutuante WhatsApp -->
-<a class="items-center font-bold px-6 fixed flex duration-300 rounded-full bottom-6 text-white bg-green-500 focus:ring-opacity-50 focus:outline-none transform py-3 space-x-2 p-2 shadow-lg hover:bg-green-600 z-50 focus:ring-2 right-6 hover:scale-105 text-xl transition-all focus:ring-green-500" href="https://wa.me/92986161640?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!" id="whatsapp-float-btn" target="_blank">
+<a class="items-center font-bold px-6 fixed p-1 flex duration-300 rounded-full bottom-6 text-white bg-green-500 focus:ring-opacity-50 focus:outline-none transform py-3 space-x-2 p-2 shadow-lg hover:bg-green-600 z-50 text-base focus:ring-2 right-6 hover:scale-105 transition-all focus:ring-green-500" href="https://wa.me/92986161640?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!" id="whatsapp-float-btn" target="_blank">
 <i class="fab fa-whatsapp mr-2"></i>
 <span>Falar com um atendente</span>
 </a>
