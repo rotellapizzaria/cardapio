@@ -151,15 +151,12 @@ body {
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
 </head>
 <body class="p-4 sm:p-6 lg:p-8 flex items-center justify-center min-h-screen">
-<div class="container mx-auto bg-white rounded-xl shadow-lg p-6 sm:p-8 lg:p-10 max-w-3xl border-t-4 border-red-600 relative px-2 sm:px-4 md:px-6 lg:px-8"><div class="bg-[#f5deb3] text-center py-4 shadow-md rounded-xl mb-4"><h1 class="text-2xl font-bold text-[#4b2e1e]">Rotella Pizzaria</h1></div>
+<div class="fixed top-0 left-0 bg-white border-t-4 p-6 px-2 relative container border-red-600 shadow-lg rounded-xl lg:px-8 sm:p-8 mx-auto right-0 sm:px-4 z-40 md:px-6 lg:p-10 max-w-3xl mt-24" style="border-bottom: 1px solid #ddd;"><div class="bg-[#f5deb3] text-center py-4 shadow-md rounded-xl mb-4"><h1 class="text-2xl font-bold text-[#4b2e1e]">Rotella Pizzaria</h1></div>
 <div class="absolute top-4 right-4 cursor-pointer flex items-center justify-center bg-red-600 text-white rounded-full p-3 shadow-lg hover:bg-red-700 transition-colors z-10" id="cart-icon-container" onclick="showPage('order-summary')">
 <i class="fas fa-shopping-cart text-xl"></i>
 <span class="ml-2 text-lg font-bold" id="cart-count">0</span>
 </div>
 <div class="text-center mb-6 mt-4">
-<a class="mt-4 inline-block text-red-600 hover:text-red-800 font-semibold text-lg" href="https://www.instagram.com/rotellapizzaria" target="_blank">
-                Nos siga no Instagram: @rotellapizzaria
-            </a>
 <div class="mt-2 text-lg font-semibold" id="pizzaria-status"></div>
 </div>
 <div class="page-section" id="main-menu">
@@ -1032,7 +1029,7 @@ body {
                 </button>
 </div>
 </div>
-<p class="text-center text-gray-500 text-sm mt-10">Obrigado por escolher Rotella Pizzaria! Bom apetite!</p>
+<p class="text-center text-gray-500 text-sm mt-10">Obrigado por escolher Rotella Pizzaria! Bom apetite!</p><p class="text-center text-gray-500 text-sm mt-10">Nos siga no Instagram: <a href="https://www.instagram.com/rotellapizzaria" target="_blank">@rotellapizzaria</a></p>
 </div>
 <!-- Botão flutuante WhatsApp -->
 <a class="items-center font-bold px-6 fixed flex duration-300 rounded-full bottom-6 text-white bg-green-500 focus:ring-opacity-50 focus:outline-none transform py-3 space-x-2 p-3 p-2 shadow-lg hover:bg-green-600 z-50 focus:ring-2 right-6 hover:scale-105 transition-all text-3xl focus:ring-green-500" href="https://wa.me/92986161640?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!" id="whatsapp-float-btn" target="_blank"><i class="fab fa-whatsapp text-3xl"></i></a>
