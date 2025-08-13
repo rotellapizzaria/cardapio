@@ -125,7 +125,6 @@ body {
 
     
 
-
 .clickable-item img {
     width: 72px;
     height: auto;
@@ -182,6 +181,7 @@ body {
 </div>
 <div class="page-section" id="main-menu">
 <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800 text-center mb-8 text-lg sm:text-xl md:text-2xl">🍕 Bem-vindo à Rotella! Aqui a massa é artesanal, os ingredientes são de qualidade, o recheio é generoso e o sabor... inesquecível! 😋</h2>
+<p class="text-xl font-bold text-center text-red-600 mb-6">Promoção dia dos pais, compre 1 pizza e ganhe outra de mussarela grátis</p>
 <!-- Botões de categoria para rolagem suave -->
 <div class="flex flex-wrap justify-center gap-2 mb-8">
 <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full transition-colors text-sm sm:text-base" onclick="scrollToCategory('combos-especiais')">Combos</button>
@@ -318,7 +318,7 @@ body {
 </div>
 </div>
 <div class="text-center mt-10 mb-6">
-<button class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 text-sm sm:text-base" onclick="window.open('https://wa.me/92986161640?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!', '_blank')">
+<button class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full transition-colors text-sm sm:text-base shadow-lg transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50" onclick="window.open('https://wa.me/92986161640?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!', '_blank')">
 <i class="fab fa-whatsapp mr-2"></i> Falar com um atendente
                 </button>
 </div>
@@ -820,6 +820,7 @@ body {
 <input class="quantity-input w-16 text-center border rounded-md" data-flavor="Frango" min="0" type="number" value="0"/>
 <button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full text-sm sm:text-base" data-action="increase" data-flavor="Frango" type="button">+</button>
 </div>
+</label>
 </div>
 <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
 <div class="ml-3">
@@ -1055,20 +1056,45 @@ body {
 </div>
 <!-- Botão flutuante WhatsApp -->
 <a class="items-center font-bold px-6 fixed flex duration-300 rounded-full bottom-6 text-white bg-green-500 focus:ring-opacity-50 focus:outline-none transform py-3 space-x-2 p-3 p-2 shadow-lg hover:bg-green-600 z-50 focus:ring-2 right-6 hover:scale-105 transition-all text-3xl focus:ring-green-500" href="https://wa.me/92986161640?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!" id="whatsapp-float-btn" target="_blank"><i class="fab fa-whatsapp text-3xl"></i></a>
+
+<!-- Botão flutuante de Voltar -->
+<button class="items-center font-bold px-6 fixed flex duration-300 rounded-full bottom-6 text-white bg-blue-500 focus:ring-opacity-50 focus:outline-none transform py-3 space-x-2 p-3 p-2 shadow-lg hover:bg-blue-600 z-50 focus:ring-2 left-6 hover:scale-105 transition-all text-3xl focus:ring-blue-500" onclick="history.back()">
+    <i class="fas fa-arrow-left text-3xl"></i>
+</button>
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd6-d4xDeEdHCILpv_c5xqGTBAR8o8xm4&amp;libraries=places"></script>
 <script>
-function calcularTaxaEntrega(cepDestino) {
+/**
+ * Calculates the delivery fee based on the destination CEP, street, and neighborhood.
+ * Uses Google Maps Distance Matrix Service for distance calculation.
+ * @param {string} cepDestino - The destination CEP.
+ * @param {string} street - The street name of the destination.
+ * @param {string} neighborhood - The neighborhood of the destination.
+ */
+function calcularTaxaEntrega(cepDestino, street, neighborhood) {
     const origem = "69095510"; // CEP da pizzaria
+    let destinationAddress = "";
+
+    if (cepDestino && cepDestino.length === 8) {
+        destinationAddress = `${street}, ${neighborhood}, ${cepDestino}, Manaus, Brasil`;
+    } else if (street && neighborhood) {
+        destinationAddress = `${street}, ${neighborhood}, Manaus, Brasil`; // Fallback to street and neighborhood
+    } else {
+        document.getElementById("taxa-entrega").innerText = "Por favor, insira um CEP ou Rua e Bairro para calcular a entrega.";
+        deliveryFee = 0;
+        calculateTotalCartPrice();
+        return;
+    }
 
     const service = new google.maps.DistanceMatrixService();
     service.getDistanceMatrix({
         origins: [origem],
-        destinations: [cepDestino],
+        destinations: [destinationAddress],
         travelMode: 'DRIVING',
         unitSystem: google.maps.UnitSystem.METRIC,
         language: 'pt-BR'
     }, (response, status) => {
-        if (status === "OK") {
+        if (status === "OK" && response.rows[0].elements[0].status === "OK") {
             const distanciaMetros = response.rows[0].elements[0].distance.value;
             const distanciaKm = distanciaMetros / 1000;
             let taxa = 0;
@@ -1084,8 +1110,8 @@ function calcularTaxaEntrega(cepDestino) {
 
             calculateTotalCartPrice(); // Recalcula o total com a nova taxa
         } else {
-            console.error("Erro no DistanceMatrixService:", status);
-            document.getElementById("taxa-entrega").innerText = "Erro ao calcular a distância.";
+            console.error("Erro no DistanceMatrixService ou endereço inválido:", status, response);
+            document.getElementById("taxa-entrega").innerText = "Erro ao calcular a distância ou endereço inválido. Verifique o CEP, rua e bairro.";
             deliveryFee = 0; // Reset delivery fee
             calculateTotalCartPrice(); // Recalculate total
         }
@@ -1148,6 +1174,8 @@ function scrollToCategory(id) {
 // Função para preencher automaticamente o endereço via ViaCEP e calcular a taxa de entrega
 function autofillAddressAndCalculateDelivery() {
     const cepInput = document.getElementById('cep-address');
+    const streetInput = document.getElementById('address-street');
+    const neighborhoodInput = document.getElementById('address-neighborhood');
     const cep = cepInput.value.replace(/\D/g, ''); // Remove non-numeric characters
 
     if (cep.length === 8) {
@@ -1155,16 +1183,16 @@ function autofillAddressAndCalculateDelivery() {
             .then(response => response.json())
             .then(data => {
                 if (!data.erro) {
-                    document.getElementById('address-street').value = data.logradouro;
-                    document.getElementById('address-neighborhood').value = data.bairro;
-                    // Calcula a taxa de entrega após o preenchimento do CEP
-                    calcularTaxaEntrega(cep);
+                    streetInput.value = data.logradouro;
+                    neighborhoodInput.value = data.bairro;
+                    // Calcula a taxa de entrega após o preenchimento do CEP, rua e bairro
+                    calcularTaxaEntrega(cep, data.logradouro, data.bairro);
                     // Optionally, focus on the number input after autofill
                     document.getElementById('address-number').focus();
                 } else {
                     alert('CEP não encontrado.');
-                    document.getElementById('address-street').value = '';
-                    document.getElementById('address-neighborhood').value = '';
+                    streetInput.value = '';
+                    neighborhoodInput.value = '';
                     document.getElementById("taxa-entrega").innerText = ''; // Clear previous fee message
                     deliveryFee = 0; // Reset delivery fee
                     calculateTotalCartPrice(); // Recalculate total
@@ -1173,16 +1201,21 @@ function autofillAddressAndCalculateDelivery() {
             .catch(error => {
                 console.error('Erro ao buscar CEP:', error);
                 alert('Erro ao buscar CEP. Tente novamente.');
-                document.getElementById('address-street').value = '';
-                document.getElementById('address-neighborhood').value = '';
+                streetInput.value = '';
+                neighborhoodInput.value = '';
                 document.getElementById("taxa-entrega").innerText = ''; // Clear previous fee message
                 deliveryFee = 0; // Reset delivery fee
                 calculateTotalCartPrice(); // Recalculate total
             });
     } else {
-        document.getElementById("taxa-entrega").innerText = ''; // Clear previous fee message
-        deliveryFee = 0; // Reset delivery fee
-        calculateTotalCartPrice(); // Recalculate total
+        // Se o CEP estiver vazio ou com comprimento inválido, tenta calcular usando rua e bairro
+        if (streetInput.value.trim() !== '' && neighborhoodInput.value.trim() !== '') {
+            calcularTaxaEntrega('', streetInput.value.trim(), neighborhoodInput.value.trim());
+        } else {
+            document.getElementById("taxa-entrega").innerText = "Por favor, insira um CEP ou Rua e Bairro para calcular a entrega.";
+            deliveryFee = 0;
+            calculateTotalCartPrice();
+        }
     }
 }
 
@@ -1826,9 +1859,9 @@ function renderCart() {
             } else {
                 let flavorsText = '';
                 if (item.id === 'combo4' && item.flavors && item.flavors.pizza1 && item.flavors.pizza2 && item.flavors.pizza3) { // NOVO: Combo 4
-                    flavorsText = `Pizza 1: (${item.flavors.pizza1.join(' e ' || 'N/A')})\n  Pizza 2: (${item.flavors.pizza2.join(' e ' || 'N/A')})\n  Pizza 3 (Doce): (${item.flavors.pizza3.join(' e ' || 'N/A')})`;
+                    flavorsText = `\n  Pizza 1: (${item.flavors.pizza1.join(' e ' || 'N/A')})\n  Pizza 2: (${item.flavors.pizza2.join(' e ' || 'N/A')})\n  Pizza 3 (Doce): (${item.flavors.pizza3.join(' e ' || 'N/A')})`;
                 } else if ((item.id === 'combo2' || item.id === 'pizza-day-2') && item.flavors && item.flavors.pizza1 && item.flavors.pizza2) {
-                    flavorsText = `Pizza 1: (${item.flavors.pizza1.join(' e ')})\n  Pizza 2: (${item.flavors.pizza2.join(' e ')})`;
+                    flavorsText = `\n  Pizza 1: (${item.flavors.pizza1.join(' e ')})\n  Pizza 2: (${item.flavors.pizza2.join(' e ')})`;
                 } else if (item.flavors && item.flavors.length > 0) {
                     if (item.flavors.length === 1 && item.type.includes('esfirra')) {
                         flavorsText = ` (${item.flavors[0]})`;
@@ -2182,6 +2215,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Adiciona event listeners para os campos de rua e bairro para calcular o frete
+    const cepInput = document.getElementById('cep-address');
+    const streetInput = document.getElementById('address-street');
+    const neighborhoodInput = document.getElementById('address-neighborhood');
+
+    streetInput.addEventListener('blur', () => {
+        // Calcula o frete somente se o CEP estiver vazio
+        if (cepInput.value.trim() === '') {
+            autofillAddressAndCalculateDelivery();
+        }
+    });
+
+    neighborhoodInput.addEventListener('blur', () => {
+        // Calcula o frete somente se o CEP estiver vazio
+        if (cepInput.value.trim() === '') {
+            autofillAddressAndCalculateDelivery();
+        }
+    });
+
     showPage('main-menu');
     updateCartIconCount();
     updatePizzariaStatus();
@@ -2196,5 +2248,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 }); 
 </script>
-</body>
-</html>
