@@ -125,6 +125,7 @@ body {
 
     
 
+
 .clickable-item img {
     width: 72px;
     height: auto;
@@ -169,9 +170,61 @@ body {
 </style>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<style>
+/* === Affordance: balões do menu inicial são clicáveis === */
+.clickable-card {
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.clickable-card:hover, .clickable-card:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0,0,0,.12);
+  outline: none;
+}
+.clickable-card:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(0,0,0,.18) inset;
+}
+.clickable-card .cta {
+  opacity: .9;
+  font-weight: 600;
+}
+</style>
+<style>
+/* === UX Boost Styles === */
+.promo-badge{
+  position:absolute; top:.5rem; right:.5rem;
+  background:linear-gradient(135deg,#f97316,#ef4444);
+  color:#fff; font-weight:700; font-size:.75rem;
+  padding:.25rem .5rem; border-radius:9999px; box-shadow:0 4px 12px rgba(0,0,0,.16);
+}
+.steps{display:flex; gap:.5rem; align-items:center; justify-content:center; margin:.5rem 0 1rem}
+.step{
+  display:flex; align-items:center; gap:.5rem;
+  padding:.25rem .5rem; border-radius:9999px; font-weight:600; font-size:.8rem;
+  color:#6b7280; background:#f3f4f6;
+}
+.step.active{ color:#991b1b; background:#fee2e2; }
+.step .dot{ width:.6rem; height:.6rem; border-radius:9999px; background:#9ca3af;}
+.step.active .dot{ background:#ef4444;}
+.fixed-cta{
+  position:fixed; left:0; right:0; bottom:0; z-index:50;
+  background:linear-gradient(180deg, rgba(255,255,255,.0), rgba(255,255,255,.9) 30%, rgba(255,255,255,1));
+  padding:.75rem 1rem;
+}
+.fixed-cta .btn{
+  display:inline-flex; align-items:center; gap:.5rem;
+  border-radius:9999px; padding:.75rem 1.25rem; font-weight:700;
+  background:#16a34a; color:#fff;
+  box-shadow:0 10px 20px rgba(22,163,74,.25);
+}
+.fixed-cta .btn:hover{ background:#15803d }
+.shake{animation:shake .3s linear 1}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+</style>
 </head>
-<body class="p-4 sm:p-6 lg:p-8 flex items-center justify-center min-h-screen">
-<div class="fixed top-0 left-0 bg-white border-t-4 p-6 px-2 relative container border-red-600 shadow-lg rounded-xl lg:px-8 sm:p-8 mx-auto right-0 sm:px-4 z-40 md:px-6 lg:p-10 max-w-3xl mt-24" style="border-bottom: 1px solid #ddd;"><div class="bg-[#f5deb3] text-center py-4 shadow-md rounded-xl mb-4"><h1 class="text-2xl font-bold text-[#4b2e1e]">Rotella Pizzaria</h1></div>
+<body class="min-h-screen p-0">
+<div class="fixed top-0 left-0 bg-white border-t-4 p-6 px-2 relative container border-red-600 shadow-lg rounded-xl lg:px-8 sm:p-8 mx-auto right-0 sm:px-4 z-40 md:px-6 lg:p-10 max-w-3xl mt-0" style="border-bottom: 1px solid #ddd;"><div class="bg-[#f5deb3] text-center py-4 shadow-md rounded-xl mb-4"><h1 class="text-2xl font-bold text-[#4b2e1e]">Rotella Pizzaria</h1></div>
 <div class="absolute top-4 right-4 cursor-pointer flex items-center justify-center bg-red-600 text-white rounded-full p-3 shadow-lg hover:bg-red-700 transition-colors z-10" id="cart-icon-container" onclick="showPage('order-summary')">
 <i class="fas fa-shopping-cart text-xl"></i>
 <span class="ml-2 text-lg font-bold" id="cart-count">0</span>
@@ -180,8 +233,7 @@ body {
 <div class="mt-2 text-lg font-semibold" id="pizzaria-status"></div>
 </div>
 <div class="page-section" id="main-menu">
-<h2 class="text-2xl sm:text-3xl font-semibold text-gray-800 text-center mb-8 text-lg sm:text-xl md:text-2xl">🍕 Bem-vindo à Rotella! Aqui a massa é artesanal, os ingredientes são de qualidade, o recheio é generoso e o sabor... inesquecível! 😋</h2>
-<!-- <p class="text-xl font-bold text-center text-red-600 mb-6">Promoção dia dos pais, compre 1 pizza e ganhe outra de mussarela grátis</p> -->
+<h2 class="text-2xl sm:text-3xl font-semibold text-gray-800 text-center mb-8 text-lg sm:text-xl md:text-2xl">🍕 Bem-vindo à Rotella! Aqui a massa é artesanal, os ingredientes são de qualidade, o recheio é generoso e o sabor... inesquecível! 😋</h2><p id="menu-click-hint" class="hidden text-center text-sm sm:text-base text-gray-600 mt-2">Selecione uma das opções abaixo:</p>
 <!-- Botões de categoria para rolagem suave -->
 <div class="flex flex-wrap justify-center gap-2 mb-8">
 <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full transition-colors text-sm sm:text-base" onclick="scrollToCategory('combos-especiais')">Combos</button>
@@ -318,12 +370,18 @@ body {
 </div>
 </div>
 <div class="text-center mt-10 mb-6">
-<button class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full transition-colors text-sm sm:text-base shadow-lg transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50" onclick="window.open('https://wa.me/92986161640?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!', '_blank')">
+<button class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 text-sm sm:text-base" onclick="window.open('https://wa.me/92986161640?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!', '_blank')">
 <i class="fab fa-whatsapp mr-2"></i> Falar com um atendente
                 </button>
 </div>
 </div>
 <div class="page-section hidden" id="flavor-selection">
+    <div class="steps" id="steps-indicator" data-category="">
+      <div class="step active" data-step="1"><span class="dot"></span><span>1. Borda</span></div>
+      <div class="step" data-step="2"><span class="dot"></span><span>2. Sabores</span></div>
+      <div class="step" data-step="3"><span class="dot"></span><span>3. Resumo</span></div>
+    </div>
+    
 <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800 text-center mb-8 text-lg sm:text-xl md:text-2xl">Personalize seu Pedido</h2>
 <div class="text-center text-lg text-gray-700 mb-6 p-4 bg-red-50 rounded-lg" id="item-info">
 </div>
@@ -820,7 +878,6 @@ body {
 <input class="quantity-input w-16 text-center border rounded-md" data-flavor="Frango" min="0" type="number" value="0"/>
 <button class="quantity-btn bg-green-500 hover:bg-green-600 text-white w-8 h-8 rounded-full text-sm sm:text-base" data-action="increase" data-flavor="Frango" type="button">+</button>
 </div>
-</label>
 </div>
 <div class="flex items-center justify-between p-3 border rounded-lg shadow-sm bg-white esfirra-flavor-item">
 <div class="ml-3">
@@ -979,12 +1036,37 @@ body {
                     Adicionar ao Carrinho
                 </button>
 <span class="text-sm text-red-500 ml-2" id="add-to-cart-message"></span>
-<button class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 text-sm sm:text-base" onclick="showPage('main-menu')">
-                    Voltar ao Cardápio
-                </button>
+<button type="button" onclick="showPage('main-menu')" aria-label="Voltar ao cardápio" class="inline-flex items-center gap-2 rounded-full px-4 sm:px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-semibold shadow-md hover:shadow-lg active:shadow focus:outline-none focus:ring-2 focus:ring-red-400/60 focus:ring-offset-2 transition transform active:scale-[.99]"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.75 19.5a.75.75 0 0 1-.53-.22L8.47 12.53a.75.75 0 0 1 0-1.06l6.75-6.75a.75.75 0 1 1 1.06 1.06L10.56 12l5.72 5.72a.75.75 0 0 1-.53 1.28z"/></svg><span>Voltar ao cardápio</span></button>
 </div>
+</div>
+
+<div class="fixed-cta hidden" id="selection-fixed-cta">
+  <div class="max-w-5xl mx-auto flex items-center justify-end">
+    <button id="go-summary-btn" class="btn" type="button" aria-label="Avançar para o resumo">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M8.25 4.5a.75.75 0 0 1 1.06 0l6.75 6.75a.75.75 0 0 1 0 1.06l-6.75 6.75a.75.75 0 0 1-1.06-1.06L14.94 12 8.25 5.56a.75.75 0 0 1 0-1.06z"/>
+      </svg>
+      <span>Avançar para o resumo</span>
+    </button>
+  </div>
 </div>
 <div class="page-section hidden" id="order-summary">
+    
+    <div class="mb-4">
+      <button
+        type="button"
+        onclick="showPage('main-menu')"
+        aria-label="Voltar ao cardápio"
+        class="inline-flex items-center gap-2 rounded-full px-4 sm:px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-semibold shadow-md hover:shadow-lg active:shadow focus:outline-none focus:ring-2 focus:ring-red-400/60 focus:ring-offset-2 transition transform active:scale-[.99]"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M15.75 19.5a.75.75 0 0 1-.53-.22L8.47 12.53a.75.75 0 0 1 0-1.06l6.75-6.75a.75.75 0 1 1 1.06 1.06L10.56 12l5.72 5.72a.75.75 0 0 1-.53 1.28z"/>
+        </svg>
+        <span>Voltar ao cardápio</span>
+      </button>
+    </div>
+
+    
 <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800 text-center mb-8 text-lg sm:text-xl md:text-2xl">Seu Carrinho</h2>
 <div class="bg-gray-50 p-6 rounded-lg shadow-inner mb-8" id="cart-items-container">
 <p class="text-center text-gray-600 italic hidden" id="empty-cart-message">Seu carrinho está vazio.</p>
@@ -1047,55 +1129,54 @@ body {
 <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 text-sm sm:text-base" disabled="" id="place-order-btn">
                     Enviar Pedido
                 </button>
-<button class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 text-sm sm:text-base" onclick="showPage('main-menu')">
-                    Voltar ao Cardápio
-                </button>
+<button type="button" onclick="showPage('main-menu')" aria-label="Voltar ao cardápio" class="inline-flex items-center gap-2 rounded-full px-4 sm:px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-semibold shadow-md hover:shadow-lg active:shadow focus:outline-none focus:ring-2 focus:ring-red-400/60 focus:ring-offset-2 transition transform active:scale-[.99]"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.75 19.5a.75.75 0 0 1-.53-.22L8.47 12.53a.75.75 0 0 1 0-1.06l6.75-6.75a.75.75 0 1 1 1.06 1.06L10.56 12l5.72 5.72a.75.75 0 0 1-.53 1.28z"/></svg><span>Voltar ao cardápio</span></button>
 </div>
 </div>
 <p class="text-center text-gray-500 text-sm mt-10">Obrigado por escolher Rotella Pizzaria! Bom apetite!</p><p class="text-center text-gray-500 text-sm mt-10">Nos siga no Instagram: <a href="https://www.instagram.com/rotellapizzaria" target="_blank">@rotellapizzaria</a></p>
 </div>
 <!-- Botão flutuante WhatsApp -->
 <a class="items-center font-bold px-6 fixed flex duration-300 rounded-full bottom-6 text-white bg-green-500 focus:ring-opacity-50 focus:outline-none transform py-3 space-x-2 p-3 p-2 shadow-lg hover:bg-green-600 z-50 focus:ring-2 right-6 hover:scale-105 transition-all text-3xl focus:ring-green-500" href="https://wa.me/92986161640?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!" id="whatsapp-float-btn" target="_blank"><i class="fab fa-whatsapp text-3xl"></i></a>
-
-<!-- Botão flutuante de Voltar -->
-<button class="items-center font-bold px-6 fixed flex duration-300 rounded-full bottom-6 text-white bg-blue-500 focus:ring-opacity-50 focus:outline-none transform py-3 space-x-2 p-3 p-2 shadow-lg hover:bg-blue-600 z-50 focus:ring-2 left-6 hover:scale-105 transition-all text-3xl focus:ring-blue-500" onclick="history.back()">
-    <i class="fas fa-arrow-left text-3xl"></i>
-</button>
-
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd6-d4xDeEdHCILpv_c5xqGTBAR8o8xm4&amp;libraries=places"></script>
 <script>
-/**
- * Calculates the delivery fee based on the destination CEP, street, and neighborhood.
- * Uses Google Maps Distance Matrix Service for distance calculation.
- * @param {string} cepDestino - The destination CEP.
- * @param {string} street - The street name of the destination.
- * @param {string} neighborhood - The neighborhood of the destination.
- */
-function calcularTaxaEntrega(cepDestino, street, neighborhood) {
+function calcularTaxaEntrega(cepDestino) {
     const origem = "69095510"; // CEP da pizzaria
-    let destinationAddress = "";
 
-    if (cepDestino && cepDestino.length === 8) {
-        destinationAddress = `${street}, ${neighborhood}, ${cepDestino}, Manaus, Brasil`;
-    } else if (street && neighborhood) {
-        destinationAddress = `${street}, ${neighborhood}, Manaus, Brasil`; // Fallback to street and neighborhood
-    } else {
-        document.getElementById("taxa-entrega").innerText = "Por favor, insira um CEP ou Rua e Bairro para calcular a entrega.";
+    // Aceita CEP OU Rua+Número(+Bairro) quando CEP não estiver preenchido/válido
+    const cepStr = (typeof cepDestino !== 'undefined' && cepDestino != null) ? String(cepDestino) : "";
+    const cepLimpo = cepStr.replace(/\D/g, "");
+
+    const rua = (document.getElementById("address-street")?.value || "").trim();
+    const numero = (document.getElementById("address-number")?.value || "").trim();
+    const bairro = (document.getElementById("address-neighborhood")?.value || "").trim();
+
+    let destino = null;
+    if (cepLimpo.length === 8) {
+        destino = cepLimpo;
+    } else if (rua && numero) {
+        // Se tiver bairro, incluímos para melhorar a geocodificação
+        destino = `${rua}, ${numero}${bairro ? `, ${bairro}` : ""}, Manaus - AM`;
+    }
+
+    if (!destino) {
         deliveryFee = 0;
+        document.getElementById("taxa-entrega").innerText = "";
         calculateTotalCartPrice();
         return;
     }
+    // Feedback visual enquanto calcula
+    try { document.getElementById("taxa-entrega").innerText = "Calculando taxa..."; } catch(e) {}
 
     const service = new google.maps.DistanceMatrixService();
     service.getDistanceMatrix({
         origins: [origem],
-        destinations: [destinationAddress],
+        destinations: [destino],
         travelMode: 'DRIVING',
         unitSystem: google.maps.UnitSystem.METRIC,
         language: 'pt-BR'
     }, (response, status) => {
-        if (status === "OK" && response.rows[0].elements[0].status === "OK") {
-            const distanciaMetros = response.rows[0].elements[0].distance.value;
+        if (status === "OK") {
+            const el = response?.rows?.[0]?.elements?.[0];
+            const distanciaMetros = el?.distance?.value || 0;
             const distanciaKm = distanciaMetros / 1000;
             let taxa = 0;
 
@@ -1107,13 +1188,12 @@ function calcularTaxaEntrega(cepDestino, street, neighborhood) {
 
             deliveryFee = taxa;
             document.getElementById("taxa-entrega").innerText = `Taxa de entrega: R$ ${taxa.toFixed(2).replace('.', ',')}`;
-
-            calculateTotalCartPrice(); // Recalcula o total com a nova taxa
+            calculateTotalCartPrice();
         } else {
-            console.error("Erro no DistanceMatrixService ou endereço inválido:", status, response);
-            document.getElementById("taxa-entrega").innerText = "Erro ao calcular a distância ou endereço inválido. Verifique o CEP, rua e bairro.";
-            deliveryFee = 0; // Reset delivery fee
-            calculateTotalCartPrice(); // Recalculate total
+            console.error("Erro no DistanceMatrixService:", status);
+            document.getElementById("taxa-entrega").innerText = "Erro ao calcular a taxa de entrega";
+            deliveryFee = 0;
+            calculateTotalCartPrice();
         }
     });
 } 
@@ -1123,7 +1203,7 @@ function calcularTaxaEntrega(cepDestino, street, neighborhood) {
 let cart = []; 
 let selectedItem = {}; // Item (pizza/combo) sendo configurado na tela de seleção de sabores
 let selectedBeverage = { name: 'Nenhuma bebida', price: 0, id: 'no-beverage' }; // Bebida selecionada na tela de seleção
-let selectedCrust = { name: 'Sem Borda Recheada', price: 0, id: 'no-crust' }; // Borda selecionada
+let selectedCrust = null; // Borda selecionada
 let deliveryFee = 0; // Armazena a taxa de entrega calculada, agora sempre 0
 
 // Armazenar os sabores selecionados para cada pizza do Combo 2
@@ -1149,6 +1229,9 @@ function showPage(pageId) {
     // Se for para a página de resumo, atualiza o carrinho
     if (pageId === 'order-summary') {
         renderCart();
+    }
+    // Rola para o topo tanto no resumo quanto na seleção de sabores
+    if (pageId === 'order-summary' || pageId === 'flavor-selection') {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 }
@@ -1174,8 +1257,6 @@ function scrollToCategory(id) {
 // Função para preencher automaticamente o endereço via ViaCEP e calcular a taxa de entrega
 function autofillAddressAndCalculateDelivery() {
     const cepInput = document.getElementById('cep-address');
-    const streetInput = document.getElementById('address-street');
-    const neighborhoodInput = document.getElementById('address-neighborhood');
     const cep = cepInput.value.replace(/\D/g, ''); // Remove non-numeric characters
 
     if (cep.length === 8) {
@@ -1183,39 +1264,37 @@ function autofillAddressAndCalculateDelivery() {
             .then(response => response.json())
             .then(data => {
                 if (!data.erro) {
-                    streetInput.value = data.logradouro;
-                    neighborhoodInput.value = data.bairro;
-                    // Calcula a taxa de entrega após o preenchimento do CEP, rua e bairro
-                    calcularTaxaEntrega(cep, data.logradouro, data.bairro);
+                    document.getElementById('address-street').value = data.logradouro;
+                    document.getElementById('address-neighborhood').value = data.bairro;
+                    // Calcula a taxa de entrega após o preenchimento do CEP
+                    calcularTaxaEntrega(cep);
                     // Optionally, focus on the number input after autofill
                     document.getElementById('address-number').focus();
                 } else {
                     alert('CEP não encontrado.');
-                    streetInput.value = '';
-                    neighborhoodInput.value = '';
+                    document.getElementById('address-street').value = '';
+                    document.getElementById('address-neighborhood').value = '';
                     document.getElementById("taxa-entrega").innerText = ''; // Clear previous fee message
                     deliveryFee = 0; // Reset delivery fee
                     calculateTotalCartPrice(); // Recalculate total
-                }
+                
+        // CEP vazio/ inválido: tenta calcular pela Rua + Número (+Bairro)
+        try { calcularTaxaEntrega(""); } catch (e) { /* silencioso */ }
+}
             })
             .catch(error => {
                 console.error('Erro ao buscar CEP:', error);
                 alert('Erro ao buscar CEP. Tente novamente.');
-                streetInput.value = '';
-                neighborhoodInput.value = '';
+                document.getElementById('address-street').value = '';
+                document.getElementById('address-neighborhood').value = '';
                 document.getElementById("taxa-entrega").innerText = ''; // Clear previous fee message
                 deliveryFee = 0; // Reset delivery fee
                 calculateTotalCartPrice(); // Recalculate total
             });
     } else {
-        // Se o CEP estiver vazio ou com comprimento inválido, tenta calcular usando rua e bairro
-        if (streetInput.value.trim() !== '' && neighborhoodInput.value.trim() !== '') {
-            calcularTaxaEntrega('', streetInput.value.trim(), neighborhoodInput.value.trim());
-        } else {
-            document.getElementById("taxa-entrega").innerText = "Por favor, insira um CEP ou Rua e Bairro para calcular a entrega.";
-            deliveryFee = 0;
-            calculateTotalCartPrice();
-        }
+        document.getElementById("taxa-entrega").innerText = ''; // Clear previous fee message
+        deliveryFee = 0; // Reset delivery fee
+        calculateTotalCartPrice(); // Recalculate total
     }
 }
 
@@ -1250,10 +1329,12 @@ document.querySelectorAll('.clickable-item').forEach(item => {
         });
 
 
-        // Reinicia a seleção de borda para "Sem Borda Recheada"
-        selectedCrust = { name: 'Sem Borda Recheada', price: 0, id: 'no-crust' };
+        // Reinicia a seleção de borda: nenhuma selecionada por padrão
+        selectedCrust = null;
         document.querySelectorAll('input[name="stuffed-crust"]').forEach(radio => {
-            radio.checked = (radio.value === 'Sem Borda Recheada');
+            radio.checked = false;
+        });document.querySelectorAll('input[name="stuffed-crust"]').forEach(radio => {
+            radio.checked = false;
             // Reset text content to original (important for Pizza Day 1 later)
             if (radio.dataset.crustId === 'catupiry-crust') radio.closest('label').querySelector('span').textContent = 'Borda Recheada Catupiry +R$10,00';
             if (radio.dataset.crustId === 'chocolate-crust') radio.closest('label').querySelector('span').textContent = 'Borda Recheada Chocolate +R$10,00';
@@ -1325,7 +1406,40 @@ const esfirraEspecialAllowedFlavors = ['Frango com Catupiry', 'Calabresa com Cat
 
 // Função para atualizar as instruções de seleção de sabor e habilitar/desabilitar checkboxes
 function updateFlavorSelectionInstructions() {
-    const pizza1FlavorSection = document.getElementById('pizza1-flavor-section');
+    
+    // === Ajuste de ordem: Borda primeiro ===
+    // Move a seção de borda para logo após o cabeçalho/descrição, antes dos sabores.
+    try {
+        const flavorSelectionRoot = document.getElementById('flavor-selection');
+        const itemInfo = document.getElementById('item-info');
+        const crustOptionsSection = document.getElementById('crust-options-section');
+        if (flavorSelectionRoot && itemInfo && crustOptionsSection) {
+            if (crustOptionsSection.previousElementSibling !== itemInfo) {
+                itemInfo.parentNode.insertBefore(crustOptionsSection, itemInfo.nextElementSibling);
+            }
+        }
+    } catch (e) { /* silencioso */ }
+
+    
+    // === Desmarcar todas as bordas para o usuário escolher ===
+    try {
+        document.querySelectorAll('input[name="stuffed-crust"]').forEach(r => {
+            r.checked = false;
+        });
+        selectedCrust = null;
+    } catch(e) { /* silencioso */ }
+
+    // === Scroll automático: ao escolher a borda, rolar até os sabores ===
+    try {
+        const stuffedCrustRadiosAll = document.querySelectorAll('input[name="stuffed-crust"]');
+        stuffedCrustRadiosAll.forEach(r => {
+            r.addEventListener('change', () => {
+                const target = document.getElementById('pizza1-flavor-section') || document.getElementById('flavor-options-single') || document.getElementById('flavor-options');
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, { once: false });
+        });
+    } catch (e) { /* silencioso */ }
+const pizza1FlavorSection = document.getElementById('pizza1-flavor-section');
     const pizza2FlavorSection = document.getElementById('pizza2-flavor-section');
     const pizza3FlavorSection = document.getElementById('pizza3-flavor-section'); // NOVO: para a terceira pizza
     const singleFlavorSection = document.getElementById('flavor-options-single');
@@ -1549,11 +1663,7 @@ function updateFlavorSelectionInstructions() {
         crustOptionsSection.style.display = 'none';
         stuffedCrustRadios.forEach(radio => {
             radio.checked = false;
-            radio.disabled = true;
-            if (radio.dataset.crustId === 'no-crust') {
-                radio.checked = true;
-                selectedCrust = { name: 'Sem Borda Recheada', price: 0, id: 'no-crust' };
-            }
+            radio.disabled = false;
         });
     }
 
@@ -1704,6 +1814,12 @@ function updateFlavorSelectionInstructions() {
             }
         });
     }
+
+    // /* FINAL CLEAR BORDAS */ garantir nenhuma borda pré-selecionada
+    try {
+        document.querySelectorAll('input[name="stuffed-crust"]').forEach(r => { r.checked = false; r.disabled = false; });
+        selectedCrust = null;
+    } catch(e){}
 }
 
 const forbiddenForTraditional = sweetFlavors.concat(['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar']);
@@ -1859,9 +1975,9 @@ function renderCart() {
             } else {
                 let flavorsText = '';
                 if (item.id === 'combo4' && item.flavors && item.flavors.pizza1 && item.flavors.pizza2 && item.flavors.pizza3) { // NOVO: Combo 4
-                    flavorsText = `\n  Pizza 1: (${item.flavors.pizza1.join(' e ' || 'N/A')})\n  Pizza 2: (${item.flavors.pizza2.join(' e ' || 'N/A')})\n  Pizza 3 (Doce): (${item.flavors.pizza3.join(' e ' || 'N/A')})`;
+                    flavorsText = `Pizza 1: (${item.flavors.pizza1.join(' e ' || 'N/A')})\n  Pizza 2: (${item.flavors.pizza2.join(' e ' || 'N/A')})\n  Pizza 3 (Doce): (${item.flavors.pizza3.join(' e ' || 'N/A')})`;
                 } else if ((item.id === 'combo2' || item.id === 'pizza-day-2') && item.flavors && item.flavors.pizza1 && item.flavors.pizza2) {
-                    flavorsText = `\n  Pizza 1: (${item.flavors.pizza1.join(' e ')})\n  Pizza 2: (${item.flavors.pizza2.join(' e ')})`;
+                    flavorsText = `Pizza 1: (${item.flavors.pizza1.join(' e ')})\n  Pizza 2: (${item.flavors.pizza2.join(' e ')})`;
                 } else if (item.flavors && item.flavors.length > 0) {
                     if (item.flavors.length === 1 && item.type.includes('esfirra')) {
                         flavorsText = ` (${item.flavors[0]})`;
@@ -1963,6 +2079,9 @@ function prepareWhatsAppMessage() {
                     flavorsText = ` (${item.flavors.join(', ')})`;
                 }
             }
+            /* NO FLAVORS FOR ESFIRRA IN MESSAGE */
+            const _isEsfirra = (item.type && item.type.toLowerCase().includes('esfirra'));
+            if (_isEsfirra) { flavorsText = ''; }
             let crustText = '';
             if (item.crust && item.crust.name !== 'Sem Borda Recheada') {
                 crustText = ` (Borda: ${item.crust.name})`;
@@ -2215,25 +2334,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Adiciona event listeners para os campos de rua e bairro para calcular o frete
-    const cepInput = document.getElementById('cep-address');
-    const streetInput = document.getElementById('address-street');
-    const neighborhoodInput = document.getElementById('address-neighborhood');
-
-    streetInput.addEventListener('blur', () => {
-        // Calcula o frete somente se o CEP estiver vazio
-        if (cepInput.value.trim() === '') {
-            autofillAddressAndCalculateDelivery();
-        }
-    });
-
-    neighborhoodInput.addEventListener('blur', () => {
-        // Calcula o frete somente se o CEP estiver vazio
-        if (cepInput.value.trim() === '') {
-            autofillAddressAndCalculateDelivery();
-        }
-    });
-
     showPage('main-menu');
     updateCartIconCount();
     updatePizzariaStatus();
@@ -2247,5 +2347,208 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 }); 
-</script>
 
+// === Adicionado: cálculo quando CEP está vazio e o usuário preenche Rua/Número/Bairro ===
+(function() {
+  function _tryCalcByAddressWhenNoCEP() {
+    const cep = (document.getElementById('cep-address')?.value || '').replace(/\D/g, '');
+    if (!cep) {
+      try { calcularTaxaEntrega(''); } catch (e) { /* silencioso */ }
+    }
+  }
+  ['address-street','address-number','address-neighborhood'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) {
+      el.addEventListener('blur', _tryCalcByAddressWhenNoCEP);
+      el.addEventListener('change', _tryCalcByAddressWhenNoCEP);
+    }
+  });
+})();
+
+
+// === Garantia extra: remover 'checked' inicial de qualquer opção de borda ===
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('input[name="stuffed-crust"]').forEach(function(r){
+    r.checked = false;
+    r.removeAttribute('checked');
+  });
+});
+
+
+
+// === Scroll suave para sabores ao escolher borda (delegado, robusto) ===
+(function attachCrustScrollOnce(){
+  if (window.__crustScrollListenerAttached) return;
+  const container = document.getElementById('crust-options-section');
+  if (!container) return;
+
+  function firstVisibleFlavorSection(){
+    const ids = [
+      'pizza1-flavor-section',
+      'flavor-options-single',
+      'flavor-options',
+      'pizza2-flavor-section',
+      'pizza3-flavor-section'
+    ];
+    for (var i=0;i<ids.length;i++){
+      var el = document.getElementById(ids[i]);
+      if (!el) continue;
+      // visível: não tem .hidden e tem offsetParent
+      if (!el.classList.contains('hidden') && el.offsetParent !== null) return el;
+    }
+    return null;
+  }
+
+  container.addEventListener('change', function(ev){
+    const t = ev.target;
+    if (!(t && t.name === 'stuffed-crust')) return;
+    setTimeout(function(){
+      var target = firstVisibleFlavorSection();
+      if (target) {
+        try { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch(e){}
+        try {
+          target.classList.add('ring-2','ring-red-400','ring-offset-2');
+          setTimeout(function(){ target.classList.remove('ring-2','ring-red-400','ring-offset-2'); }, 800);
+        } catch(e){}
+      }
+    }, 50);
+  }, true);
+
+  window.__crustScrollListenerAttached = true;
+})();
+
+(function attachCrustScrollOnce(){
+  if (window.__crustScrollListenerAttached) return;
+  const container = document.getElementById('crust-options-section');
+  if (!container) return;
+  container.addEventListener('change', function(ev){
+    const t = ev.target;
+    if (!(t && t.name === 'stuffed-crust')) return;
+    // pequeno delay para garantir repaint
+    setTimeout(function(){
+      var target = document.getElementById('pizza1-flavor-section')
+                || document.getElementById('flavor-options-single')
+                || document.getElementById('flavor-options');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // highlight opcional por 800ms para guiar o olhar
+        try {
+          target.classList.add('ring-2','ring-red-400','ring-offset-2');
+          setTimeout(function(){ target.classList.remove('ring-2','ring-red-400','ring-offset-2'); }, 800);
+        } catch(e){}
+      }
+    }, 50);
+  }, true);
+  window.__crustScrollListenerAttached = true;
+})();
+
+// === Clique no balão inteiro: encaminha para o botão interno (selectItem) ===
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.clickable-card').forEach(function(card){
+    function activate() {
+      const btn = card.querySelector('button[onclick*="selectItem"]');
+      if (btn) btn.click();
+    }
+    card.addEventListener('click', function(e){
+      // Evita duplo clique se o alvo já for o botão
+      if (e.target.closest('button')) return;
+      activate();
+    });
+    card.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        activate();
+      }
+    });
+  });
+
+  // Sinalizador visual na página inicial
+  var hint = document.getElementById('menu-click-hint');
+  if (!hint) return;
+  hint.classList.remove('hidden');
+});
+
+
+// === Steps & Fixed CTA logic ===
+(function(){
+  function setStep(n){
+    document.querySelectorAll('#steps-indicator .step').forEach(el=>{
+      el.classList.toggle('active', Number(el.dataset.step) <= n);
+    });
+  }
+  // Show fixed CTA only on selection page
+  const observer = new MutationObserver(function(){
+    const sel = document.getElementById('flavor-selection');
+    const cta = document.getElementById('selection-fixed-cta');
+    if (!sel || !cta) return;
+    const visible = !sel.classList.contains('hidden');
+    cta.classList.toggle('hidden', !visible);
+    if (visible) setStep(1);
+  });
+  observer.observe(document.body, { attributes:true, subtree:true, attributeFilter:['class'] });
+
+  // When user picks a crust, move to step 2
+  document.addEventListener('change', function(e){
+    if (e.target && e.target.name === 'stuffed-crust') setStep(2);
+  });
+
+  // CTA: if can add to cart, click add button then go summary; else shake
+  const ctaBtn = document.getElementById('go-summary-btn');
+  if (ctaBtn){
+    ctaBtn.addEventListener('click', function(){
+      const addBtn = document.getElementById('add-to-cart-btn') || document.querySelector('[id*="add-to-cart"]');
+      if (addBtn && !addBtn.disabled){
+        addBtn.click();
+        setStep(3);
+        try { showPage('order-summary'); } catch(e) {}
+      } else {
+        ctaBtn.classList.remove('shake'); void ctaBtn.offsetWidth; ctaBtn.classList.add('shake');
+      }
+    });
+  }
+})();
+
+
+// === Hide steps indicator for esfirras ===
+(function(){
+  // Hook into showPage to detect when entering flavor-selection for esfirras
+  var origShowPage = window.showPage;
+  window.showPage = function(pageId){
+    if (typeof origShowPage === 'function') origShowPage.apply(this, arguments);
+    if (pageId === 'flavor-selection'){
+      var steps = document.getElementById('steps-indicator');
+      if (steps){
+        var isEsfirra = false;
+        try {
+          var titleEl = document.querySelector('#flavor-selection h2, #flavor-selection h1');
+          if (titleEl && /esfirra/i.test(titleEl.textContent)) isEsfirra = true;
+        } catch(e){}
+        steps.style.display = isEsfirra ? 'none' : '';
+      }
+    }
+  };
+})();
+
+
+// === Show "0" in cart count when empty ===
+(function(){
+  var origRenderCart = window.renderCart;
+  window.renderCart = function(){
+    if (typeof origRenderCart === 'function') origRenderCart.apply(this, arguments);
+    try {
+      var countEl = document.getElementById('cart-count');
+      if (countEl){
+        var current = parseInt(countEl.textContent) || 0;
+        if (window.cart && window.cart.length === 0){
+          countEl.textContent = '0';
+        } else {
+          countEl.textContent = current;
+        }
+      }
+    } catch(e){}
+  };
+})();
+
+</script>
+</body>
+</html>
