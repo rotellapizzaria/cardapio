@@ -234,7 +234,6 @@ body {
 </div>
 <div class="page-section" id="main-menu">
 <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800 text-center mb-8 text-lg sm:text-xl md:text-2xl">🍕 Bem-vindo à Rotella! Aqui a massa é artesanal, os ingredientes são de qualidade, o recheio é generoso e o sabor... inesquecível! 😋</h2><p id="menu-click-hint" class="hidden text-center text-sm sm:text-base text-gray-600 mt-2">Selecione uma das opções abaixo:</p>
-<!-- Botões de categoria para rolagem suave -->
 <div class="flex flex-wrap justify-center gap-2 mb-8">
 <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full transition-colors text-sm sm:text-base" onclick="scrollToCategory('combos-especiais')">Combos</button>
 <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full transition-colors text-sm sm:text-base" onclick="scrollToCategory('pizzas')">Pizzas</button>
@@ -1134,37 +1133,29 @@ body {
 </div>
 <p class="text-center text-gray-500 text-sm mt-10">Obrigado por escolher Rotella Pizzaria! Bom apetite!</p><p class="text-center text-gray-500 text-sm mt-10">Nos siga no Instagram: <a href="https://www.instagram.com/rotellapizzaria" target="_blank">@rotellapizzaria</a></p>
 </div>
-<!-- Botão flutuante WhatsApp -->
 <a class="items-center font-bold px-6 fixed flex duration-300 rounded-full bottom-6 text-white bg-green-500 focus:ring-opacity-50 focus:outline-none transform py-3 space-x-2 p-3 p-2 shadow-lg hover:bg-green-600 z-50 focus:ring-2 right-6 hover:scale-105 transition-all text-3xl focus:ring-green-500" href="https://wa.me/92986161640?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!" id="whatsapp-float-btn" target="_blank"><i class="fab fa-whatsapp text-3xl"></i></a>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd6-d4xDeEdHCILpv_c5xqGTBAR8o8xm4&amp;libraries=places"></script>
 <script>
+// ---------- INÍCIO DA ALTERAÇÃO ----------
 function calcularTaxaEntrega(cepDestino) {
     const origem = "69095510"; // CEP da pizzaria
+    const taxaEntregaElement = document.getElementById("taxa-entrega");
 
-    // Aceita CEP OU Rua+Número(+Bairro) quando CEP não estiver preenchido/válido
-    const cepStr = (typeof cepDestino !== 'undefined' && cepDestino != null) ? String(cepDestino) : "";
-    const cepLimpo = cepStr.replace(/\D/g, "");
+    // Limpa o CEP para conter apenas dígitos
+    const cepLimpo = (cepDestino || "").replace(/\D/g, "");
 
-    const rua = (document.getElementById("address-street")?.value || "").trim();
-    const numero = (document.getElementById("address-number")?.value || "").trim();
-    const bairro = (document.getElementById("address-neighborhood")?.value || "").trim();
-
-    let destino = null;
-    if (cepLimpo.length === 8) {
-        destino = cepLimpo;
-    } else if (rua && numero) {
-        // Se tiver bairro, incluímos para melhorar a geocodificação
-        destino = `${rua}, ${numero}${bairro ? `, ${bairro}` : ""}, Manaus - AM`;
-    }
-
-    if (!destino) {
+    // Se o CEP não for preenchido ou for inválido, exibe a mensagem e zera a taxa
+    if (cepLimpo.length !== 8) {
+        taxaEntregaElement.innerText = "Preencha o CEP para calcular a taxa de entrega ou continuar sem calcular";
         deliveryFee = 0;
-        document.getElementById("taxa-entrega").innerText = "";
         calculateTotalCartPrice();
         return;
     }
+
+    const destino = cepLimpo;
+
     // Feedback visual enquanto calcula
-    try { document.getElementById("taxa-entrega").innerText = "Calculando taxa..."; } catch(e) {}
+    taxaEntregaElement.innerText = "Calculando taxa...";
 
     const service = new google.maps.DistanceMatrixService();
     service.getDistanceMatrix({
@@ -1187,16 +1178,17 @@ function calcularTaxaEntrega(cepDestino) {
             else taxa = 25;
 
             deliveryFee = taxa;
-            document.getElementById("taxa-entrega").innerText = `Taxa de entrega: R$ ${taxa.toFixed(2).replace('.', ',')}`;
+            taxaEntregaElement.innerText = `Taxa de entrega: R$ ${taxa.toFixed(2).replace('.', ',')}`;
             calculateTotalCartPrice();
         } else {
             console.error("Erro no DistanceMatrixService:", status);
-            document.getElementById("taxa-entrega").innerText = "Erro ao calcular a taxa de entrega";
+            taxaEntregaElement.innerText = "Erro ao calcular a taxa de entrega. Verifique o CEP.";
             deliveryFee = 0;
             calculateTotalCartPrice();
         }
     });
-} 
+}
+// ---------- FIM DA ALTERAÇÃO ----------
 </script>
 <script>
 // Array para armazenar os itens no carrinho (pizza/combo e bebidas separadas)
@@ -1259,6 +1251,9 @@ function autofillAddressAndCalculateDelivery() {
     const cepInput = document.getElementById('cep-address');
     const cep = cepInput.value.replace(/\D/g, ''); // Remove non-numeric characters
 
+    // Sempre chama calcularTaxaEntrega, que agora tem a lógica de CEP vazio
+    calcularTaxaEntrega(cep);
+
     if (cep.length === 8) {
         fetch(`https://viacep.com.br/ws/${cep}/json/`)
             .then(response => response.json())
@@ -1266,35 +1261,19 @@ function autofillAddressAndCalculateDelivery() {
                 if (!data.erro) {
                     document.getElementById('address-street').value = data.logradouro;
                     document.getElementById('address-neighborhood').value = data.bairro;
-                    // Calcula a taxa de entrega após o preenchimento do CEP
-                    calcularTaxaEntrega(cep);
-                    // Optionally, focus on the number input after autofill
                     document.getElementById('address-number').focus();
                 } else {
                     alert('CEP não encontrado.');
                     document.getElementById('address-street').value = '';
                     document.getElementById('address-neighborhood').value = '';
-                    document.getElementById("taxa-entrega").innerText = ''; // Clear previous fee message
-                    deliveryFee = 0; // Reset delivery fee
-                    calculateTotalCartPrice(); // Recalculate total
-                
-        // CEP vazio/ inválido: tenta calcular pela Rua + Número (+Bairro)
-        try { calcularTaxaEntrega(""); } catch (e) { /* silencioso */ }
-}
+                }
             })
             .catch(error => {
                 console.error('Erro ao buscar CEP:', error);
                 alert('Erro ao buscar CEP. Tente novamente.');
                 document.getElementById('address-street').value = '';
                 document.getElementById('address-neighborhood').value = '';
-                document.getElementById("taxa-entrega").innerText = ''; // Clear previous fee message
-                deliveryFee = 0; // Reset delivery fee
-                calculateTotalCartPrice(); // Recalculate total
             });
-    } else {
-        document.getElementById("taxa-entrega").innerText = ''; // Clear previous fee message
-        deliveryFee = 0; // Reset delivery fee
-        calculateTotalCartPrice(); // Recalculate total
     }
 }
 
