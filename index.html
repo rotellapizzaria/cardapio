@@ -1136,7 +1136,6 @@ body {
 <a class="items-center font-bold px-6 fixed flex duration-300 rounded-full bottom-6 text-white bg-green-500 focus:ring-opacity-50 focus:outline-none transform py-3 space-x-2 p-3 p-2 shadow-lg hover:bg-green-600 z-50 focus:ring-2 right-6 hover:scale-105 transition-all text-3xl focus:ring-green-500" href="https://wa.me/92986161640?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!" id="whatsapp-float-btn" target="_blank"><i class="fab fa-whatsapp text-3xl"></i></a>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd6-d4xDeEdHCILpv_c5xqGTBAR8o8xm4&amp;libraries=places"></script>
 <script>
-// ---------- INÍCIO DA ALTERAÇÃO ----------
 function calcularTaxaEntrega(cepDestino) {
     const origem = "69095510"; // CEP da pizzaria
     const taxaEntregaElement = document.getElementById("taxa-entrega");
@@ -1188,7 +1187,6 @@ function calcularTaxaEntrega(cepDestino) {
         }
     });
 }
-// ---------- FIM DA ALTERAÇÃO ----------
 </script>
 <script>
 // Array para armazenar os itens no carrinho (pizza/combo e bebidas separadas)
@@ -1721,7 +1719,10 @@ const pizza1FlavorSection = document.getElementById('pizza1-flavor-section');
                  itemDiv.style.display = 'flex';
             }
         });
-    } else if (selectedItem.id === 'pizza-tradicional-grande' || selectedItem.id === 'pizza-media' || selectedItem.id === 'combo1' || selectedItem.id === 'pizza-day-1' || selectedItem.id === 'combo3') { // Adicionado Combo 3 aqui
+    } 
+    // ---------- INÍCIO DA ALTERAÇÃO ----------
+    else if (selectedItem.id === 'pizza-tradicional-grande' || selectedItem.id === 'pizza-media' || selectedItem.id === 'combo1' || selectedItem.id === 'pizza-day-1') {
+    // ---------- FIM DA ALTERAÇÃO ----------
         singleFlavorSection.classList.remove('hidden');
         pizza1FlavorSection.classList.add('hidden');
         pizza2FlavorSection.classList.add('hidden');
@@ -1742,7 +1743,33 @@ const pizza1FlavorSection = document.getElementById('pizza1-flavor-section');
                 if (label) label.style.display = 'flex';
             }
         });
-    } else if (selectedItem.id.includes('pizza-especial')) { 
+    } 
+    // ---------- INÍCIO DA NOVA LÓGICA PARA O COMBO 3 ----------
+    else if (selectedItem.id === 'combo3') {
+        singleFlavorSection.classList.remove('hidden');
+        pizza1FlavorSection.classList.add('hidden');
+        pizza2FlavorSection.classList.add('hidden');
+        pizza3FlavorSection.classList.add('hidden');
+        esfirraOptionsSection.classList.add('hidden');
+        esfirraDoceOptionsSection.classList.add('hidden');
+
+        flavorInstructionTextSingle.textContent = `Seu combo dá direito a uma Pizza Especial. Escolha até 2 sabores ESPECIAIS.`;
+        
+        const specialFlavorsOnly = ['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar'];
+        flavorCheckboxesSingle.forEach(cb => {
+            const label = cb.closest('label');
+            if (!specialFlavorsOnly.includes(cb.value)) {
+                if (label) label.style.display = 'none';
+            } else {
+                if (label) {
+                    label.classList.remove('disabled-option');
+                    label.style.display = 'flex';
+                }
+            }
+        });
+    }
+    // ---------- FIM DA NOVA LÓGICA PARA O COMBO 3 ----------
+    else if (selectedItem.id.includes('pizza-especial')) { 
         singleFlavorSection.classList.remove('hidden');
         pizza1FlavorSection.classList.add('hidden');
         pizza2FlavorSection.classList.add('hidden');
@@ -1751,7 +1778,6 @@ const pizza1FlavorSection = document.getElementById('pizza1-flavor-section');
         esfirraDoceOptionsSection.classList.add('hidden');
 
         flavorInstructionTextSingle.textContent = `Escolha até 2 sabores para sua pizza. Se selecionar apenas 1, a pizza será inteira desse sabor.`;
-        // No need to disable any flavors as all are allowed for special pizzas
         // Certifica-se que todos os sabores estão visíveis para pizza-especial
         flavorCheckboxesSingle.forEach(cb => {
             const label = cb.closest('label');
