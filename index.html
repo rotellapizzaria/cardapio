@@ -1141,18 +1141,83 @@ body {
 function calcularTaxaEntrega(cepDestino) {
     const origem = "69095510"; // CEP da pizzaria
 
-    // Aceita CEP OU Rua+Número(+Bairro) quando CEP não estiver preenchido/válido
-    const cepStr = (typeof cepDestino !== 'undefined' && cepDestino != null) ? String(cepDestino) : "";
-    const cepLimpo = cepStr.replace(/\D/g, "");
+    const cepStr = (typeof cepDestino !== 'undefined' && cepDestino != null) ? String(cepDestino) : (document.getElementById('cep-address')?.value || '');
+    const cepLimpo = (cepStr || '').replace(/\D/g, "");
 
-    const rua = (document.getElementById("address-street")?.value || "").trim();
-    const numero = (document.getElementById("address-number")?.value || "").trim();
-    const bairro = (document.getElementById("address-neighborhood")?.value || "").trim();
+    if (!cepLimpo) {
+        deliveryFee = 0;
+        document.getElementById("taxa-entrega").innerText = "Por favor, preencha o CEP para calcular a taxa de entrega.";
+        calculateTotalCartPrice();
+        return;
+    }
+    if (cepLimpo.length !== 8) {
+        alert('CEP inválido. Digite 8 dígitos.');
+        deliveryFee = 0;
+        document.getElementById("taxa-entrega").innerText = "";
+        calculateTotalCartPrice();
+        return;
+    }
 
-    let destino = null;
-    if (cepLimpo.length === 8) {
-        destino = cepLimpo;
-    } else if (rua && numero) {
+    const destino = cepLimpo;
+
+    const service = new google.maps.DistanceMatrixService();
+    service.getDistanceMatrix(
+        {
+            origins: [origem],
+            destinations: [destino],
+            travelMode: 'DRIVING',
+            unitSystem: google.maps.UnitSystem.METRIC,
+        },
+        (response, status) => {
+            if (status !== 'OK') {
+                alert('Erro ao calcular distância: ' + status);
+                return;
+            }
+
+            const distanceInKm = response.rows[0].elements[0].distance.value / 1000;
+            let taxa = 0;
+            if (distanceInKm <= 4) taxa = 5;
+            else if (distanceInKm <= 8) taxa = 10;
+            else if (distanceInKm <= 14) taxa = 15;
+            else if (distanceInKm <= 18) taxa = 20;
+            else taxa = 25;
+
+            deliveryFee = taxa;
+            document.getElementById("taxa-entrega").innerText = `Taxa de entrega: R$ ${taxa.toFixed(2).replace('.', ',')}`;
+            calculateTotalCartPrice();
+        }
+    );
+}
+const destino = cepLimpo;
+
+    const service = new google.maps.DistanceMatrixService();
+    service.getDistanceMatrix(
+        {
+            origins: [origem],
+            destinations: [destino],
+            travelMode: 'DRIVING',
+            unitSystem: google.maps.UnitSystem.METRIC,
+        },
+        (response, status) => {
+            if (status !== 'OK') {
+                alert('Erro ao calcular distância: ' + status);
+                return;
+            }
+
+            const distanceInKm = response.rows[0].elements[0].distance.value / 1000;
+            let taxa = 0;
+            if (distanceInKm <= 4) taxa = 5;
+            else if (distanceInKm <= 8) taxa = 10;
+            else if (distanceInKm <= 14) taxa = 15;
+            else if (distanceInKm <= 18) taxa = 20;
+            else taxa = 25;
+
+            deliveryFee = taxa;
+            document.getElementById("taxa-entrega").innerText = `Taxa de entrega: R$ ${taxa.toFixed(2).replace('.', ',')}`;
+            calculateTotalCartPrice();
+        }
+    );
+}else if (rua && numero) {
         // Se tiver bairro, incluímos para melhorar a geocodificação
         destino = `${rua}, ${numero}${bairro ? `, ${bairro}` : ""}, Manaus - AM`;
     }
@@ -1257,10 +1322,72 @@ function scrollToCategory(id) {
 // Função para preencher automaticamente o endereço via ViaCEP e calcular a taxa de entrega
 function autofillAddressAndCalculateDelivery() {
     const cepInput = document.getElementById('cep-address');
-    const cep = cepInput.value.replace(/\D/g, ''); // Remove non-numeric characters
+    const cep = (cepInput.value || '').replace(/\D/g, ''); // apenas números
 
-    if (cep.length === 8) {
-        fetch(`https://viacep.com.br/ws/${cep}/json/`)
+    // Mensagem de obrigatório somente se vazio
+    if (!cep) {
+        deliveryFee = 0;
+        document.getElementById("taxa-entrega").innerText = "Por favor, preencha o CEP para calcular a taxa de entrega.";
+        calculateTotalCartPrice();
+        return;
+    }
+
+    // CEP preenchido, mas inválido (não 8 dígitos): não mostrar mensagem de obrigatório
+    if (cep.length !== 8) {
+        alert('CEP inválido. Digite 8 dígitos.');
+        document.getElementById('address-street').value = '';
+        document.getElementById('address-neighborhood').value = '';
+        document.getElementById("taxa-entrega").innerText = '';
+        deliveryFee = 0;
+        calculateTotalCartPrice();
+        return;
+    }
+
+    // Geocoding pelo Google para obter endereço e calcular taxa
+    const apiKeyMatch = (document.querySelector('script[src*="maps.googleapis.com/maps/api/js"]') || {}).src || "";
+    const apiKey = (apiKeyMatch.match(/key=([^&]+)/) || [null, ""])[1];
+
+    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${cep}&components=country:BR|postal_code:${cep}&key=${apiKey}`)
+        .then(resp => resp.json())
+        .then(data => {
+            if (!data.results || !data.results.length) {
+                alert('CEP não encontrado.');
+                document.getElementById('address-street').value = '';
+                document.getElementById('address-neighborhood').value = '';
+                document.getElementById("taxa-entrega").innerText = '';
+                deliveryFee = 0;
+                calculateTotalCartPrice();
+                return;
+            }
+
+            const result = data.results[0];
+            const comps = result.address_components || [];
+            const getComp = (type) => (comps.find(c => (c.types || []).includes(type)) || {}).long_name || '';
+            const route = getComp('route'); // Logradouro
+            const neighborhood = getComp('sublocality') || getComp('sublocality_level_1') || getComp('neighborhood') || '';
+
+            // Preenche campos disponíveis
+            document.getElementById('address-street').value = route || '';
+            document.getElementById('address-neighborhood').value = neighborhood || '';
+
+            // Calcula taxa com base no CEP (função já cuida do cálculo via Distance Matrix)
+            calcularTaxaEntrega(cep);
+
+            // Foco no número
+            const num = document.getElementById('address-number');
+            if (num) num.focus();
+        })
+        .catch(err => {
+            console.error('Erro no Geocoding:', err);
+            alert('Erro ao buscar endereço pelo CEP. Tente novamente.');
+            document.getElementById('address-street').value = '';
+            document.getElementById('address-neighborhood').value = '';
+            document.getElementById("taxa-entrega").innerText = '';
+            deliveryFee = 0;
+            calculateTotalCartPrice();
+        });
+}
+/json/`)
             .then(response => response.json())
             .then(data => {
                 if (!data.erro) {
@@ -1680,7 +1807,7 @@ const pizza1FlavorSection = document.getElementById('pizza1-flavor-section');
         const combo2AndPizzaDay2ForbiddenFlavors = sweetFlavors.concat(['Frango com Catupiry', 'Calabresa com Catupiry', 'Bacon com Catupiry', 'Bacon com Cheddar']);
         document.querySelectorAll('#flavor-options-pizza1 input[name="flavor-pizza1"], #flavor-options-pizza2 input[name="flavor-pizza2"]').forEach(cb => {
             const label = cb.closest('label');
-            if (forbiddenForTraditional.includes(cb.value)) { // Use forbiddenForTraditional
+            if (combo2AndPizzaDay2ForbiddenFlavors.includes(cb.value)) { // Use forbiddenForTraditional
                 if (label) label.classList.add('disabled-option');
                 if (label) label.style.display = 'none';
             } else {
