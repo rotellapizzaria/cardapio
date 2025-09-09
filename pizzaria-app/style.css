@@ -1,0 +1,175 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f8f8f8;
+    margin: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+h1 {
+    background-color: #d63031;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+h2, h3 {
+    margin-top: 20px;
+}
+
+.btn, .btn-lista {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    margin: 10px 0;
+    font-size: 22px;
+    background-color: #ff7675;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn:hover, .btn-lista:hover {
+    background-color: #d63031;
+}
+
+.btn-voltar {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    font-size: 18px;
+    background-color: #636e72;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn-voltar:hover {
+    background-color: #2d3436;
+}
+
+.btn-confirmar {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    margin-top: 20px;
+    font-size: 22px;
+    background-color: #00b894;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn-confirmar:hover {
+    background-color: #019875;
+}
+
+.btn-cancelar {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-top: 10px;
+    font-size: 18px;
+    background-color: #e17055;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn-cancelar:hover {
+    background-color: #d35400;
+}
+
+.input {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin: 8px 0;
+    font-size: 18px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.pagamento {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 10px 0;
+}
+
+.pagamento label {
+    font-size: 18px;
+    background: #ffeaa7;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+#lista-pedidos {
+    text-align: left;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+/* Resumo parcial na tela de endereço */
+.resumo-parcial {
+    background-color: #ffeaa7;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+/* Estilo dos botões de sabores */
+#botoes-sabores .btn {
+    background-color: #ff7675;
+    color: white;
+    border-radius: 10px;
+    font-size: 18px;
+    padding: 15px;
+}
+
+/* Estilo especial para refrigerantes */
+.refri-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #74b9ff;
+    color: white;
+    border-radius: 25px;
+    padding: 10px;
+    margin: 5px;
+    font-size: 16px;
+}
+
+.refri-item span {
+    margin: 0 8px;
+}
+
+.refri-item button {
+    background-color: white;
+    color: #0984e3;
+    border: none;
+    font-size: 18px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.refri-item button:hover {
+    background-color: #dfe6e9;
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Pedidos - Pizzaria</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Gestão de Pedidos 🍕</h1>
+
+    <!-- Tela inicial -->
+    <div id="tela-tipo" class="tela">
+        <h2>Escolha seu pedido</h2>
+
+        <h3>Combos</h3>
+        <div id="botoes-combos"></div>
+
+        <h3>Pizzas</h3>
+        <div id="botoes-pizzas"></div>
+
+        <h3>Esfirras</h3>
+        <div id="botoes-esfirras"></div>
+
+        <button class="btn-lista" onclick="mostrarTela('tela-pedidos')">📋 Ver Pedidos</button>
+        <button class="btn-cancelar" onclick="limparPedidoAtual()">🗑 Limpar Pedido Atual</button>
+    </div>
+
+    <!-- Tela de sabores -->
+    <div id="tela-sabores" class="tela" style="display:none;">
+        <h2>Escolha os sabores</h2>
+        <p id="info-sabores"></p>
+        <div id="botoes-sabores"></div>
+        <button class="btn" onclick="confirmarSabores()">Confirmar e Continuar</button>
+        <button class="btn-voltar" onclick="voltar('tela-tipo')">⬅ Voltar</button>
+        <button class="btn-cancelar" onclick="limparPedidoAtual()">🗑 Limpar Pedido Atual</button>
+    </div>
+
+    <!-- Tela de endereço -->
+    <div id="tela-endereco" class="tela" style="display:none;">
+        <h2>Endereço de Entrega</h2>
+
+        <!-- Resumo do pedido -->
+        <div id="resumo-parcial" class="resumo-parcial"></div>
+
+        <!-- Campo de observação logo abaixo do resumo -->
+        <textarea class="input" id="observacao" placeholder="Observação (opcional)"></textarea>
+
+        <input class="input" type="text" id="cliente" placeholder="Cliente / Telefone (opcional)">
+        <input class="input" type="text" id="logradouro" placeholder="Rua / Avenida (opcional)">
+        <input class="input" type="text" id="numero" placeholder="Número (opcional)">
+        <input class="input" type="text" id="bairro" placeholder="Bairro (opcional)">
+        <input class="input" type="text" id="complemento" placeholder="Complemento (opcional)">
+
+        <!-- Checkbox retirada no local -->
+        <label style="display:block; margin-top:10px; font-size:16px; text-align:left;">
+            <input type="checkbox" id="retiradaLocal"> Retirada no local
+        </label>
+
+        <h3>Forma de Pagamento</h3>
+        <div class="pagamento">
+            <label><input type="radio" name="pagamento" value="Pix"> Pix</label>
+            <label><input type="radio" name="pagamento" value="Débito"> Débito</label>
+            <label><input type="radio" name="pagamento" value="Crédito"> Crédito</label>
+            <label><input type="radio" name="pagamento" value="Dinheiro"> Dinheiro</label>
+        </div>
+
+        <button class="btn" onclick="salvarEndereco()">Continuar</button>
+        <button class="btn-voltar" onclick="voltar('tela-sabores')">⬅ Voltar</button>
+        <button class="btn-cancelar" onclick="limparPedidoAtual()">🗑 Limpar Pedido Atual</button>
+    </div>
+
+    <!-- Tela de resumo -->
+    <div id="tela-resumo" class="tela" style="display:none;">
+        <h2>Resumo do Pedido</h2>
+        <p id="resumo"></p>
+        <button class="btn-confirmar" onclick="confirmarPedido()">✅ Confirmar Pedido</button>
+        <button class="btn-voltar" onclick="voltar('tela-endereco')">⬅ Voltar</button>
+        <button class="btn-cancelar" onclick="limparPedidoAtual()">🗑 Limpar Pedido Atual</button>
+    </div>
+
+    <!-- Tela de lista de pedidos -->
+    <div id="tela-pedidos" class="tela" style="display:none;">
+        <h2>Pedidos do Dia 📋</h2>
+        <div id="lista-pedidos"></div>
+        <button class="btn-voltar" onclick="voltar('tela-tipo')">⬅ Voltar</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
